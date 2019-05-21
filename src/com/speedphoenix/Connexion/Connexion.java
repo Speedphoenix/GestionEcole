@@ -133,28 +133,44 @@ public class Connexion {
      */
     public ArrayList remplirChampsTable(String table) throws SQLException {
         // récupération de l'ordre de la requete
-        rset = stmt.executeQuery("select * from " + table);
 
+        rset = stmt.executeQuery("select * from " + table);
         // récupération du résultat de l'ordre
         rsetMeta = rset.getMetaData();
 
         // calcul du nombre de colonnes du resultat
         int nbColonne = rsetMeta.getColumnCount();
+        rset.last();
+        int size = rset.getRow();
+        rset.beforeFirst();
+        rset.next();
 
+        // creation d'une ArrayList dans lequel on placera les lignes une par une
+        ArrayList liste;
         // creation d'une ArrayList de String
-        ArrayList<String> liste;
-        liste = new ArrayList<>();
-        String champs = "";
-        // Ajouter tous les champs du resultat dans l'ArrayList
-        for (int i = 0; i < nbColonne; i++) {
-            champs = champs + " " + rsetMeta.getColumnLabel(i + 1);
-        }
+        ArrayList<String> ligne;
+        liste = new ArrayList<ArrayList<String>>();
+        ligne = new ArrayList<String>();
 
-        // ajouter un "\n" à la ligne des champs
-        champs = champs + "\n";
+            // Ajouter tous les noms des colonnes du resultat dans l'ArrayList
+            for (int i = 0; i < nbColonne; i++) {
+                ligne.add(rsetMeta.getColumnLabel(i + 1));
+            }
 
-        // ajouter les champs de la ligne dans l'ArrayList
-        liste.add(champs);
+            // ajouter les champs de la ligne dans l'ArrayList
+            liste.add(ligne);
+
+            //tant qu'on peut aller à la ligne suivante
+            do {
+                ligne = new ArrayList<String>();
+
+                for (int i = 0; i < nbColonne; i++) {
+                    ligne.add(rset.getString(i + 1));
+                }
+                liste.add(ligne);
+
+            }while(rset.next());
+
 
         // Retourner l'ArrayList
         return liste;
@@ -175,28 +191,36 @@ public class Connexion {
 
         // calcul du nombre de colonnes du resultat
         int nbColonne = rsetMeta.getColumnCount();
+        rset.last();
+        int size = rset.getRow();
+        rset.beforeFirst();
+        rset.next();
 
+        // creation d'une ArrayList dans lequel on placera les lignes une par une
+        ArrayList liste;
         // creation d'une ArrayList de String
-        ArrayList<String> liste;
-        liste = new ArrayList<String>();
+        ArrayList<String> ligne;
+        liste = new ArrayList<ArrayList<String>>();
+        ligne = new ArrayList<String>();
 
-        // tant qu'il reste une ligne 
-        while (rset.next()) {
-            String champs;
-            champs = rset.getString(1); // ajouter premier champ
-
-            // Concatener les champs de la ligne separes par ,
-            for (int i = 1; i < nbColonne; i++) {
-                champs = champs + "," + rset.getString(i + 1);
-            }
-
-            // ajouter un "\n" à la ligne des champs
-            champs = champs + "\n";
-
-            // ajouter les champs de la ligne dans l'ArrayList
-            liste.add(champs);
+        // Ajouter tous les noms des colonnes du resultat dans l'ArrayList
+        for (int i = 0; i < nbColonne; i++) {
+            ligne.add(rsetMeta.getColumnLabel(i + 1));
         }
 
+        // ajouter les champs de la ligne dans l'ArrayList
+        liste.add(ligne);
+
+        //tant qu'on peut aller à la ligne suivante
+        do {
+            ligne = new ArrayList<String>();
+
+            for (int i = 0; i < nbColonne; i++) {
+                ligne.add(rset.getString(i + 1));
+            }
+            liste.add(ligne);
+
+        }while(rset.next());
         // Retourner l'ArrayList
         return liste;
     }
@@ -208,5 +232,44 @@ public class Connexion {
      */
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
+    }
+
+    //affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
+    public void displayRemplirChampsTables(String Table) {
+        ArrayList<ArrayList<String>> result = null;
+
+        try {
+            result = this.remplirChampsTable(Table);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        afficheResult(result);
+
+    }
+    public void displayRemplirChampsRequete(String requete) {
+        ArrayList<ArrayList<String>> result = null;
+
+        try {
+            result = this.remplirChampsRequete(requete);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        afficheResult(result);
+
+    }
+    public void afficheResult(ArrayList<ArrayList<String>> result)
+    {
+        if(result != null){
+            for(int row = 0; row < result.size() ; row++)
+            {
+                for(int col = 0; col < result.get(row).size() ; col++)
+                {
+                    System.out.print(result.get(row).get(col) +" ");
+                }
+                System.out.println("");
+            }
+        }
+
     }
 }
