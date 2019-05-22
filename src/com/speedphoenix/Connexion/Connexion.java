@@ -131,6 +131,7 @@ public class Connexion {
      * @return
      * @throws java.sql.SQLException
      */
+    @SuppressWarnings("Duplicates")
     public ArrayList remplirChampsTable(String table) throws SQLException {
         // récupération de l'ordre de la requete
 
@@ -182,6 +183,7 @@ public class Connexion {
      * @return 
      * @throws java.sql.SQLException
      */
+    @SuppressWarnings("Duplicates")
     public ArrayList remplirChampsRequete(String requete) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery(requete);
@@ -232,6 +234,20 @@ public class Connexion {
      */
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
+    }
+    public void executeAllupdate(){
+        for(int i = 0; i < requetesMaj.size(); i++)
+        {
+            try {
+                executeUpdate(requetesMaj.get(i));
+            } catch (SQLException e) {
+                System.out.print(e.getErrorCode());
+                System.out.print(e.getSQLState());
+            }
+        }
+
+           requetesMaj.clear();
+        
     }
 
     //affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
