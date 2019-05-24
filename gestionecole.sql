@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mer. 22 mai 2019 à 13:15
+-- Généré le :  ven. 24 mai 2019 à 17:44
 -- Version du serveur :  10.1.37-MariaDB
 -- Version de PHP :  7.3.1
 
@@ -30,8 +30,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `anneescolaire` (
   `id` int(11) NOT NULL,
-  `value` int(11) NOT NULL DEFAULT '0'
+  `value` varchar(255) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `anneescolaire`
+--
+
+INSERT INTO `anneescolaire` (`id`, `value`) VALUES
+(1, '2018-2019');
 
 -- --------------------------------------------------------
 
@@ -43,8 +50,15 @@ CREATE TABLE `bulletin` (
   `id` int(11) NOT NULL,
   `trimestreId` int(11) NOT NULL,
   `InscriptionId` int(11) NOT NULL,
-  `appreciation` varchar(255) NOT NULL
+  `appreciation` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `bulletin`
+--
+
+INSERT INTO `bulletin` (`id`, `trimestreId`, `InscriptionId`, `appreciation`) VALUES
+(1, 2, 1, 'De mauvais résultats dans toute vos matières étudiés... Pas ouf comme dirait ma tata.');
 
 -- --------------------------------------------------------
 
@@ -60,6 +74,13 @@ CREATE TABLE `classe` (
   `anneeScolId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `classe`
+--
+
+INSERT INTO `classe` (`id`, `nom`, `ecoleId`, `niveauId`, `anneeScolId`) VALUES
+(1, 'TD 04', 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -70,8 +91,16 @@ CREATE TABLE `detailbulletin` (
   `id` int(11) NOT NULL,
   `bulletinId` int(11) NOT NULL,
   `enseignementId` int(11) NOT NULL,
-  `appreciation` varchar(255) NOT NULL
+  `appreciation` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `detailbulletin`
+--
+
+INSERT INTO `detailbulletin` (`id`, `bulletinId`, `enseignementId`, `appreciation`) VALUES
+(1, 1, 1, 'Votre tête est un système thermodynamique peu rentable, de faibles résultats fournis pour beaucoup de travail apporté...'),
+(2, 1, 2, 'Il va falloir faire une transformation totale de votre manière de travail pour espéré avoir la moyenne.');
 
 -- --------------------------------------------------------
 
@@ -84,6 +113,14 @@ CREATE TABLE `discipline` (
   `nom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `discipline`
+--
+
+INSERT INTO `discipline` (`id`, `nom`) VALUES
+(1, 'Thermodynamique'),
+(2, 'Analyse de Fourrier');
+
 -- --------------------------------------------------------
 
 --
@@ -92,8 +129,15 @@ CREATE TABLE `discipline` (
 
 CREATE TABLE `ecole` (
   `id` int(11) NOT NULL,
-  `nom` int(11) NOT NULL
+  `nom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `ecole`
+--
+
+INSERT INTO `ecole` (`id`, `nom`) VALUES
+(1, 'ECE Paris');
 
 -- --------------------------------------------------------
 
@@ -108,6 +152,14 @@ CREATE TABLE `enseignement` (
   `PersonneId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `enseignement`
+--
+
+INSERT INTO `enseignement` (`id`, `classeId`, `disciplineId`, `PersonneId`) VALUES
+(1, 1, 1, 1),
+(2, 1, 2, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -117,9 +169,19 @@ CREATE TABLE `enseignement` (
 CREATE TABLE `evaluation` (
   `id` int(11) NOT NULL,
   `detailBulletinId` int(11) NOT NULL,
-  `note` int(11) NOT NULL,
-  `appreciation` varchar(255) NOT NULL
+  `note` double NOT NULL,
+  `appreciation` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `evaluation`
+--
+
+INSERT INTO `evaluation` (`id`, `detailBulletinId`, `note`, `appreciation`) VALUES
+(2, 1, 3, 'Non, une entropie négative ne crée pas un trou noir détruisant l\'univers !'),
+(3, 1, 5.5, 'Un génie ! A inventé une machine avec un rendement supérieur à 1 ! Vous êtes le digne descendant de Carnot.'),
+(4, 2, 8, 'Ouiiiiiiiii'),
+(5, 2, 10, 'Bieeeeeeeennn');
 
 -- --------------------------------------------------------
 
@@ -133,6 +195,13 @@ CREATE TABLE `inscription` (
   `personneId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `inscription`
+--
+
+INSERT INTO `inscription` (`id`, `classeId`, `personneId`) VALUES
+(1, 1, 2);
+
 -- --------------------------------------------------------
 
 --
@@ -143,6 +212,13 @@ CREATE TABLE `niveau` (
   `id` int(11) NOT NULL,
   `nom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `niveau`
+--
+
+INSERT INTO `niveau` (`id`, `nom`) VALUES
+(1, 'Bac+3');
 
 -- --------------------------------------------------------
 
@@ -157,6 +233,15 @@ CREATE TABLE `personne` (
   `type` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `personne`
+--
+
+INSERT INTO `personne` (`id`, `nom`, `prenom`, `type`) VALUES
+(1, 'Pullicino', 'Mr.', 1),
+(2, 'Rossignolo', 'Polo', 0),
+(3, 'Desliles', 'Mr.', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -166,10 +251,17 @@ CREATE TABLE `personne` (
 CREATE TABLE `trimestre` (
   `id` int(11) NOT NULL,
   `numero` int(11) NOT NULL,
-  `debut` int(11) NOT NULL,
-  `fin` int(11) NOT NULL,
+  `debut` date NOT NULL,
+  `fin` date NOT NULL,
   `anneScolId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `trimestre`
+--
+
+INSERT INTO `trimestre` (`id`, `numero`, `debut`, `fin`, `anneScolId`) VALUES
+(2, 2, '2019-02-10', '2019-06-14', 1);
 
 --
 -- Index pour les tables déchargées
@@ -195,8 +287,8 @@ ALTER TABLE `bulletin`
 ALTER TABLE `classe`
   ADD PRIMARY KEY (`id`),
   ADD KEY `ecoleId` (`ecoleId`),
-  ADD KEY `NiveauId` (`niveauId`),
-  ADD KEY `anneeScolId` (`anneeScolId`);
+  ADD KEY `anneeScolId` (`anneeScolId`),
+  ADD KEY `niveauId` (`niveauId`);
 
 --
 -- Index pour la table `detailbulletin`
@@ -259,7 +351,7 @@ ALTER TABLE `personne`
 --
 ALTER TABLE `trimestre`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `annescolid` (`anneScolId`);
+  ADD KEY `trimestre_ibfk_1` (`anneScolId`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -269,73 +361,73 @@ ALTER TABLE `trimestre`
 -- AUTO_INCREMENT pour la table `anneescolaire`
 --
 ALTER TABLE `anneescolaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `bulletin`
 --
 ALTER TABLE `bulletin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `classe`
 --
 ALTER TABLE `classe`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `detailbulletin`
 --
 ALTER TABLE `detailbulletin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `discipline`
 --
 ALTER TABLE `discipline`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `ecole`
 --
 ALTER TABLE `ecole`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `enseignement`
 --
 ALTER TABLE `enseignement`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `inscription`
 --
 ALTER TABLE `inscription`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `niveau`
 --
 ALTER TABLE `niveau`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `personne`
 --
 ALTER TABLE `personne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `trimestre`
 --
 ALTER TABLE `trimestre`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Contraintes pour les tables déchargées
@@ -353,7 +445,8 @@ ALTER TABLE `bulletin`
 --
 ALTER TABLE `classe`
   ADD CONSTRAINT `classe_ibfk_1` FOREIGN KEY (`ecoleId`) REFERENCES `ecole` (`id`),
-  ADD CONSTRAINT `classe_ibfk_2` FOREIGN KEY (`anneeScolId`) REFERENCES `anneescolaire` (`id`);
+  ADD CONSTRAINT `classe_ibfk_2` FOREIGN KEY (`anneeScolId`) REFERENCES `anneescolaire` (`id`),
+  ADD CONSTRAINT `classe_ibfk_3` FOREIGN KEY (`niveauId`) REFERENCES `niveau` (`id`);
 
 --
 -- Contraintes pour la table `detailbulletin`
@@ -387,7 +480,7 @@ ALTER TABLE `inscription`
 -- Contraintes pour la table `trimestre`
 --
 ALTER TABLE `trimestre`
-  ADD CONSTRAINT `trimestre_ibfk_1` FOREIGN KEY (`annescolid`) REFERENCES `anneescolaire` (`id`);
+  ADD CONSTRAINT `trimestre_ibfk_1` FOREIGN KEY (`anneScolId`) REFERENCES `anneescolaire` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -162,6 +162,8 @@ public class Connexion {
             liste.add(ligne);
 
             //tant qu'on peut aller à la ligne suivante
+        if (size > 0)
+        {
             do {
                 ligne = new ArrayList<String>();
 
@@ -171,6 +173,7 @@ public class Connexion {
                 liste.add(ligne);
 
             }while(rset.next());
+        }
 
 
         // Retourner l'ArrayList
@@ -214,15 +217,19 @@ public class Connexion {
         liste.add(ligne);
 
         //tant qu'on peut aller à la ligne suivante
-        do {
-            ligne = new ArrayList<String>();
+        if (size > 0)
+        {
+            do {
+                ligne = new ArrayList<String>();
 
-            for (int i = 0; i < nbColonne; i++) {
-                ligne.add(rset.getString(i + 1));
-            }
-            liste.add(ligne);
+                for (int i = 0; i < nbColonne; i++) {
+                    ligne.add(rset.getString(i + 1));
+                }
+                liste.add(ligne);
 
-        }while(rset.next());
+            }while(rset.next());
+        }
+
         // Retourner l'ArrayList
         return liste;
     }
@@ -274,7 +281,7 @@ public class Connexion {
         afficheResult(result);
 
     }
-    public void afficheResult(ArrayList<ArrayList<String>> result)
+    public static void afficheResult(ArrayList<ArrayList<String>> result)
     {
         if(result != null){
             for(int row = 0; row < result.size() ; row++)
