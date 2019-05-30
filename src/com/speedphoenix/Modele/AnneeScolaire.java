@@ -35,6 +35,7 @@ public class AnneeScolaire extends BaseElem{
         return earliest.getYear();
     }
 
+    //not that this could normally be replaced by getStartYear() + 1;
     public int getEndYear() {
         if (trimestres.isEmpty())
             return 0;
