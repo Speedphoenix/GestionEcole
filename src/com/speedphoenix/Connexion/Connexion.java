@@ -252,9 +252,7 @@ public class Connexion {
                 System.out.print(e.getSQLState());
             }
         }
-
            requetesMaj.clear();
-        
     }
 
     //affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
