@@ -131,6 +131,7 @@ public class Connexion {
      * @return
      * @throws java.sql.SQLException
      */
+    @SuppressWarnings("Duplicates")
     public ArrayList remplirChampsTable(String table) throws SQLException {
         // récupération de l'ordre de la requete
 
@@ -161,6 +162,8 @@ public class Connexion {
             liste.add(ligne);
 
             //tant qu'on peut aller à la ligne suivante
+        if (size > 0)
+        {
             do {
                 ligne = new ArrayList<String>();
 
@@ -170,6 +173,7 @@ public class Connexion {
                 liste.add(ligne);
 
             }while(rset.next());
+        }
 
 
         // Retourner l'ArrayList
@@ -182,6 +186,7 @@ public class Connexion {
      * @return 
      * @throws java.sql.SQLException
      */
+    @SuppressWarnings("Duplicates")
     public ArrayList remplirChampsRequete(String requete) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery(requete);
@@ -212,15 +217,19 @@ public class Connexion {
         liste.add(ligne);
 
         //tant qu'on peut aller à la ligne suivante
-        do {
-            ligne = new ArrayList<String>();
+        if (size > 0)
+        {
+            do {
+                ligne = new ArrayList<String>();
 
-            for (int i = 0; i < nbColonne; i++) {
-                ligne.add(rset.getString(i + 1));
-            }
-            liste.add(ligne);
+                for (int i = 0; i < nbColonne; i++) {
+                    ligne.add(rset.getString(i + 1));
+                }
+                liste.add(ligne);
 
-        }while(rset.next());
+            }while(rset.next());
+        }
+
         // Retourner l'ArrayList
         return liste;
     }
@@ -232,6 +241,20 @@ public class Connexion {
      */
     public void executeUpdate(String requeteMaj) throws SQLException {
         stmt.executeUpdate(requeteMaj);
+    }
+    public void executeAllupdate(){
+        for(int i = 0; i < requetesMaj.size(); i++)
+        {
+            try {
+                executeUpdate(requetesMaj.get(i));
+            } catch (SQLException e) {
+                System.out.print(e.getErrorCode());
+                System.out.print(e.getSQLState());
+            }
+        }
+
+           requetesMaj.clear();
+        
     }
 
     //affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
@@ -258,7 +281,7 @@ public class Connexion {
         afficheResult(result);
 
     }
-    public void afficheResult(ArrayList<ArrayList<String>> result)
+    public static void afficheResult(ArrayList<ArrayList<String>> result)
     {
         if(result != null){
             for(int row = 0; row < result.size() ; row++)
