@@ -2,22 +2,18 @@ package com.speedphoenix.Modele;
 
 import java.util.ArrayList;
 
-public class Niveau {
-    protected int id;
+public class Niveau extends BaseElem {
     protected String nom;
     protected ArrayList<Classe> classes;
 
     public Niveau(int id, String nom) {
-        this.id = id;
+        super(id);
         this.nom = nom;
+        Ecole.getInstance().addNiveau(this);
     }
 
     public void addClasse(Classe what) {
         classes.add(what);
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getNom() {

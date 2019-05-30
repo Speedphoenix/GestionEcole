@@ -2,8 +2,7 @@ package com.speedphoenix.Modele;
 
 import java.util.ArrayList;
 
-public class Classe {
-    protected int id;
+public class Classe extends BaseElem {
     protected String nom;
     protected Ecole ecole;
     protected Niveau niveau;
@@ -11,8 +10,12 @@ public class Classe {
     protected ArrayList<Inscription> inscriptions;
     protected ArrayList<Enseignement> enseignements;
 
+    public Classe(int id, String nom, Niveau niveau, AnneeScolaire anneeScolaire) {
+        this(id, nom, Ecole.getInstance(), niveau, anneeScolaire);
+    }
+
     public Classe(int id, String nom, Ecole ecole, Niveau niveau, AnneeScolaire anneeScolaire) {
-        this.id = id;
+        super(id);
         this.nom = nom;
         this.ecole = ecole;
         this.niveau = niveau;
@@ -28,5 +31,21 @@ public class Classe {
 
     public void addEnseignement(Enseignement what) {
         enseignements.add(what);
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public Ecole getEcole() {
+        return ecole;
+    }
+
+    public Niveau getNiveau() {
+        return niveau;
+    }
+
+    public AnneeScolaire getAnneeScolaire() {
+        return anneeScolaire;
     }
 }

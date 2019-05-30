@@ -3,8 +3,7 @@ package com.speedphoenix.Modele;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Trimestre {
-    protected int id;
+public class Trimestre extends BaseElem {
     protected int numero;
     protected LocalDate debut;
     protected LocalDate fin;
@@ -12,12 +11,13 @@ public class Trimestre {
     protected ArrayList<Bulletin> bulletins;
 
     public Trimestre(int id, int numero, LocalDate debut, LocalDate fin, AnneeScolaire anneeScolaire) {
-        this.id = id;
+        super(id);
         this.numero = numero;
         this.debut = debut;
         this.fin = fin;
         this.anneeScolaire = anneeScolaire;
         anneeScolaire.addTrimestre(this);
+        Ecole.getInstance().addTrimestre(this);
     }
 
     public void addBulletin(Bulletin what) {
@@ -26,10 +26,6 @@ public class Trimestre {
 
     public AnneeScolaire getAnneeScolaire() {
         return anneeScolaire;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public int getNumero() {

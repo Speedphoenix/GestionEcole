@@ -6,6 +6,8 @@ public class Eleve extends Personne {
     protected ArrayList<Inscription> inscriptions;
     protected Eleve(int id, String nom, String prenom) {
         super(id, nom, prenom, Personne.ELEVE);
+
+        Ecole.getInstance().addEleve(this);
     }
 
     public void addInscription(Inscription what) {

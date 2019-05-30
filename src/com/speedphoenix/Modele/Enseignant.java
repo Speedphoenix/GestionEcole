@@ -6,6 +6,7 @@ public class Enseignant extends Personne {
     protected ArrayList<Enseignement> ensegnements;
     protected Enseignant(int id, String nom, String prenom) {
         super(id, nom, prenom, Personne.ELEVE);
+        Ecole.getInstance().addEnseignant(this);
     }
 
     public void addEnsegnement(Enseignement what) {

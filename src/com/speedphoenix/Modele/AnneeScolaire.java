@@ -2,19 +2,16 @@ package com.speedphoenix.Modele;
 
 import java.util.ArrayList;
 
-public class AnneeScolaire {
-    protected int id;
+public class AnneeScolaire extends BaseElem{
     protected ArrayList<Trimestre> trimestres;
     protected ArrayList<Classe> classes;
 
     // maybe add stuff to init the rest too?
     public AnneeScolaire(int id) {
-        this.id = id;
+        super(id);
+        Ecole.getInstance().addAnneeScolaire(this);
     }
 
-    public int getId() {
-        return id;
-    }
 
     public void addTrimestre(Trimestre what) {
         trimestres.add(what);
