@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 24 mai 2019 à 17:44
--- Version du serveur :  10.1.37-MariaDB
--- Version de PHP :  7.3.1
+-- Généré le :  ven. 31 mai 2019 à 11:55
+-- Version du serveur :  10.1.40-MariaDB
+-- Version de PHP :  7.3.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -29,16 +29,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `anneescolaire` (
-  `id` int(11) NOT NULL,
-  `value` varchar(255) NOT NULL DEFAULT '0'
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `anneescolaire`
 --
 
-INSERT INTO `anneescolaire` (`id`, `value`) VALUES
-(1, '2018-2019');
+INSERT INTO `anneescolaire` (`id`) VALUES
+(1),
+(3);
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ INSERT INTO `anneescolaire` (`id`, `value`) VALUES
 CREATE TABLE `bulletin` (
   `id` int(11) NOT NULL,
   `trimestreId` int(11) NOT NULL,
-  `InscriptionId` int(11) NOT NULL,
+  `inscriptionId` int(11) NOT NULL,
   `appreciation` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -57,7 +57,7 @@ CREATE TABLE `bulletin` (
 -- Déchargement des données de la table `bulletin`
 --
 
-INSERT INTO `bulletin` (`id`, `trimestreId`, `InscriptionId`, `appreciation`) VALUES
+INSERT INTO `bulletin` (`id`, `trimestreId`, `inscriptionId`, `appreciation`) VALUES
 (1, 2, 1, 'De mauvais résultats dans toute vos matières étudiés... Pas ouf comme dirait ma tata.');
 
 -- --------------------------------------------------------
@@ -149,14 +149,14 @@ CREATE TABLE `enseignement` (
   `id` int(11) NOT NULL,
   `classeId` int(11) NOT NULL,
   `disciplineId` int(11) NOT NULL,
-  `PersonneId` int(11) NOT NULL
+  `personneId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `enseignement`
 --
 
-INSERT INTO `enseignement` (`id`, `classeId`, `disciplineId`, `PersonneId`) VALUES
+INSERT INTO `enseignement` (`id`, `classeId`, `disciplineId`, `personneId`) VALUES
 (1, 1, 1, 1),
 (2, 1, 2, 3);
 
@@ -278,7 +278,7 @@ ALTER TABLE `anneescolaire`
 --
 ALTER TABLE `bulletin`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `InscriptionId` (`InscriptionId`),
+  ADD KEY `InscriptionId` (`inscriptionId`),
   ADD KEY `trimestreId` (`trimestreId`);
 
 --
@@ -317,7 +317,7 @@ ALTER TABLE `enseignement`
   ADD PRIMARY KEY (`id`),
   ADD KEY `classeId` (`classeId`),
   ADD KEY `disciplineId` (`disciplineId`),
-  ADD KEY `PersonneId` (`PersonneId`);
+  ADD KEY `PersonneId` (`personneId`);
 
 --
 -- Index pour la table `evaluation`
@@ -361,7 +361,7 @@ ALTER TABLE `trimestre`
 -- AUTO_INCREMENT pour la table `anneescolaire`
 --
 ALTER TABLE `anneescolaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `bulletin`
