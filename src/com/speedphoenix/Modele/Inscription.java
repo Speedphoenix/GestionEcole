@@ -13,6 +13,7 @@ public class Inscription extends BaseElem {
         super(id);
         this.eleve = eleve;
         this.classe = classe;
+        bulletins = new ArrayList<>();
         classe.addInscription(this);
         eleve.addInscription(this);
         Ecole.getInstance().addInscription(this);

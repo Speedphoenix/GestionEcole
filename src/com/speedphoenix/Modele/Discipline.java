@@ -11,6 +11,7 @@ public class Discipline extends BaseElem {
     public Discipline(int id, String nom) {
         super(id);
         this.nom = nom;
+        enseignements = new ArrayList<>();
         Ecole.getInstance().addDiscipline(this);
     }
 

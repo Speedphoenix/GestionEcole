@@ -15,6 +15,7 @@ public class DetailBulletin extends BaseElem {
         this.appreciation = appreciation;
         this.enseignement = enseignement;
         this.bulletin = bulletin;
+        evaluations = new ArrayList<>();
         enseignement.addDetailBulletin(this);
         bulletin.addDetailBulletin(this);
         Ecole.getInstance().addDetailBulletin(this);

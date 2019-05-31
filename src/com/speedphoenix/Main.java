@@ -7,6 +7,7 @@ import com.speedphoenix.temp.bulletin;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Main {
 
@@ -43,9 +44,12 @@ public class Main {
         //Evaluation.createInsertRequest("gros serieux ?",1,1,conn);
        // Niveau.createInsertRequest("CP",conn);
         //Trimestre.createInsertRequest(2,LocalDate.of(1997,11,03),LocalDate.of(1998,02,03),1,conn);
+        //conn.executeAllupdate();
 
 
-        conn.executeAllupdate();
+           Ecole eco = new Ecole();
+
+          eco.showTest();
 
 
 

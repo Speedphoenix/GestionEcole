@@ -15,6 +15,7 @@ public class Enseignement extends BaseElem {
         this.classe = classe;
         this.enseignant = enseignant;
         this.discipline = discipline;
+        detailBulletins = new ArrayList<>();
         classe.addEnseignement(this);
         enseignant.addEnseignement(this);
         discipline.addEnseignement(this);

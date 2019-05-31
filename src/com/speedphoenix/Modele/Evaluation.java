@@ -3,11 +3,11 @@ package com.speedphoenix.Modele;
 import com.speedphoenix.Connexion.Connexion;
 
 public class Evaluation extends BaseElem {
-    protected int note;
+    protected double note;
     protected String appreciation;
     protected DetailBulletin detailBulletin;
 
-    public Evaluation(int id, int note, String appreciation, DetailBulletin detailBulletin) {
+    public Evaluation(int id, double note, String appreciation, DetailBulletin detailBulletin) {
         super(id);
         this.note = note;
         this.appreciation = appreciation;
@@ -16,7 +16,7 @@ public class Evaluation extends BaseElem {
         Ecole.getInstance().addEvaluation(this);
     }
 
-    public int getNote() {
+    public double getNote() {
         return note;
     }
 
@@ -28,12 +28,12 @@ public class Evaluation extends BaseElem {
         return detailBulletin;
     }
 
-    public static void createInsertRequest(String appreciation,int note, int detailBulletinId, Connexion conn)
+    public static void createInsertRequest(String appreciation,double note, int detailBulletinId, Connexion conn)
     {
         String sql = "INSERT INTO evaluation  (appreciation,note,detailBulletinId)VALUES('"+appreciation+"',"+note+","+detailBulletinId+");";
         conn.ajouterRequeteMaj(sql);
     }
-    public void createUpdateRequest(String appreciation,int note, Connexion conn)
+    public void createUpdateRequest(String appreciation,double note, Connexion conn)
     {
         String sql = "UPDATE evaluation SET appreciation = '"+appreciation+"',note = '"+note+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);

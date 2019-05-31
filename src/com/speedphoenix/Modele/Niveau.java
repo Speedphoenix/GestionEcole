@@ -10,6 +10,7 @@ public class Niveau extends BaseElem {
 
     public Niveau(int id, String nom) {
         super(id);
+        classes = new ArrayList<>();
         this.nom = nom;
         Ecole.getInstance().addNiveau(this);
     }

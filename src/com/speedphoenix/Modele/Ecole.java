@@ -2,6 +2,9 @@ package com.speedphoenix.Modele;
 
 import com.speedphoenix.Connexion.Connexion;
 
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class Ecole extends BaseElem {
@@ -23,13 +26,524 @@ public class Ecole extends BaseElem {
 
     //maybe put arraylists of every object in the school?
 
+
+
+
     public Ecole(int id, String nom) {
         super(id);
         instance = this;
         this.nom = nom;
+        instance.classes = new TreeMap<Integer, Classe>();
+        instance.anneeScolaires = new TreeMap<Integer, AnneeScolaire>();
+        instance.bulletins = new TreeMap<Integer, Bulletin>();
+        instance.detailBulletins = new TreeMap<Integer, DetailBulletin>();
+        instance.disciplines = new TreeMap<Integer, Discipline>();
+        instance.enseignements = new TreeMap<Integer, Enseignement>();
+        instance.evaluations = new TreeMap<Integer, Evaluation>();
+        instance.inscriptions = new TreeMap<Integer, Inscription>();
+        instance.niveaux = new TreeMap<Integer, Niveau>();
+        instance.trimestres = new TreeMap<Integer, Trimestre>();
+        instance.personnes = new TreeMap<Integer, Personne>();
+        instance.eleves = new TreeMap<Integer, Eleve>();
+        instance.enseignants = new TreeMap<Integer, Enseignant>();
+        refresh();
+    }
+    public Ecole() {
+
+        instance = this;
+        instance.classes = new TreeMap<Integer, Classe>();
+        instance.anneeScolaires = new TreeMap<Integer, AnneeScolaire>();
+        instance.bulletins = new TreeMap<Integer, Bulletin>();
+        instance.detailBulletins = new TreeMap<Integer, DetailBulletin>();
+        instance.disciplines = new TreeMap<Integer, Discipline>();
+        instance.enseignements = new TreeMap<Integer, Enseignement>();
+        instance.evaluations = new TreeMap<Integer, Evaluation>();
+        instance.inscriptions = new TreeMap<Integer, Inscription>();
+        instance.niveaux = new TreeMap<Integer, Niveau>();
+        instance.trimestres = new TreeMap<Integer, Trimestre>();
+        instance.personnes = new TreeMap<Integer, Personne>();
+        instance.eleves = new TreeMap<Integer, Eleve>();
+        instance.enseignants = new TreeMap<Integer, Enseignant>();
+        refresh();
+    }
+    public void refresh()
+    {
+         this.reinitTreeMaps();
+         retriveEcole();
+         this.fillNiveaux();
+         this.fillDisciplines();
+         this.fillAnneeScolaires();
+         this.fillTrimestres();
+         this.fillPersonnes();
+         this.fillClasses();
+         this.fillInscription();
+         this.fillEnseignements();
+         this.fillBulletins();
+         this.fillDetailBulletins();
+         this.fillEvaluations();
+    }
+    public void retriveEcole()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int index = 0;
+        try {
+            result = conn.remplirChampsTable("ecole");
+            index = conn.findColomnIndex(result,"nom");
+            nom = result.get(1).get(index);
+            index = conn.findColomnIndex(result,"id");
+            super.id = Integer.parseInt(result.get(1).get(index));
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillNiveaux()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int indexNom = 0;
+        int id = 0;
+        String nom;
+
+        try {
+            result = conn.remplirChampsTable("niveau");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexNom = conn.findColomnIndex(result,"nom");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    nom = result.get(i).get(indexNom);
+                    new Niveau(id,nom);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillInscription()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int id = 0;
+        int indexClasseId = 0;
+        int classeId = 0;
+        int indexPersonneId = 0;
+        int personneId = 0;
+
+        try {
+            result = conn.remplirChampsTable("Inscription");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexClasseId = conn.findColomnIndex(result,"classeId");
+            indexPersonneId = conn.findColomnIndex(result,"personneId");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    classeId = Integer.parseInt(result.get(i).get(indexClasseId));
+                    personneId = Integer.parseInt(result.get(i).get(indexPersonneId));
+
+                    new Inscription(id,eleves.get(personneId),classes.get(classeId));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillEnseignements()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int id = 0;
+        int indexClasseId = 0;
+        int classeId = 0;
+        int indexPersonneId = 0;
+        int personneId = 0;
+        int indexDisciplineId = 0;
+        int disciplineId = 0;
+
+        try {
+            result = conn.remplirChampsTable("enseignement");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexClasseId = conn.findColomnIndex(result,"classeId");
+            indexPersonneId = conn.findColomnIndex(result,"personneId");
+            indexDisciplineId = conn.findColomnIndex(result,"disciplineId");
+
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    classeId = Integer.parseInt(result.get(i).get(indexClasseId));
+                    personneId = Integer.parseInt(result.get(i).get(indexPersonneId));
+                    disciplineId = Integer.parseInt(result.get(i).get(indexDisciplineId));
+                    new Enseignement(id,classes.get(classeId),enseignants.get(personneId),disciplines.get(disciplineId));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillBulletins()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int indexApprec = 0;
+        int id = 0;
+        String apprec;
+        int indexTrimestreId = 0;
+        int trimestreId = 0;
+        int indexInscriptionId = 0;
+        int inscriptionId = 0;
+
+        try {
+            result = conn.remplirChampsTable("bulletin");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexApprec = conn.findColomnIndex(result,"appreciation");
+            indexTrimestreId = conn.findColomnIndex(result,"trimestreId");
+            indexInscriptionId = conn.findColomnIndex(result,"inscriptionId");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    apprec = result.get(i).get(indexApprec);
+                    trimestreId = Integer.parseInt(result.get(i).get(indexTrimestreId));
+                    inscriptionId = Integer.parseInt(result.get(i).get(indexInscriptionId));
+
+                    new Bulletin(id,apprec,inscriptions.get(inscriptionId),trimestres.get(trimestreId));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillDetailBulletins()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int indexApprec = 0;
+        int id = 0;
+        String apprec;
+        int indexBulletinId = 0;
+        int bulletinId = 0;
+        int indexEnseignementId = 0;
+        int enseignementId = 0;
+
+        try {
+            result = conn.remplirChampsTable("detailbulletin");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexApprec = conn.findColomnIndex(result,"appreciation");
+            indexBulletinId = conn.findColomnIndex(result,"bulletinId");
+            indexEnseignementId = conn.findColomnIndex(result,"enseignementId");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    apprec = result.get(i).get(indexApprec);
+                    bulletinId = Integer.parseInt(result.get(i).get(indexBulletinId));
+                    enseignementId = Integer.parseInt(result.get(i).get(indexEnseignementId));
+
+                    new DetailBulletin(id,apprec,enseignements.get(enseignementId),bulletins.get(bulletinId));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillEvaluations()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int indexApprec = 0;
+        int id = 0;
+        String apprec;
+        int indexDetailBulletinId = 0;
+        int detailBulletinId = 0;
+        int indexNote = 0;
+        double note = 0;
+
+        try {
+            result = conn.remplirChampsTable("evaluation");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexApprec = conn.findColomnIndex(result,"appreciation");
+            indexDetailBulletinId = conn.findColomnIndex(result,"detailBulletinId");
+            indexNote = conn.findColomnIndex(result,"note");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    apprec = result.get(i).get(indexApprec);
+                    detailBulletinId = Integer.parseInt(result.get(i).get(indexDetailBulletinId));
+                    note = Double.parseDouble(result.get(i).get(indexNote));
+
+                    new Evaluation(id,note,apprec,detailBulletins.get(detailBulletinId));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+     public void fillClasses()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int indexNom = 0;
+        int id = 0;
+        String nom;
+        int indexEcoleId = 0;
+        int ecoleId = 0;
+        int indexNiveauId = 0;
+        int niveauId = 0;
+        int indexAnneeScolId = 0;
+        int anneeScolId = 0;
+
+
+        try {
+            result = conn.remplirChampsTable("classe");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexNom = conn.findColomnIndex(result,"nom");
+            indexEcoleId = conn.findColomnIndex(result,"ecoleId");
+            indexNiveauId = conn.findColomnIndex(result,"niveauId");
+            indexAnneeScolId = conn.findColomnIndex(result,"anneeScolId");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    nom = result.get(i).get(indexNom);
+                    niveauId = Integer.parseInt(result.get(i).get(indexNiveauId));
+                    ecoleId = Integer.parseInt(result.get(i).get(indexEcoleId));
+                    anneeScolId = Integer.parseInt(result.get(i).get(indexAnneeScolId));
+                    new Classe(id,nom,this, niveaux.get(niveauId),anneeScolaires.get(anneeScolId));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillDisciplines()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int indexNom = 0;
+        int id = 0;
+        String nom;
+
+        try {
+            result = conn.remplirChampsTable("discipline");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexNom = conn.findColomnIndex(result,"nom");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    nom = result.get(i).get(indexNom);
+                    new Discipline(id,nom);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillAnneeScolaires()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int id = 0;
+
+        try {
+            result = conn.remplirChampsTable("anneescolaire");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    new AnneeScolaire(id);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillPersonnes()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int id = 0;
+        int indexPrenom = 0;
+        String prenom;
+        int indexNom = 0;
+        String nom;
+        int indexType = 0;
+        int type = 0;
+
+        try {
+            result = conn.remplirChampsTable("personne");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexNom = conn.findColomnIndex(result,"nom");
+            indexPrenom = conn.findColomnIndex(result,"prenom");
+            indexType = conn.findColomnIndex(result,"type");
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                {
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    type = Integer.parseInt(result.get(i).get(indexType));
+                    nom = result.get(i).get(indexNom);
+                    prenom = result.get(i).get(indexPrenom);
+                   Personne.createPersonne(id,nom,prenom,type);
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void fillTrimestres()
+    {
+        ArrayList<ArrayList<String>> result = null;
+        Connexion conn = Connexion.conn;
+        int indexId = 0;
+        int id = 0;
+        int indexNum = 0;
+        int num = 0;
+        int indexAnneeScolId = 0;
+        int anneeScolId = 0;
+        int indexDebut = 0;
+        LocalDate debut;
+        int indexfin = 0;
+        LocalDate fin;
+        String annee;
+        String mois;
+        String jour;
+
+
+        try {
+            result = conn.remplirChampsTable("trimestre");
+            //recuperation de l'emplacement des colonnes
+            indexId = conn.findColomnIndex(result,"id");
+            indexNum = conn.findColomnIndex(result,"numero");
+            indexAnneeScolId = conn.findColomnIndex(result,"anneeScolId");
+            indexDebut = conn.findColomnIndex(result,"debut");
+            indexfin = conn.findColomnIndex(result,"fin");
+
+            if(result.size() > 1)
+            {
+                for(int i = 1; i < result.size() ; i++)
+                //noinspection Duplicates
+                {
+                    annee = result.get(i).get(indexDebut).substring(0,4);
+                    mois = result.get(i).get(indexDebut).substring(5,7);
+                    jour = result.get(i).get(indexDebut).substring(8,10);
+                    debut = LocalDate.of(Integer.parseInt(annee),Integer.parseInt(mois),Integer.parseInt(jour));
+                    annee = result.get(i).get(indexfin).substring(0,4);
+                    mois = result.get(i).get(indexfin).substring(5,7);
+                    jour = result.get(i).get(indexfin).substring(8,10);
+                    fin = LocalDate.of(Integer.parseInt(annee),Integer.parseInt(mois),Integer.parseInt(jour));
+                    id = Integer.parseInt(result.get(i).get(indexId));
+                    num = Integer.parseInt(result.get(i).get(indexNum));
+                    anneeScolId = Integer.parseInt(result.get(i).get(indexAnneeScolId));
+                    new Trimestre(id,num,debut,fin,anneeScolaires.get(anneeScolId));
+                }
+            }
+
+        } catch (SQLException e) {
+            e.getCause();
+            e.getMessage();
+        }
+    }
+    public void reinitTreeMaps()
+    {
+        Ecole cont = Ecole.getInstance();
+        cont.classes.clear();
+        cont.anneeScolaires.clear();
+        cont.bulletins.clear();
+        cont.detailBulletins.clear();
+        cont.disciplines.clear();
+        cont.enseignements.clear();
+        cont.evaluations.clear();
+        cont.inscriptions.clear();
+        cont.niveaux.clear();
+        cont.trimestres.clear();
+        cont.personnes.clear();
+        cont.eleves.clear();
+        cont.enseignants.clear();
     }
 
-    
+
+    public void showTest()
+    {   System.out.println(niveaux.size());
+        niveaux.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.out.println(disciplines.size());
+        disciplines.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.out.println(anneeScolaires.size());
+        anneeScolaires.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getEndYear()));
+        System.out.println(trimestres.size());
+        trimestres.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getDebut().toString()));
+        System.out.println(personnes.size());
+        personnes.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.out.println(classes.size());
+        classes.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.out.println(inscriptions.size());
+        inscriptions.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getId()));
+        System.out.println(enseignements.size());
+        enseignements.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getDiscipline().getNom()));
+        System.out.println(bulletins.size());
+        bulletins.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getAppreciation()));
+         System.out.println(detailBulletins.size());
+            detailBulletins.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getAppreciation()));
+         System.out.println(evaluations.size());
+            evaluations.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNote()));
+
+    }
     public static Ecole getInstance() {
         return instance;
     }
@@ -142,6 +656,7 @@ public class Ecole extends BaseElem {
         return nom;
     }
 
+
     public static void createInsertRequest(String nom, Connexion conn)
     {
         String sql = "INSERT INTO ecole (nom) VALUES('"+nom+"');";
@@ -152,4 +667,6 @@ public class Ecole extends BaseElem {
         String sql = "UPDATE ecole SET nom = '"+nom+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
+
+
 }

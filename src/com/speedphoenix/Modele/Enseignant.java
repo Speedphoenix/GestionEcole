@@ -8,6 +8,7 @@ public class Enseignant extends Personne {
     protected ArrayList<Enseignement> enseignements;
     protected Enseignant(int id, String nom, String prenom) {
         super(id, nom, prenom, Personne.ELEVE);
+        enseignements = new ArrayList<>();
         Ecole.getInstance().addEnseignant(this);
     }
 

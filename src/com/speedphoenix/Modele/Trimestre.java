@@ -18,6 +18,7 @@ public class Trimestre extends BaseElem {
         this.debut = debut;
         this.fin = fin;
         this.anneeScolaire = anneeScolaire;
+        bulletins = new ArrayList<>();
         anneeScolaire.addTrimestre(this);
         Ecole.getInstance().addTrimestre(this);
     }

@@ -23,7 +23,8 @@ public class Connexion {
      * Attributs prives : connexion JDBC, statement, ordre requete et resultat
      * requete
      */
-    private Connection conn;
+    public static Connexion conn;
+    private Connection connection;
     private Statement stmt;
     private ResultSet rset;
     private ResultSetMetaData rsetMeta;
@@ -57,10 +58,12 @@ public class Connexion {
         String urlDatabase = "jdbc:mysql://localhost/" + nameDatabase;
 
         //création d'une connexion JDBC à la base 
-        conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
+        connection = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
 
         // création d'un ordre SQL (statement)
-        stmt = conn.createStatement();
+        stmt = connection.createStatement();
+        //on peux acceder à la connexion depuis n'importe ou (conn variable statique)
+        conn=this;
     }
 
     /**
@@ -87,11 +90,12 @@ public class Connexion {
             String urlDatabase = "jdbc:mysql://localhost:3305/" + usernameECE;
 
             //création d'une connexion JDBC à la base
-            conn = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
+            connection = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
 
             // création d'un ordre SQL (statement)
-            stmt = conn.createStatement();
-
+            stmt = connection.createStatement();
+            //on peux acceder à la connexion depuis n'importe ou (conn variable statique)
+            conn=this;
         }
     }
 
@@ -286,6 +290,17 @@ public class Connexion {
         return true;
 
     }
+    public int findColomnIndex(ArrayList<ArrayList<String>> result, String colomn)
+    {
+        for(int i = 0; i < result.get(0).size(); i++)
+        {
+            if(colomn.equals( result.get(0).get(i)))
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
     //affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
     public void displayRemplirChampsTables(String Table) {
         ArrayList<ArrayList<String>> result = null;
@@ -295,7 +310,7 @@ public class Connexion {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        afficheResult(result);
+        displayResult(result);
 
     }
     public void displayRemplirChampsRequete(String requete) {
@@ -307,10 +322,10 @@ public class Connexion {
             e.printStackTrace();
         }
 
-        afficheResult(result);
+        displayResult(result);
 
     }
-    public static void afficheResult(ArrayList<ArrayList<String>> result)
+    public static void displayResult(ArrayList<ArrayList<String>> result)
     {
         if(result != null){
             for(int row = 0; row < result.size() ; row++)

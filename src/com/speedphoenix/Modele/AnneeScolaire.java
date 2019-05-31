@@ -13,6 +13,8 @@ public class AnneeScolaire extends BaseElem{
     // maybe add stuff to init the rest too?
     public AnneeScolaire(int id) {
         super(id);
+        trimestres = new ArrayList<>();
+        classes = new ArrayList<>();
         Ecole.getInstance().addAnneeScolaire(this);
     }
 

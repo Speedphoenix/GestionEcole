@@ -22,6 +22,8 @@ public class Classe extends BaseElem {
         this.ecole = ecole;
         this.niveau = niveau;
         this.anneeScolaire = anneeScolaire;
+        inscriptions = new ArrayList<>();
+        enseignements = new ArrayList<>();
         ecole.addClasse(this);
         niveau.addClasse(this);
         anneeScolaire.addClasse(this);
