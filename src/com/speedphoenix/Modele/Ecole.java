@@ -15,7 +15,7 @@ public class Ecole extends BaseElem {
     protected TreeMap<Integer, Inscription> inscriptions;
     protected TreeMap<Integer, Niveau> niveaux;
     protected TreeMap<Integer, Trimestre> trimestres;
-    protected TreeMap<Integer, Personne> presonnes;
+    protected TreeMap<Integer, Personne> personnes;
     protected TreeMap<Integer, Eleve> eleves;
     protected TreeMap<Integer, Enseignant> enseignants;
 
@@ -27,6 +27,7 @@ public class Ecole extends BaseElem {
         this.nom = nom;
     }
 
+    
     public static Ecole getInstance() {
         return instance;
     }
@@ -112,11 +113,11 @@ public class Ecole extends BaseElem {
     }
 
     protected void addPersonne(Personne what) {
-        presonnes.put(what.getId(), what);
+        personnes.put(what.getId(), what);
     }
 
     public Personne findPersonne(int id) {
-        return presonnes.get(id);
+        return personnes.get(id);
     }
 
     protected void addEleve(Eleve what) {

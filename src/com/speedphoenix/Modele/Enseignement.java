@@ -14,7 +14,7 @@ public class Enseignement extends BaseElem {
         this.enseignant = enseignant;
         this.discipline = discipline;
         classe.addEnseignement(this);
-        enseignant.addEnsegnement(this);
+        enseignant.addEnseignement(this);
         discipline.addEnseignement(this);
         Ecole.getInstance().addEnseignement(this);
     }
