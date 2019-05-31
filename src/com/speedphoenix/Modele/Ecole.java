@@ -55,7 +55,7 @@ public class Ecole extends BaseElem {
         return bulletins.get(id);
     }
 
-    public void addDetailBulletin(DetailBulletin what) {
+    protected void addDetailBulletin(DetailBulletin what) {
         detailBulletins.put(what.getId(), what);
     }
 
@@ -63,7 +63,7 @@ public class Ecole extends BaseElem {
         return detailBulletins.get(id);
     }
 
-    public void addDiscipline(Discipline what) {
+    protected void addDiscipline(Discipline what) {
         disciplines.put(what.getId(), what);
     }
 
@@ -71,7 +71,7 @@ public class Ecole extends BaseElem {
         return disciplines.get(id);
     }
 
-    public void addEnseignement(Enseignement what) {
+    protected void addEnseignement(Enseignement what) {
         enseignements.put(what.getId(), what);
     }
 
@@ -79,7 +79,7 @@ public class Ecole extends BaseElem {
         return enseignements.get(id);
     }
 
-    public void addEvaluation(Evaluation what) {
+    protected void addEvaluation(Evaluation what) {
         evaluations.put(what.getId(), what);
     }
 
@@ -87,7 +87,7 @@ public class Ecole extends BaseElem {
         return evaluations.get(id);
     }
 
-    public void addInscription(Inscription what) {
+    protected void addInscription(Inscription what) {
         inscriptions.put(what.getId(), what);
     }
 
@@ -95,7 +95,7 @@ public class Ecole extends BaseElem {
         return inscriptions.get(id);
     }
 
-    public void addNiveau(Niveau what) {
+    protected void addNiveau(Niveau what) {
         niveaux.put(what.getId(), what);
     }
 
@@ -103,7 +103,7 @@ public class Ecole extends BaseElem {
         return niveaux.get(id);
     }
 
-    public void addTrimestre(Trimestre what) {
+    protected void addTrimestre(Trimestre what) {
         trimestres.put(what.getId(), what);
     }
 
@@ -111,7 +111,7 @@ public class Ecole extends BaseElem {
         return trimestres.get(id);
     }
 
-    public void addPersonne(Personne what) {
+    protected void addPersonne(Personne what) {
         presonnes.put(what.getId(), what);
     }
 
@@ -119,7 +119,7 @@ public class Ecole extends BaseElem {
         return presonnes.get(id);
     }
 
-    public void addEleve(Eleve what) {
+    protected void addEleve(Eleve what) {
         eleves.put(what.getId(), what);
     }
 
@@ -127,7 +127,7 @@ public class Ecole extends BaseElem {
         return eleves.get(id);
     }
 
-    public void addEnseignant(Enseignant what) {
+    protected void addEnseignant(Enseignant what) {
         enseignants.put(what.getId(), what);
     }
 
