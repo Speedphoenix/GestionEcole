@@ -240,7 +240,13 @@ public class Connexion {
      * @throws java.sql.SQLException
      */
     public void executeUpdate(String requeteMaj) throws SQLException {
-        stmt.executeUpdate(requeteMaj);
+        int toto;
+        toto =  stmt.executeUpdate(requeteMaj);
+        if(toto != 1)
+        {
+            System.err.println("Erreur à la mise à jour de la bdd pour la requete : ");
+            System.err.println(requeteMaj);
+        }
     }
     public void executeAllupdate(){
         for(int i = 0; i < requetesMaj.size(); i++)
@@ -248,13 +254,39 @@ public class Connexion {
             try {
                 executeUpdate(requetesMaj.get(i));
             } catch (SQLException e) {
-                System.out.print(e.getErrorCode());
-                System.out.print(e.getSQLState());
+                System.err.println(e.getSQLState());
+                System.err.println(e.getMessage());
             }
         }
            requetesMaj.clear();
     }
 
+    public boolean testExistanceId(int id,String table)
+    {
+        ArrayList<ArrayList<String>> result = null;
+        int occurence = 0;
+        try {
+            result = this.remplirChampsRequete("Select id from "+table);
+            if(result.size() > 0)
+            {
+                for(int i = 1;i < result.size() ; i++)
+                {
+                    if (Integer.parseInt(result.get(i).get(0))  == id )
+                    {
+                        return true;
+                    }
+
+                }
+            }
+            return false;
+        } catch (SQLException e) {
+            e.getErrorCode();
+            e.printStackTrace();
+
+        }
+        return true;
+
+    }
     //affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
     public void displayRemplirChampsTables(String Table) {
         ArrayList<ArrayList<String>> result = null;

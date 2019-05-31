@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 import java.util.ArrayList;
 
 public class Bulletin extends BaseElem{
@@ -32,5 +34,10 @@ public class Bulletin extends BaseElem{
 
     public Trimestre getTrimestre() {
         return trimestre;
+    }
+    public static void createInsertRequest(String appreciation,int  Connexion conn)
+    {
+        String sql = "INSERT INTO bulletin (appreciation)VALUES("+appreciation+");;";
+        conn.ajouterRequeteMaj(sql);
     }
 }

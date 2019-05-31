@@ -1,6 +1,7 @@
 package com.speedphoenix;
 import com.jcraft.jsch.*;
 import com.speedphoenix.Connexion.*;
+import com.speedphoenix.Modele.AnneeScolaire;
 import com.speedphoenix.temp.bulletin;
 
 import java.sql.SQLException;
@@ -28,24 +29,15 @@ public class Main {
             e.printStackTrace();
         }
         //conn.displayRemplirChampsTables("discipline");
-        conn.displayRemplirChampsRequete("Select * from discipline");
+        //conn.displayRemplirChampsRequete("Select * from discipline");
 
         bulletin bullet = new bulletin(conn);
-        moy = bullet.findMoyEnseignement(ENSEIGN_ID,INSCRIPTION_ID,TRIMESTRE_ID);
-        if(moy > 20)
-        {
-            System.err.println("Erreur au calcul de la moyenne");
-        }
-        else
-            System.out.println("La moyenne de l'enseignement"+ENSEIGN_ID+" est de : " + moy);
-        moy = bullet.findMoyGen(1,2);
-        if(moy > 20)
-        {
-            System.err.println("Erreur au calcul de la moyenne");
-        }
-        else
-            System.out.println("La moyenne totale est de : " + moy);
 
 
+        System.out.println(conn.testExistanceId(2,"anneescolaire"));
+
+        AnneeScolaire anneeScolaire = new AnneeScolaire(2);
+        anneeScolaire.createInsertRequest(conn);
+        conn.executeAllupdate();
     }
 }

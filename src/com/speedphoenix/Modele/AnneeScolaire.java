@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -47,5 +49,10 @@ public class AnneeScolaire extends BaseElem{
                 latest = curr;
         }
         return latest.getYear();
+    }
+    public static void createInsertRequest( Connexion conn)
+    {
+        String sql = "INSERT INTO anneescolaire  VALUES ();";
+        conn.ajouterRequeteMaj(sql);
     }
 }
