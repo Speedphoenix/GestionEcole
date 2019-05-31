@@ -55,4 +55,6 @@ public class AnneeScolaire extends BaseElem{
         String sql = "INSERT INTO anneescolaire  VALUES ();";
         conn.ajouterRequeteMaj(sql);
     }
+
+
 }

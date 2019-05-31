@@ -1,10 +1,11 @@
 package com.speedphoenix;
 import com.jcraft.jsch.*;
 import com.speedphoenix.Connexion.*;
-import com.speedphoenix.Modele.AnneeScolaire;
+import com.speedphoenix.Modele.*;
 import com.speedphoenix.temp.bulletin;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Main {
@@ -34,10 +35,20 @@ public class Main {
         bulletin bullet = new bulletin(conn);
 
 
-        System.out.println(conn.testExistanceId(2,"anneescolaire"));
+        //System.out.println(conn.testExistanceId(2,"anneescolaire"));
 
-        AnneeScolaire anneeScolaire = new AnneeScolaire(2);
-        anneeScolaire.createInsertRequest(conn);
+        //AnneeScolaire.createInsertRequest(conn);
+      //  DetailBulletin.createInsertRequest("vous êtes une truite.",1,1,conn);
+       // Enseignant.createInsertRequest("Froussin","Detective",conn);
+        //Evaluation.createInsertRequest("gros serieux ?",1,1,conn);
+       // Niveau.createInsertRequest("CP",conn);
+        //Trimestre.createInsertRequest(2,LocalDate.of(1997,11,03),LocalDate.of(1998,02,03),1,conn);
+
+
         conn.executeAllupdate();
+
+
+
+
     }
 }

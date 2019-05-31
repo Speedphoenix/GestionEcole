@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 import java.util.ArrayList;
 
 public class DetailBulletin extends BaseElem {
@@ -32,5 +34,16 @@ public class DetailBulletin extends BaseElem {
 
     public Bulletin getBulletin() {
         return bulletin;
+    }
+
+    public static void createInsertRequest(String appreciation,int bulletinId,int enseignementId, Connexion conn)
+    {
+        String sql = "INSERT INTO detailbulletin  (appreciation,bulletinId,enseignementId)VALUES('"+appreciation+"',"+bulletinId+","+enseignementId+");";
+        conn.ajouterRequeteMaj(sql);
+    }
+    public void createUpdateRequest(String appreciation, Connexion conn)
+    {
+        String sql = "UPDATE detailbulletin SET appreciation = '"+appreciation+"' WHERE id="+this.id+";";
+        conn.ajouterRequeteMaj(sql);
     }
 }

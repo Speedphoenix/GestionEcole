@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 import java.util.ArrayList;
 
 public class Classe extends BaseElem {
@@ -47,5 +49,16 @@ public class Classe extends BaseElem {
 
     public AnneeScolaire getAnneeScolaire() {
         return anneeScolaire;
+    }
+
+    public static void createInsertRequest(String nom,int ecoleId,int niveauId,int anneeScolId, Connexion conn)
+    {
+        String sql = "INSERT INTO classe (nom,ecoleId,niveauId,anneeScolId)VALUES('"+nom+"',"+ecoleId+","+niveauId+","+anneeScolId+");";
+        conn.ajouterRequeteMaj(sql);
+    }
+    public void createUpdateRequest(String nom, Connexion conn)
+    {
+        String sql = "UPDATE classe SET nom = '"+nom+"' WHERE id="+this.id+";";
+        conn.ajouterRequeteMaj(sql);
     }
 }

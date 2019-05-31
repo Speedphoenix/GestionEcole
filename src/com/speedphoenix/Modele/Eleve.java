@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 import java.util.ArrayList;
 
 public class Eleve extends Personne {
@@ -13,4 +15,10 @@ public class Eleve extends Personne {
     public void addInscription(Inscription what) {
         inscriptions.add(what);
     }
+
+    public static void createInsertRequest(String nom,String prenom, Connexion conn)
+    {
+        Personne.createInsertRequest(nom,prenom,0,conn);
+    }
+
 }

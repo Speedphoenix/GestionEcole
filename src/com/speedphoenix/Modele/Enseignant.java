@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 import java.util.ArrayList;
 
 public class Enseignant extends Personne {
@@ -11,5 +13,9 @@ public class Enseignant extends Personne {
 
     public void addEnsegnement(Enseignement what) {
         ensegnements.add(what);
+    }
+    public static void createInsertRequest(String nom,String prenom, Connexion conn)
+    {
+        Personne.createInsertRequest(nom,prenom,1,conn);
     }
 }

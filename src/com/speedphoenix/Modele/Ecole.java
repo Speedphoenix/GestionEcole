@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 import java.util.TreeMap;
 
 public class Ecole extends BaseElem {
@@ -137,5 +139,16 @@ public class Ecole extends BaseElem {
 
     public String getNom() {
         return nom;
+    }
+
+    public static void createInsertRequest(String nom, Connexion conn)
+    {
+        String sql = "INSERT INTO ecole (nom) VALUES('"+nom+"');";
+        conn.ajouterRequeteMaj(sql);
+    }
+    public void createUpdateRequest(String nom, Connexion conn)
+    {
+        String sql = "UPDATE ecole SET nom = '"+nom+"' WHERE id="+this.id+";";
+        conn.ajouterRequeteMaj(sql);
     }
 }

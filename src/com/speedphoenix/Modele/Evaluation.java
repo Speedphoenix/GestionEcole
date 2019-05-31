@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 public class Evaluation extends BaseElem {
     protected int note;
     protected String appreciation;
@@ -24,5 +26,16 @@ public class Evaluation extends BaseElem {
 
     public DetailBulletin getDetailBulletin() {
         return detailBulletin;
+    }
+
+    public static void createInsertRequest(String appreciation,int note, int detailBulletinId, Connexion conn)
+    {
+        String sql = "INSERT INTO evaluation  (appreciation,note,detailBulletinId)VALUES('"+appreciation+"',"+note+","+detailBulletinId+");";
+        conn.ajouterRequeteMaj(sql);
+    }
+    public void createUpdateRequest(String appreciation,int note, Connexion conn)
+    {
+        String sql = "UPDATE evaluation SET appreciation = '"+appreciation+"',note = '"+note+"' WHERE id="+this.id+";";
+        conn.ajouterRequeteMaj(sql);
     }
 }

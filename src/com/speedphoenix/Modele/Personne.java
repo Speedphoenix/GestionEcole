@@ -1,5 +1,7 @@
 package com.speedphoenix.Modele;
 
+import com.speedphoenix.Connexion.Connexion;
+
 public class Personne extends BaseElem {
     public static final int ELEVE = 0;
     public static final int ENSEIGNANT = 1;
@@ -36,5 +38,16 @@ public class Personne extends BaseElem {
 
     public int getType() {
         return type;
+    }
+
+    public static void createInsertRequest(String nom,String prenom,int type, Connexion conn)
+    {
+        String sql = "INSERT INTO personne (nom,prenom,type)VALUES('"+nom+"','"+prenom+"',"+type+");";
+        conn.ajouterRequeteMaj(sql);
+    }
+    public void createUpdateRequest(String nom,String prenom, Connexion conn)
+    {
+        String sql = "UPDATE personne SET nom = '"+nom+"', prenom ='"+prenom+"' WHERE id="+this.id+";";
+        conn.ajouterRequeteMaj(sql);
     }
 }

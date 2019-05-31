@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 31 mai 2019 à 11:55
+-- Généré le :  ven. 31 mai 2019 à 13:48
 -- Version du serveur :  10.1.40-MariaDB
 -- Version de PHP :  7.3.5
 
@@ -37,8 +37,7 @@ CREATE TABLE `anneescolaire` (
 --
 
 INSERT INTO `anneescolaire` (`id`) VALUES
-(1),
-(3);
+(1);
 
 -- --------------------------------------------------------
 
@@ -218,7 +217,8 @@ CREATE TABLE `niveau` (
 --
 
 INSERT INTO `niveau` (`id`, `nom`) VALUES
-(1, 'Bac+3');
+(1, 'Bac+3'),
+(2, 'CP');
 
 -- --------------------------------------------------------
 
@@ -253,14 +253,14 @@ CREATE TABLE `trimestre` (
   `numero` int(11) NOT NULL,
   `debut` date NOT NULL,
   `fin` date NOT NULL,
-  `anneScolId` int(11) NOT NULL
+  `anneeScolId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `trimestre`
 --
 
-INSERT INTO `trimestre` (`id`, `numero`, `debut`, `fin`, `anneScolId`) VALUES
+INSERT INTO `trimestre` (`id`, `numero`, `debut`, `fin`, `anneeScolId`) VALUES
 (2, 2, '2019-02-10', '2019-06-14', 1);
 
 --
@@ -351,7 +351,7 @@ ALTER TABLE `personne`
 --
 ALTER TABLE `trimestre`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `trimestre_ibfk_1` (`anneScolId`);
+  ADD KEY `trimestre_ibfk_1` (`anneeScolId`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -361,7 +361,7 @@ ALTER TABLE `trimestre`
 -- AUTO_INCREMENT pour la table `anneescolaire`
 --
 ALTER TABLE `anneescolaire`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `bulletin`
@@ -379,7 +379,7 @@ ALTER TABLE `classe`
 -- AUTO_INCREMENT pour la table `detailbulletin`
 --
 ALTER TABLE `detailbulletin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `discipline`
@@ -391,7 +391,7 @@ ALTER TABLE `discipline`
 -- AUTO_INCREMENT pour la table `ecole`
 --
 ALTER TABLE `ecole`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `enseignement`
@@ -403,7 +403,7 @@ ALTER TABLE `enseignement`
 -- AUTO_INCREMENT pour la table `evaluation`
 --
 ALTER TABLE `evaluation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `inscription`
@@ -415,13 +415,13 @@ ALTER TABLE `inscription`
 -- AUTO_INCREMENT pour la table `niveau`
 --
 ALTER TABLE `niveau`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `personne`
 --
 ALTER TABLE `personne`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `trimestre`
@@ -480,7 +480,7 @@ ALTER TABLE `inscription`
 -- Contraintes pour la table `trimestre`
 --
 ALTER TABLE `trimestre`
-  ADD CONSTRAINT `trimestre_ibfk_1` FOREIGN KEY (`anneScolId`) REFERENCES `anneescolaire` (`id`);
+  ADD CONSTRAINT `trimestre_ibfk_1` FOREIGN KEY (`anneeScolId`) REFERENCES `anneescolaire` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

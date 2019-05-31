@@ -254,7 +254,6 @@ public class Connexion {
             try {
                 executeUpdate(requetesMaj.get(i));
             } catch (SQLException e) {
-                System.err.println(e.getSQLState());
                 System.err.println(e.getMessage());
             }
         }
