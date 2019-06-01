@@ -595,7 +595,7 @@ public class Ecole extends BaseElem {
         trimestres.put(what.getId(), what);
     }
 
-    public Trimestre find(int id) {
+    public Trimestre findTrimestre(int id) {
         return trimestres.get(id);
     }
 
