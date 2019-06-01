@@ -153,9 +153,9 @@ public class Ecole extends BaseElem {
             indexPersonneId = conn.findColomnIndex(result,"personneId");
             indexDisciplineId = conn.findColomnIndex(result,"disciplineId");
 
-            if(result.size() > 1)
+            if (result.size() > 1)
             {
-                for(int i = 1; i < result.size() ; i++)
+                for (int i = 1; i < result.size() ; i++)
                 {
                     id = Integer.parseInt(result.get(i).get(indexId));
                     classeId = Integer.parseInt(result.get(i).get(indexClasseId));
@@ -170,6 +170,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillBulletins()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -199,8 +200,6 @@ public class Ecole extends BaseElem {
                     trimestreId = Integer.parseInt(result.get(i).get(indexTrimestreId));
                     inscriptionId = Integer.parseInt(result.get(i).get(indexInscriptionId));
 
-                    System.err.println(inscriptions.size());
-                    showTest();
                     new Bulletin(id, apprec, inscriptions.get(inscriptionId), trimestres.get(trimestreId));
                 }
             }

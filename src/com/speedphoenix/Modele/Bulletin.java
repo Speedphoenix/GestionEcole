@@ -15,8 +15,6 @@ public class Bulletin extends BaseElem{
         this.appreciation = appreciation;
         this.inscription = inscription;
         this.trimestre = trimestre;
-        System.err.println(inscription);
-        System.err.println(trimestre);
         inscription.addBulletin(this);
         trimestre.addBulletin(this);
         Ecole.getInstance().addBulletin(this);
