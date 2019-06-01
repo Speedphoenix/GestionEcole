@@ -10,60 +10,30 @@ import java.util.TreeMap;
 public class Ecole extends BaseElem {
     protected static Ecole instance;
     protected String nom;
-    protected TreeMap<Integer, Classe> classes;
-    protected TreeMap<Integer, AnneeScolaire> anneeScolaires;
-    protected TreeMap<Integer, Bulletin> bulletins;
-    protected TreeMap<Integer, DetailBulletin> detailBulletins;
-    protected TreeMap<Integer, Discipline> disciplines;
-    protected TreeMap<Integer, Enseignement> enseignements;
-    protected TreeMap<Integer, Evaluation> evaluations;
-    protected TreeMap<Integer, Inscription> inscriptions;
-    protected TreeMap<Integer, Niveau> niveaux;
-    protected TreeMap<Integer, Trimestre> trimestres;
-    protected TreeMap<Integer, Personne> personnes;
-    protected TreeMap<Integer, Eleve> eleves;
-    protected TreeMap<Integer, Enseignant> enseignants;
-
-    //maybe put arraylists of every object in the school?
-
-
-
+    protected TreeMap<Integer, Classe> classes = new TreeMap();
+    protected TreeMap<Integer, AnneeScolaire> anneeScolaires = new TreeMap();
+    protected TreeMap<Integer, Bulletin> bulletins = new TreeMap();
+    protected TreeMap<Integer, DetailBulletin> detailBulletins = new TreeMap();
+    protected TreeMap<Integer, Discipline> disciplines = new TreeMap();
+    protected TreeMap<Integer, Enseignement> enseignements = new TreeMap();
+    protected TreeMap<Integer, Evaluation> evaluations = new TreeMap();
+    protected TreeMap<Integer, Inscription> inscriptions = new TreeMap();
+    protected TreeMap<Integer, Niveau> niveaux = new TreeMap();
+    protected TreeMap<Integer, Trimestre> trimestres = new TreeMap();
+    protected TreeMap<Integer, Personne> personnes = new TreeMap();
+    protected TreeMap<Integer, Eleve> eleves = new TreeMap();
+    protected TreeMap<Integer, Enseignant> enseignants = new TreeMap();
 
     public Ecole(int id, String nom) {
         super(id);
         instance = this;
         this.nom = nom;
-        instance.classes = new TreeMap<Integer, Classe>();
-        instance.anneeScolaires = new TreeMap<Integer, AnneeScolaire>();
-        instance.bulletins = new TreeMap<Integer, Bulletin>();
-        instance.detailBulletins = new TreeMap<Integer, DetailBulletin>();
-        instance.disciplines = new TreeMap<Integer, Discipline>();
-        instance.enseignements = new TreeMap<Integer, Enseignement>();
-        instance.evaluations = new TreeMap<Integer, Evaluation>();
-        instance.inscriptions = new TreeMap<Integer, Inscription>();
-        instance.niveaux = new TreeMap<Integer, Niveau>();
-        instance.trimestres = new TreeMap<Integer, Trimestre>();
-        instance.personnes = new TreeMap<Integer, Personne>();
-        instance.eleves = new TreeMap<Integer, Eleve>();
-        instance.enseignants = new TreeMap<Integer, Enseignant>();
         refresh();
     }
+
     public Ecole() {
 
         instance = this;
-        instance.classes = new TreeMap<Integer, Classe>();
-        instance.anneeScolaires = new TreeMap<Integer, AnneeScolaire>();
-        instance.bulletins = new TreeMap<Integer, Bulletin>();
-        instance.detailBulletins = new TreeMap<Integer, DetailBulletin>();
-        instance.disciplines = new TreeMap<Integer, Discipline>();
-        instance.enseignements = new TreeMap<Integer, Enseignement>();
-        instance.evaluations = new TreeMap<Integer, Evaluation>();
-        instance.inscriptions = new TreeMap<Integer, Inscription>();
-        instance.niveaux = new TreeMap<Integer, Niveau>();
-        instance.trimestres = new TreeMap<Integer, Trimestre>();
-        instance.personnes = new TreeMap<Integer, Personne>();
-        instance.eleves = new TreeMap<Integer, Eleve>();
-        instance.enseignants = new TreeMap<Integer, Enseignant>();
         refresh();
     }
     public void refresh()
@@ -140,7 +110,7 @@ public class Ecole extends BaseElem {
         int personneId = 0;
 
         try {
-            result = conn.remplirChampsTable("Inscription");
+            result = conn.remplirChampsTable("inscription");
             //recuperation de l'emplacement des colonnes
             indexId = conn.findColomnIndex(result,"id");
             indexClasseId = conn.findColomnIndex(result,"classeId");
@@ -229,7 +199,9 @@ public class Ecole extends BaseElem {
                     trimestreId = Integer.parseInt(result.get(i).get(indexTrimestreId));
                     inscriptionId = Integer.parseInt(result.get(i).get(indexInscriptionId));
 
-                    new Bulletin(id,apprec,inscriptions.get(inscriptionId),trimestres.get(trimestreId));
+                    System.err.println(inscriptions.size());
+                    showTest();
+                    new Bulletin(id, apprec, inscriptions.get(inscriptionId), trimestres.get(trimestreId));
                 }
             }
 
@@ -347,7 +319,7 @@ public class Ecole extends BaseElem {
                     niveauId = Integer.parseInt(result.get(i).get(indexNiveauId));
                     ecoleId = Integer.parseInt(result.get(i).get(indexEcoleId));
                     anneeScolId = Integer.parseInt(result.get(i).get(indexAnneeScolId));
-                    new Classe(id,nom,this, niveaux.get(niveauId),anneeScolaires.get(anneeScolId));
+                    new Classe(id, nom, this, niveaux.get(niveauId), anneeScolaires.get(anneeScolId));
                 }
             }
 
@@ -518,30 +490,30 @@ public class Ecole extends BaseElem {
         cont.enseignants.clear();
     }
 
-
     public void showTest()
-    {   System.out.println(niveaux.size());
-        niveaux.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
-        System.out.println(disciplines.size());
-        disciplines.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
-        System.out.println(anneeScolaires.size());
-        anneeScolaires.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getEndYear()));
-        System.out.println(trimestres.size());
-        trimestres.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getDebut().toString()));
-        System.out.println(personnes.size());
-        personnes.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
-        System.out.println(classes.size());
-        classes.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNom()));
-        System.out.println(inscriptions.size());
-        inscriptions.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getId()));
-        System.out.println(enseignements.size());
-        enseignements.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getDiscipline().getNom()));
-        System.out.println(bulletins.size());
-        bulletins.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getAppreciation()));
-         System.out.println(detailBulletins.size());
-            detailBulletins.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getAppreciation()));
-         System.out.println(evaluations.size());
-            evaluations.forEach((key, value) -> System.out.println("Clé : " + key + " Valeur : " + value.getNote()));
+    {
+        System.err.println("niveaux " + niveaux.size());
+        niveaux.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.err.println(disciplines.size());
+        disciplines.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.err.println(anneeScolaires.size());
+        anneeScolaires.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getEndYear()));
+        System.err.println(trimestres.size());
+        trimestres.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getDebut().toString()));
+        System.err.println(personnes.size());
+        personnes.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.err.println(classes.size());
+        classes.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNom()));
+        System.err.println("inscri " + inscriptions.size());
+        inscriptions.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getId()));
+        System.err.println(enseignements.size());
+        enseignements.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getDiscipline().getNom()));
+        System.err.println(bulletins.size());
+        bulletins.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getAppreciation()));
+         System.err.println(detailBulletins.size());
+            detailBulletins.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getAppreciation()));
+         System.err.println(evaluations.size());
+            evaluations.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNote()));
 
     }
     public static Ecole getInstance() {

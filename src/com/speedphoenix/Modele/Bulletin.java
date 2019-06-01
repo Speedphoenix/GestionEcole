@@ -8,14 +8,15 @@ public class Bulletin extends BaseElem{
     protected String appreciation;
     protected Inscription inscription;
     protected Trimestre trimestre;
-    protected ArrayList<DetailBulletin> detailBulletins;
+    protected ArrayList<DetailBulletin> detailBulletins = new ArrayList<>();
 
     public Bulletin(int id, String appreciation, Inscription inscription, Trimestre trimestre) {
         super(id);
         this.appreciation = appreciation;
         this.inscription = inscription;
         this.trimestre = trimestre;
-        detailBulletins = new ArrayList<>();
+        System.err.println(inscription);
+        System.err.println(trimestre);
         inscription.addBulletin(this);
         trimestre.addBulletin(this);
         Ecole.getInstance().addBulletin(this);
