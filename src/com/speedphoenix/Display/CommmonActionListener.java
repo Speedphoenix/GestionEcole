@@ -33,22 +33,22 @@ public class CommmonActionListener implements ActionListener {
             case "Etudiants":
                 referencedDisplayPanel.setBounds(0,85,1000,900);
                 referencedDisplayPanel.setBackground(Color.red);
-                referencePosition=Position.ETUDIANTS;
+                referencePosition = Position.ETUDIANTS;
                 break;
             case "Enseignants":
                 referencedDisplayPanel.setBounds(0,85,1000,900);
                 referencedDisplayPanel.setBackground(Color.blue);
-                referencePosition=Position.ENSEIGNANTS;
+                referencePosition = Position.ENSEIGNANTS;
                 break;
             case "Trimestres":
                 referencedDisplayPanel.setBounds(0,85,1000,900);
                 referencedDisplayPanel.setBackground(Color.green);
-                referencePosition=Position.TRIMESTRES;
+                referencePosition = Position.TRIMESTRES;
                 break;
             case "Classes":
                 referencedDisplayPanel.setBounds(0,85,1000,900);
                 referencedDisplayPanel.setBackground(Color.black);
-                referencePosition=Position.CLASSES;
+                referencePosition = Position.CLASSES;
                 break;
             case "Disciplines":
                 referencedDisplayPanel.setBounds(0,85,1000,900);

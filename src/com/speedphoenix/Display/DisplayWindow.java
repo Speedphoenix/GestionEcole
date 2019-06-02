@@ -10,11 +10,6 @@ import javax.swing.*;
 
 
 public class DisplayWindow {
-    public enum Positio{
-
-    }
-
-
     private JFrame mainFrame;
     private DisplayPannel dispPan;
 
@@ -171,43 +166,44 @@ public class DisplayWindow {
         this.turnOn();
         boolean work =true;
 
-         allPositions = new Position();
+        allPositions = new Position();
 
-         position = new String(Position.ECOLE);
-         newPosition = new String(Position.ECOLE);
+        position = new String(Position.ECOLE);
+        newPosition = new String(Position.ECOLE);
 
 
 
-            while(work){
+        while(work){
 
-                System.out.println(newPosition);
-                this.setPanel();
+            //System.out.println(newPosition);
+            this.setPanel();
 
+
+            //System.out.println(newPosition);
+
+            if(!newPosition.equals(position))
+            {
                 //System.out.println(newPosition);
+                //this.setPanel();
+                //on netoit le main frame
+                mainFrame.getContentPane().removeAll();
 
-                if(!newPosition.equals(position))
-                {
-                    //System.out.println(newPosition);
-                    //this.setPanel();
-                    //on netoit le main frame
-                    mainFrame.getContentPane().removeAll();
+                for (JComponent adder: dispPan.getPanelList())
+                    mainFrame.add(adder);
 
-                    for (JComponent adder: dispPan.getPanelList())
-                        mainFrame.add(adder);
+                //on vide la liste des pannels
+                dispPan.clearDisplayPanel();
 
-                    //on vide la liste des pannels
-                    dispPan.clearDisplayPanel();
+                //on update le main frame
+                mainFrame.revalidate();
+                mainFrame.repaint();
 
-                    //on update le main frame
-                    mainFrame.revalidate();
-                    mainFrame.repaint();
-
-                    position=new String(newPosition);
-                    //System.out.println("asdasdasd");
-
-                }
+                position=new String(newPosition);
+                //System.out.println("asdasdasd");
 
             }
+
+        }
 
     }
 
