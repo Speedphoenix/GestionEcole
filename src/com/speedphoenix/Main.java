@@ -5,10 +5,12 @@ import com.speedphoenix.Modele.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import com.speedphoenix.Display.*;
+
 public class Main {
 
     public static void main(String[] args) throws SQLException {
-        System.out.println("Hello World !");
+        /*System.out.println("Hello World !");
         Connexion conn = null;
         ArrayList<ArrayList<String>> result = null;
         final String DATABASE_NAME = "gestionecole";
@@ -43,6 +45,11 @@ public class Main {
 
         eco.showTest();
 
+*/
+
+        DisplayWindow window= new DisplayWindow();
+
+        window.updateMainFrame();
 
 
 
