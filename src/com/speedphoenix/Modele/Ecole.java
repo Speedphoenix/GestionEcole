@@ -36,6 +36,7 @@ public class Ecole extends BaseElem {
         instance = this;
         refresh();
     }
+
     public void refresh()
     {
          this.reinitTreeMaps();
@@ -52,6 +53,7 @@ public class Ecole extends BaseElem {
          this.fillDetailBulletins();
          this.fillEvaluations();
     }
+
     public void retriveEcole()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -69,6 +71,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillNiveaux()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -98,6 +101,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillInscription()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -132,6 +136,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillEnseignements()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -209,6 +214,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillDetailBulletins()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -247,6 +253,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillEvaluations()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -285,7 +292,8 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
-     public void fillClasses()
+
+    public void fillClasses()
     {
         ArrayList<ArrayList<String>> result = null;
         Connexion conn = Connexion.conn;
@@ -327,6 +335,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillDisciplines()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -356,6 +365,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillAnneeScolaires()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -381,6 +391,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillPersonnes()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -418,6 +429,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void fillTrimestres()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -471,6 +483,7 @@ public class Ecole extends BaseElem {
             e.getMessage();
         }
     }
+
     public void reinitTreeMaps()
     {
         Ecole cont = Ecole.getInstance();
@@ -515,6 +528,7 @@ public class Ecole extends BaseElem {
             evaluations.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNote()));
 
     }
+
     public static Ecole getInstance() {
         return instance;
     }
@@ -627,17 +641,15 @@ public class Ecole extends BaseElem {
         return nom;
     }
 
-
     public static void createInsertRequest(String nom, Connexion conn)
     {
         String sql = "INSERT INTO ecole (nom) VALUES('"+nom+"');";
         conn.ajouterRequeteMaj(sql);
     }
+
     public void createUpdateRequest(String nom, Connexion conn)
     {
         String sql = "UPDATE ecole SET nom = '"+nom+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
-
-
 }
