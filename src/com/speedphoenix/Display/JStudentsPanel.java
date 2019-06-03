@@ -1,7 +1,7 @@
 package com.speedphoenix.Display;
 
 import com.speedphoenix.Modele.*;
-import sun.security.krb5.JavaxSecurityAuthKerberosAccess;
+//import sun.security.krb5.JavaxSecurityAuthKerberosAccess;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,12 +9,13 @@ import java.util.ArrayList;
 import java.util.TreeMap;
 
 public class JStudentsPanel {
-    JPanel mainPanel;
+    JPanel mainPanel = new JPanel();
     TreeMap<Integer, Inscription> mapCopy;
 
     public JStudentsPanel(TreeMap<Integer, Inscription> mapToCopy){
         mainPanel.setBounds(0,0,1000,900);
         mapCopy=mapToCopy;
+        this.initialisation();
     }
 
     private void initialisation (){
