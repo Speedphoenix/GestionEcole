@@ -13,9 +13,9 @@ public class Main {
         System.out.println("Hello World !");
         Connexion conn = null;
         ArrayList<ArrayList<String>> result = null;
-        final String DATABASE_NAME = "gestionecole";
-        final String LOGIN_DATABASE = "gestionEcole"; //"root";
-        final String PASSWORD_DATABASE = "";
+        final String DATABASE_NAME = "G6H93QtWu6";
+        final String LOGIN_DATABASE = "G6H93QtWu6"; //"root";
+        final String PASSWORD_DATABASE = "TyGM5Zgqrk";
 
         double moy=0;
         try {
