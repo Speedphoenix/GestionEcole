@@ -1,7 +1,9 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
 import com.speedphoenix.Modele.*;
+import com.speedphoenix.Display.*;
 
+import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -43,6 +45,12 @@ public class Main {
 
         eco.showTest();
 
+        JStudentsPanel Panel = new JStudentsPanel(eco.getInscriptions());
+
+        JFrame mainFrame = new JFrame();
+        mainFrame.setSize(1000,1000);
+        mainFrame.add(Panel.getMainPanel());
+        mainFrame.setVisible(true);
 
 
 

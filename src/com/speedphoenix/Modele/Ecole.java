@@ -639,5 +639,7 @@ public class Ecole extends BaseElem {
         conn.ajouterRequeteMaj(sql);
     }
 
-
+    public TreeMap<Integer, Inscription> getInscriptions() {
+        return inscriptions;
+    }
 }
