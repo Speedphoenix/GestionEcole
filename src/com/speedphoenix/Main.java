@@ -48,12 +48,14 @@ public class Main {
         //JStudentsPanel Panel = new JStudentsPanel(eco.getInscriptions());
         JStudentsChosen panel = new JStudentsChosen(1,1,eco.getInscriptions());
         JRightNavPanel panel2 = new JRightNavPanel();
+        JUpNavBar panel3 = new JUpNavBar();
 
         JFrame mainFrame = new JFrame();
         mainFrame.setSize(1000,1000);
         mainFrame.getContentPane().setLayout(null);
         mainFrame.add(panel.getMainPanel());
         mainFrame.add(panel2.getMainPanel());
+        mainFrame.add(panel3.getMainPanel());
         mainFrame.setVisible(true);
 
 
