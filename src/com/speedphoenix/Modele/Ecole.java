@@ -656,4 +656,6 @@ public class Ecole extends BaseElem {
     public TreeMap<Integer, Inscription> getInscriptions() {
         return inscriptions;
     }
+
+    public TreeMap<Integer, Enseignement> getEnseignements() { return enseignements; }
 }
