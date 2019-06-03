@@ -13,9 +13,11 @@ public class JStudentsPanel {
     TreeMap<Integer, Inscription> mapCopy;
 
     public JStudentsPanel(TreeMap<Integer, Inscription> mapToCopy){
-        mainPanel.setBounds(0,0,1000,900);
+
+        mainPanel.setBounds(100,0,1000,900);
         mapCopy=mapToCopy;
         this.initialisation();
+        //mainPanel.setLayout(null);
     }
 
     private void initialisation (){
@@ -38,7 +40,7 @@ public class JStudentsPanel {
         for (Integer i: mapCopy.keySet())
         {
             nom = new JLabel("Nom: " + mapCopy.get(i).getEleve().getNom());
-            nom.setBounds(100,0+counter,50,40);
+            nom.setBounds(100,100+counter,50,40);
             nom.setFont(defaultF);
             mainPanel.add(nom);
 
