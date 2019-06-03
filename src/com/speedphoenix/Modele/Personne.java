@@ -45,6 +45,10 @@ public class Personne extends BaseElem {
         String sql = "INSERT INTO personne (nom,prenom,type)VALUES('"+nom+"','"+prenom+"',"+type+");";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "personne";
+    }
+
     public void createUpdateRequest(String nom,String prenom, Connexion conn)
     {
         String sql = "UPDATE personne SET nom = '"+nom+"', prenom ='"+prenom+"' WHERE id="+this.id+";";

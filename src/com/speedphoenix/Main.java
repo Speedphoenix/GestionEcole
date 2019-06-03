@@ -41,11 +41,17 @@ public class Main {
 
 
         Ecole eco = new Ecole();
-
         eco.showTest();
 
+        //eco.findEleve(8).createDeleteRequest(Connexion.conn);
+        //updateAndRefresh();
+        //eco.refresh();
 
+        //eco.showTest();
+    }
 
-
+    public static void updateAndRefresh() {
+        Connexion.conn.executeAllupdate();
+        Ecole.getInstance().refresh();
     }
 }

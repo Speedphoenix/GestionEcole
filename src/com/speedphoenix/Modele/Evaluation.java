@@ -38,4 +38,8 @@ public class Evaluation extends BaseElem {
         String sql = "UPDATE evaluation SET appreciation = '"+appreciation+"',note = '"+note+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "evaluation";
+    }
+
 }

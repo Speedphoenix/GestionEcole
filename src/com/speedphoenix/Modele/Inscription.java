@@ -17,6 +17,7 @@ public class Inscription extends BaseElem {
         classe.addInscription(this);
         eleve.addInscription(this);
         Ecole.getInstance().addInscription(this);
+        this.addTableChildren(bulletins);
     }
 
     public void addBulletin(Bulletin what) {
@@ -36,4 +37,8 @@ public class Inscription extends BaseElem {
         String sql = "INSERT INTO inscription  (classeId,personneId)VALUES("+classeId+","+personneId+");";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "inscription";
+    }
+
 }
