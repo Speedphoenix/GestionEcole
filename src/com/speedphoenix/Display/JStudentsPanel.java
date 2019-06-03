@@ -15,6 +15,8 @@ public class JStudentsPanel {
     public JStudentsPanel(TreeMap<Integer, Inscription> mapToCopy){
 
         mainPanel.setBounds(100,0,1000,900);
+
+        mainPanel.setBackground(Color.red);
         mapCopy=mapToCopy;
         this.initialisation();
         //mainPanel.setLayout(null);
