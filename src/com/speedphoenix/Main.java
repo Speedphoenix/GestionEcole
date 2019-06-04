@@ -27,18 +27,7 @@ public class Main {
             e.printStackTrace();
         }
 
-        //conn.displayRemplirChampsTables("discipline");
-        //conn.displayRemplirChampsRequete("Select * from discipline");
 
-        //System.out.println(conn.testExistanceId(2,"anneescolaire"));
-
-        //AnneeScolaire.createInsertRequest(conn);
-        //  DetailBulletin.createInsertRequest("vous êtes une truite.",1,1,conn);
-        // Enseignant.createInsertRequest("Froussin","Detective",conn);
-        //Evaluation.createInsertRequest("gros serieux ?",1,1,conn);
-        // Niveau.createInsertRequest("CP",conn);
-        //Trimestre.createInsertRequest(2,LocalDate.of(1997,11,03),LocalDate.of(1998,02,03),1,conn);
-        //conn.executeAllupdate();
 
 
         Ecole eco = new Ecole();
@@ -54,7 +43,8 @@ public class Main {
         //JNiveauAff niveauAff = new JNiveauAff(eco.getNiveaux());
         JClasseAff classeAff = new JClasseAff(1,2, eco.getClasses());
 
-        JFrame mainFrame = new JFrame();
+        GraphicContainer mainFrame = GraphicContainer.getInstance();
+
         mainFrame.setSize(1000,1000);
         mainFrame.getContentPane().setLayout(null);
         //mainFrame.add(panel.getMainPanel());
