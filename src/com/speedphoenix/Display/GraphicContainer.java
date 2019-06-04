@@ -9,20 +9,20 @@ public class GraphicContainer extends JFrame {
 
     private JRightNavPanel sidePanel;
     private JUpNavBar upPanel;
-    private JPanel contentPan;
+    private JMother contentPan;
     private static GraphicContainer instance = new GraphicContainer();
 
     private GraphicContainer() {
     }
 
 
-    public static void createInstance(JRightNavPanel sidePanel, JUpNavBar upPanel, JPanel contentPan) {
+    public static void createInstance(JRightNavPanel sidePanel, JUpNavBar upPanel, JMother contentPan) {
         instance.sidePanel = sidePanel;
         instance.upPanel = upPanel;
         instance.contentPan = contentPan;
         getInstance().add(sidePanel.getMainPanel());
         getInstance().add(upPanel.getMainPanel());
-        getInstance().add(contentPan);
+        getInstance().add(contentPan.getMainPanel());
     }
     public static GraphicContainer getInstance() {
         return instance;

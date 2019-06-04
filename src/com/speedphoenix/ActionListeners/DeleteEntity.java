@@ -5,15 +5,15 @@ import java.awt.event.*;
 
 public class  DeleteEntity implements ActionListener {
 
-    JFrame frame = new JFrame();
-    public DeleteEntity(JFrame frame)
+    JList list = new JList();
+
+    public DeleteEntity(JList list)
     {
-        this.frame = frame;
+        this.list = list;
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
-
+        //list.getSelectedIndex()
 
 
     }

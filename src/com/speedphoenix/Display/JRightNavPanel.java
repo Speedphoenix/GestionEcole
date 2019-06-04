@@ -18,9 +18,7 @@ public class JRightNavPanel {
         mainPanel.setBounds(0,100,200, 900);
         mainPanel.setBackground(Color.lightGray);
         mainPanel.setLayout(null);
-        //JPanel bufferpanel = new JPanel();
-        //bufferpanel.setSize(200, 50);
-        //bufferpanel.setBackground(Color.red);
+
 
         JButton b1 = new JButton("Ajouter");
         b1.setFont(defaultF);
@@ -36,20 +34,13 @@ public class JRightNavPanel {
 
 
         mainPanel.add(b1);
-        //mainPanel.add(bufferpanel);
         mainPanel.add(b2);
         mainPanel.add(b3);
-        //mainPanel.add(b4);
 
         buttons.add(b1);
         buttons.add(b2);
         buttons.add(b3);
 
-
-        /*mainPanel.add(new JButton("Ajouter"));
-        mainPanel.add(new JButton("Supprimer"));
-        mainPanel.add(new JButton("Choisir"));
-        mainPanel.add(new JButton("Modifier"));*/
     }
 
     public ArrayList<JButton> getButtons() {
