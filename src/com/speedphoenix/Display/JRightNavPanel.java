@@ -1,5 +1,7 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.DeleteEntity;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
@@ -51,5 +53,10 @@ public class JRightNavPanel {
     }
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public void setActionsListeners(){
+        buttons.get(1).addActionListener(new DeleteEntity(GraphicContainer.getInstance().getContentPan()));
+
     }
 }

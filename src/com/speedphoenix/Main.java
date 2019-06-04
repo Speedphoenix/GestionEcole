@@ -31,7 +31,7 @@ public class Main {
 
 
         Ecole eco = new Ecole();
-
+        GraphicContainer mainFrame = GraphicContainer.getInstance();
         //eco.showTest();
 
         //JStudentsPanel Panel = new JStudentsPanel(eco.getInscriptions());
@@ -46,7 +46,7 @@ public class Main {
         //JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(1,eco.getEnseignements());
         //JBulletinsAff bulletinsAff = new JBulletinsAff(2,2,eco.getBulletins());
 
-        GraphicContainer mainFrame = GraphicContainer.getInstance();
+
 
         mainFrame.setSize(1000,1000);
         mainFrame.getContentPane().setLayout(null);

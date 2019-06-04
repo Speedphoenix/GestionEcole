@@ -23,6 +23,7 @@ public class GraphicContainer extends JFrame {
         getInstance().add(sidePanel.getMainPanel());
         getInstance().add(upPanel.getMainPanel());
         getInstance().add(contentPan.getMainPanel());
+        instance.getSidePanel().setActionsListeners();
     }
     public static GraphicContainer getInstance() {
         return instance;
@@ -36,7 +37,7 @@ public class GraphicContainer extends JFrame {
         return upPanel;
     }
 
-    public JPanel getContentPan() {
-        return contentPan.getMainPanel();
+    public JMother getContentPan() {
+        return contentPan;
     }
 }

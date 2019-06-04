@@ -53,7 +53,15 @@ public class Classe extends BaseElem {
         return anneeScolaire;
     }
 
-    public static void createInsertRequest(String nom,int ecoleId,int niveauId,int anneeScolId, Connexion conn)
+    public ArrayList<Inscription> getInscriptions() {
+        return inscriptions;
+    }
+
+    public ArrayList<Enseignement> getEnseignements() {
+        return enseignements;
+    }
+
+    public static void createInsertRequest(String nom, int ecoleId, int niveauId, int anneeScolId, Connexion conn)
     {
         String sql = "INSERT INTO classe (nom,ecoleId,niveauId,anneeScolId)VALUES('"+nom+"',"+ecoleId+","+niveauId+","+anneeScolId+");";
         conn.ajouterRequeteMaj(sql);
