@@ -21,7 +21,7 @@ public class JClasseAff {
 
     // allORniv= 1 si on affichew toutes les classes, et = 2 si on affiche les classes selon id de niveau
 
-    public JClasseAff(int id, int allORniv, TreeMap<Integer, Classe> mapToCopy) {
+    public JClasseAff(int id, int allORniv) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
@@ -40,7 +40,7 @@ public class JClasseAff {
         buttonPanel.add(eleves);
 
         buffList = new DefaultListModel<>();
-        this.mapCopy=mapToCopy;
+        this.mapCopy=Ecole.getInstance().getClasses();
         this.creation(id, allORniv);
     }
 
@@ -82,5 +82,33 @@ public class JClasseAff {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Classe> getMapCopy() {
+        return mapCopy;
+    }
+
+    public JPanel getButtonPanel() {
+        return buttonPanel;
+    }
+
+    public JButton getEnseignants() {
+        return enseignants;
+    }
+
+    public JButton getEleves() {
+        return eleves;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
     }
 }

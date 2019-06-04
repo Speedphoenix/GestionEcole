@@ -14,11 +14,11 @@ public class JNiveauAff {
 
     private Font defaultF = new Font("Verdana", 1,30);//font par defaut qu'on utilise
 
-    public JNiveauAff(TreeMap<Integer, Niveau> mapToCopy) {
+    public JNiveauAff() {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
-        this.mapCopy=mapToCopy;
+        this.mapCopy=Ecole.getInstance().getNiveaux();
         this.creation();
     }
 
@@ -45,5 +45,21 @@ public class JNiveauAff {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Niveau> getMapCopy() {
+        return mapCopy;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
     }
 }

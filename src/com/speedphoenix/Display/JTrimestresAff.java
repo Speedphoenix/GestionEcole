@@ -15,11 +15,11 @@ public class JTrimestresAff {
 
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
-    public JTrimestresAff(TreeMap<Integer, Trimestre> mapToCopy) {
+    public JTrimestresAff() {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
-        this.mapCopy=mapToCopy;
+        this.mapCopy=Ecole.getInstance().getTrimestres();
         this.creation();
     }
 
@@ -47,5 +47,21 @@ public class JTrimestresAff {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Trimestre> getMapCopy() {
+        return mapCopy;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
     }
 }

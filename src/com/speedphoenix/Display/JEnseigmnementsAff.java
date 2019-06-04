@@ -15,11 +15,11 @@ public class JEnseigmnementsAff {
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
     //ici on passe l'id de la classe
-    public JEnseigmnementsAff(int id, TreeMap<Integer, Enseignement> mapToCopy) {
+    public JEnseigmnementsAff(int id) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
-        this.mapCopy=mapToCopy;
+        this.mapCopy=Ecole.getInstance().getEnseignements();
         this.creation(id);
     }
 
@@ -49,5 +49,21 @@ public class JEnseigmnementsAff {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Enseignement> getMapCopy() {
+        return mapCopy;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
     }
 }

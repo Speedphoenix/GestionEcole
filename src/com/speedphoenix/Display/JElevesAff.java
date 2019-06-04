@@ -16,11 +16,11 @@ public class JElevesAff {
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
     //ici on passe l'id e la classe
-    public JElevesAff(int id, TreeMap<Integer, Inscription> mapToCopy) {
+    public JElevesAff(int id) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
-        this.mapCopy=mapToCopy;
+        this.mapCopy=Ecole.getInstance().getInscriptions();
         this.creation(id);
         mainList.addListSelectionListener(new ListSelectListener(mainList));
     }
