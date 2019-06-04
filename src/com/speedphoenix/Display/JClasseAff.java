@@ -12,6 +12,10 @@ public class JClasseAff {
     DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
     TreeMap<Integer, Classe> mapCopy;//map contenant les objets avec les infos
 
+    JPanel buttonPanel;
+    JButton enseignants;
+    JButton eleves;
+
     Font defaultF = new Font("Verdana", 1,13);//font par defaut qu'on utilise
 
 
@@ -20,6 +24,21 @@ public class JClasseAff {
     public JClasseAff(int id, int allORniv, TreeMap<Integer, Classe> mapToCopy) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
+        mainPanel.setLayout(null);
+        buttonPanel = new JPanel();
+        buttonPanel.setBounds(0,0, 800, 100 );
+        buttonPanel.setBackground(Color.darkGray);
+        buttonPanel.setLayout(null);
+
+        //on fait 2 buttons
+        JButton enseignants = new JButton("Enseignements");
+        JButton eleves = new JButton("Eleves");
+        enseignants.setBounds(100, 20, 200, 60);
+        eleves.setBounds(500, 20, 200, 60 );
+
+        buttonPanel.add(enseignants);
+        buttonPanel.add(eleves);
+
         buffList = new DefaultListModel<>();
         this.mapCopy=mapToCopy;
         this.creation(id, allORniv);
@@ -46,7 +65,9 @@ public class JClasseAff {
 
         mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
         mainList.setFont(defaultF);
-        mainPanel.add(new JScrollPane(mainList));// On ajoute notre Jlist avec scroll sur notre Jpanel
+        mainList.setBounds(0,100,800,800);
+        mainPanel.add(mainList);// On ajoute notre Jlist avec scroll sur notre Jpanel
+        mainPanel.add(buttonPanel);// on ajoute panel avec 2 buttons Eleves + Enseignements
         mainPanel.setBackground(Color.darkGray);
     }
 
