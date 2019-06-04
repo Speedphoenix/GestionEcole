@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JElevesAff {
+public class JElevesAff extends JMother{
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
@@ -16,13 +16,14 @@ public class JElevesAff {
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
     //ici on passe l'id e la classe
-    public JElevesAff(int id) {
+    public JElevesAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
         this.mapCopy=Ecole.getInstance().getInscriptions();
-        this.creation(id);
+        this.creation(what.getId());
         mainList.addListSelectionListener(new ListSelectListener(mainList));
+        super.motherElem = what;
     }
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels

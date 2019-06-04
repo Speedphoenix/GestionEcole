@@ -37,6 +37,6 @@ public class GraphicContainer extends JFrame {
     }
 
     public JPanel getContentPan() {
-        return contentPan;
+        return contentPan.getMainPanel();
     }
 }

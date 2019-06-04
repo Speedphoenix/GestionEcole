@@ -42,7 +42,7 @@ public class Main {
         //JTrimestresAff trimestresAff = new JTrimestresAff(eco.getTrimestres());
         //JNiveauAff niveauAff = new JNiveauAff(eco.getNiveaux());
         //JClasseAff classeAff = new JClasseAff(1,2, eco.getClasses());
-        JElevesAff elevesAff = new JElevesAff(1,eco.getInscriptions());
+        JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
         //JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(1,eco.getEnseignements());
         //JBulletinsAff bulletinsAff = new JBulletinsAff(2,2,eco.getBulletins());
 
