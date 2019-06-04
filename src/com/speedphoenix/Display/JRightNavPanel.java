@@ -26,18 +26,20 @@ public class JRightNavPanel {
         JButton b2 = new JButton("Supprimer");
         b2.setFont(defaultF);
         b2.setBounds(0, 300, 200,100);
-        JButton b3 = new JButton("Choisir");
+        JButton b3 = new JButton("Modifier");
         b3.setFont(defaultF);
         b3.setBounds(0, 500, 200,100);
+/*
         JButton b4 = new JButton("Modifier");
         b4.setFont(defaultF);
         b4.setBounds(0, 700, 200,100);
+*/
 
         mainPanel.add(b1);
         //mainPanel.add(bufferpanel);
         mainPanel.add(b2);
         mainPanel.add(b3);
-        mainPanel.add(b4);
+        //mainPanel.add(b4);
 
 
         /*mainPanel.add(new JButton("Ajouter"));
