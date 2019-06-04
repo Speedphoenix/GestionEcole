@@ -15,7 +15,8 @@ public class JStudentsChosen {
     //String student;
     Font defaultF = new Font("Verdana", 1,20);
 
-    public JStudentsChosen(int id, int clasORniv, TreeMap<Integer, Inscription> students) {//clasOrniv =1 si on cherche selon TD et = 2 si on cherche selon niveau
+    //clasOrniv =1 si on cherche selon TD et = 2 si on cherche selon niveau
+    public JStudentsChosen(int id, int clasORniv, TreeMap<Integer, Inscription> students) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         listModel = new DefaultListModel<>();
