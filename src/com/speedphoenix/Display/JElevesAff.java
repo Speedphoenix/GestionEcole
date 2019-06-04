@@ -52,4 +52,20 @@ public class JElevesAff {
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Inscription> getMapCopy() {
+        return mapCopy;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
+    }
 }

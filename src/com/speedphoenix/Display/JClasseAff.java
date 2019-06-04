@@ -83,4 +83,32 @@ public class JClasseAff {
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Classe> getMapCopy() {
+        return mapCopy;
+    }
+
+    public JPanel getButtonPanel() {
+        return buttonPanel;
+    }
+
+    public JButton getEnseignants() {
+        return enseignants;
+    }
+
+    public JButton getEleves() {
+        return eleves;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
+    }
 }
