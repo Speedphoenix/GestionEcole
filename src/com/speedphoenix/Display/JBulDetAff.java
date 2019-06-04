@@ -1,31 +1,29 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.Modele.Bulletin;
-import com.speedphoenix.Modele.Classe;
-import com.speedphoenix.Modele.Ecole;
+import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JBulletinsAff {
-    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+public class JBulDetAff {
+    /*private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    private TreeMap<Integer, Bulletin> mapCopy;//map contenant les objets avec les infos
+    private TreeMap<Integer, DetailBulletin> mapCopy;//map contenant les objets avec les infos
 
     private Font defaultF = new Font("Verdana", 1,13);//font par defaut qu'on utilise
 
 
     // allORniv= 1 si on affiche en fct de trimestre, et = 2 si on affiche en fct de eleve
 
-    public JBulletinsAff(int id, int elORtrim) {
+    public JBulDetAff(int id, int elORtrim) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
 
         buffList = new DefaultListModel<>();
-        this.mapCopy= Ecole.getInstance().getBulletins();
+        this.mapCopy=Ecole.getInstance().getDetailBulletins();
         this.creation(id, elORtrim);
     }
 
@@ -68,5 +66,5 @@ public class JBulletinsAff {
 
     public JPanel getMainPanel() {
         return mainPanel;
-    }
+    }*/
 }
