@@ -49,7 +49,8 @@ public class Main {
         //JStudentsChosen panel = new JStudentsChosen(1,1,eco.getInscriptions());
         JRightNavPanel panel2 = new JRightNavPanel();
         JUpNavBar panel3 = new JUpNavBar();
-        JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
+        //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
+        JTrimestresAff trimestresAff = new JTrimestresAff(eco.getTrimestres());
 
         JFrame mainFrame = new JFrame();
         mainFrame.setSize(1000,1000);
@@ -57,7 +58,8 @@ public class Main {
         //mainFrame.add(panel.getMainPanel());
         mainFrame.add(panel2.getMainPanel());
         mainFrame.add(panel3.getMainPanel());
-        mainFrame.add(panel4.getMainPanel());
+        //mainFrame.add(panel4.getMainPanel());
+        mainFrame.add(trimestresAff.getMainPanel());
         mainFrame.setVisible(true);
 
 
