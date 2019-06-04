@@ -1,5 +1,6 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
@@ -21,6 +22,7 @@ public class JElevesAff {
         buffList = new DefaultListModel<>();
         this.mapCopy=mapToCopy;
         this.creation(id);
+        mainList.addListSelectionListener(new ListSelectListener(mainList));
     }
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
@@ -51,5 +53,21 @@ public class JElevesAff {
 
     public JPanel getMainPanel() {
         return mainPanel;
+    }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Inscription> getMapCopy() {
+        return mapCopy;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
     }
 }

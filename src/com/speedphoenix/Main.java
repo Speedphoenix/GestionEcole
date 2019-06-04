@@ -32,7 +32,7 @@ public class Main {
 
         Ecole eco = new Ecole();
 
-        eco.showTest();
+        //eco.showTest();
 
         //JStudentsPanel Panel = new JStudentsPanel(eco.getInscriptions());
         //JStudentsChosen panel = new JStudentsChosen(1,1,eco.getInscriptions());
@@ -49,13 +49,16 @@ public class Main {
         mainFrame.setSize(1000,1000);
         mainFrame.getContentPane().setLayout(null);
         //mainFrame.add(panel.getMainPanel());
-        mainFrame.add(panel2.getMainPanel());
-        mainFrame.add(panel3.getMainPanel());
+        //mainFrame.add(panel2.getMainPanel());
+        //mainFrame.add(panel3.getMainPanel());
         //mainFrame.add(panel4.getMainPanel());
         //mainFrame.add(trimestresAff.getMainPanel());
         //mainFrame.add(niveauAff.getMainPanel());
         //mainFrame.add(classeAff.getMainPanel());
-        mainFrame.add(elevesAff.getMainPanel());
+        //mainFrame.add(elevesAff.getMainPanel());
+
+        mainFrame.createInstance(panel2,panel3,elevesAff.getMainPanel());
+
         mainFrame.setVisible(true);
 
 

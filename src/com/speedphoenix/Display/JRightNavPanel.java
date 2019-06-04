@@ -5,8 +5,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class JRightNavPanel {
-    JPanel mainPanel;
-    //ArrayList<JButton> buttons;
+    private JPanel mainPanel;
+    private ArrayList<JButton> buttons = new ArrayList<>();
+
+
 
     Font defaultF = new Font("Verdana", 1,20);
 
@@ -23,21 +25,31 @@ public class JRightNavPanel {
         JButton b1 = new JButton("Ajouter");
         b1.setFont(defaultF);
         b1.setBounds(0, 100, 200,100);
+        b1.setEnabled(false);
         JButton b2 = new JButton("Supprimer");
         b2.setFont(defaultF);
+        b2.setEnabled(false);
         b2.setBounds(0, 300, 200,100);
         JButton b3 = new JButton("Choisir");
         b3.setFont(defaultF);
         b3.setBounds(0, 500, 200,100);
+        b3.setEnabled(false);
         JButton b4 = new JButton("Modifier");
         b4.setFont(defaultF);
         b4.setBounds(0, 700, 200,100);
+        b4.setEnabled(false);
+
 
         mainPanel.add(b1);
         //mainPanel.add(bufferpanel);
         mainPanel.add(b2);
         mainPanel.add(b3);
         mainPanel.add(b4);
+
+        buttons.add(b1);
+        buttons.add(b2);
+        buttons.add(b3);
+        buttons.add(b4);
 
 
         /*mainPanel.add(new JButton("Ajouter"));
@@ -46,6 +58,12 @@ public class JRightNavPanel {
         mainPanel.add(new JButton("Modifier"));*/
     }
 
+    public ArrayList<JButton> getButtons() {
+        return buttons;
+    }
+    public Font getDefaultF() {
+        return defaultF;
+    }
     public JPanel getMainPanel() {
         return mainPanel;
     }
