@@ -43,8 +43,8 @@ public class Main {
         //JNiveauAff niveauAff = new JNiveauAff(eco.getNiveaux());
         //JClasseAff classeAff = new JClasseAff(1,2, eco.getClasses());
         //JElevesAff elevesAff = new JElevesAff(1,eco.getInscriptions());
-        //JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(1,eco.getEnseignements());
-        JBulletinsAff bulletinsAff = new JBulletinsAff(2,2,eco.getBulletins());
+        JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(1);
+        //JBulletinsAff bulletinsAff = new JBulletinsAff(2,2,eco.getBulletins());
 
         GraphicContainer mainFrame = GraphicContainer.getInstance();
 
@@ -58,8 +58,8 @@ public class Main {
         //mainFrame.add(niveauAff.getMainPanel());
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
-        //mainFrame.add(enseigmnementsAff.getMainPanel());
-        mainFrame.add(bulletinsAff.getMainPanel());
+        mainFrame.add(enseigmnementsAff.getMainPanel());
+        //mainFrame.add(bulletinsAff.getMainPanel());
         mainFrame.setVisible(true);
 
 
