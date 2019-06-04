@@ -6,16 +6,16 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JElevesAff {
+public class JEnseigmnementsAff {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    private TreeMap<Integer, Inscription> mapCopy;//map contenant les objets avec les infos
+    private TreeMap<Integer, Enseignement> mapCopy;//map contenant les objets avec les infos
 
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
-    //ici on passe l'id e la classe
-    public JElevesAff(int id, TreeMap<Integer, Inscription> mapToCopy) {
+    //ici on passe l'id de la classe
+    public JEnseigmnementsAff(int id, TreeMap<Integer, Enseignement> mapToCopy) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
@@ -28,7 +28,7 @@ public class JElevesAff {
         for(Integer i: mapCopy.keySet())
         {
             if(mapCopy.get(i).getClasse().getId()==id)
-            addStringToListModel(i);
+                addStringToListModel(i);
         }
 
         mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
@@ -40,11 +40,9 @@ public class JElevesAff {
     public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
         String data = new String("");
 
-        data+= "  Nom: "+ mapCopy.get(i).getEleve().getNom();
-        data+= "  Prenom: "+ mapCopy.get(i).getEleve().getPrenom();
-        data+= "  ID: "+ mapCopy.get(i).getEleve().getId();
+        data+= "  Enseignement: "+ mapCopy.get(i).getDiscipline().getNom();
+        data+= "  Professeur: "+ mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom();
         data+= "  Classe: "+ mapCopy.get(i).getClasse().getNom();
-        data+= "  Niveau: "+ mapCopy.get(i).getClasse().getNiveau().getNom();
 
         buffList.addElement(data);
     }

@@ -8,12 +8,12 @@ import java.awt.*;
 import java.util.TreeMap;
 
 public class JTrimestresAff {
-    JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    JList<String> mainList;// Jliste qui va afficher les informations
-    DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    TreeMap<Integer, Trimestre> mapCopy;//map contenant les objets avec les infos
+    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+    private JList<String> mainList;// Jliste qui va afficher les informations
+    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
+    private TreeMap<Integer, Trimestre> mapCopy;//map contenant les objets avec les infos
 
-    Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
+    private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
     public JTrimestresAff(TreeMap<Integer, Trimestre> mapToCopy) {
         mainPanel = new JPanel();

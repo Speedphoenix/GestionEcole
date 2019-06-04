@@ -5,10 +5,10 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class JRightNavPanel {
-    JPanel mainPanel;
+    private JPanel mainPanel;
     //ArrayList<JButton> buttons;
 
-    Font defaultF = new Font("Verdana", 1,20);
+    private Font defaultF = new Font("Verdana", 1,20);
 
     public JRightNavPanel(){
         mainPanel= new JPanel();

@@ -7,16 +7,16 @@ import java.awt.*;
 import java.util.TreeMap;
 
 public class JClasseAff {
-    JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    JList<String> mainList;// Jliste qui va afficher les informations
-    DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    TreeMap<Integer, Classe> mapCopy;//map contenant les objets avec les infos
+    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+    private JList<String> mainList;// Jliste qui va afficher les informations
+    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
+    private TreeMap<Integer, Classe> mapCopy;//map contenant les objets avec les infos
 
-    JPanel buttonPanel;
-    JButton enseignants;
-    JButton eleves;
+    private JPanel buttonPanel;
+    private JButton enseignants;
+    private JButton eleves;
 
-    Font defaultF = new Font("Verdana", 1,13);//font par defaut qu'on utilise
+    private Font defaultF = new Font("Verdana", 1,13);//font par defaut qu'on utilise
 
 
     // allORniv= 1 si on affichew toutes les classes, et = 2 si on affiche les classes selon id de niveau

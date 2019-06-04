@@ -7,12 +7,12 @@ import java.awt.*;
 import java.util.TreeMap;
 
 public class JNiveauAff {
-    JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    JList<String> mainList;// Jliste qui va afficher les informations
-    DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    TreeMap<Integer, Niveau> mapCopy;//map contenant les objets avec les infos
+    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+    private JList<String> mainList;// Jliste qui va afficher les informations
+    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
+    private TreeMap<Integer, Niveau> mapCopy;//map contenant les objets avec les infos
 
-    Font defaultF = new Font("Verdana", 1,30);//font par defaut qu'on utilise
+    private Font defaultF = new Font("Verdana", 1,30);//font par defaut qu'on utilise
 
     public JNiveauAff(TreeMap<Integer, Niveau> mapToCopy) {
         mainPanel = new JPanel();
