@@ -59,7 +59,7 @@ public class Main {
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,elevesAff.getMainPanel());
+        mainFrame.createInstance(panel2,panel3,elevesAff);
 
         mainFrame.setVisible(true);
 
