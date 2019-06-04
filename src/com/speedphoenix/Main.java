@@ -50,7 +50,9 @@ public class Main {
         JRightNavPanel panel2 = new JRightNavPanel();
         JUpNavBar panel3 = new JUpNavBar();
         //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
-        JTrimestresAff trimestresAff = new JTrimestresAff(eco.getTrimestres());
+        //JTrimestresAff trimestresAff = new JTrimestresAff(eco.getTrimestres());
+        //JNiveauAff niveauAff = new JNiveauAff(eco.getNiveaux());
+        JClasseAff classeAff = new JClasseAff(1,2, eco.getClasses());
 
         JFrame mainFrame = new JFrame();
         mainFrame.setSize(1000,1000);
@@ -59,7 +61,9 @@ public class Main {
         mainFrame.add(panel2.getMainPanel());
         mainFrame.add(panel3.getMainPanel());
         //mainFrame.add(panel4.getMainPanel());
-        mainFrame.add(trimestresAff.getMainPanel());
+        //mainFrame.add(trimestresAff.getMainPanel());
+        //mainFrame.add(niveauAff.getMainPanel());
+        mainFrame.add(classeAff.getMainPanel());
         mainFrame.setVisible(true);
 
 

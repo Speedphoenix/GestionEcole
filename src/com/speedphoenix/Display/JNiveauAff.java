@@ -1,21 +1,20 @@
 package com.speedphoenix.Display;
 
-
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JTrimestresAff {
+public class JNiveauAff {
     JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     JList<String> mainList;// Jliste qui va afficher les informations
     DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    TreeMap<Integer, Trimestre> mapCopy;//map contenant les objets avec les infos
+    TreeMap<Integer, Niveau> mapCopy;//map contenant les objets avec les infos
 
-    Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
+    Font defaultF = new Font("Verdana", 1,30);//font par defaut qu'on utilise
 
-    public JTrimestresAff(TreeMap<Integer, Trimestre> mapToCopy) {
+    public JNiveauAff(TreeMap<Integer, Niveau> mapToCopy) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
@@ -38,9 +37,8 @@ public class JTrimestresAff {
 
     public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
         String data = new String("");
-        data+= "  Trimestre: "+ mapCopy.get(i).getNumero();
-        data+= "  Debut: "+ mapCopy.get(i).getDebut();
-        data+= "  Fin: "+ mapCopy.get(i).getFin();
+        data+= "  Niveau : "+ mapCopy.get(i).getNom();
+
 
         buffList.addElement(data);
     }
