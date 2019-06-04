@@ -27,6 +27,8 @@ public class Classe extends BaseElem {
         ecole.addClasse(this);
         niveau.addClasse(this);
         anneeScolaire.addClasse(this);
+        this.addTableChildren(inscriptions);
+        this.addTableChildren(enseignements);
     }
 
     public void addInscription(Inscription what) {
@@ -66,9 +68,14 @@ public class Classe extends BaseElem {
         String sql = "INSERT INTO classe (nom,ecoleId,niveauId,anneeScolId)VALUES('"+nom+"',"+ecoleId+","+niveauId+","+anneeScolId+");";
         conn.ajouterRequeteMaj(sql);
     }
+
     public void createUpdateRequest(String nom, Connexion conn)
     {
         String sql = "UPDATE classe SET nom = '"+nom+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "classe";
+    }
+
 }

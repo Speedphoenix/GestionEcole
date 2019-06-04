@@ -16,6 +16,8 @@ public class AnneeScolaire extends BaseElem{
         trimestres = new ArrayList<>();
         classes = new ArrayList<>();
         Ecole.getInstance().addAnneeScolaire(this);
+        this.addTableChildren(trimestres);
+        this.addTableChildren(classes);
     }
 
     public void addTrimestre(Trimestre what) {
@@ -52,10 +54,13 @@ public class AnneeScolaire extends BaseElem{
         }
         return latest.getYear();
     }
-    public static void createInsertRequest( Connexion conn)
-    {
-        String sql = "INSERT INTO anneescolaire  VALUES ();";
+    public static void createInsertRequest(Connexion conn) {
+
+        String sql = "INSERT INTO anneescolaire VALUES ();";
         conn.ajouterRequeteMaj(sql);
+    }
+    public String getTableName(){
+        return "anneescolaire";
     }
 
 

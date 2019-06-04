@@ -10,6 +10,7 @@ public class Enseignant extends Personne {
         super(id, nom, prenom, Personne.ELEVE);
         enseignements = new ArrayList<>();
         Ecole.getInstance().addEnseignant(this);
+        this.addTableChildren(enseignements);
     }
 
     public void addEnseignement(Enseignement what) {

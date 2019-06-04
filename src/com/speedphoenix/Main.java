@@ -16,10 +16,11 @@ public class Main {
         final String DATABASE_NAME = "G6H93QtWu6";
         final String LOGIN_DATABASE = "G6H93QtWu6"; //"root";
         final String PASSWORD_DATABASE = "TyGM5Zgqrk";
+        final String SERVER_DATABASE = "remotemysql.com:3306";
 
         double moy=0;
         try {
-            conn = new Connexion(DATABASE_NAME, LOGIN_DATABASE, PASSWORD_DATABASE);
+            conn = new Connexion(DATABASE_NAME, LOGIN_DATABASE, PASSWORD_DATABASE, SERVER_DATABASE);
         } catch (SQLException e) {
             //e.printStackTrace();
             throw e;
@@ -63,8 +64,15 @@ public class Main {
 
         mainFrame.setVisible(true);
 
+        //eco.findEleve(8).createDeleteRequest(Connexion.conn);
+        //updateAndRefresh();
+        //eco.refresh();
 
+        //eco.showTest();
+    }
 
-
+    public static void updateAndRefresh() {
+        Connexion.conn.executeAllupdate();
+        Ecole.getInstance().refresh();
     }
 }

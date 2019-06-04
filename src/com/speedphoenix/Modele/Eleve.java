@@ -10,6 +10,7 @@ public class Eleve extends Personne {
         super(id, nom, prenom, Personne.ELEVE);
         inscriptions = new ArrayList<>();
         Ecole.getInstance().addEleve(this);
+        this.addTableChildren(inscriptions);
     }
 
     public void addInscription(Inscription what) {
@@ -20,5 +21,7 @@ public class Eleve extends Personne {
     {
         Personne.createInsertRequest(nom,prenom,0,conn);
     }
+
+
 
 }

@@ -21,6 +21,7 @@ public class Trimestre extends BaseElem {
         bulletins = new ArrayList<>();
         anneeScolaire.addTrimestre(this);
         Ecole.getInstance().addTrimestre(this);
+        this.addTableChildren(bulletins);
     }
 
     public void addBulletin(Bulletin what) {
@@ -53,6 +54,10 @@ public class Trimestre extends BaseElem {
         String sql = "UPDATE trimestre SET debut = '"+debut.toString()+"', fin = '"+fin.toString()+"'WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "trimestre";
+    }
+
 
 
 }

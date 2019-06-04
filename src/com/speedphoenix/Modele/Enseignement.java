@@ -20,6 +20,7 @@ public class Enseignement extends BaseElem {
         enseignant.addEnseignement(this);
         discipline.addEnseignement(this);
         Ecole.getInstance().addEnseignement(this);
+        this.addTableChildren(detailBulletins);
     }
 
     public void addDetailBulletin(DetailBulletin what) {
@@ -43,5 +44,9 @@ public class Enseignement extends BaseElem {
         String sql = "INSERT INTO enseignement (classeId,disciplineId,personneId)VALUES("+classeId+","+disciplineId+","+personneId+");";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "enseignement";
+    }
+
 
 }

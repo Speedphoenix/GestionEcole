@@ -504,6 +504,7 @@ public class Ecole extends BaseElem {
 
     public void showTest()
     {
+        System.err.println("\n----------------------------------------------------");
         System.err.println("niveaux " + niveaux.size());
         niveaux.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNom()));
         System.err.println(disciplines.size());
@@ -527,6 +528,7 @@ public class Ecole extends BaseElem {
          System.err.println(evaluations.size());
             evaluations.forEach((key, value) -> System.err.println("Clé : " + key + " Valeur : " + value.getNote()));
 
+        System.err.println("----------------------------------------------------\n\n\n\n\n");
     }
 
     public static Ecole getInstance() {
@@ -702,4 +704,8 @@ public class Ecole extends BaseElem {
     public TreeMap<Integer, Enseignant> getEnseignants() {
         return enseignants;
     }
+    public String getTableName(){
+        return "ecole";
+    }
+
 }
