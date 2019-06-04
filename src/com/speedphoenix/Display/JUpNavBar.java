@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.awt.*;
 
 public class JUpNavBar {
-    JPanel mainPanel;
-    Font defaultF = new Font("Verdana", 1,20);
+    private JPanel mainPanel;
+    private Font defaultF = new Font("Verdana", 1,20);
 
     public JUpNavBar(){
         mainPanel= new JPanel();

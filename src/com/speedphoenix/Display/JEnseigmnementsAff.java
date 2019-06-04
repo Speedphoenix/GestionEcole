@@ -6,27 +6,29 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JNiveauAff {
+public class JEnseigmnementsAff {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    private TreeMap<Integer, Niveau> mapCopy;//map contenant les objets avec les infos
+    private TreeMap<Integer, Enseignement> mapCopy;//map contenant les objets avec les infos
 
-    private Font defaultF = new Font("Verdana", 1,30);//font par defaut qu'on utilise
+    private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
-    public JNiveauAff(TreeMap<Integer, Niveau> mapToCopy) {
+    //ici on passe l'id de la classe
+    public JEnseigmnementsAff(int id, TreeMap<Integer, Enseignement> mapToCopy) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
         this.mapCopy=mapToCopy;
-        this.creation();
+        this.creation(id);
     }
 
-    private void creation(){ // methode d'initialisation des Jlists et Jpanels
+    private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
 
         for(Integer i: mapCopy.keySet())
         {
-            addStringToListModel(i);
+            if(mapCopy.get(i).getClasse().getId()==id)
+                addStringToListModel(i);
         }
 
         mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
@@ -37,8 +39,10 @@ public class JNiveauAff {
 
     public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
         String data = new String("");
-        data+= "  Niveau : "+ mapCopy.get(i).getNom();
 
+        data+= "  Enseignement: "+ mapCopy.get(i).getDiscipline().getNom();
+        data+= "  Professeur: "+ mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom();
+        data+= "  Classe: "+ mapCopy.get(i).getClasse().getNom();
 
         buffList.addElement(data);
     }
