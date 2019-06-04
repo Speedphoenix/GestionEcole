@@ -41,7 +41,8 @@ public class Main {
         //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
         //JTrimestresAff trimestresAff = new JTrimestresAff(eco.getTrimestres());
         //JNiveauAff niveauAff = new JNiveauAff(eco.getNiveaux());
-        JClasseAff classeAff = new JClasseAff(1,2, eco.getClasses());
+        //JClasseAff classeAff = new JClasseAff(1,2, eco.getClasses());
+        JElevesAff elevesAff = new JElevesAff(1,eco.getInscriptions());
 
         GraphicContainer mainFrame = GraphicContainer.getInstance();
 
@@ -53,7 +54,8 @@ public class Main {
         //mainFrame.add(panel4.getMainPanel());
         //mainFrame.add(trimestresAff.getMainPanel());
         //mainFrame.add(niveauAff.getMainPanel());
-        mainFrame.add(classeAff.getMainPanel());
+        //mainFrame.add(classeAff.getMainPanel());
+        mainFrame.add(elevesAff.getMainPanel());
         mainFrame.setVisible(true);
 
 
