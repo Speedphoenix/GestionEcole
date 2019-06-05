@@ -95,6 +95,7 @@ public class JClasseAff extends JMother {
         mainTable = new JPanTable(data, title, 0,100, mainPanel.getWidth(), mainPanel.getHeight()-100);
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
+        mainPanel.add(buttonPanel);
         mainPanel.setBackground(Color.darkGray);
 
     }
@@ -116,5 +117,17 @@ public class JClasseAff extends JMother {
     @Override
     public JList<String> getMainList() {
         return null;
+    }
+
+    public JButton getEnseignantsButton() {
+        return enseignants;
+    }
+
+    public JButton getElevesButton() {
+        return eleves;
+    }
+
+    public JPanel getButtonPanel() {
+        return buttonPanel;
     }
 }
