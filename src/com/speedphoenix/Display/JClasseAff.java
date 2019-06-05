@@ -8,31 +8,28 @@ import java.awt.*;
 import java.util.TreeMap;
 
 public class JClasseAff extends JMother {
+
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    private JList<String> mainList;// Jliste qui va afficher les informations
-    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
+    private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
+    private Object [] [] data; //Parametres necesaires pour creer le tableau
+    private String [] title;// les titres de tableau
     private TreeMap<Integer, Classe> mapCopy;//map contenant les objets avec les infos
 
-    private JPanel buttonPanel;
+    private JPanel buttonPanel; //panel avec buttons de choix de direction
     private JButton enseignants;
     private JButton eleves;
 
-    private Font defaultF = new Font("Verdana", 1,13);//font par defaut qu'on utilise
-
     private Class buffClass; //va recuperer la classe de baseElement
 
-
-    // on affichew toutes les classes, ou on affiche les classes selon id de niveau
+    private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
     public JClasseAff(BaseElem what) {
-        mainPanel = new JPanel();
-        mainPanel.setBounds(200,100,800,900);
-        mainPanel.setLayout(null);
+
+    /**/ //Ca ne concerne que les buttons
         buttonPanel = new JPanel();
         buttonPanel.setBounds(0,0, 800, 100 );
         buttonPanel.setBackground(Color.darkGray);
         buttonPanel.setLayout(null);
-
         //on fait 2 buttons
         JButton enseignants = new JButton("Enseignements");
         JButton eleves = new JButton("Eleves");
@@ -41,97 +38,83 @@ public class JClasseAff extends JMother {
 
         buttonPanel.add(enseignants);
         buttonPanel.add(eleves);
+    /**/
 
-        buffList = new DefaultListModel<>();
+        mainPanel = new JPanel();
+        mainPanel.setBounds(200,100,800,900);
+        mainPanel.setLayout(null);
+
         this.mapCopy=Ecole.getInstance().getClasses();
-
         buffClass = what.getClass();
-
         this.creation(what.getId());
-        mainList.addListSelectionListener(new ListSelectListener(mainList));
         super.motherElem = what;
     }
 
-    private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
+    public void creation(int id){
 
-        /*switch(allORniv)
-        {
-            case 1:
-                for(Integer i: mapCopy.keySet())
-                {
-                    addStringToListModel(i);
-                }
-                break;
-            case 2:
-                for(Integer i: mapCopy.keySet())
-                {
-                    if(mapCopy.get(i).getNiveau().getId()==id)
-                    addStringToListModel(i);
-                }
-                break;
-        }*/
+        //creer le titre de tableau
+        title = new String[]{"Classe", "Niveau", "Année Scolaire"};
 
         if(buffClass==Niveau.class) {
             for(Integer i: mapCopy.keySet())
             {
                 if(mapCopy.get(i).getNiveau().getId()==id)
-                    addStringToListModel(i);
+                    sizeCounter++;
             }
+            //initialiser le tableau de donnees
+            data = new Object[sizeCounter][3];
+            sizeCounter=0;
+
+            for(Integer i: mapCopy.keySet())
+            {
+                if(mapCopy.get(i).getNiveau().getId()==id)
+                {
+                    addStringToDataContainer(i);
+                    sizeCounter++;
+                }
+            }
+
         }
         else{
             for(Integer i: mapCopy.keySet())
             {
-                addStringToListModel(i);
+                sizeCounter++;
             }
+            //initialiser le tableau de donnees
+            data = new Object[sizeCounter][3];
+            sizeCounter=0;
+
+            for(Integer i: mapCopy.keySet())
+            {
+                addStringToDataContainer(i);
+                sizeCounter++;
+            }
+
         }
 
+        mainTable = new JPanTable(data, title, 0,100, mainPanel.getWidth(), mainPanel.getHeight()-100);
 
-        mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
-        mainList.setFont(defaultF);
-        mainList.setBounds(0,100,800,800);
-        mainPanel.add(mainList);// On ajoute notre Jlist avec scroll sur notre Jpanel
-        mainPanel.add(buttonPanel);// on ajoute panel avec 2 buttons Eleves + Enseignements
+        mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
+
     }
 
-    public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
-        String data = new String("");
-        data+= "  Classe : "+ mapCopy.get(i).getNom();
-        data+= "  Niveau : "+ mapCopy.get(i).getNiveau().getNom();
-        data+= "  Année Scolaire : debut: "+ mapCopy.get(i).getAnneeScolaire().getStartYear()+" fin: "+ mapCopy.get(i).getAnneeScolaire().getEndYear();
-
-        buffList.addElement(data);
+    public void addStringToDataContainer(Integer i){
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getNom(), mapCopy.get(i).getNiveau().getNom(), "debut: "+ mapCopy.get(i).getAnneeScolaire().getStartYear()+" fin: "+ mapCopy.get(i).getAnneeScolaire().getEndYear() };
     }
 
+    //pour avoir access au tableau ajoute .getTable() apres
+    public JPanTable getMainTable() {
+        return mainTable;
+    }
+
+    @Override
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
+    @Override
     public JList<String> getMainList() {
-        return mainList;
-    }
-
-    public DefaultListModel<String> getBuffList() {
-        return buffList;
-    }
-
-    public TreeMap<Integer, Classe> getMapCopy() {
-        return mapCopy;
-    }
-
-    public JPanel getButtonPanel() {
-        return buttonPanel;
-    }
-
-    public JButton getEnseignants() {
-        return enseignants;
-    }
-
-    public JButton getEleves() {
-        return eleves;
-    }
-
-    public Font getDefaultF() {
-        return defaultF;
+        return null;
     }
 }

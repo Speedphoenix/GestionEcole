@@ -16,7 +16,7 @@ public class JElevesAff extends JMother{
     private TreeMap<Integer, Inscription> mapCopy;//map contenant les objets avec les infos
 
 
-    private int itteratorCounter=0;//pour compter combien de "rows" on a a mettre dans data array
+    private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
     public JElevesAff(BaseElem what) {
         mainPanel = new JPanel();
@@ -34,22 +34,22 @@ public class JElevesAff extends JMother{
         for(Integer i: mapCopy.keySet())
         {
             if(mapCopy.get(i).getClasse().getId()==id)
-                itteratorCounter++;
+                sizeCounter++;
         }
 
         //initialiser le tableau de donnees
-        data = new Object[itteratorCounter][5];
+        data = new Object[sizeCounter][5];
         //creer le titre de tableau
         title = new String[]{"Nom", "Prenom", "ID", "Classe", "Niveau"};
 
-        itteratorCounter=0;//on annule le counteur
+        sizeCounter=0;//on annule le counteur
 
         for(Integer i: mapCopy.keySet())
         {
             if(mapCopy.get(i).getClasse().getId()==id)
             {
                 addStringToDataContainer(i);
-                itteratorCounter++;
+                sizeCounter++;
             }
         }
 
@@ -61,7 +61,7 @@ public class JElevesAff extends JMother{
     }
 
     public void addStringToDataContainer(Integer i){
-        data [itteratorCounter] = new Object[]{mapCopy.get(i).getEleve().getNom(),mapCopy.get(i).getEleve().getPrenom(), mapCopy.get(i).getEleve().getId(), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getEleve().getNom(),mapCopy.get(i).getEleve().getPrenom(), mapCopy.get(i).getEleve().getId(), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

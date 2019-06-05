@@ -18,7 +18,7 @@ public class JTrimestresAff extends JMother {
     private TreeMap<Integer, Trimestre> mapCopy;//map contenant les objets avec les infos
 
 
-    private int itteratorCounter=0;//pour compter combien de "rows" on a a mettre dans data array
+    private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
     public JTrimestresAff() {
         mainPanel = new JPanel();
@@ -41,7 +41,7 @@ public class JTrimestresAff extends JMother {
         for(Integer i: mapCopy.keySet())
         {
             addStringToDataContainer(i);
-            itteratorCounter++;
+            sizeCounter++;
         }
 
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
@@ -52,7 +52,7 @@ public class JTrimestresAff extends JMother {
 
     //on rempli notre data array
     public void addStringToDataContainer(Integer i){
-        data [itteratorCounter] = new Object[]{mapCopy.get(i).getNumero(), mapCopy.get(i).getDebut(), mapCopy.get(i).getFin() };
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getNumero(), mapCopy.get(i).getDebut(), mapCopy.get(i).getFin() };
     }
 
     //pour avoir access au tableau ajoute .getTable() apres
