@@ -1,6 +1,6 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.Display.AddClasses.JMotherAdd;
+import com.speedphoenix.Display.AddClasses.JMotherMod;
 import com.speedphoenix.Modele.Ecole;
 import com.speedphoenix.Modele.Inscription;
 
@@ -12,7 +12,7 @@ public class GraphicContainer extends JFrame {
     private JRightNavPanel sidePanel;
     private JUpNavBar upPanel;
     private JMother contentPan;
-    private JMotherAdd contentPanAdd;
+    private JMotherMod contentPanAdd;
     private static GraphicContainer instance = new GraphicContainer();
 
     private GraphicContainer() {
@@ -40,7 +40,7 @@ public class GraphicContainer extends JFrame {
         instance.repaint();
         instance.getSidePanel().setActionsListeners();
     }
-    public static void createInstance(JMotherAdd motAdd) {
+    public static void createInstance(JMotherMod motAdd) {
         instance.sidePanel = null;
         instance.upPanel = null;
         instance.contentPan = null;

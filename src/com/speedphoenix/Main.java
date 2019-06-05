@@ -1,6 +1,5 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
-import com.speedphoenix.Display.AddClasses.JElevesAdd;
 import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;

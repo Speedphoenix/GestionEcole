@@ -1,26 +1,32 @@
 package com.speedphoenix.Display.AddClasses;
 
+import com.speedphoenix.ActionListeners.AddListener;
 import com.speedphoenix.ActionListeners.ListSelectListener;
 import com.speedphoenix.Modele.BaseElem;
 import com.speedphoenix.Modele.Ecole;
 import com.speedphoenix.Modele.Inscription;
+import com.speedphoenix.Modele.Trimestre;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JElevesAdd extends JMotherAdd {
-    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+public class JEleveAdd extends JMotherMod {
+
     private JTextField textName;
     private JTextField textSurname;
-    private JLabel labelName;
-    private JLabel labelSurname;
+
     private JButton accept;
+
 
 
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
-    public JElevesAdd() {
+    public JEleveAdd() {
+
+         JLabel labelName;
+         JLabel labelSurname;
+
         mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1000,1000);
         mainPanel.setBackground(Color.lightGray);
@@ -32,6 +38,8 @@ public class JElevesAdd extends JMotherAdd {
         accept = new JButton("Ajouter");
         accept.setFont(defaultF);
         accept.setBounds(800, 800, 120,50);
+        accept.addActionListener(new AddListener(this));
+
         textName = new JTextField();
         textName.setFont(defaultF);
         textName.setBounds(400, 300, 200,40);
@@ -59,6 +67,24 @@ public class JElevesAdd extends JMotherAdd {
         return mainPanel;
     }
 
+    @Override
+    public String getType() {
+        return "eleve";
+    }
+
+    public JTextField getTextName() {
+        return textName;
+    }
+
+    public JTextField getTextSurname() {
+        return textSurname;
+    }
+
+
+
+    public JButton getAccept() {
+        return accept;
+    }
 
     public Font getDefaultF() {
         return defaultF;

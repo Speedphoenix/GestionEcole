@@ -33,7 +33,6 @@ public class JBulletinsAff extends JMother{
     }
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
-        System.out.println(buffClass);
 
         if(buffClass == Trimestre.class)
         {

@@ -1,20 +1,25 @@
 package com.speedphoenix.Display.AddClasses;
 
+import com.speedphoenix.ActionListeners.AddListener;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class JEnseignantAdd extends JMotherAdd {
+public class JEnseignantAdd extends JMotherMod {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JTextField textName;
     private JTextField textSurname;
-    private JLabel labelName;
-    private JLabel labelSurname;
+
     private JButton accept;
 
 
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
     public JEnseignantAdd() {
+
+        JLabel labelName;
+        JLabel labelSurname;
+
         mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1000,1000);
         mainPanel.setBackground(Color.lightGray);
@@ -26,6 +31,8 @@ public class JEnseignantAdd extends JMotherAdd {
         accept = new JButton("Ajouter");
         accept.setFont(defaultF);
         accept.setBounds(800, 800, 120,50);
+        accept.addActionListener(new AddListener(this));
+
         textName = new JTextField();
         textName.setFont(defaultF);
         textName.setBounds(400, 300, 200,40);
@@ -53,6 +60,23 @@ public class JEnseignantAdd extends JMotherAdd {
         return mainPanel;
     }
 
+    @Override
+    public String getType() {
+        return "enseignant";
+    }
+
+    public JTextField getTextName() {
+        return textName;
+    }
+
+    public JTextField getTextSurname() {
+        return textSurname;
+    }
+
+
+    public JButton getAccept() {
+        return accept;
+    }
 
     public Font getDefaultF() {
         return defaultF;

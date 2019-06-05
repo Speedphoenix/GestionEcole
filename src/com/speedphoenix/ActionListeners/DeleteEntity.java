@@ -2,10 +2,8 @@ package com.speedphoenix.ActionListeners;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
-import com.speedphoenix.Modele.Classe;
-import com.speedphoenix.Modele.Ecole;
-import com.speedphoenix.Modele.Enseignement;
-import com.speedphoenix.Modele.Trimestre;
+import com.speedphoenix.Modele.*;
+
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
