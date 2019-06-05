@@ -39,12 +39,13 @@ public class Main {
         JRightNavPanel panel2 = new JRightNavPanel();
         JUpNavBar panel3 = new JUpNavBar();
         //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
-        //JTrimestresAff trimestresAff = new JTrimestresAff(eco.getTrimestres());
-        //JNiveauAff niveauAff = new JNiveauAff(eco.getNiveaux());
-        //JClasseAff classeAff = new JClasseAff(1,2, eco.getClasses());
+        JTrimestresAff trimestresAff = new JTrimestresAff();
+        JNiveauAff niveauAff = new JNiveauAff();
+        JClasseAff classeAff = new JClasseAff(eco.getNiveaux().get(1));
         JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
-        //JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(1,eco.getEnseignements());
-        //JBulletinsAff bulletinsAff = new JBulletinsAff(2,2,eco.getBulletins());
+        JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
+        JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getEleves().get(2));
+
 
         GraphicContainer mainFrame = GraphicContainer.getInstance();
 
@@ -59,7 +60,7 @@ public class Main {
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,elevesAff);
+        mainFrame.createInstance(panel2,panel3,trimestresAff);
 
         mainFrame.setVisible(true);
 

@@ -1,12 +1,13 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JClasseAff {
+public class JClasseAff extends JMother {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
@@ -18,10 +19,12 @@ public class JClasseAff {
 
     private Font defaultF = new Font("Verdana", 1,13);//font par defaut qu'on utilise
 
+    private Class buffClass; //va recuperer la classe de baseElement
 
-    // allORniv= 1 si on affichew toutes les classes, et = 2 si on affiche les classes selon id de niveau
 
-    public JClasseAff(int id, int allORniv) {
+    // on affichew toutes les classes, ou on affiche les classes selon id de niveau
+
+    public JClasseAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
@@ -41,12 +44,17 @@ public class JClasseAff {
 
         buffList = new DefaultListModel<>();
         this.mapCopy=Ecole.getInstance().getClasses();
-        this.creation(id, allORniv);
+
+        buffClass = what.getClass();
+
+        this.creation(what.getId());
+        mainList.addListSelectionListener(new ListSelectListener(mainList));
+        super.motherElem = what;
     }
 
-    private void creation(int id, int allORniv){ // methode d'initialisation des Jlists et Jpanels
+    private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
 
-        switch(allORniv)
+        /*switch(allORniv)
         {
             case 1:
                 for(Integer i: mapCopy.keySet())
@@ -61,7 +69,22 @@ public class JClasseAff {
                     addStringToListModel(i);
                 }
                 break;
+        }*/
+
+        if(buffClass==Niveau.class) {
+            for(Integer i: mapCopy.keySet())
+            {
+                if(mapCopy.get(i).getNiveau().getId()==id)
+                    addStringToListModel(i);
+            }
         }
+        else{
+            for(Integer i: mapCopy.keySet())
+            {
+                addStringToListModel(i);
+            }
+        }
+
 
         mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
         mainList.setFont(defaultF);

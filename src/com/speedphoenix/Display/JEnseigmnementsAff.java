@@ -1,12 +1,13 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JEnseigmnementsAff {
+public class JEnseigmnementsAff extends JMother {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
@@ -15,12 +16,14 @@ public class JEnseigmnementsAff {
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
     //ici on passe l'id de la classe
-    public JEnseigmnementsAff(int id) {
+    public JEnseigmnementsAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
         this.mapCopy=Ecole.getInstance().getEnseignements();
-        this.creation(id);
+        this.creation(what.getId());
+        mainList.addListSelectionListener(new ListSelectListener(mainList));
+        super.motherElem = what;
     }
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
