@@ -61,7 +61,7 @@ public class Main {
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,jBulDetAff);
+        mainFrame.createInstance(panel2,panel3,trimestresAff);
 
         mainFrame.setVisible(true);
 
