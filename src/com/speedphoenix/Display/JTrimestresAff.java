@@ -14,13 +14,11 @@ public class JTrimestresAff extends JMother {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
     private Object [] [] data; //Parametres necesaires pour creer le tableau
-    private String [] title;
-    //private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
+    private String [] title;// les titres de tableau
     private TreeMap<Integer, Trimestre> mapCopy;//map contenant les objets avec les infos
 
 
-    private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
-    private int itteratorCounter=0;
+    private int itteratorCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
     public JTrimestresAff() {
         mainPanel = new JPanel();
@@ -48,7 +46,7 @@ public class JTrimestresAff extends JMother {
 
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
 
-        mainPanel.add(mainTable);// On ajoute notre Jlist avec scroll sur notre Jpanel
+        mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
     }
 
@@ -65,65 +63,4 @@ public class JTrimestresAff extends JMother {
     public JList<String> getMainList() {
         return null;
     }
-
-
-
-
-/* private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    private JList<String> mainList;// Jliste qui va afficher les informations
-    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    private TreeMap<Integer, Trimestre> mapCopy;//map contenant les objets avec les infos
-
-    private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
-
-    public JTrimestresAff() {
-        mainPanel = new JPanel();
-        mainPanel.setBounds(200,100,800,900);
-        buffList = new DefaultListModel<>();
-        this.mapCopy=Ecole.getInstance().getTrimestres();
-        this.creation();
-        mainList.addListSelectionListener(new ListSelectListener(mainList));
-    }
-
-    private void creation(){ // methode d'initialisation des Jlists et Jpanels
-
-        for(Integer i: mapCopy.keySet())
-        {
-            addStringToListModel(i);
-        }
-
-        mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
-        mainList.setFont(defaultF);
-        mainPanel.add(new JScrollPane(mainList));// On ajoute notre Jlist avec scroll sur notre Jpanel
-        mainPanel.setBackground(Color.darkGray);
-    }
-
-    public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
-        String data = new String("");
-        data+= "  Trimestre: "+ mapCopy.get(i).getNumero();
-        data+= "  Debut: "+ mapCopy.get(i).getDebut();
-        data+= "  Fin: "+ mapCopy.get(i).getFin();
-
-        buffList.addElement(data);
-    }
-
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-
-    public JList<String> getMainList() {
-        return mainList;
-    }
-
-    public DefaultListModel<String> getBuffList() {
-        return buffList;
-    }
-
-    public TreeMap<Integer, Trimestre> getMapCopy() {
-        return mapCopy;
-    }
-
-    public Font getDefaultF() {
-        return defaultF;
-    }*/
 }
