@@ -46,7 +46,7 @@ public class JBulletinsAff extends JMother {
                     addStringToListModel(i);
             }
         }
-        else if (buffClass== Eleve.class) {
+        else if (buffClass== Inscription.class) {
             for (Integer i : mapCopy.keySet()) {
                 if (mapCopy.get(i).getInscription().getEleve().getId() == id)
                     addStringToListModel(i);
