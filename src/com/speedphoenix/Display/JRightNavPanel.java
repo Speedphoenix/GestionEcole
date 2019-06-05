@@ -31,6 +31,7 @@ public class JRightNavPanel {
         b2.setEnabled(false);
         b2.setBounds(0, 300, 200,100);
         JButton b3 = new JButton("Modifier");
+        b3.setEnabled(false);
         b3.setFont(defaultF);
         b3.setBounds(0, 500, 200,100);
 

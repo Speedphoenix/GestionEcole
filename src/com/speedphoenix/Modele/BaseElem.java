@@ -19,6 +19,10 @@ public abstract class BaseElem {
         return id;
     }
 
+    public ArrayList<ArrayList> getTableChildren() {
+        return tableChildren;
+    }
+
     public void addTableChildren(ArrayList what) {
         tableChildren.add(what);
     }

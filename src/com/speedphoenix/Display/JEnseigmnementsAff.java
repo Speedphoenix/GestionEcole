@@ -1,12 +1,13 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JEnseigmnementsAff {
+public class JEnseigmnementsAff extends JMother {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
@@ -21,6 +22,8 @@ public class JEnseigmnementsAff {
         buffList = new DefaultListModel<>();
         this.mapCopy=Ecole.getInstance().getEnseignements();
         this.creation(id);
+        mainList.addListSelectionListener(new ListSelectListener(mainList));
+
     }
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
@@ -43,6 +46,7 @@ public class JEnseigmnementsAff {
         data+= "  Enseignement: "+ mapCopy.get(i).getDiscipline().getNom();
         data+= "  Professeur: "+ mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom();
         data+= "  Classe: "+ mapCopy.get(i).getClasse().getNom();
+        listId.add(mapCopy.get(i).getId());
 
         buffList.addElement(data);
     }

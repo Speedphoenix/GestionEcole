@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JBulletinsAff {
+public class JBulletinsAff extends JMother{
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
@@ -62,6 +62,7 @@ public class JBulletinsAff {
         data+= "  Nom : "+ mapCopy.get(i).getInscription().getEleve().getNom();
         data+= "  Prenom : "+ mapCopy.get(i).getInscription().getEleve().getPrenom();
         data+= "  Appreciation: "+ mapCopy.get(i).getAppreciation();
+        listId.add(mapCopy.get(i).getId());
 
         buffList.addElement(data);
     }

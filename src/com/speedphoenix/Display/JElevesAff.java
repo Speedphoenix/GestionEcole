@@ -48,6 +48,7 @@ public class JElevesAff extends JMother{
         data+= "  ID: "+ mapCopy.get(i).getEleve().getId();
         data+= "  Classe: "+ mapCopy.get(i).getClasse().getNom();
         data+= "  Niveau: "+ mapCopy.get(i).getClasse().getNiveau().getNom();
+        listId.add(mapCopy.get(i).getId());
 
         buffList.addElement(data);
     }

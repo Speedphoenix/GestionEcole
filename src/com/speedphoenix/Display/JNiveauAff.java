@@ -1,12 +1,13 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JNiveauAff {
+public class JNiveauAff extends JMother{
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
@@ -20,6 +21,8 @@ public class JNiveauAff {
         buffList = new DefaultListModel<>();
         this.mapCopy=Ecole.getInstance().getNiveaux();
         this.creation();
+        mainList.addListSelectionListener(new ListSelectListener(mainList));
+
     }
 
     private void creation(){ // methode d'initialisation des Jlists et Jpanels
@@ -38,6 +41,7 @@ public class JNiveauAff {
     public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
         String data = new String("");
         data+= "  Niveau : "+ mapCopy.get(i).getNom();
+        listId.add(mapCopy.get(i).getId());
 
 
         buffList.addElement(data);
