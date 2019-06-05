@@ -15,12 +15,17 @@ public class JEnseigmnementsAff extends JMother {
 
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
+    private Class buffClass; //va recuperer la classe de baseElement
+
     //ici on passe l'id de la classe
     public JEnseigmnementsAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         buffList = new DefaultListModel<>();
         this.mapCopy=Ecole.getInstance().getEnseignements();
+
+        buffClass = what.getClass();
+
         this.creation(what.getId());
         mainList.addListSelectionListener(new ListSelectListener(mainList));
         super.motherElem = what;
@@ -28,11 +33,23 @@ public class JEnseigmnementsAff extends JMother {
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
 
-        for(Integer i: mapCopy.keySet())
+        if(buffClass == Classe.class)
         {
-            if(mapCopy.get(i).getClasse().getId()==id)
-                addStringToListModel(i);
+            for(Integer i: mapCopy.keySet())
+            {
+                if(mapCopy.get(i).getClasse().getId()==id)
+                    addStringToListModel(i);
+            }
         }
+        else if(buffClass == Discipline.class)
+        {
+            for(Integer i: mapCopy.keySet())
+            {
+                if(mapCopy.get(i).getDiscipline().getId()==id)
+                    addStringToListModel(i);
+            }
+        }
+
 
         mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
         mainList.setFont(defaultF);
