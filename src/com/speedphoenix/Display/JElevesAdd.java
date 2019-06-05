@@ -1,31 +1,27 @@
 package com.speedphoenix.Display;
 
 import com.speedphoenix.ActionListeners.ListSelectListener;
-import com.speedphoenix.Modele.*;
+import com.speedphoenix.Modele.BaseElem;
+import com.speedphoenix.Modele.Ecole;
+import com.speedphoenix.Modele.Inscription;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JEnseigmnementsAff extends JMother {
+public class JElevesAdd extends JMother{
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    private JList<String> mainList;// Jliste qui va afficher les informations
     private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    private TreeMap<Integer, Enseignement> mapCopy;//map contenant les objets avec les infos
+    private TreeMap<Integer, Inscription> mapCopy;//map contenant les objets avec les infos
 
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
-    private Class buffClass; //va recuperer la classe de baseElement
-
-    //ici on passe l'id de la classe
-    public JEnseigmnementsAff(BaseElem what) {
+    //ici on passe l'id e la classe
+    public JElevesAdd(BaseElem what) {
         mainPanel = new JPanel();
-        mainPanel.setBounds(200,100,800,900);
+        mainPanel.setBounds(0,0,1000,1000);
         buffList = new DefaultListModel<>();
-        this.mapCopy=Ecole.getInstance().getEnseignements();
-
-        buffClass = what.getClass();
-
+        this.mapCopy=Ecole.getInstance().getInscriptions();
         this.creation(what.getId());
         mainList.addListSelectionListener(new ListSelectListener(mainList));
         super.motherElem = what;
@@ -33,23 +29,11 @@ public class JEnseigmnementsAff extends JMother {
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
 
-        if(buffClass == Classe.class)
+        for(Integer i: mapCopy.keySet())
         {
-            for(Integer i: mapCopy.keySet())
-            {
-                if(mapCopy.get(i).getClasse().getId()==id)
-                    addStringToListModel(i);
-            }
+            if(mapCopy.get(i).getClasse().getId()==id)
+            addStringToListModel(i);
         }
-        else if(buffClass == Discipline.class)
-        {
-            for(Integer i: mapCopy.keySet())
-            {
-                if(mapCopy.get(i).getDiscipline().getId()==id)
-                    addStringToListModel(i);
-            }
-        }
-
 
         mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
         mainList.setFont(defaultF);
@@ -60,9 +44,11 @@ public class JEnseigmnementsAff extends JMother {
     public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
         String data = new String("");
 
-        data+= "  Enseignement: "+ mapCopy.get(i).getDiscipline().getNom();
-        data+= "  Professeur: "+ mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom();
+        data+= "  Nom: "+ mapCopy.get(i).getEleve().getNom();
+        data+= "  Prenom: "+ mapCopy.get(i).getEleve().getPrenom();
+        data+= "  ID: "+ mapCopy.get(i).getEleve().getId();
         data+= "  Classe: "+ mapCopy.get(i).getClasse().getNom();
+        data+= "  Niveau: "+ mapCopy.get(i).getClasse().getNiveau().getNom();
         listId.add(mapCopy.get(i).getId());
 
         buffList.addElement(data);
@@ -80,7 +66,7 @@ public class JEnseigmnementsAff extends JMother {
         return buffList;
     }
 
-    public TreeMap<Integer, Enseignement> getMapCopy() {
+    public TreeMap<Integer, Inscription> getMapCopy() {
         return mapCopy;
     }
 

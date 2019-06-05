@@ -39,13 +39,13 @@ public class GraphicContainer extends JFrame {
     }
 
     public void setContentPan(JMother contPan) {
-       // System.out.println(instance.contentPan);
         instance.contentPan.getMainPanel().setVisible(false);
         instance.remove(instance.contentPan.getMainPanel());
         this.contentPan = contPan;
-        instance.revalidate();
+        //instance.revalidate();
         instance.add(instance.contentPan.getMainPanel());
-        //Ecole.getInstance().showTest();
+        instance.contentPan.getMainPanel().setVisible(true);
+        // Ecole.getInstance().showTest();
         sidePanel.resetActionsListeners();
     }
 

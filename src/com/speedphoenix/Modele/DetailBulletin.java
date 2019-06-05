@@ -44,7 +44,7 @@ public class DetailBulletin extends BaseElem {
         conn.ajouterRequeteMaj(sql);
     }
     public String getTableName(){
-        return "detailBulletin";
+        return "detailbulletin";
     }
 
     public void createUpdateRequest(String appreciation, Connexion conn)

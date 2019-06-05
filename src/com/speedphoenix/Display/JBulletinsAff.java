@@ -23,22 +23,19 @@ public class JBulletinsAff extends JMother{
     public JBulletinsAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
-        mainPanel.setLayout(null);
-
+       // mainPanel.setLayout(null);
         buffList = new DefaultListModel<>();
         this.mapCopy= Ecole.getInstance().getBulletins();
-
         buffClass = what.getClass();
-
         this.creation(what.getId());
         mainList.addListSelectionListener(new ListSelectListener(mainList));
-
         super.motherElem = what;
     }
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
+        System.out.println(buffClass);
 
-        if(buffClass== Trimestre.class)
+        if(buffClass == Trimestre.class)
         {
             for(Integer i: mapCopy.keySet())
             {
@@ -46,9 +43,9 @@ public class JBulletinsAff extends JMother{
                     addStringToListModel(i);
             }
         }
-        else if (buffClass== Eleve.class) {
+        else if (buffClass == Inscription.class) {
             for (Integer i : mapCopy.keySet()) {
-                if (mapCopy.get(i).getInscription().getEleve().getId() == id)
+                if (mapCopy.get(i).getInscription().getId() == id)
                     addStringToListModel(i);
             }
         }

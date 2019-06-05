@@ -2,7 +2,10 @@ package com.speedphoenix.ActionListeners;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Modele.Classe;
 import com.speedphoenix.Modele.Ecole;
+import com.speedphoenix.Modele.Enseignement;
+import com.speedphoenix.Modele.Trimestre;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -56,6 +59,7 @@ public class  DeleteEntity implements ActionListener {
            JMother mot = null;
 
 
+           //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
            if(classType.equals(classesType.eleve.name))
            {
                eco.findInscription((int)elem.getListId().get(index)).createDeleteRequest(conn);
@@ -69,7 +73,27 @@ public class  DeleteEntity implements ActionListener {
                eco.findBulletin((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
-               mot = new JBulletinsAff(eco.findBulletin(elem.getMotherElem().getId()));
+               if(elem.getMotherElem().getClass() == Trimestre.class)
+               {
+                   mot = new JBulletinsAff(eco.findTrimestre(elem.getMotherElem().getId()));
+               }
+               else
+                   mot = new JBulletinsAff(eco.findInscription(elem.getMotherElem().getId()));
+
+           }
+           else if(classType.equals(classesType.detBulletin.name))
+           {
+               eco.findDetailBulletin((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               if(elem.getMotherElem().getClass() == Enseignement.class)
+               {
+                   mot = new JBulletinsAff(eco.findEnseignement(elem.getMotherElem().getId()));
+               }
+               else
+               {
+                   mot = new JBulDetAff(eco.findBulletin(elem.getMotherElem().getId()));
+               }
 
            }
            else if(classType.equals(classesType.trimestre.name))
@@ -77,6 +101,7 @@ public class  DeleteEntity implements ActionListener {
                eco.findTrimestre((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
+               mot = new JTrimestresAff();
 
            }
            else if(classType.equals(classesType.classe.name))
@@ -84,6 +109,7 @@ public class  DeleteEntity implements ActionListener {
                eco.findClasse((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
+               mot = new JClasseAff(eco.findNiveau(elem.getMotherElem().getId()));
 
            }
            else if(classType.equals(classesType.enseignement.name))
@@ -91,19 +117,23 @@ public class  DeleteEntity implements ActionListener {
                eco.findEnseignement((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
+               if(elem.getMotherElem().getClass() == Classe.class)
+               {
+                   mot = new JEnseigmnementsAff(eco.findClasse(elem.getMotherElem().getId()));
+               }
+               else
+                   mot = new JBulletinsAff(eco.findDiscipline(elem.getMotherElem().getId()));
            }
            else if(classType.equals(classesType.niveau.name))
            {
-               // eco.findNiveau((int)elem.getListId().get(index)).createDeleteRequest(conn);
+                eco.findNiveau((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
+               mot = new JNiveauAff();
+
            }
-
+           //on réaffiche correctement la liste
            GraphicContainer.getInstance().setContentPan(mot);
-
-
-
-
        }
 
 

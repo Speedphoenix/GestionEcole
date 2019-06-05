@@ -54,23 +54,6 @@ public class JClasseAff extends JMother{
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
 
-        /*switch(allORniv)
-        {
-            case 1:
-                for(Integer i: mapCopy.keySet())
-                {
-                    addStringToListModel(i);
-                }
-                break;
-            case 2:
-                for(Integer i: mapCopy.keySet())
-                {
-                    if(mapCopy.get(i).getNiveau().getId()==id)
-                    addStringToListModel(i);
-                }
-                break;
-        }*/
-
         if(buffClass==Niveau.class) {
             for(Integer i: mapCopy.keySet())
             {
