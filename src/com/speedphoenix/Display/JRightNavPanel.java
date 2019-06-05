@@ -9,7 +9,9 @@ import java.util.ArrayList;
 public class JRightNavPanel {
     private JPanel mainPanel;
     private ArrayList<JButton> buttons = new ArrayList<>();
-
+    private DeleteEntity actionDel;
+    //private AddEntity actionAdd;
+    //private ModifEntity actionMod;
 
 
     private Font defaultF = new Font("Verdana", 1,20);
@@ -25,13 +27,10 @@ public class JRightNavPanel {
         JButton b1 = new JButton("Ajouter");
         b1.setFont(defaultF);
         b1.setBounds(0, 100, 200,100);
-        b1.setEnabled(false);
         JButton b2 = new JButton("Supprimer");
         b2.setFont(defaultF);
-        b2.setEnabled(false);
         b2.setBounds(0, 300, 200,100);
         JButton b3 = new JButton("Modifier");
-        b3.setEnabled(false);
         b3.setFont(defaultF);
         b3.setBounds(0, 500, 200,100);
 
@@ -56,8 +55,21 @@ public class JRightNavPanel {
         return mainPanel;
     }
 
+    /**
+     * set les actions listeners de tout les boutons et les rend inaccessibles tant que l'on a pas cliqué
+     * sur un élément de la ligne.
+     */
     public void setActionsListeners(){
-        buttons.get(1).addActionListener(new DeleteEntity(GraphicContainer.getInstance().getContentPan()));
+        actionDel = new DeleteEntity(GraphicContainer.getInstance().getContentPan());
+        buttons.get(1).addActionListener(actionDel);
+        buttons.forEach((value)->value.setEnabled(false));
+    }
+    public void resetActionsListeners(){
+        //on enleve l'action listeners de supprimer et on en met un nouveau
+        buttons.get(1).removeActionListener(actionDel);
+        actionDel = new DeleteEntity(GraphicContainer.getInstance().getContentPan());
+        buttons.get(1).addActionListener(actionDel);
 
+        buttons.forEach((value)->value.setEnabled(false));
     }
 }

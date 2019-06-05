@@ -2,12 +2,10 @@ package com.speedphoenix.ActionListeners;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
-import com.speedphoenix.Modele.Bulletin;
 import com.speedphoenix.Modele.Ecole;
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.util.ArrayList;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class  DeleteEntity implements ActionListener {
 
@@ -47,41 +45,66 @@ public class  DeleteEntity implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
        int index = elem.getMainList().getSelectedIndex();
-       Connexion conn = Connexion.conn;
-       String classType =  elem.getClass().getCanonicalName();
-       System.out.println(elem.getClass().getCanonicalName());
-       System.out.println(elem.getListId().get(index));
-
-        if(classType.equals(classesType.eleve.name))
-        {
-            Ecole.getInstance().findInscription((int)elem.getListId().get(index)).createDeleteRequest(conn);
-        }
-        else if(classType.equals(classesType.bulletin.name))
-        {
-            Ecole.getInstance().findBulletin((int)elem.getListId().get(index)).createDeleteRequest(conn);
-        }
-        else if(classType.equals(classesType.trimestre.name))
-        {
-            Ecole.getInstance().findTrimestre((int)elem.getListId().get(index)).createDeleteRequest(conn);
-        }
-        else if(classType.equals(classesType.classe.name))
-        {
-            Ecole.getInstance().findClasse((int)elem.getListId().get(index)).createDeleteRequest(conn);
-        }
-        else if(classType.equals(classesType.enseignement.name))
-        {
-            Ecole.getInstance().findEnseignement((int)elem.getListId().get(index)).createDeleteRequest(conn);
-        }
-        else if(classType.equals(classesType.niveau.name))
-        {
-            Ecole.getInstance().findNiveau((int)elem.getListId().get(index)).createDeleteRequest(conn);
-        }
-
-        conn.executeAllupdate();
-        Ecole.getInstance().refresh();
+       Ecole eco = Ecole.getInstance();
 
 
+        if (index > elem.getMainList().getMaxSelectionIndex())
+           System.err.println("erreur index trop élevé");
+       else{
+           Connexion conn = Connexion.conn;
+           String classType =  elem.getClass().getCanonicalName();
+           JMother mot = null;
 
+
+           if(classType.equals(classesType.eleve.name))
+           {
+               eco.findInscription((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JElevesAff(eco.findClasse(elem.getMotherElem().getId()));
+
+           }
+           else if(classType.equals(classesType.bulletin.name))
+           {
+               eco.findBulletin((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JBulletinsAff(eco.findBulletin(elem.getMotherElem().getId()));
+
+           }
+           else if(classType.equals(classesType.trimestre.name))
+           {
+               eco.findTrimestre((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+
+           }
+           else if(classType.equals(classesType.classe.name))
+           {
+               eco.findClasse((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+
+           }
+           else if(classType.equals(classesType.enseignement.name))
+           {
+               eco.findEnseignement((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+           }
+           else if(classType.equals(classesType.niveau.name))
+           {
+               // eco.findNiveau((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+           }
+
+           GraphicContainer.getInstance().setContentPan(mot);
+
+
+
+
+       }
 
 
     }

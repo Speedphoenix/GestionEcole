@@ -1,5 +1,6 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.Modele.Ecole;
 import com.speedphoenix.Modele.Inscription;
 
 import javax.swing.*;
@@ -35,6 +36,17 @@ public class GraphicContainer extends JFrame {
 
     public JUpNavBar getUpPanel() {
         return upPanel;
+    }
+
+    public void setContentPan(JMother contPan) {
+       // System.out.println(instance.contentPan);
+        instance.contentPan.getMainPanel().setVisible(false);
+        instance.remove(instance.contentPan.getMainPanel());
+        this.contentPan = contPan;
+        instance.revalidate();
+        instance.add(instance.contentPan.getMainPanel());
+        //Ecole.getInstance().showTest();
+        sidePanel.resetActionsListeners();
     }
 
     public JMother getContentPan() {

@@ -38,9 +38,9 @@ public class Main {
         JRightNavPanel panel2 = new JRightNavPanel();
         JUpNavBar panel3 = new JUpNavBar();
         //JTrimestresAff trimestresAff = new JTrimestresAff();
-        JNiveauAff niveauAff = new JNiveauAff();
+        //JNiveauAff niveauAff = new JNiveauAff();
         //JClasseAff classeAff = new JClasseAff(1,2);
-        //JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
+        JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
         //JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(1,eco.getEnseignements());
         //JBulletinsAff bulletinsAff = new JBulletinsAff(2,2,eco.getBulletins());
 
@@ -57,7 +57,7 @@ public class Main {
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,niveauAff);
+        mainFrame.createInstance(panel2,panel3,elevesAff);
 
         mainFrame.setVisible(true);
 
