@@ -64,6 +64,7 @@ public class JElevesAff extends JMother{
         data [itteratorCounter] = new Object[]{mapCopy.get(i).getEleve().getNom(),mapCopy.get(i).getEleve().getPrenom(), mapCopy.get(i).getEleve().getId(), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
     }
 
+    //pour avoir access au tableau ajoute .getTable() apres
     public JPanTable getMainTable() {
         return mainTable;
     }

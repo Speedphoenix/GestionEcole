@@ -55,6 +55,11 @@ public class JTrimestresAff extends JMother {
         data [itteratorCounter] = new Object[]{mapCopy.get(i).getNumero(), mapCopy.get(i).getDebut(), mapCopy.get(i).getFin() };
     }
 
+    //pour avoir access au tableau ajoute .getTable() apres
+    public JPanTable getMainTable() {
+        return mainTable;
+    }
+
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
