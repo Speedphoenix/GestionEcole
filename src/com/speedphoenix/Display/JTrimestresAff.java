@@ -52,7 +52,7 @@ public class JTrimestresAff extends JMother {
 
     //on rempli notre data array
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{mapCopy.get(i).getNumero(), mapCopy.get(i).getDebut(), mapCopy.get(i).getFin() };
+        data [sizeCounter] = new Object[]{String.valueOf(mapCopy.get(i).getNumero()), String.valueOf(mapCopy.get(i).getDebut()),String.valueOf(mapCopy.get(i).getFin()) };
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

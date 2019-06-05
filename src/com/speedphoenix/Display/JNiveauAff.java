@@ -9,8 +9,6 @@ import java.util.TreeMap;
 
 public class JNiveauAff extends JMother {
 
-
-
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
     private Object [] [] data; //Parametres necesaires pour creer le tableau

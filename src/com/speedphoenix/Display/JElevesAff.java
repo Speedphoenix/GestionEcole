@@ -9,7 +9,76 @@ import java.util.TreeMap;
 
 public class JElevesAff extends JMother{
 
-   /* private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+/*
+    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+    private JList<String> mainList;// Jliste qui va afficher les informations
+    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
+    private TreeMap<Integer, Inscription> mapCopy;//map contenant les objets avec les infos
+
+    private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
+
+    //ici on passe l'id e la classe
+    public JElevesAff(BaseElem what) {
+        mainPanel = new JPanel();
+        mainPanel.setBounds(200,100,800,900);
+        buffList = new DefaultListModel<>();
+        this.mapCopy=Ecole.getInstance().getInscriptions();
+        this.creation(what.getId());
+        mainList.addListSelectionListener(new ListSelectListener(mainList));
+        super.motherElem = what;
+    }
+
+    private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
+
+        for(Integer i: mapCopy.keySet())
+        {
+            if(mapCopy.get(i).getClasse().getId()==id)
+                addStringToListModel(i);
+        }
+
+        mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
+        mainList.setFont(defaultF);
+        mainPanel.add(new JScrollPane(mainList));// On ajoute notre Jlist avec scroll sur notre Jpanel
+        mainPanel.setBackground(Color.darkGray);
+    }
+
+    public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
+        String data = new String("");
+
+        data+= "  Nom: "+ mapCopy.get(i).getEleve().getNom();
+        data+= "  Prenom: "+ mapCopy.get(i).getEleve().getPrenom();
+        data+= "  ID: "+ mapCopy.get(i).getEleve().getId();
+        data+= "  Classe: "+ mapCopy.get(i).getClasse().getNom();
+        data+= "  Niveau: "+ mapCopy.get(i).getClasse().getNiveau().getNom();
+
+        buffList.addElement(data);
+    }
+
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+
+    public JList<String> getMainList() {
+        return mainList;
+    }
+
+    public DefaultListModel<String> getBuffList() {
+        return buffList;
+    }
+
+    public TreeMap<Integer, Inscription> getMapCopy() {
+        return mapCopy;
+    }
+
+    public Font getDefaultF() {
+        return defaultF;
+    }
+
+    @Override
+    public JPanTable getMainTable() {
+        return null;
+    }*/
+ private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
     private Object [] [] data; //Parametres necesaires pour creer le tableau
     private String [] title;// les titres de tableau
@@ -61,7 +130,7 @@ public class JElevesAff extends JMother{
     }
 
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{mapCopy.get(i).getEleve().getNom(),mapCopy.get(i).getEleve().getPrenom(), mapCopy.get(i).getEleve().getId(), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getEleve().getNom(),mapCopy.get(i).getEleve().getPrenom(), String.valueOf(mapCopy.get(i).getEleve().getId()), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
     }
 
     //pour avoir access au tableau ajoute .getTable() apres
@@ -73,6 +142,6 @@ public class JElevesAff extends JMother{
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
-    }*/
+    }
 
 }
