@@ -1,8 +1,7 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.Modele.Bulletin;
-import com.speedphoenix.Modele.Classe;
-import com.speedphoenix.Modele.Ecole;
+import com.speedphoenix.ActionListeners.ListSelectListener;
+import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,37 +15,42 @@ public class JBulletinsAff extends JMother{
 
     private Font defaultF = new Font("Verdana", 1,13);//font par defaut qu'on utilise
 
+    private Class buffClass; //va recuperer la classe de baseElement
+
 
     // allORniv= 1 si on affiche en fct de trimestre, et = 2 si on affiche en fct de eleve
 
-    public JBulletinsAff(int id, int elORtrim) {
+    public JBulletinsAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
 
         buffList = new DefaultListModel<>();
         this.mapCopy= Ecole.getInstance().getBulletins();
-        this.creation(id, elORtrim);
+
+        buffClass = what.getClass();
+
+        this.creation(what.getId());
+        mainList.addListSelectionListener(new ListSelectListener(mainList));
+
+        super.motherElem = what;
     }
 
-    private void creation(int id, int elORtrim){ // methode d'initialisation des Jlists et Jpanels
+    private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
 
-        switch(elORtrim)
+        if(buffClass== Trimestre.class)
         {
-            case 1:
-                for(Integer i: mapCopy.keySet())
-                {
-                    if(mapCopy.get(i).getTrimestre().getId()==id)
-                        addStringToListModel(i);
-                }
-                break;
-            case 2:
-                for(Integer i: mapCopy.keySet())
-                {
-                    if(mapCopy.get(i).getInscription().getEleve().getId()==id)
-                        addStringToListModel(i);
-                }
-                break;
+            for(Integer i: mapCopy.keySet())
+            {
+                if(mapCopy.get(i).getTrimestre().getId()==id)
+                    addStringToListModel(i);
+            }
+        }
+        else if (buffClass== Eleve.class) {
+            for (Integer i : mapCopy.keySet()) {
+                if (mapCopy.get(i).getInscription().getEleve().getId() == id)
+                    addStringToListModel(i);
+            }
         }
 
         mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
