@@ -34,7 +34,6 @@ public class JBulDetAff  extends  JMother{
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
 
-        System.out.println(buffClass);
         if(buffClass== Enseignement.class)
         {
             for(Integer i: mapCopy.keySet())

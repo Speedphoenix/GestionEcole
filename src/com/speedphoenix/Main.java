@@ -1,5 +1,7 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
+import com.speedphoenix.Display.AddClasses.JElevesAdd;
+import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -33,7 +35,9 @@ public class Main {
 
         Ecole eco = new Ecole();
         GraphicContainer mainFrame = GraphicContainer.getInstance();
-        //eco.showTest();
+        //logo
+        ImageIcon image = new ImageIcon("logo.png");
+
 
         JRightNavPanel panel2 = new JRightNavPanel();
         JUpNavBar panel3 = new JUpNavBar();
@@ -61,7 +65,9 @@ public class Main {
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,niveauAff);
+        //mainFrame.createInstance(panel2,panel3,niveauAff);
+        mainFrame.createInstance(new JEnseignantAdd());
+        mainFrame.setIconImage(image.getImage());
 
         mainFrame.setVisible(true);
 
