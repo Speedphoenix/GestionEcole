@@ -46,9 +46,11 @@ public class JBulDetAff  extends  JMother{
                     addStringToListModel(i);
             }
         }
-        else if (buffClass== Bulletin.class) {
-            for (Integer i : mapCopy.keySet()) {
-                if (mapCopy.get(i).getInscription().getEleve().getId() == id)
+        else if (buffClass== Bulletin.class)
+        {
+            for (Integer i : mapCopy.keySet())
+            {
+                if (mapCopy.get(i).getBulletin().getId() == id)
                     addStringToListModel(i);
             }
         }
@@ -63,8 +65,9 @@ public class JBulDetAff  extends  JMother{
 
     public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
         String data = new String("");
-        data+= "  Nom : "+ mapCopy.get(i).getInscription().getEleve().getNom();
-        data+= "  Prenom : "+ mapCopy.get(i).getInscription().getEleve().getPrenom();
+        data+= "  Nom : "+ mapCopy.get(i).getBulletin().getInscription().getEleve().getNom();
+        data+= "  Prenom : "+ mapCopy.get(i).getBulletin().getInscription().getEleve().getPrenom();
+        data+= "  Discipline: "+ mapCopy.get(i).getEnseignement().getDiscipline().getNom();
         data+= "  Appreciation: "+ mapCopy.get(i).getAppreciation();
 
         buffList.addElement(data);
@@ -83,7 +86,7 @@ public class JBulDetAff  extends  JMother{
         return buffList;
     }
 
-    public TreeMap<Integer, Bulletin> getMapCopy() {
+    public TreeMap<Integer, DetailBulletin> getMapCopy() {
         return mapCopy;
     }
 

@@ -45,6 +45,7 @@ public class Main {
         JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getEleves().get(2));
+        JBulDetAff jBulDetAff = new JBulDetAff(eco.getEnseignements().get(1));
 
 
         GraphicContainer mainFrame = GraphicContainer.getInstance();
@@ -60,7 +61,7 @@ public class Main {
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,trimestresAff);
+        mainFrame.createInstance(panel2,panel3,jBulDetAff);
 
         mainFrame.setVisible(true);
 
