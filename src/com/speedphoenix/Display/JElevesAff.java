@@ -9,7 +9,7 @@ import java.util.TreeMap;
 
 public class JElevesAff extends JMother{
 
-    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+   /* private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
     private Object [] [] data; //Parametres necesaires pour creer le tableau
     private String [] title;// les titres de tableau
@@ -73,6 +73,6 @@ public class JElevesAff extends JMother{
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
-    }
+    }*/
 
 }
