@@ -105,6 +105,7 @@ public class JClasseAff extends JMother {
     }
 
     //pour avoir access au tableau ajoute .getTable() apres
+    @Override
     public JPanTable getMainTable() {
         return mainTable;
     }
@@ -112,11 +113,6 @@ public class JClasseAff extends JMother {
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
-    }
-
-    @Override
-    public JList<String> getMainList() {
-        return null;
     }
 
     public JButton getEnseignantsButton() {

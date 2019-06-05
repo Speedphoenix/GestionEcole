@@ -8,82 +8,95 @@ import java.awt.*;
 import java.util.TreeMap;
 
 public class JEnseigmnementsAff extends JMother {
-    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    private JList<String> mainList;// Jliste qui va afficher les informations
-    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
-    private TreeMap<Integer, Enseignement> mapCopy;//map contenant les objets avec les infos
 
-    private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
+    private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
+    private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
+    private Object [] [] data; //Parametres necesaires pour creer le tableau
+    private String [] title;// les titres de tableau
+    private TreeMap<Integer, Enseignement> mapCopy;//map contenant les objets avec les infos
 
     private Class buffClass; //va recuperer la classe de baseElement
 
-    //ici on passe l'id de la classe
+    private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
+
     public JEnseigmnementsAff(BaseElem what) {
+
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
-        buffList = new DefaultListModel<>();
+        mainPanel.setLayout(null);
+
         this.mapCopy=Ecole.getInstance().getEnseignements();
-
         buffClass = what.getClass();
-
         this.creation(what.getId());
-        mainList.addListSelectionListener(new ListSelectListener(mainList));
         super.motherElem = what;
     }
 
-    private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
+    public void creation(int id){
 
-        if(buffClass == Classe.class)
-        {
+        //creer le titre de tableau
+        title = new String[]{"Enseignement", "Professeur", "Classe"};
+
+        if(buffClass == Classe.class) {
             for(Integer i: mapCopy.keySet())
             {
                 if(mapCopy.get(i).getClasse().getId()==id)
-                    addStringToListModel(i);
+                    sizeCounter++;
             }
+            //initialiser le tableau de donnees
+            data = new Object[sizeCounter][3];
+            sizeCounter=0;
+
+            for(Integer i: mapCopy.keySet())
+            {
+                if(mapCopy.get(i).getClasse().getId()==id)
+                {
+                    addStringToDataContainer(i);
+                    sizeCounter++;
+                }
+            }
+
         }
-        else if(buffClass == Discipline.class)
-        {
+        else if(buffClass == Discipline.class){
             for(Integer i: mapCopy.keySet())
             {
                 if(mapCopy.get(i).getDiscipline().getId()==id)
-                    addStringToListModel(i);
+                    sizeCounter++;
             }
+            //initialiser le tableau de donnees
+            data = new Object[sizeCounter][3];
+            sizeCounter=0;
+
+            for(Integer i: mapCopy.keySet())
+            {
+                if(mapCopy.get(i).getDiscipline().getId()==id)
+                {
+                    addStringToDataContainer(i);
+                    sizeCounter++;
+                }
+            }
+
         }
 
+        mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
 
-        mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
-        mainList.setFont(defaultF);
-        mainPanel.add(new JScrollPane(mainList));// On ajoute notre Jlist avec scroll sur notre Jpanel
+        mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
+
     }
 
-    public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
-        String data = new String("");
-
-        data+= "  Enseignement: "+ mapCopy.get(i).getDiscipline().getNom();
-        data+= "  Professeur: "+ mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom();
-        data+= "  Classe: "+ mapCopy.get(i).getClasse().getNom();
-
-        buffList.addElement(data);
+    public void addStringToDataContainer(Integer i){
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getDiscipline().getNom(),mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom(), mapCopy.get(i).getClasse().getNom()   };
     }
 
+    //pour avoir access au tableau ajoute .getTable() apres
+    @Override
+    public JPanTable getMainTable() {
+        return mainTable;
+    }
+
+    @Override
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    public JList<String> getMainList() {
-        return mainList;
-    }
-
-    public DefaultListModel<String> getBuffList() {
-        return buffList;
-    }
-
-    public TreeMap<Integer, Enseignement> getMapCopy() {
-        return mapCopy;
-    }
-
-    public Font getDefaultF() {
-        return defaultF;
-    }
 }

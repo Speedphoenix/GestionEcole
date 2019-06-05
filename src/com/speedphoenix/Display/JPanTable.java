@@ -24,6 +24,7 @@ public class JPanTable extends JPanel {
 
         table = new JTable(dtm);
         table.setDefaultRenderer(String.class, new TextAreaRenderer());
+        table.getColumn("Prenom").setCellRenderer(new TextAreaRenderer());
         //table.setFont(new Font("Verdana", 1,14));
         setBounds(x,y,width, height);
         table.setRowHeight(80);

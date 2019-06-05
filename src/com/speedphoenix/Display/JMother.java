@@ -11,5 +11,6 @@ public abstract class JMother {
     public JMother() {
     }
     public abstract JPanel getMainPanel();
-    public abstract JList<String> getMainList();
+    //pour avoir access au tableau ajoute .getTable() apres
+    public abstract JPanTable getMainTable();
 }

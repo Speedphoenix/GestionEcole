@@ -56,6 +56,7 @@ public class JNiveauAff extends JMother {
     }
 
     //pour avoir access au tableau ajoute .getTable() apres
+    @Override
     public JPanTable getMainTable() {
         return mainTable;
     }
@@ -65,8 +66,4 @@ public class JNiveauAff extends JMother {
         return mainPanel;
     }
 
-    @Override
-    public JList<String> getMainList() {
-        return null;
-    }
 }
