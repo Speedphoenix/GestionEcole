@@ -50,7 +50,8 @@ public class JTrimestresAff extends JMother {
         mainPanel.setBackground(Color.darkGray);
     }
 
-    public void addStringToDataContainer(Integer i){ // composition de string contenant les infos de l'objet
+    //on rempli notre data array
+    public void addStringToDataContainer(Integer i){
         data [itteratorCounter] = new Object[]{mapCopy.get(i).getNumero(), mapCopy.get(i).getDebut(), mapCopy.get(i).getFin() };
     }
 

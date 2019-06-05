@@ -6,6 +6,8 @@ import java.awt.*;
 
 public class JPanTable extends JPanel {
 
+    JTable table;
+
     public JPanTable(Object [] [] data, String [] title, int x , int y, int width, int height) {
 
         super();
@@ -20,7 +22,7 @@ public class JPanTable extends JPanel {
 
         dtm.setDataVector(data, title);
 
-        JTable table = new JTable(dtm);
+        table = new JTable(dtm);
         table.setDefaultRenderer(String.class, new TextAreaRenderer());
         //table.setFont(new Font("Verdana", 1,14));
         setBounds(x,y,width, height);
@@ -32,6 +34,10 @@ public class JPanTable extends JPanel {
 
 
 
+    }
+
+    public JTable getTable() {
+        return table;
     }
 }
 
