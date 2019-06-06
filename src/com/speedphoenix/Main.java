@@ -63,6 +63,14 @@ public class Main {
         //Le premier panel à etre afficher sera les classes
         mainFrame.createInstance(panel2,panel3,classeAff);
         //l'icone du programme est inséré
+
+        mainFrame.createInstance(panel2,panel3,classeAff);
+        //mainFrame.createInstance(new JBulDetAdd(eco.getBulletins().get(1)));
+       // mainFrame.createInstance(new JBulDetAdd(eco.getEnseignements().get(1)));
+        //mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
+        mainFrame.createInstance(new JClasseAdd(eco.getNiveaux().get(1)));
+        //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
+
         mainFrame.setIconImage(image.getImage());
         //on affiche la Jframe
         mainFrame.setVisible(true);
