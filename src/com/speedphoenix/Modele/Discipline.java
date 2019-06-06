@@ -39,4 +39,8 @@ public class Discipline extends BaseElem {
         String sql = "UPDATE discipline SET nom = '"+nom+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
+
+    public ArrayList<Enseignement> getEnseignements() {
+        return enseignements;
+    }
 }

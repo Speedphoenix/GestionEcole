@@ -654,6 +654,56 @@ public class Ecole extends BaseElem {
         String sql = "UPDATE ecole SET nom = '"+nom+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
+
+    public TreeMap<Integer, Inscription> getInscriptions() {
+        return inscriptions;
+    }
+
+    public TreeMap<Integer, Enseignement> getEnseignements() { return enseignements; }
+
+    public TreeMap<Integer, Classe> getClasses() {
+        return classes;
+    }
+
+    public TreeMap<Integer, AnneeScolaire> getAnneeScolaires() {
+        return anneeScolaires;
+    }
+
+    public TreeMap<Integer, Bulletin> getBulletins() {
+        return bulletins;
+    }
+
+    public TreeMap<Integer, DetailBulletin> getDetailBulletins() {
+        return detailBulletins;
+    }
+
+    public TreeMap<Integer, Discipline> getDisciplines() {
+        return disciplines;
+    }
+
+    public TreeMap<Integer, Evaluation> getEvaluations() {
+        return evaluations;
+    }
+
+    public TreeMap<Integer, Niveau> getNiveaux() {
+        return niveaux;
+    }
+
+    public TreeMap<Integer, Trimestre> getTrimestres() {
+        return trimestres;
+    }
+
+    public TreeMap<Integer, Personne> getPersonnes() {
+        return personnes;
+    }
+
+    public TreeMap<Integer, Eleve> getEleves() {
+        return eleves;
+    }
+
+    public TreeMap<Integer, Enseignant> getEnseignants() {
+        return enseignants;
+    }
     public String getTableName(){
         return "ecole";
     }

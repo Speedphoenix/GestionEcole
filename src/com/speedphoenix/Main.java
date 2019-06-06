@@ -1,7 +1,12 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
+import com.speedphoenix.Display.AddClasses.JBulletinAdd;
+import com.speedphoenix.Display.AddClasses.JEleveAdd;
+import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
 import com.speedphoenix.Modele.*;
+import com.speedphoenix.Display.*;
 
+import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -26,28 +31,39 @@ public class Main {
             e.printStackTrace();
         }
 
-        //conn.displayRemplirChampsTables("discipline");
-        //conn.displayRemplirChampsRequete("Select * from discipline");
 
-        //System.out.println(conn.testExistanceId(2,"anneescolaire"));
-
-        //AnneeScolaire.createInsertRequest(conn);
-        //  DetailBulletin.createInsertRequest("vous êtes une truite.",1,1,conn);
-        // Enseignant.createInsertRequest("Froussin","Detective",conn);
-        //Evaluation.createInsertRequest("gros serieux ?",1,1,conn);
-        // Niveau.createInsertRequest("CP",conn);
-        //Trimestre.createInsertRequest(2,LocalDate.of(1997,11,03),LocalDate.of(1998,02,03),1,conn);
-        //conn.executeAllupdate();
 
 
         Ecole eco = new Ecole();
-        eco.showTest();
+        GraphicContainer mainFrame = GraphicContainer.getInstance();
+        //logo
+        ImageIcon image = new ImageIcon("logo.png");
 
-        //eco.findEleve(8).createDeleteRequest(Connexion.conn);
-        //updateAndRefresh();
-        //eco.refresh();
 
-        //eco.showTest();
+        JRightNavPanel panel2 = new JRightNavPanel();
+        JUpNavBar panel3 = new JUpNavBar();
+        //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
+        JTrimestresAff trimestresAff = new JTrimestresAff();
+        JNiveauAff niveauAff = new JNiveauAff();
+        JClasseAff classeAff = new JClasseAff(eco);
+        JInscriptionAff inscriptionAff = new JInscriptionAff(eco.getClasses().get(1));
+        JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
+        JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getTrimestres().get(2));
+        JBulDetAff jBulDetAff = new JBulDetAff(eco.findBulletin(1));
+        JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
+        JElevesAff jElevesAff = new JElevesAff();
+        JEnseignantsAff jEnseignantsAff = new JEnseignantsAff();
+
+
+        mainFrame.setSize(1016,1000);
+        mainFrame.getContentPane().setLayout(null);
+
+        //mainFrame.createInstance(panel2,panel3,classeAff);
+        //mainFrame.createInstance(new JEnseignantAdd());
+        mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
+        mainFrame.setIconImage(image.getImage());
+
+        mainFrame.setVisible(true);
     }
 
     public static void updateAndRefresh() {
