@@ -34,19 +34,18 @@ public class Main {
 
 
 
-
+        //on crée l'école dont les données sont automatiquement téléchargés depuis la BDD
         Ecole eco = new Ecole();
         GraphicContainer mainFrame = GraphicContainer.getInstance();
         //logo
         ImageIcon image = new ImageIcon("logo.png");
-
-
+        //menu De navigation gauche
         JRightNavPanel panel2 = new JRightNavPanel();
+        //menu De navigation au dessus
         JUpNavBar panel3 = new JUpNavBar();
-        //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
-        JTrimestresAff trimestresAff = new JTrimestresAff();
-        JNiveauAff niveauAff = new JNiveauAff();
+        //on crée le premier Jpanel qui sera afficher
         JClasseAff classeAff = new JClasseAff(eco);
+        /*
         JInscriptionAff inscriptionAff = new JInscriptionAff(eco.getClasses().get(1));
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getTrimestres().get(2));
@@ -54,17 +53,18 @@ public class Main {
         JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
         JElevesAff jElevesAff = new JElevesAff();
         JEnseignantsAff jEnseignantsAff = new JEnseignantsAff();
+        JTrimestresAff trimestresAff = new JTrimestresAff();
+        JNiveauAff niveauAff = new JNiveauAff();
+         */
 
 
         mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
         //Le premier panel à etre afficher sera les classes
         mainFrame.createInstance(panel2,panel3,classeAff);
-        //mainFrame.createInstance(new JEnseignantAdd());
-        //mainFrame.createInstance(new JEnseignantMod(eco.getEnseignants().get(1)));
-        //mainFrame.createInstance(new JBulletinAdd(eco.getInscriptions().get(89)));
+        //l'icone du programme est inséré
         mainFrame.setIconImage(image.getImage());
-
+        //on affiche la Jframe
         mainFrame.setVisible(true);
     }
 
