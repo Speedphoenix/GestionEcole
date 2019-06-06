@@ -21,6 +21,7 @@ public class ChangeObjectListener implements MouseListener {
         enseignement(JEnseigmnementsAff.class.getCanonicalName()),
         niveau(JNiveauAff.class.getCanonicalName()),
         trimestre(JTrimestresAff.class.getCanonicalName()),
+        discipline(JDisciplineAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
 
         private String name = "";
@@ -47,7 +48,6 @@ public class ChangeObjectListener implements MouseListener {
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getClickCount() == 2) {
-            System.out.println("double clicked");
             Connexion conn = Connexion.conn;
             String classType =  elem.getClass().getCanonicalName();
             Ecole eco = Ecole.getInstance();
@@ -69,11 +69,6 @@ public class ChangeObjectListener implements MouseListener {
                 mot = new JBulletinsAff(eco.findTrimestre((int)elem.getListId().get(index)));
 
             }
-            else if(classType.equals(classesType.classe.name))
-            {
-                mot = new JInscriptionAff(eco.findClasse((int)elem.getListId().get(index)));
-
-            }
             else if(classType.equals(classesType.enseignement.name))
             {
 
@@ -88,6 +83,14 @@ public class ChangeObjectListener implements MouseListener {
             {
                 mot = new JClasseAff(eco.findNiveau((int)elem.getListId().get(index)));
             }
+            else if(classType.equals(classesType.discipline.name))
+             {
+                 mot = new JEnseigmnementsAff(eco.findDiscipline((int)elem.getListId().get(index)));
+             }
+            else if(classType.equals(classesType.inscription.name))
+             {
+                 mot = new JBulletinsAff(eco.findInscription((int)elem.getListId().get(index)));
+             }
             //on réaffiche correctement la liste
             if (mot != null)
                 GraphicContainer.getInstance().setContentPan(mot);
