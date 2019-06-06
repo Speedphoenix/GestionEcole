@@ -21,4 +21,6 @@ public abstract class JMother {
     public ArrayList getListId() {
         return listId;
     }
+    //pour avoir access au tableau ajoute .getTable() apres
+    public abstract JPanTable getMainTable();
 }

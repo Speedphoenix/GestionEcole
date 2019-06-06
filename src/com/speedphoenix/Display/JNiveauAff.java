@@ -8,62 +8,60 @@ import java.awt.*;
 import java.util.TreeMap;
 
 public class JNiveauAff extends JMother {
+
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
-    private JList<String> mainList;// Jliste qui va afficher les informations
-    private DefaultListModel <String> buffList;// Liste qui va assembles les strings contenant les informations a afficher
+    private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
+    private Object [] [] data; //Parametres necesaires pour creer le tableau
+    private String [] title;// les titres de tableau
     private TreeMap<Integer, Niveau> mapCopy;//map contenant les objets avec les infos
 
-    private Font defaultF = new Font("Verdana", 1,30);//font par defaut qu'on utilise
+
+    private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
     public JNiveauAff() {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
-        buffList = new DefaultListModel<>();
+        mainPanel.setLayout(null);
+
         this.mapCopy=Ecole.getInstance().getNiveaux();
         this.creation();
-        mainList.addListSelectionListener(new ListSelectListener(mainList));
 
     }
 
-    private void creation(){ // methode d'initialisation des Jlists et Jpanels
+    private void creation(){
+
+        //initialiser le tableau de donnees
+        data = new Object[mapCopy.size()][1];
+        //creer le titre de tableau
+        title = new String[]{"Niveau"};
+
 
         for(Integer i: mapCopy.keySet())
         {
-            addStringToListModel(i);
+            addStringToDataContainer(i);
+            sizeCounter++;
         }
 
-        mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
-        mainList.setFont(defaultF);
-        mainPanel.add(new JScrollPane(mainList));// On ajoute notre Jlist avec scroll sur notre Jpanel
-        mainPanel.setBackground(Color.darkGray);
+        mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
+
+        mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
+        //mainPanel.setBackground(Color.darkGray);
     }
 
-    public void addStringToListModel(Integer i){ // composition de string contenant les infos de l'objet
-        String data = new String("");
-        data+= "  Niveau : "+ mapCopy.get(i).getNom();
-        listId.add(mapCopy.get(i).getId());
-
-
-        buffList.addElement(data);
+    //on rempli notre data array
+    public void addStringToDataContainer(Integer i){
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getNom() };
     }
 
+    //pour avoir access au tableau ajoute .getTable() apres
+    @Override
+    public JPanTable getMainTable() {
+        return mainTable;
+    }
+
+    @Override
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    public JList<String> getMainList() {
-        return mainList;
-    }
-
-    public DefaultListModel<String> getBuffList() {
-        return buffList;
-    }
-
-    public TreeMap<Integer, Niveau> getMapCopy() {
-        return mapCopy;
-    }
-
-    public Font getDefaultF() {
-        return defaultF;
-    }
 }
