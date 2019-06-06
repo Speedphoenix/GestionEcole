@@ -3,7 +3,6 @@ package com.speedphoenix.Display.AddClasses;
 import com.speedphoenix.ActionListeners.AddListener;
 import com.speedphoenix.Modele.BaseElem;
 import com.speedphoenix.Modele.Inscription;
-import sun.reflect.generics.tree.Tree;
 
 import javax.swing.*;
 import java.awt.*;
