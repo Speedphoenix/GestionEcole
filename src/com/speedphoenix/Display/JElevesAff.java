@@ -1,9 +1,8 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.ActionListeners.ListSelectListener;
+import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
 import com.speedphoenix.Modele.Ecole;
 import com.speedphoenix.Modele.Eleve;
-import com.speedphoenix.Modele.Trimestre;
 
 import javax.swing.*;
 import java.awt.*;
@@ -37,7 +36,7 @@ public class JElevesAff extends JMother{
         //initialiser le tableau de donnees
         data = new Object[mapCopy.size()][2];
         //creer le titre de tableau
-        title = new String[]{"Nom", "Prenom"};
+        title = new String[]{"Prénom", "Nom"};
 
 
         for(Integer i: mapCopy.keySet())
@@ -55,7 +54,7 @@ public class JElevesAff extends JMother{
 
     //on rempli notre data array
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{mapCopy.get(i).getNom(), mapCopy.get(i).getPrenom()};
+        data [sizeCounter] = new Object[]{ mapCopy.get(i).getPrenom(),mapCopy.get(i).getNom()};
         listId.add(mapCopy.get(i).getId());
     }
 

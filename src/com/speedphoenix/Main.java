@@ -52,16 +52,14 @@ public class Main {
         JEnseignantsAff jEnseignantsAff = new JEnseignantsAff();
 
 
-        mainFrame.setSize(1050,1000);
+        mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
 
-        mainFrame.createInstance(panel2,panel3,jElevesAff);
+        mainFrame.createInstance(panel2,panel3,bulletinsAff);
         //mainFrame.createInstance(new JEnseignantAdd());
         mainFrame.setIconImage(image.getImage());
 
         mainFrame.setVisible(true);
-
-
     }
 
     public static void updateAndRefresh() {

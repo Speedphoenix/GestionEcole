@@ -1,32 +1,29 @@
 package com.speedphoenix.Display;
 
-
 import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
-import com.speedphoenix.Modele.*;
+import com.speedphoenix.Modele.Discipline;
+import com.speedphoenix.Modele.Ecole;
 
 import javax.swing.*;
-import java.awt.*;
 import java.util.TreeMap;
 
-public class JTrimestresAff extends JMother {
+public class JDisciplineAff extends JMother {
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
     private Object [] [] data; //Parametres necesaires pour creer le tableau
     private String [] title;// les titres de tableau
-    private TreeMap<Integer, Trimestre> mapCopy;//map contenant les objets avec les infos
+    private TreeMap<Integer, Discipline> mapCopy;//map contenant les objets avec les infos
 
 
     private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
-    public JTrimestresAff() {
+    public JDisciplineAff() {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
 
-        //mainList.addListSelectionListener(new ListSelectListener(mainList));
-
-        this.mapCopy=Ecole.getInstance().getTrimestres();
+        this.mapCopy=Ecole.getInstance().getDisciplines();
         this.creation();
 
     }
@@ -34,9 +31,9 @@ public class JTrimestresAff extends JMother {
     private void creation(){
 
         //initialiser le tableau de donnees
-        data = new Object[mapCopy.size()][3];
+        data = new Object[mapCopy.size()][1];
         //creer le titre de tableau
-        title = new String[]{"Trimestre", "Debut", "Fin"};
+        title = new String[]{"Disciplines"};
 
 
         for(Integer i: mapCopy.keySet())
@@ -49,12 +46,12 @@ public class JTrimestresAff extends JMother {
         mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
-        mainPanel.setBackground(Color.darkGray);
+        //mainPanel.setBackground(Color.darkGray);
     }
 
     //on rempli notre data array
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{String.valueOf(mapCopy.get(i).getNumero()), String.valueOf(mapCopy.get(i).getDebut()),String.valueOf(mapCopy.get(i).getFin()) };
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getNom() };
         listId.add(mapCopy.get(i).getId());
     }
 
@@ -68,4 +65,5 @@ public class JTrimestresAff extends JMother {
     public JPanel getMainPanel() {
         return mainPanel;
     }
+
 }

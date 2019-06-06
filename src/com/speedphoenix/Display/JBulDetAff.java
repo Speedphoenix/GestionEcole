@@ -1,6 +1,6 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.ActionListeners.ListSelectListener;
+import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;

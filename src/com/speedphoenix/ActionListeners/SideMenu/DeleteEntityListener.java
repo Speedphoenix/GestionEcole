@@ -1,4 +1,4 @@
-package com.speedphoenix.ActionListeners;
+package com.speedphoenix.ActionListeners.SideMenu;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
@@ -8,18 +8,20 @@ import com.speedphoenix.Modele.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class  DeleteEntity implements ActionListener {
+public class DeleteEntityListener implements ActionListener {
 
     protected JMother elem ;
     protected enum classesType{
 
-        eleve(JInscriptionAff.class.getCanonicalName()),
+        Inscription(JInscriptionAff.class.getCanonicalName()),
         bulletin(JBulletinsAff.class.getCanonicalName()),
         classe(JClasseAff.class.getCanonicalName()),
         enseignement(JEnseigmnementsAff.class.getCanonicalName()),
         niveau(JNiveauAff.class.getCanonicalName()),
         trimestre(JTrimestresAff.class.getCanonicalName()),
+        discipline(JDisciplineAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
+
 
         private String name = "";
 
@@ -38,7 +40,7 @@ public class  DeleteEntity implements ActionListener {
 
     }
 
-    public DeleteEntity(JMother elem)
+    public DeleteEntityListener(JMother elem)
     {
         this.elem = elem;
     }
@@ -57,7 +59,7 @@ public class  DeleteEntity implements ActionListener {
            JMother mot = null;
 
            //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
-           if(classType.equals(classesType.eleve.name))
+           if(classType.equals(classesType.Inscription.name))
            {
                eco.findInscription((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
@@ -127,6 +129,14 @@ public class  DeleteEntity implements ActionListener {
                conn.executeAllupdate();
                eco.refresh();
                mot = new JNiveauAff();
+
+           }
+           else if(classType.equals(classesType.discipline.name))
+           {
+               eco.findDiscipline((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JDisciplineAff();
 
            }
            //on réaffiche correctement la liste

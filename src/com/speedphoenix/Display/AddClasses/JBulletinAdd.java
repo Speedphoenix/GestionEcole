@@ -1,13 +1,9 @@
 package com.speedphoenix.Display.AddClasses;
 
-import com.speedphoenix.ActionListeners.AddListener;
-import com.speedphoenix.Modele.BaseElem;
-import com.speedphoenix.Modele.Inscription;
+import com.speedphoenix.ActionListeners.SideMenu.AddListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.TreeMap;
-import java.util.Vector;
 
 public class JBulletinAdd extends JMotherMod {
 

@@ -1,11 +1,16 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.UpMenu.*;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class JUpNavBar {
     private JPanel mainPanel;
     private Font defaultF = new Font("Verdana", 1,12);
+    private ArrayList<JButton> buttons = new ArrayList<>();
+
 
     public JUpNavBar(){
         mainPanel= new JPanel();
@@ -42,9 +47,25 @@ public class JUpNavBar {
         mainPanel.add(b4);
         mainPanel.add(b5);
         mainPanel.add(b6);
+
+        buttons.add(b1);
+        buttons.add(b2);
+        buttons.add(b3);
+        buttons.add(b4);
+        buttons.add(b5);
+        buttons.add(b6);
     }
 
     public JPanel getMainPanel() {
         return mainPanel;
     }
+    public void setActionsListeners(){
+        buttons.get(0).addActionListener(new ClasseButtonListener());
+        buttons.get(1).addActionListener(new NiveauButtonListener());
+        buttons.get(2).addActionListener(new DisciplineButtonListener());
+        buttons.get(3).addActionListener(new TrimestreButtonListener());
+        buttons.get(4).addActionListener(new EleveButtonListener());
+        buttons.get(5).addActionListener(new EnseignantButtonListener());
+        }
+
 }

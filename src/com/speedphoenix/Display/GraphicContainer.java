@@ -1,11 +1,9 @@
 package com.speedphoenix.Display;
 
+import com.speedphoenix.ActionListeners.ContentPanel.ChangeObjectListener;
 import com.speedphoenix.Display.AddClasses.JMotherMod;
-import com.speedphoenix.Modele.Ecole;
-import com.speedphoenix.Modele.Inscription;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class GraphicContainer extends JFrame {
 
@@ -13,9 +11,10 @@ public class GraphicContainer extends JFrame {
     private JUpNavBar upPanel;
     private JMother contentPan;
     private JMotherMod contentPanAdd;
-    private static GraphicContainer instance = new GraphicContainer();
+    private static GraphicContainer instance = new GraphicContainer("Gestion Ecole");
 
-    private GraphicContainer() {
+    private GraphicContainer(String name) {
+        super.setTitle(name);
     }
 
 
@@ -31,14 +30,15 @@ public class GraphicContainer extends JFrame {
         instance.sidePanel = sidePanel;
         instance.upPanel = upPanel;
         instance.contentPan = contentPan;
-
         getInstance().add(sidePanel.getMainPanel());
         getInstance().add(upPanel.getMainPanel());
         getInstance().add(contentPan.getMainPanel());
+        instance.contentPan.getMainTable().getTable().addMouseListener(new ChangeObjectListener(instance.contentPan));
 
         instance.revalidate();
         instance.repaint();
         instance.getSidePanel().setActionsListeners();
+        instance.getUpPanel().setActionsListeners();
     }
     public static void createInstance(JMotherMod motAdd) {
         instance.sidePanel = null;
@@ -73,6 +73,7 @@ public class GraphicContainer extends JFrame {
         //instance.revalidate();
         instance.add(instance.contentPan.getMainPanel());
         instance.contentPan.getMainPanel().setVisible(true);
+        instance.contentPan.getMainTable().getTable().addMouseListener(new ChangeObjectListener(instance.contentPan));
         // Ecole.getInstance().showTest();
         sidePanel.resetActionsListeners();
     }

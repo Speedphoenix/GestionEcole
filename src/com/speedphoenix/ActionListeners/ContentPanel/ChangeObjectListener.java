@@ -1,0 +1,120 @@
+package com.speedphoenix.ActionListeners.ContentPanel;
+
+import com.speedphoenix.Connexion.Connexion;
+import com.speedphoenix.Display.*;
+import com.speedphoenix.Modele.Classe;
+import com.speedphoenix.Modele.Ecole;
+import com.speedphoenix.Modele.Enseignement;
+import com.speedphoenix.Modele.Trimestre;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+public class ChangeObjectListener implements MouseListener {
+
+    protected JMother elem ;
+    protected enum classesType{
+
+        inscription(JInscriptionAff.class.getCanonicalName()),
+        bulletin(JBulletinsAff.class.getCanonicalName()),
+        classe(JClasseAff.class.getCanonicalName()),
+        enseignement(JEnseigmnementsAff.class.getCanonicalName()),
+        niveau(JNiveauAff.class.getCanonicalName()),
+        trimestre(JTrimestresAff.class.getCanonicalName()),
+        detBulletin(JBulDetAff.class.getCanonicalName());
+
+        private String name = "";
+
+        //Constructeur
+        classesType(String name){
+            this.name = name;
+        }
+        //Constructeur
+        classesType(){
+            this.name = "classesType";
+        }
+
+        public String toString(){
+            return name;
+        }
+
+    }
+
+    public ChangeObjectListener(JMother elem) {
+        this.elem = elem;
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getClickCount() == 2) {
+            System.out.println("double clicked");
+            Connexion conn = Connexion.conn;
+            String classType =  elem.getClass().getCanonicalName();
+            Ecole eco = Ecole.getInstance();
+            JMother mot = null;
+            int index = elem.getMainTable().getTable().getSelectedRow();
+
+
+            //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
+             if(classType.equals(classesType.bulletin.name))
+            {
+                mot = new JBulDetAff(eco.findBulletin((int)elem.getListId().get(index)));
+            }
+            else if(classType.equals(classesType.detBulletin.name))
+            {
+                mot = new JEvaluationAff(eco.findDetailBulletin((int)elem.getListId().get(index)));
+            }
+            else if(classType.equals(classesType.trimestre.name))
+            {
+                mot = new JBulletinsAff(eco.findTrimestre((int)elem.getListId().get(index)));
+
+            }
+            else if(classType.equals(classesType.classe.name))
+            {
+                mot = new JInscriptionAff(eco.findClasse((int)elem.getListId().get(index)));
+
+            }
+            else if(classType.equals(classesType.enseignement.name))
+            {
+
+                if(elem.getMotherElem().getClass() == Classe.class)
+                {
+                    mot = new JEnseigmnementsAff(eco.findClasse(elem.getMotherElem().getId()));
+                }
+                else
+                    mot = new JBulletinsAff(eco.findDiscipline(elem.getMotherElem().getId()));
+            }
+            else if(classType.equals(classesType.niveau.name))
+            {
+                mot = new JClasseAff(eco.findNiveau((int)elem.getListId().get(index)));
+            }
+            //on réaffiche correctement la liste
+            if (mot != null)
+                GraphicContainer.getInstance().setContentPan(mot);
+
+        }
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+}
+
+
+

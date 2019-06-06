@@ -1,6 +1,6 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.ActionListeners.ListSelectListener;
+import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
@@ -55,7 +55,7 @@ public class JEvaluationAff extends JMother{
             }
 
 
-        mainTable = new JPanTable(data, title, 0,100, mainPanel.getWidth(), mainPanel.getHeight()-100);
+        mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
         mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel

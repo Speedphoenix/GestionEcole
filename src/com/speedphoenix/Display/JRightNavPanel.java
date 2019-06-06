@@ -1,6 +1,6 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.ActionListeners.DeleteEntity;
+import com.speedphoenix.ActionListeners.SideMenu.DeleteEntityListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class JRightNavPanel {
     private JPanel mainPanel;
     private ArrayList<JButton> buttons = new ArrayList<>();
-    private DeleteEntity actionDel;
+    private DeleteEntityListener actionDel;
     //private AddEntity actionAdd;
     //private ModifEntity actionMod;
 
@@ -60,16 +60,20 @@ public class JRightNavPanel {
      * sur un élément de la ligne.
      */
     public void setActionsListeners(){
-        actionDel = new DeleteEntity(GraphicContainer.getInstance().getContentPan());
+        actionDel = new DeleteEntityListener(GraphicContainer.getInstance().getContentPan());
         buttons.get(1).addActionListener(actionDel);
         buttons.forEach((value)->value.setEnabled(false));
+        buttons.get(0).setEnabled(true);
+
     }
     public void resetActionsListeners(){
         //on enleve l'action listeners de supprimer et on en met un nouveau
         buttons.get(1).removeActionListener(actionDel);
-        actionDel = new DeleteEntity(GraphicContainer.getInstance().getContentPan());
+        actionDel = new DeleteEntityListener(GraphicContainer.getInstance().getContentPan());
         buttons.get(1).addActionListener(actionDel);
 
         buttons.forEach((value)->value.setEnabled(false));
+        buttons.get(0).setEnabled(true);
+
     }
 }

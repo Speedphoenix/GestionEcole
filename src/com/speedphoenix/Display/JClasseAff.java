@@ -1,6 +1,8 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.ActionListeners.ListSelectListener;
+import com.speedphoenix.ActionListeners.ContentPanel.ClassEleveChoiceListener;
+import com.speedphoenix.ActionListeners.ContentPanel.ClassEnseignantChoiceListener;
+import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
@@ -16,8 +18,8 @@ public class JClasseAff extends JMother {
     private TreeMap<Integer, Classe> mapCopy;//map contenant les objets avec les infos
 
     private JPanel buttonPanel; //panel avec buttons de choix de direction
-    private JButton enseignants;
-    private JButton eleves;
+    private JButton enseignant;
+    private JButton eleve;
 
     private Class buffClass; //va recuperer la classe de baseElement
 
@@ -31,13 +33,16 @@ public class JClasseAff extends JMother {
         buttonPanel.setBackground(Color.darkGray);
         buttonPanel.setLayout(null);
         //on fait 2 buttons
-        JButton enseignants = new JButton("Enseignements");
-        JButton eleves = new JButton("Eleves");
-        enseignants.setBounds(100, 20, 200, 60);
-        eleves.setBounds(500, 20, 200, 60 );
-
-        buttonPanel.add(enseignants);
-        buttonPanel.add(eleves);
+        enseignant = new JButton("Enseignements");
+        eleve = new JButton("Eleves");
+        enseignant.setBounds(100, 20, 200, 60);
+        eleve.setBounds(500, 20, 200, 60 );
+        enseignant.setEnabled(false);
+        enseignant.addActionListener(new ClassEnseignantChoiceListener(this));
+        eleve.addActionListener(new ClassEleveChoiceListener(this));
+        eleve.setEnabled(false);
+        buttonPanel.add(enseignant);
+        buttonPanel.add(eleve);
     /**/
 
         mainPanel = new JPanel();
@@ -116,12 +121,12 @@ public class JClasseAff extends JMother {
         return mainPanel;
     }
 
-    public JButton getEnseignantsButton() {
-        return enseignants;
+    public JButton getEnseignantButton() {
+        return enseignant;
     }
 
-    public JButton getElevesButton() {
-        return eleves;
+    public JButton getEleveButton() {
+        return eleve;
     }
 
     public JPanel getButtonPanel() {

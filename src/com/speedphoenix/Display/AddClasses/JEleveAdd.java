@@ -1,15 +1,9 @@
 package com.speedphoenix.Display.AddClasses;
 
-import com.speedphoenix.ActionListeners.AddListener;
-import com.speedphoenix.ActionListeners.ListSelectListener;
-import com.speedphoenix.Modele.BaseElem;
-import com.speedphoenix.Modele.Ecole;
-import com.speedphoenix.Modele.Inscription;
-import com.speedphoenix.Modele.Trimestre;
+import com.speedphoenix.ActionListeners.SideMenu.AddListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.TreeMap;
 
 public class JEleveAdd extends JMotherMod {
 

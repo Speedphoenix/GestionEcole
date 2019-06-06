@@ -1,4 +1,4 @@
-package com.speedphoenix.ActionListeners;
+package com.speedphoenix.ActionListeners.SideMenu;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;

@@ -1,8 +1,7 @@
 package com.speedphoenix.Display;
 
-import com.speedphoenix.ActionListeners.ListSelectListener;
+import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
 import com.speedphoenix.Modele.Ecole;
-import com.speedphoenix.Modele.Eleve;
 import com.speedphoenix.Modele.Enseignant;
 
 import javax.swing.*;
