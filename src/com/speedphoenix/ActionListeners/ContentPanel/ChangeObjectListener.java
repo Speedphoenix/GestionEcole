@@ -1,11 +1,9 @@
 package com.speedphoenix.ActionListeners.ContentPanel;
 
+import com.mysql.jdbc.jdbc2.optional.SuspendableXAConnection;
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
-import com.speedphoenix.Modele.Classe;
-import com.speedphoenix.Modele.Ecole;
-import com.speedphoenix.Modele.Enseignement;
-import com.speedphoenix.Modele.Trimestre;
+import com.speedphoenix.Modele.*;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -47,6 +45,7 @@ public class ChangeObjectListener implements MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+
         if (e.getClickCount() == 2) {
             Connexion conn = Connexion.conn;
             String classType =  elem.getClass().getCanonicalName();
@@ -64,21 +63,10 @@ public class ChangeObjectListener implements MouseListener {
             {
                 mot = new JEvaluationAff(eco.findDetailBulletin((int)elem.getListId().get(index)));
             }
-            else if(classType.equals(classesType.trimestre.name))
-            {
-                mot = new JBulletinsAff(eco.findTrimestre((int)elem.getListId().get(index)));
+            else if(classType.equals(classesType.trimestre.name)) {
+                 mot = new JBulletinsAff(eco.findTrimestre((int) elem.getListId().get(index)));
 
-            }
-            else if(classType.equals(classesType.enseignement.name))
-            {
-
-                if(elem.getMotherElem().getClass() == Classe.class)
-                {
-                    mot = new JEnseigmnementsAff(eco.findClasse(elem.getMotherElem().getId()));
-                }
-                else
-                    mot = new JBulletinsAff(eco.findDiscipline(elem.getMotherElem().getId()));
-            }
+             }
             else if(classType.equals(classesType.niveau.name))
             {
                 mot = new JClasseAff(eco.findNiveau((int)elem.getListId().get(index)));

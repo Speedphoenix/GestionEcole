@@ -42,7 +42,7 @@ public class Main {
         //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
         JTrimestresAff trimestresAff = new JTrimestresAff();
         JNiveauAff niveauAff = new JNiveauAff();
-        JClasseAff classeAff = new JClasseAff(eco.getNiveaux().get(1));
+        JClasseAff classeAff = new JClasseAff(eco);
         JInscriptionAff inscriptionAff = new JInscriptionAff(eco.getClasses().get(1));
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getInscriptions().get(1));
@@ -55,7 +55,7 @@ public class Main {
         mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
 
-        mainFrame.createInstance(panel2,panel3,bulletinsAff);
+        mainFrame.createInstance(panel2,panel3,classeAff);
         //mainFrame.createInstance(new JEnseignantAdd());
         mainFrame.setIconImage(image.getImage());
 

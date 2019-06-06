@@ -80,6 +80,7 @@ public class JBulletinsAff extends JMother {
 
         }
 
+
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
         mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
