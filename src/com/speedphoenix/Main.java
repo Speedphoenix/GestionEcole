@@ -63,7 +63,8 @@ public class Main {
         //mainFrame.createInstance(new JClasseAdd(eco.getNiveaux().get(1)));
         //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
         //mainFrame.createInstance(new JInscriptionAdd(eco.getClasses().get(1)));
-        mainFrame.createInstance(new JDisciplineAdd());
+        //mainFrame.createInstance(new JDisciplineAdd());
+        mainFrame.createInstance(new JEvaluationAdd(eco.getDetailBulletins().get(1)));
 
         mainFrame.setIconImage(image.getImage());
 
