@@ -13,7 +13,7 @@ public class  DeleteEntity implements ActionListener {
     protected JMother elem ;
     protected enum classesType{
 
-        eleve(JElevesAff.class.getCanonicalName()),
+        eleve(JInscriptionAff.class.getCanonicalName()),
         bulletin(JBulletinsAff.class.getCanonicalName()),
         classe(JClasseAff.class.getCanonicalName()),
         enseignement(JEnseigmnementsAff.class.getCanonicalName()),
@@ -62,7 +62,7 @@ public class  DeleteEntity implements ActionListener {
                eco.findInscription((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
-               mot = new JElevesAff(eco.findClasse(elem.getMotherElem().getId()));
+               mot = new JInscriptionAff(eco.findClasse(elem.getMotherElem().getId()));
 
            }
            else if(classType.equals(classesType.bulletin.name))

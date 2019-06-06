@@ -1,6 +1,5 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
-import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -44,18 +43,17 @@ public class Main {
         JTrimestresAff trimestresAff = new JTrimestresAff();
         JNiveauAff niveauAff = new JNiveauAff();
         JClasseAff classeAff = new JClasseAff(eco.getNiveaux().get(1));
-        JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
+        JInscriptionAff inscriptionAff = new JInscriptionAff(eco.getClasses().get(1));
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getInscriptions().get(1));
         JBulDetAff jBulDetAff = new JBulDetAff(eco.findBulletin(1));
         JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
 
 
-
         mainFrame.setSize(1050,1000);
         mainFrame.getContentPane().setLayout(null);
 
-        mainFrame.createInstance(panel2,panel3,elevesAff);
+        mainFrame.createInstance(panel2,panel3,inscriptionAff);
         //mainFrame.createInstance(new JEnseignantAdd());
         mainFrame.setIconImage(image.getImage());
 

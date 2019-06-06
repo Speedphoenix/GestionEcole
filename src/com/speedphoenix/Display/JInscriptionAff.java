@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JElevesAff extends JMother{
+public class JInscriptionAff extends JMother{
 
  private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
@@ -18,7 +18,7 @@ public class JElevesAff extends JMother{
 
     private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
-    public JElevesAff(BaseElem what) {
+    public JInscriptionAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
