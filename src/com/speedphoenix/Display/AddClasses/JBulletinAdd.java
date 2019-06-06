@@ -4,7 +4,7 @@ import com.speedphoenix.ActionListeners.SideMenu.AddListener;
 
 import javax.swing.*;
 import java.awt.*;
-import com.speedphoenix.ActionListeners.AddListener;
+import com.speedphoenix.ActionListeners.*;
 
 import com.speedphoenix.Modele.*;
 
