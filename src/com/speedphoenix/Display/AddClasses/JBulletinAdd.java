@@ -6,42 +6,39 @@ import com.speedphoenix.Modele.*;
 
 
 import javax.swing.*;
-import java.awt.*;
-import java.util.TreeMap;
-import java.util.Vector;
 
 public class JBulletinAdd extends JMotherMod {
 
     private JPanel mainPanel;
-    private JTextField appreciation;
+    private JTextPane appreciation;
     private JComboBox <BaseElem> choiceBox;
     private JTextPane staticAncestorElement;
 
     private String staticElName;
+    private String boxName;
     private String bufferTextAr;
-
-    private TreeMap<Integer, BaseElem> mapCopy;
+    private String [] boxContent;
 
     private Class buffClass;
+
+    //private Font defaultF = new Font("Verdana", 1,14);
 
     public JBulletinAdd(BaseElem what){
         /**/
         mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1000,1000);
         mainPanel.setLayout(null);
-        mainPanel.setBackground(Color.red);
 
-        /*JPanel J = new JPanel();
-        J.setBounds(0,0,200,200);
-        J.setBackground(Color.blue);*/
-
-        appreciation = new JTextField("Appreciation");
+        appreciation = new JTextPane();
+        appreciation.setName("Appreciation");
+        appreciation.setText("");
         appreciation.setBounds(300, 600, 400, 200);
+        appreciation.setBorder(BorderFactory.createTitledBorder("Entrez l'appreciation"));
 
         choiceBox = new JComboBox<>();
 
         staticAncestorElement = new JTextPane();
-        staticAncestorElement.setBounds(300, 300, 400, 100);
+        staticAncestorElement.setBounds(300, 300, 400, 70);
         /**/
 
         bufferTextAr = new String("");
@@ -53,28 +50,62 @@ public class JBulletinAdd extends JMotherMod {
     public void creation(int id){
 
         if(buffClass==Trimestre.class){
-            mapCopy=new TreeMap<>(Ecole.getInstance().getInscriptions());
             staticElName = new String("Trimestre");
+            boxName = new String("Inscription");
             bufferTextAr += "Numero : " + Ecole.getInstance().getTrimestres().get(id).getNumero()+ "  Debut: "+
                     Ecole.getInstance().getTrimestres().get(id).getDebut() + "  Fin : " +
                     Ecole.getInstance().getTrimestres().get(id).getFin();
 
+            boxContent= new String [Ecole.getInstance().getInscriptions().size()];
+            int counter=0;
+
+            for (Integer i : Ecole.getInstance().getInscriptions().keySet())
+            {
+                boxContent [counter] = "Nom : " + Ecole.getInstance().getInscriptions().get(i).getEleve().getNom()+ "  Prenom: "+
+                        Ecole.getInstance().getInscriptions().get(i).getEleve().getPrenom() + "  ID : " +
+                        Ecole.getInstance().getInscriptions().get(i).getId() + "  Classe : " +
+                        Ecole.getInstance().getInscriptions().get(i).getClasse().getNom() + "  Niveau : " +
+                        Ecole.getInstance().getInscriptions().get(i).getClasse().getNiveau().getNom();
+
+                counter++;
+            }
+
         }
         else if (buffClass==Inscription.class){
-            mapCopy=new TreeMap<>(Ecole.getInstance().getTrimestres());
             staticElName = new String("Inscription");
+            boxName = new String("Trimestre");
             bufferTextAr += "Nom : " + Ecole.getInstance().getInscriptions().get(id).getEleve().getNom()+ "  Prenom: "+
                     Ecole.getInstance().getInscriptions().get(id).getEleve().getPrenom() + "  ID : " +
                     Ecole.getInstance().getInscriptions().get(id).getId() + "  Classe : " +
                     Ecole.getInstance().getInscriptions().get(id).getClasse().getNom() + "  Niveau : " +
                     Ecole.getInstance().getInscriptions().get(id).getClasse().getNiveau().getNom();
+
+            boxContent= new String [Ecole.getInstance().getTrimestres().size()];
+            int counter=0;
+
+            for (Integer i : Ecole.getInstance().getTrimestres().keySet())
+            {
+                boxContent [counter] = "  Debut: "+
+                        Ecole.getInstance().getTrimestres().get(i).getDebut() + "  Fin : " +
+                        Ecole.getInstance().getTrimestres().get(i).getFin();
+
+                counter++;
+            }
         }
 
         staticAncestorElement.setName(staticElName);
         staticAncestorElement.setText(bufferTextAr);
         staticAncestorElement.setEditable(false);
-        //staticAncestorElement.setBackground(Color.black);
+        staticAncestorElement.setBorder(BorderFactory.createTitledBorder(staticElName));
+
+        choiceBox = new JComboBox(boxContent);
+        choiceBox.setBounds(300, 450, 400, 40);
+        choiceBox.setBorder(BorderFactory.createTitledBorder(boxName));
+
+
         mainPanel.add(staticAncestorElement);
+        mainPanel.add(choiceBox);
+        mainPanel.add(appreciation);
 
 
     }

@@ -48,7 +48,7 @@ public class Main {
         JClasseAff classeAff = new JClasseAff(eco.getNiveaux().get(1));
         JInscriptionAff inscriptionAff = new JInscriptionAff(eco.getClasses().get(1));
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
-        JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getInscriptions().get(1));
+        JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getTrimestres().get(2));
         JBulDetAff jBulDetAff = new JBulDetAff(eco.findBulletin(1));
         JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
         JElevesAff jElevesAff = new JElevesAff();
@@ -59,7 +59,7 @@ public class Main {
         mainFrame.getContentPane().setLayout(null);
 
         mainFrame.createInstance(panel2,panel3,inscriptionAff);
-        mainFrame.createInstance(new JBulletinAdd(eco.getInscriptions().get(1)));
+        mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
         mainFrame.setIconImage(image.getImage());
 
         mainFrame.setVisible(true);
