@@ -1,6 +1,6 @@
-package com.speedphoenix.Display.AddClasses;
+package com.speedphoenix.Display.ModClasses;
 
-import com.speedphoenix.ActionListeners.SideMenu.AddListener;
+import com.speedphoenix.ActionListeners.AddOrModifyPanel.AddListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;

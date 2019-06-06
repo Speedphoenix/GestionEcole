@@ -110,7 +110,7 @@ public class DeleteEntityListener implements ActionListener {
                eco.findClasse((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
-               mot = new JClasseAff(eco.findNiveau(elem.getMotherElem().getId()));
+               mot = new JClasseAff(eco);
 
            }
            else if(classType.equals(classesType.enseignement.name))

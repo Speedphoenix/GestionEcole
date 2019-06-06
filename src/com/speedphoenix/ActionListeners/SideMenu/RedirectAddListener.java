@@ -92,7 +92,15 @@ public class RedirectAddListener implements ActionListener {
         }
         else if(classType.equals(classesType.classe.name))
         {
-
+            if(elem.getMotherElem().getClass() == Niveau.class)
+            {
+                Niveau baseElem = eco.findNiveau((int)elem.getMotherElem().getId());
+                mot = new JClasseAdd(baseElem);
+            }
+            else
+            {
+                mot = new JClasseAdd(eco);
+            }
         }
         else if(classType.equals(classesType.enseignement.name))
         {

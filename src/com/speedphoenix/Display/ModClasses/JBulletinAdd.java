@@ -122,7 +122,7 @@ public class JBulletinAdd extends JMotherMod {
 
     public BaseElem getMotherElem() {
         return motherElem;
-   
+   }
 
     public JTextPane getAppreciation() {
         return appreciation;
@@ -135,10 +135,12 @@ public class JBulletinAdd extends JMotherMod {
     public int getListId(int index) {
         return listId.get(index);
     }
-
-    public String getType() {
+    public  String getType(){
         return "bulletin";
+
     }
+
+
     public JPanel getMainPanel() {
         return mainPanel;
     }

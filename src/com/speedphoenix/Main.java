@@ -1,9 +1,8 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
-import com.speedphoenix.Display.ModClasses.JBulletinAdd;
-import com.speedphoenix.Display.ModClasses.JBulletinMod;
-import com.speedphoenix.Display.ModClasses.JEleveMod;
-import com.speedphoenix.Display.ModClasses.JEnseignantMod;
+
+import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.ModClasses.JClasseAdd;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -63,15 +62,14 @@ public class Main {
         //Le premier panel à etre afficher sera les classes
         mainFrame.createInstance(panel2,panel3,classeAff);
         //l'icone du programme est inséré
+        mainFrame.setIconImage(image.getImage());
 
-        mainFrame.createInstance(panel2,panel3,classeAff);
         //mainFrame.createInstance(new JBulDetAdd(eco.getBulletins().get(1)));
        // mainFrame.createInstance(new JBulDetAdd(eco.getEnseignements().get(1)));
         //mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
-        mainFrame.createInstance(new JClasseAdd(eco.getNiveaux().get(1)));
+        //mainFrame.createInstance(new JClasseAdd(eco));
         //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
 
-        mainFrame.setIconImage(image.getImage());
         //on affiche la Jframe
         mainFrame.setVisible(true);
     }

@@ -1,10 +1,12 @@
-package com.speedphoenix.Display.AddClasses;
+package com.speedphoenix.Display.ModClasses;
 
-import com.speedphoenix.ActionListeners.SideMenu.AddListener;
+import com.speedphoenix.ActionListeners.AddOrModifyPanel.AddListener;
+import com.speedphoenix.Display.ModClasses.JMotherMod;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class JClasseAdd extends JMotherMod {
 
@@ -22,6 +24,11 @@ public class JClasseAdd extends JMotherMod {
     private String [] firstBoxContent;
     private String [] secondBoxContent;
 
+    protected ArrayList<Integer> listIdFirstBox = new ArrayList<Integer>();
+    protected ArrayList<Integer> listIdSecondBox = new ArrayList<Integer>();
+
+    private BaseElem motherElem;
+
     private Class buffClass;
 
     private Font defaultF = new Font("Verdana", 1,14);
@@ -35,13 +42,14 @@ public class JClasseAdd extends JMotherMod {
         nomDeClasse = new JTextField();
         nomDeClasse.setName("nomDeClasse");
         nomDeClasse.setText("");
-        nomDeClasse.setBounds(400, 600, 200, 40);
-        nomDeClasse.setBorder(BorderFactory.createTitledBorder("Entrez l'appreciation"));
+        nomDeClasse.setBounds(400, 450, 200, 40);
+        nomDeClasse.setBorder(BorderFactory.createTitledBorder("Entrez le nom de la classe"));
 
         firstChoiceBox = new JComboBox<>();
         secondChoiceBox = new JComboBox<>();
 
-        /**/
+        motherElem = what;
+
 
         bufferTextAr = new String("");
 
@@ -57,7 +65,7 @@ public class JClasseAdd extends JMotherMod {
         if(buffClass== Niveau.class){
             bufferTextAr = Ecole.getInstance().getNiveaux().get(id).getNom();
             staticAncestorElement = new JTextPane();
-            staticAncestorElement.setBounds(400, 500, 200, 40);
+            staticAncestorElement.setBounds(400, 350, 200, 40);
             staticAncestorElement.setName(buffName);
             staticAncestorElement.setText(bufferTextAr);
             staticAncestorElement.setEditable(false);
@@ -71,10 +79,12 @@ public class JClasseAdd extends JMotherMod {
             for (Integer i : Ecole.getInstance().getNiveaux().keySet())
             {
                 secondBoxContent [counter] = "Niveau : " + Ecole.getInstance().getNiveaux().get(i).getNom();
+                listIdSecondBox.add(Ecole.getInstance().findNiveau(i).getId());
+
                 counter++;
             }
             secondChoiceBox = new JComboBox(secondBoxContent);
-            secondChoiceBox.setBounds(400, 500, 200, 40);
+            secondChoiceBox.setBounds(400, 350, 200, 40);
             secondChoiceBox.setBorder(BorderFactory.createTitledBorder(buffName));
 
             mainPanel.add(secondChoiceBox);
@@ -85,14 +95,22 @@ public class JClasseAdd extends JMotherMod {
         counter=0;
         for (Integer i : Ecole.getInstance().getAnneeScolaires().keySet())
         {
-            firstBoxContent [counter] = "Debut : " + Ecole.getInstance().getAnneeScolaires().get(i).getStartYear()+ "  Fin : "+
-                    Ecole.getInstance().getAnneeScolaires().get(i).getEndYear();
+            int startYear = Ecole.getInstance().getAnneeScolaires().get(i).getStartYear();
+            int endYear = Ecole.getInstance().getAnneeScolaires().get(i).getEndYear();
+            int idYear = Ecole.getInstance().getAnneeScolaires().get(i).getId();
+            if(startYear == 0 || endYear == 0)
+            {
+                firstBoxContent [counter] = "Année inconnue, Id : " +idYear ;
+            }
+            else
+                firstBoxContent [counter] = "Debut : " + startYear+ "  Fin : "+ endYear;
+            listIdFirstBox.add(Ecole.getInstance().findAnneeScolaire(i).getId());
 
             counter++;
         }
         firstBoxName = new String("Année scolaire");
         firstChoiceBox = new JComboBox(firstBoxContent);
-        firstChoiceBox.setBounds(400, 450, 200, 40);
+        firstChoiceBox.setBounds(400, 300, 200, 40);
         firstChoiceBox.setBorder(BorderFactory.createTitledBorder(firstBoxName));
 
         accept = new JButton("Ajouter");
@@ -111,8 +129,37 @@ public class JClasseAdd extends JMotherMod {
         return mainPanel;
     }
 
+
+    public JComboBox<BaseElem> getFirstChoiceBox() {
+        return firstChoiceBox;
+    }
+
+    public JComboBox<BaseElem> getSecondChoiceBox() {
+        return secondChoiceBox;
+    }
+
+    public JTextField getNomDeClasse() {
+        return nomDeClasse;
+    }
+
+    public JTextPane getStaticAncestorElement() {
+        return staticAncestorElement;
+    }
+
+    public BaseElem getMotherElem() {
+        return motherElem;
+    }
+
+    public int getListIdFirstBox(int index) {
+        return listIdFirstBox.get(index);
+    }
+
+    public int getListIdSecondBox(int index) {
+        return listIdSecondBox.get(index);
+    }
+
     @Override
     public String getType() {
-        return "detailbulletin";
+        return "classe";
     }
 }
