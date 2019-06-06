@@ -1,8 +1,10 @@
 package com.speedphoenix.Display.AddClasses;
 
+import com.speedphoenix.ActionListeners.SideMenu.AddListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class JBulDetAdd extends JMotherMod{
 
@@ -11,6 +13,8 @@ public class JBulDetAdd extends JMotherMod{
     private JComboBox <BaseElem> choiceBox;
     private JTextPane staticAncestorElement;
 
+    private JButton accept;
+
     private String staticElName;
     private String boxName;
     private String bufferTextAr;
@@ -18,7 +22,7 @@ public class JBulDetAdd extends JMotherMod{
 
     private Class buffClass;
 
-    //private Font defaultF = new Font("Verdana", 1,14);
+    private Font defaultF = new Font("Verdana", 1,14);
 
     public JBulDetAdd(BaseElem what){
         /**/
@@ -97,10 +101,15 @@ public class JBulDetAdd extends JMotherMod{
         choiceBox.setBounds(300, 450, 400, 40);
         choiceBox.setBorder(BorderFactory.createTitledBorder(boxName));
 
+        accept = new JButton("Ajouter");
+        accept.setFont(defaultF);
+        accept.setBounds(800, 800, 120,50);
+        accept.addActionListener(new AddListener(this));
 
         mainPanel.add(staticAncestorElement);
         mainPanel.add(choiceBox);
         mainPanel.add(appreciation);
+        mainPanel.add(accept);
 
 
     }
