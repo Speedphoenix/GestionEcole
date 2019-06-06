@@ -48,12 +48,14 @@ public class Main {
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getInscriptions().get(1));
         JBulDetAff jBulDetAff = new JBulDetAff(eco.findBulletin(1));
         JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
+        JElevesAff jElevesAff = new JElevesAff();
+        JEnseignantsAff jEnseignantsAff = new JEnseignantsAff();
 
 
         mainFrame.setSize(1050,1000);
         mainFrame.getContentPane().setLayout(null);
 
-        mainFrame.createInstance(panel2,panel3,inscriptionAff);
+        mainFrame.createInstance(panel2,panel3,jElevesAff);
         //mainFrame.createInstance(new JEnseignantAdd());
         mainFrame.setIconImage(image.getImage());
 
