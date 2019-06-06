@@ -63,6 +63,7 @@ public class JEvaluationAff extends JMother{
 
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getDetailBulletin().getEnseignement().getDiscipline(),String.valueOf(mapCopy.get(i).getNote()), mapCopy.get(i).getAppreciation()};
+        listId.add(mapCopy.get(i).getId());
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

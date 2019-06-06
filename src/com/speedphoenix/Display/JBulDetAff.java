@@ -87,6 +87,7 @@ public class JBulDetAff  extends  JMother{
 
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getBulletin().getInscription().getEleve().getNom(), mapCopy.get(i).getBulletin().getInscription().getEleve().getPrenom(), mapCopy.get(i).getEnseignement().getDiscipline().getNom(), mapCopy.get(i).getAppreciation()};
+        listId.add(mapCopy.get(i).getId());
     }
 
     //pour avoir access au tableau ajoute .getTable() apres
