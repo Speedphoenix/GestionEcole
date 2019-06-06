@@ -5,6 +5,7 @@ import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class JEnseignementAdd extends JMotherMod {
     private JPanel mainPanel;
@@ -24,6 +25,11 @@ public class JEnseignementAdd extends JMotherMod {
 
     private Font defaultF = new Font("Verdana", 1,14);
 
+    protected ArrayList<Integer> listIdFirstBox = new ArrayList<Integer>();
+    protected ArrayList<Integer> listIdSecondBox = new ArrayList<Integer>();
+
+    private BaseElem motherElem;
+
     public JEnseignementAdd(BaseElem what){
         /**/
         mainPanel = new JPanel();
@@ -37,6 +43,7 @@ public class JEnseignementAdd extends JMotherMod {
 
         bufferTextAr = new String("");
 
+        motherElem = what;
         buffClass=what.getClass();
         creation(what.getId());
     }
@@ -53,46 +60,51 @@ public class JEnseignementAdd extends JMotherMod {
             counter=0;
             for (Integer i : Ecole.getInstance().getClasses().keySet())
             {
-                secondBoxContent [counter] = "Classe : "+ Ecole.getInstance().getClasses().get(i).getNom() + " Niveau : "+
+                secondBoxContent [counter] =  Ecole.getInstance().getClasses().get(i).getNom() + " Niveau : "+
                 Ecole.getInstance().getClasses().get(i).getNiveau().getNom();
+                listIdSecondBox.add(Ecole.getInstance().findClasse(i).getId());
+
                 counter++;
             }
             secondChoiceBox = new JComboBox(secondBoxContent);
             secondChoiceBox.setBounds(400, 500, 200, 40);
-            secondChoiceBox.setBorder(BorderFactory.createTitledBorder(buffName));
+            secondChoiceBox.setBorder(BorderFactory.createTitledBorder("Classe"));
 
         }
         else if (buffClass==Classe.class){
             buffName = new String("Classe");
-            bufferTextAr = Ecole.getInstance().getClasses().get(id).getNom();
+            bufferTextAr = Ecole.getInstance().getClasses().get(id).getNom()+" Niveau : "+Ecole.getInstance().getClasses().get(id).getNiveau().getNom();
 
             secondBoxContent= new String [Ecole.getInstance().getDisciplines().size()];
             counter=0;
             for (Integer i : Ecole.getInstance().getDisciplines().keySet())
             {
                 secondBoxContent [counter] = Ecole.getInstance().getDisciplines().get(i).getNom();
+                listIdSecondBox.add(Ecole.getInstance().findDiscipline(i).getId());
+
                 counter++;
             }
             secondChoiceBox = new JComboBox(secondBoxContent);
             secondChoiceBox.setBounds(400, 500, 200, 40);
-            secondChoiceBox.setBorder(BorderFactory.createTitledBorder(buffName));
+            secondChoiceBox.setBorder(BorderFactory.createTitledBorder("Discipline"));
         }
 
         //element statique (Classe ou Discipline)
         staticAncestorElement = new JTextPane();
         staticAncestorElement.setBounds(400, 400, 200, 40);
-        staticAncestorElement.setName(buffName);
+        staticAncestorElement.setName("Discipline");
         staticAncestorElement.setText(bufferTextAr);
         staticAncestorElement.setEditable(false);
         staticAncestorElement.setBorder(BorderFactory.createTitledBorder(buffName));
 
-        //choice box de l'annee scolaire
+        //choice box des enseignants
         firstBoxContent= new String [Ecole.getInstance().getEnseignants().size()];
         counter=0;
         for (Integer i : Ecole.getInstance().getEnseignants().keySet())
         {
             firstBoxContent [counter] =  Ecole.getInstance().getEnseignants().get(i).getPrenom()+ " " +
                     Ecole.getInstance().getEnseignants().get(i).getNom();
+            listIdFirstBox.add(Ecole.getInstance().findEnseignant(i).getId());
 
             counter++;
         }
@@ -114,6 +126,26 @@ public class JEnseignementAdd extends JMotherMod {
 
     }
 
+    public JComboBox<BaseElem> getFirstChoiceBox() {
+        return firstChoiceBox;
+    }
+
+    public JComboBox<BaseElem> getSecondChoiceBox() {
+        return secondChoiceBox;
+    }
+
+    public int getListIdFirstBox(int index) {
+        return listIdFirstBox.get(index);
+    }
+
+    public int getListIdSecondBox(int index) {
+        return listIdSecondBox.get(index);
+    }
+
+    public BaseElem getMotherElem() {
+        return motherElem;
+    }
+
     @Override
     public JPanel getMainPanel() {
         return mainPanel;
@@ -121,6 +153,6 @@ public class JEnseignementAdd extends JMotherMod {
 
     @Override
     public String getType() {
-        return "detailbulletin";
+        return "enseignement";
     }
 }

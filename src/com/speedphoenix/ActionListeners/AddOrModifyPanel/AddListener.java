@@ -135,6 +135,34 @@ public class AddListener implements ActionListener {
             }
 
         }
+        else if(elem.getType().equals(typePannel.enseignement.type))
+        {
+            JEnseignementAdd trueObject = (JEnseignementAdd) elem;
+            int indexEnseignant = trueObject.getFirstChoiceBox().getSelectedIndex();
+            int index2 = trueObject.getSecondChoiceBox().getSelectedIndex();
+            {
+                if(trueObject.getMotherElem().getClass() == Classe.class)
+                {
+                    int idClasse =  trueObject.getMotherElem().getId();
+                    int idEnseignant = trueObject.getListIdFirstBox(indexEnseignant);
+                    int idDiscipline = trueObject.getListIdSecondBox(index2);
+
+                    Enseignement.createInsertRequest(idClasse,idDiscipline,idEnseignant,conn);
+                }else if(trueObject.getMotherElem().getClass() == Discipline.class)
+                {
+                    int idDiscipline=  trueObject.getMotherElem().getId();
+                    int idEnseignant = trueObject.getListIdFirstBox(indexEnseignant);
+                    int idClasse = trueObject.getListIdSecondBox(index2);
+
+                    Enseignement.createInsertRequest(idClasse,idDiscipline,idEnseignant,conn);
+                }
+            }
+
+
+
+
+
+        }
 
         conn.executeAllupdate();
         Ecole.getInstance().refresh();

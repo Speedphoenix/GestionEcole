@@ -65,7 +65,8 @@ public class Main {
         mainFrame.setIconImage(image.getImage());
 
 
-        mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
+        //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
+        //mainFrame.createInstance(new JEnseignementAdd(eco.findDiscipline(1)));
 
         //on affiche la Jframe
         mainFrame.setVisible(true);
