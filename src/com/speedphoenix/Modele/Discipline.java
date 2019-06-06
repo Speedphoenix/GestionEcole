@@ -13,6 +13,7 @@ public class Discipline extends BaseElem {
         this.nom = nom;
         enseignements = new ArrayList<>();
         Ecole.getInstance().addDiscipline(this);
+        this.addTableChildren(enseignements);
     }
 
     public void addEnseignement(Enseignement what) {
@@ -29,6 +30,10 @@ public class Discipline extends BaseElem {
         String sql = "INSERT INTO discipline (nom) VALUES('"+nom+"');";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "discipline";
+    }
+
     public void createUpdateRequest(String nom, Connexion conn)
     {
         String sql = "UPDATE discipline SET nom = '"+nom+"' WHERE id="+this.id+";";

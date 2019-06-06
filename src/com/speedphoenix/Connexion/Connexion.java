@@ -50,12 +50,12 @@ public class Connexion {
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
-    public Connexion(String nameDatabase, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
+    public Connexion(String nameDatabase, String loginDatabase, String passwordDatabase, String serverDatabase) throws SQLException, ClassNotFoundException {
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
 
         // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-        String urlDatabase = "jdbc:mysql://remotemysql.com/" + nameDatabase;
+        String urlDatabase = "jdbc:mysql://" + serverDatabase + "/" + nameDatabase;
 
         //création d'une connexion JDBC à la base 
         connection = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);
@@ -76,7 +76,7 @@ public class Connexion {
      * @throws java.sql.SQLException
      * @throws java.lang.ClassNotFoundException
      */
-    public Connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase) throws SQLException, ClassNotFoundException {
+    public Connexion(String usernameECE, String passwordECE, String loginDatabase, String passwordDatabase, String serverDatabase) throws SQLException, ClassNotFoundException {
         // chargement driver "com.mysql.jdbc.Driver"
         Class.forName("com.mysql.jdbc.Driver");
 
@@ -87,7 +87,7 @@ public class Connexion {
             System.out.println("Connexion reussie");
 
             // url de connexion "jdbc:mysql://localhost:3305/usernameECE"
-            String urlDatabase = "jdbc:mysql://localhost:3305/" + usernameECE;
+            String urlDatabase = "jdbc:mysql://" + serverDatabase + "/" + usernameECE;
 
             //création d'une connexion JDBC à la base
             connection = DriverManager.getConnection(urlDatabase, loginDatabase, passwordDatabase);

@@ -25,6 +25,8 @@ public class JTrimestresAff extends JMother {
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
 
+        //mainList.addListSelectionListener(new ListSelectListener(mainList));
+
         this.mapCopy=Ecole.getInstance().getTrimestres();
         this.creation();
 
@@ -53,6 +55,7 @@ public class JTrimestresAff extends JMother {
     //on rempli notre data array
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{String.valueOf(mapCopy.get(i).getNumero()), String.valueOf(mapCopy.get(i).getDebut()),String.valueOf(mapCopy.get(i).getFin()) };
+        listId.add(mapCopy.get(i).getId());
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

@@ -115,17 +115,13 @@ public class JBulDetAff  extends  JMother{
     public JBulDetAff(BaseElem what) {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
-        mainPanel.setLayout(null);
-
         buffList = new DefaultListModel<>();
         this.mapCopy= Ecole.getInstance().getDetailBulletins();
-
         buffClass = what.getClass();
-
         this.creation(what.getId());
         mainList.addListSelectionListener(new ListSelectListener(mainList));
-
         super.motherElem = what;
+
     }
 
     private void creation(int id){ // methode d'initialisation des Jlists et Jpanels
@@ -161,6 +157,7 @@ public class JBulDetAff  extends  JMother{
         data+= "  Prenom : "+ mapCopy.get(i).getBulletin().getInscription().getEleve().getPrenom();
         data+= "  Discipline: "+ mapCopy.get(i).getEnseignement().getDiscipline().getNom();
         data+= "  Appreciation: "+ mapCopy.get(i).getAppreciation();
+        listId.add(mapCopy.get(i).getId());
 
         buffList.addElement(data);
     }

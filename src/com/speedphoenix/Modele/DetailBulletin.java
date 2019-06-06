@@ -19,6 +19,7 @@ public class DetailBulletin extends BaseElem {
         enseignement.addDetailBulletin(this);
         bulletin.addDetailBulletin(this);
         Ecole.getInstance().addDetailBulletin(this);
+        this.addTableChildren(evaluations);
     }
 
     public void addEvaluation(Evaluation what) {
@@ -42,6 +43,10 @@ public class DetailBulletin extends BaseElem {
         String sql = "INSERT INTO detailbulletin  (appreciation,bulletinId,enseignementId)VALUES('"+appreciation+"',"+bulletinId+","+enseignementId+");";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "detailbulletin";
+    }
+
     public void createUpdateRequest(String appreciation, Connexion conn)
     {
         String sql = "UPDATE detailbulletin SET appreciation = '"+appreciation+"' WHERE id="+this.id+";";

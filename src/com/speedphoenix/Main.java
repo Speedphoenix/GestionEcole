@@ -1,5 +1,6 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
+import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -16,10 +17,11 @@ public class Main {
         final String DATABASE_NAME = "G6H93QtWu6";
         final String LOGIN_DATABASE = "G6H93QtWu6"; //"root";
         final String PASSWORD_DATABASE = "TyGM5Zgqrk";
+        final String SERVER_DATABASE = "remotemysql.com:3306";
 
         double moy=0;
         try {
-            conn = new Connexion(DATABASE_NAME, LOGIN_DATABASE, PASSWORD_DATABASE);
+            conn = new Connexion(DATABASE_NAME, LOGIN_DATABASE, PASSWORD_DATABASE, SERVER_DATABASE);
         } catch (SQLException e) {
             //e.printStackTrace();
             throw e;
@@ -31,11 +33,11 @@ public class Main {
 
 
         Ecole eco = new Ecole();
+        GraphicContainer mainFrame = GraphicContainer.getInstance();
+        //logo
+        ImageIcon image = new ImageIcon("logo.png");
 
-        //eco.showTest();
 
-        //JStudentsPanel Panel = new JStudentsPanel(eco.getInscriptions());
-        //JStudentsChosen panel = new JStudentsChosen(1,1,eco.getInscriptions());
         JRightNavPanel panel2 = new JRightNavPanel();
         JUpNavBar panel3 = new JUpNavBar();
         //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
@@ -43,6 +45,7 @@ public class Main {
         JNiveauAff niveauAff = new JNiveauAff();
         JClasseAff classeAff = new JClasseAff(eco.getNiveaux().get(1));
         JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
+        System.out.println(eco.getEleves().get(2).getId());
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getInscriptions().get(1));
         JBulDetAff jBulDetAff = new JBulDetAff(eco.getEnseignements().get(1));
@@ -50,7 +53,6 @@ public class Main {
 
 
 
-        GraphicContainer mainFrame = GraphicContainer.getInstance();
 
         mainFrame.setSize(1000,1000);
         mainFrame.getContentPane().setLayout(null);
@@ -63,12 +65,21 @@ public class Main {
         //mainFrame.add(classeAff.getMainPanel());
         //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,jBulDetAff);
+        //mainFrame.createInstance(panel2,panel3,niveauAff);
+        mainFrame.createInstance(new JEnseignantAdd());
+        mainFrame.setIconImage(image.getImage());
 
         mainFrame.setVisible(true);
 
+        //eco.findEleve(8).createDeleteRequest(Connexion.conn);
+        //updateAndRefresh();
+        //eco.refresh();
 
+        //eco.showTest();
+    }
 
-
+    public static void updateAndRefresh() {
+        Connexion.conn.executeAllupdate();
+        Ecole.getInstance().refresh();
     }
 }

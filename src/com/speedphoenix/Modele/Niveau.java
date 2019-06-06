@@ -13,6 +13,7 @@ public class Niveau extends BaseElem {
         classes = new ArrayList<>();
         this.nom = nom;
         Ecole.getInstance().addNiveau(this);
+        this.addTableChildren(classes);
     }
 
     public void addClasse(Classe what) {
@@ -33,4 +34,8 @@ public class Niveau extends BaseElem {
         String sql = "UPDATE niveau SET nom = '"+nom+"' WHERE id="+this.id+";";
         conn.ajouterRequeteMaj(sql);
     }
+    public String getTableName(){
+        return "niveau";
+    }
+
 }

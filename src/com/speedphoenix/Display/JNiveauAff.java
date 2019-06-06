@@ -42,6 +42,7 @@ public class JNiveauAff extends JMother {
             sizeCounter++;
         }
 
+
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
@@ -51,6 +52,7 @@ public class JNiveauAff extends JMother {
     //on rempli notre data array
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getNom() };
+        listId.add(mapCopy.get(i).getId());
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

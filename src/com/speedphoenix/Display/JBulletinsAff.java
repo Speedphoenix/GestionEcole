@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-public class JBulletinsAff extends JMother {
+
+public class JBulletinsAff extends JMother{
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
@@ -28,6 +29,9 @@ public class JBulletinsAff extends JMother {
         this.mapCopy=Ecole.getInstance().getBulletins();
         buffClass = what.getClass();
         this.creation(what.getId());
+
+        //mainList.addListSelectionListener(new ListSelectListener(mainList));
+
         super.motherElem = what;
     }
 
@@ -36,12 +40,14 @@ public class JBulletinsAff extends JMother {
         //creer le titre de tableau
         title = new String[]{"Nom  ", "Prenom", "Appreciation"};
 
-        if(buffClass== Trimestre.class) {
+        if(buffClass == Trimestre.class)
+        {
             for(Integer i: mapCopy.keySet())
             {
                 if(mapCopy.get(i).getTrimestre().getId()==id)
                     sizeCounter++;
             }
+
             //initialiser le tableau de donnees
             data = new Object[sizeCounter][3];
             sizeCounter=0;
@@ -74,9 +80,7 @@ public class JBulletinsAff extends JMother {
                     sizeCounter++;
                 }
             }
-
         }
-
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
@@ -86,6 +90,7 @@ public class JBulletinsAff extends JMother {
 
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getInscription().getEleve().getNom(), mapCopy.get(i).getInscription().getEleve().getPrenom(), mapCopy.get(i).getAppreciation() };
+        listId.add(mapCopy.get(i).getId());
     }
 
     //pour avoir access au tableau ajoute .getTable() apres
