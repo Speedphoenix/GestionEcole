@@ -35,7 +35,7 @@ public class JClasseAdd extends JMotherMod {
         nomDeClasse = new JTextField();
         nomDeClasse.setName("nomDeClasse");
         nomDeClasse.setText("");
-        nomDeClasse.setBounds(300, 600, 200, 40);
+        nomDeClasse.setBounds(400, 600, 200, 40);
         nomDeClasse.setBorder(BorderFactory.createTitledBorder("Entrez l'appreciation"));
 
         firstChoiceBox = new JComboBox<>();
@@ -57,7 +57,7 @@ public class JClasseAdd extends JMotherMod {
         if(buffClass== Niveau.class){
             bufferTextAr = Ecole.getInstance().getNiveaux().get(id).getNom();
             staticAncestorElement = new JTextPane();
-            staticAncestorElement.setBounds(300, 500, 200, 40);
+            staticAncestorElement.setBounds(400, 500, 200, 40);
             staticAncestorElement.setName(buffName);
             staticAncestorElement.setText(bufferTextAr);
             staticAncestorElement.setEditable(false);
@@ -74,7 +74,7 @@ public class JClasseAdd extends JMotherMod {
                 counter++;
             }
             secondChoiceBox = new JComboBox(secondBoxContent);
-            secondChoiceBox.setBounds(300, 500, 200, 40);
+            secondChoiceBox.setBounds(400, 500, 200, 40);
             secondChoiceBox.setBorder(BorderFactory.createTitledBorder(buffName));
 
             mainPanel.add(secondChoiceBox);
@@ -92,7 +92,7 @@ public class JClasseAdd extends JMotherMod {
         }
         firstBoxName = new String("Année scolaire");
         firstChoiceBox = new JComboBox(firstBoxContent);
-        firstChoiceBox.setBounds(300, 450, 200, 40);
+        firstChoiceBox.setBounds(400, 450, 200, 40);
         firstChoiceBox.setBorder(BorderFactory.createTitledBorder(firstBoxName));
 
         accept = new JButton("Ajouter");

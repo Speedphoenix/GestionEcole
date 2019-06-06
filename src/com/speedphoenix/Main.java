@@ -61,6 +61,7 @@ public class Main {
        // mainFrame.createInstance(new JBulDetAdd(eco.getEnseignements().get(1)));
         //mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
         mainFrame.createInstance(new JClasseAdd(eco.getNiveaux().get(1)));
+        //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
 
         mainFrame.setIconImage(image.getImage());
 
