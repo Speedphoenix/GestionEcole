@@ -1,5 +1,8 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
+import com.speedphoenix.Display.AddClasses.JBulletinAdd;
+import com.speedphoenix.Display.AddClasses.JEleveAdd;
+import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -45,7 +48,7 @@ public class Main {
         JClasseAff classeAff = new JClasseAff(eco);
         JInscriptionAff inscriptionAff = new JInscriptionAff(eco.getClasses().get(1));
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
-        JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getInscriptions().get(1));
+        JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getTrimestres().get(2));
         JBulDetAff jBulDetAff = new JBulDetAff(eco.findBulletin(1));
         JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
         JElevesAff jElevesAff = new JElevesAff();
@@ -55,8 +58,9 @@ public class Main {
         mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
 
-        mainFrame.createInstance(panel2,panel3,classeAff);
+        //mainFrame.createInstance(panel2,panel3,classeAff);
         //mainFrame.createInstance(new JEnseignantAdd());
+        mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
         mainFrame.setIconImage(image.getImage());
 
         mainFrame.setVisible(true);
