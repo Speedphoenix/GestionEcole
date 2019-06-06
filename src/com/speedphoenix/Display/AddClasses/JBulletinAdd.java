@@ -1,8 +1,9 @@
 package com.speedphoenix.Display.AddClasses;
 
 import com.speedphoenix.ActionListeners.AddListener;
-import com.speedphoenix.Modele.BaseElem;
-import com.speedphoenix.Modele.Inscription;
+
+import com.speedphoenix.Modele.*;
+
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +12,81 @@ import java.util.Vector;
 
 public class JBulletinAdd extends JMotherMod {
 
+    private JPanel mainPanel;
+    private JTextField appreciation;
+    private JComboBox <BaseElem> choiceBox;
+    private JTextPane staticAncestorElement;
 
-    private JComboBox textTrimestre;
+    private String staticElName;
+    private String bufferTextAr;
+
+    private TreeMap<Integer, BaseElem> mapCopy;
+
+    private Class buffClass;
+
+    public JBulletinAdd(BaseElem what){
+        /**/
+        mainPanel = new JPanel();
+        mainPanel.setBounds(0,0,1000,1000);
+        mainPanel.setLayout(null);
+        mainPanel.setBackground(Color.red);
+
+        /*JPanel J = new JPanel();
+        J.setBounds(0,0,200,200);
+        J.setBackground(Color.blue);*/
+
+        appreciation = new JTextField("Appreciation");
+        appreciation.setBounds(300, 600, 400, 200);
+
+        choiceBox = new JComboBox<>();
+
+        staticAncestorElement = new JTextPane();
+        staticAncestorElement.setBounds(300, 300, 400, 100);
+        /**/
+
+        bufferTextAr = new String("");
+
+        buffClass=what.getClass();
+        creation(what.getId());
+    }
+
+    public void creation(int id){
+
+        if(buffClass==Trimestre.class){
+            mapCopy=new TreeMap<>(Ecole.getInstance().getInscriptions());
+            staticElName = new String("Trimestre");
+            bufferTextAr += "Numero : " + Ecole.getInstance().getTrimestres().get(id).getNumero()+ "  Debut: "+
+                    Ecole.getInstance().getTrimestres().get(id).getDebut() + "  Fin : " +
+                    Ecole.getInstance().getTrimestres().get(id).getFin();
+
+        }
+        else if (buffClass==Inscription.class){
+            mapCopy=new TreeMap<>(Ecole.getInstance().getTrimestres());
+            staticElName = new String("Inscription");
+            bufferTextAr += "Nom : " + Ecole.getInstance().getInscriptions().get(id).getEleve().getNom()+ "  Prenom: "+
+                    Ecole.getInstance().getInscriptions().get(id).getEleve().getPrenom() + "  ID : " +
+                    Ecole.getInstance().getInscriptions().get(id).getId() + "  Classe : " +
+                    Ecole.getInstance().getInscriptions().get(id).getClasse().getNom() + "  Niveau : " +
+                    Ecole.getInstance().getInscriptions().get(id).getClasse().getNiveau().getNom();
+        }
+
+        staticAncestorElement.setName(staticElName);
+        staticAncestorElement.setText(bufferTextAr);
+        staticAncestorElement.setEditable(false);
+        //staticAncestorElement.setBackground(Color.black);
+        mainPanel.add(staticAncestorElement);
+
+
+    }
+
+
+    public String getType() {
+        return "eleve";
+    }
+    public JPanel getMainPanel() {
+        return mainPanel;
+    }
+    /* private JComboBox textTrimestre;
     private JComboBox textInscription;
     private JComboBox textAppreciation;
     private JButton accept;
@@ -106,5 +180,5 @@ public class JBulletinAdd extends JMotherMod {
 
     public Font getDefaultF() {
         return defaultF;
-    }
+    }*/
 }

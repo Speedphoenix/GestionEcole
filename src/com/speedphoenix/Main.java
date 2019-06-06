@@ -1,5 +1,8 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
+import com.speedphoenix.Display.AddClasses.JBulletinAdd;
+import com.speedphoenix.Display.AddClasses.JEleveAdd;
+import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -55,8 +58,8 @@ public class Main {
         mainFrame.setSize(1050,1000);
         mainFrame.getContentPane().setLayout(null);
 
-        mainFrame.createInstance(panel2,panel3,jElevesAff);
-        //mainFrame.createInstance(new JEnseignantAdd());
+        mainFrame.createInstance(panel2,panel3,inscriptionAff);
+        mainFrame.createInstance(new JBulletinAdd(eco.getInscriptions().get(1)));
         mainFrame.setIconImage(image.getImage());
 
         mainFrame.setVisible(true);
