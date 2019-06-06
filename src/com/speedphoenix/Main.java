@@ -1,8 +1,9 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
-import com.speedphoenix.Display.AddClasses.JBulletinAdd;
-import com.speedphoenix.Display.AddClasses.JEleveAdd;
-import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
+import com.speedphoenix.Display.ModClasses.JBulletinAdd;
+import com.speedphoenix.Display.ModClasses.JBulletinMod;
+import com.speedphoenix.Display.ModClasses.JEleveMod;
+import com.speedphoenix.Display.ModClasses.JEnseignantMod;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -60,7 +61,7 @@ public class Main {
 
         //mainFrame.createInstance(panel2,panel3,classeAff);
         //mainFrame.createInstance(new JEnseignantAdd());
-        mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
+        mainFrame.createInstance(new JEnseignantMod(eco.getEnseignants().get(1)));
         //mainFrame.createInstance(new JBulletinAdd(eco.getInscriptions().get(89)));
         mainFrame.setIconImage(image.getImage());
 

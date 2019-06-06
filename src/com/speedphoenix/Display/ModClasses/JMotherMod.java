@@ -1,4 +1,4 @@
-package com.speedphoenix.Display.AddClasses;
+package com.speedphoenix.Display.ModClasses;
 
 import javax.swing.*;
 

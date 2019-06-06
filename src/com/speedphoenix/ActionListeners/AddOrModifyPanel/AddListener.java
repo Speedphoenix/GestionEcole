@@ -2,10 +2,10 @@ package com.speedphoenix.ActionListeners.AddOrModifyPanel;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
-import com.speedphoenix.Display.AddClasses.JBulletinAdd;
-import com.speedphoenix.Display.AddClasses.JEleveAdd;
-import com.speedphoenix.Display.AddClasses.JEnseignantAdd;
-import com.speedphoenix.Display.AddClasses.JMotherMod;
+import com.speedphoenix.Display.ModClasses.JBulletinAdd;
+import com.speedphoenix.Display.ModClasses.JEleveAdd;
+import com.speedphoenix.Display.ModClasses.JEnseignantAdd;
+import com.speedphoenix.Display.ModClasses.JMotherMod;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;

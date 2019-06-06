@@ -1,7 +1,7 @@
 package com.speedphoenix.Display;
 
 import com.speedphoenix.ActionListeners.ContentPanel.ChangeObjectListener;
-import com.speedphoenix.Display.AddClasses.JMotherMod;
+import com.speedphoenix.Display.ModClasses.JMotherMod;
 
 import javax.swing.*;
 
