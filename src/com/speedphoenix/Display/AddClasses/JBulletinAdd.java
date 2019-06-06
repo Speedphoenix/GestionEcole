@@ -113,7 +113,7 @@ public class JBulletinAdd extends JMotherMod {
 
     }
 
-
+    //!!!!!!! WTF IS THIS PL
     public String getType() {
         return "eleve";
     }
