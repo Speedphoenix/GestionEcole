@@ -7,8 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
-
-public class JBulletinsAff extends JMother{
+public class JBulletinsAff extends JMother {
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
@@ -40,14 +39,12 @@ public class JBulletinsAff extends JMother{
         //creer le titre de tableau
         title = new String[]{"Nom  ", "Prenom", "Appreciation"};
 
-        if(buffClass == Trimestre.class)
-        {
+        if(buffClass== Trimestre.class) {
             for(Integer i: mapCopy.keySet())
             {
                 if(mapCopy.get(i).getTrimestre().getId()==id)
                     sizeCounter++;
             }
-
             //initialiser le tableau de donnees
             data = new Object[sizeCounter][3];
             sizeCounter=0;
@@ -80,8 +77,11 @@ public class JBulletinsAff extends JMother{
                     sizeCounter++;
                 }
             }
+
         }
+
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);

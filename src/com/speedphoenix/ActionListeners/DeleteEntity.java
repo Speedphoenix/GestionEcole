@@ -45,17 +45,16 @@ public class  DeleteEntity implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       int index = elem.getMainList().getSelectedIndex();
+       int index = elem.getMainTable().getTable().getSelectedRow();
        Ecole eco = Ecole.getInstance();
 
 
-        if (index > elem.getMainList().getMaxSelectionIndex())
+        if (index > elem.getMainTable().getTable().getMaximumSize().getHeight())
            System.err.println("erreur index trop élevé");
        else{
            Connexion conn = Connexion.conn;
            String classType =  elem.getClass().getCanonicalName();
            JMother mot = null;
-
 
            //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
            if(classType.equals(classesType.eleve.name))

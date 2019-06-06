@@ -19,7 +19,6 @@ public class JEnseigmnementsAff extends JMother {
 
     private int sizeCounter=0;//pour compter combien de "rows" on a a mettre dans data array
 
-    //ici on passe l'id de la classe
     public JEnseigmnementsAff(BaseElem what) {
 
         mainPanel = new JPanel();
@@ -27,9 +26,7 @@ public class JEnseigmnementsAff extends JMother {
         mainPanel.setLayout(null);
 
         this.mapCopy=Ecole.getInstance().getEnseignements();
-
         buffClass = what.getClass();
-
         this.creation(what.getId());
         super.motherElem = what;
     }
@@ -76,9 +73,11 @@ public class JEnseigmnementsAff extends JMother {
                     sizeCounter++;
                 }
             }
+
         }
 
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
@@ -86,8 +85,9 @@ public class JEnseigmnementsAff extends JMother {
     }
 
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{mapCopy.get(i).getDiscipline().getNom(),mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom(), mapCopy.get(i).getClasse().getNom()};
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getDiscipline().getNom(),mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom(), mapCopy.get(i).getClasse().getNom()   };
         listId.add(mapCopy.get(i).getId());
+
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

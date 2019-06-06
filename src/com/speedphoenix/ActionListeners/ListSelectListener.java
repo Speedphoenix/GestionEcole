@@ -8,17 +8,17 @@ import javax.swing.event.ListSelectionListener;
 
 public class ListSelectListener implements ListSelectionListener {
 
-    JList list;
+    JTable table;
 
-    public ListSelectListener(JList list) {
-        this.list = list;
+    public ListSelectListener(JTable table) {
+        this.table = table;
     }
 
     @Override
     public void valueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting() == false) {
 
-            if (list.getSelectedIndex() == -1) {
+            if (table.getSelectedRow() == -1) {
                 //No selection, disable buttons.
                 GraphicContainer.getInstance().getSidePanel().getButtons().get(0).setEnabled(false);
                 GraphicContainer.getInstance().getSidePanel().getButtons().get(1).setEnabled(false);

@@ -22,10 +22,10 @@ public class JElevesAff extends JMother{
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
-
         this.mapCopy=Ecole.getInstance().getInscriptions();
         this.creation(what.getId());
         super.motherElem = what;
+
     }
 
     public void creation(int id){
@@ -54,7 +54,7 @@ public class JElevesAff extends JMother{
         }
 
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
-
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
 

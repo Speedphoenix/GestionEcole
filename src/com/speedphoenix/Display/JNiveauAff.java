@@ -42,8 +42,8 @@ public class JNiveauAff extends JMother {
             sizeCounter++;
         }
 
-
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         //mainPanel.setBackground(Color.darkGray);

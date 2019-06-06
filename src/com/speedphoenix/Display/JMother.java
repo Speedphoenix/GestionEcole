@@ -13,10 +13,6 @@ public abstract class JMother {
     }
     public abstract JPanel getMainPanel();
 
-    //pour avoir access au tableau ajoute .getTable() apres
-    public abstract JPanTable getMainTable();
-    //public abstract JList<String> getMainList();
-
     public BaseElem getMotherElem() {
         return motherElem;
     }
@@ -24,4 +20,6 @@ public abstract class JMother {
     public ArrayList getListId() {
         return listId;
     }
+    //pour avoir access au tableau ajoute .getTable() apres
+    public abstract JPanTable getMainTable();
 }

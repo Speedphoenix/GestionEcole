@@ -52,7 +52,6 @@ public class JClasseAff extends JMother {
 
     public void creation(int id){
 
-
         //creer le titre de tableau
         title = new String[]{"Classe", "Niveau", "Année Scolaire"};
 
@@ -93,6 +92,7 @@ public class JClasseAff extends JMother {
         }
 
         mainTable = new JPanTable(data, title, 0,100, mainPanel.getWidth(), mainPanel.getHeight()-100);
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.add(buttonPanel);
