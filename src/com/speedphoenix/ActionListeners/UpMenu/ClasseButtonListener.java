@@ -3,7 +3,8 @@ package com.speedphoenix.ActionListeners.UpMenu;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import com.speedphoenix.Display.*;
-import com.speedphoenix.Modele.AnneeScolaire;
+import com.speedphoenix.Display.Affclasses.JClasseAff;
+import com.speedphoenix.Display.Affclasses.JMother;
 import com.speedphoenix.Modele.Ecole;
 
 public class ClasseButtonListener implements ActionListener {

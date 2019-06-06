@@ -2,14 +2,24 @@ package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
 
 import com.speedphoenix.Display.*;
-import com.speedphoenix.Display.ModClasses.*;
+import com.speedphoenix.Display.Affclasses.JClasseAff;
+import com.speedphoenix.Display.Affclasses.JRightNavPanel;
+import com.speedphoenix.Display.Affclasses.JUpNavBar;
+import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
 import com.speedphoenix.Modele.*;
-import com.speedphoenix.Display.*;
 
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+
+/*
+*
+* SOURCES :
+*   - DatePicker : https://stackoverflow.com/questions/26794698/how-do-i-implement-jdatepicker
+*
+* */
 public class Main {
 
     public static void main(String[] args) throws SQLException {
@@ -60,23 +70,15 @@ public class Main {
         mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
         //Le premier panel à etre afficher sera les classes
-        mainFrame.createInstance(panel2,panel3,classeAff);
+        //mainFrame.createInstance(panel2,panel3,classeAff);
         //l'icone du programme est inséré
         mainFrame.setIconImage(image.getImage());
-        //mainFrame.createInstance(new JBulDetAdd(eco.getBulletins().get(1)));
-        //mainFrame.createInstance(new JBulDetAdd(eco.getEnseignements().get(1)));
-        //mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
-        //mainFrame.createInstance(new JClasseAdd(eco.getNiveaux().get(1)));
-        //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
-        //mainFrame.createInstance(new JInscriptionAdd(eco.getClasses().get(1)));
-        //mainFrame.createInstance(new JDisciplineAdd());
-        mainFrame.createInstance(new JEvaluationAdd(eco.getDetailBulletins().get(1)));
+
 
         
 
 
-        //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
-        //mainFrame.createInstance(new JEnseignementAdd(eco.findDiscipline(1)));
+        mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
 
         //on affiche la Jframe
         mainFrame.setVisible(true);

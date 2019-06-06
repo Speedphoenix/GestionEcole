@@ -2,7 +2,11 @@ package com.speedphoenix.ActionListeners.SideMenu;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.Affclasses.*;
 import com.speedphoenix.Display.ModClasses.*;
+import com.speedphoenix.Display.ModClasses.Mod.JBulletinMod;
+import com.speedphoenix.Display.ModClasses.Mod.JEleveMod;
+import com.speedphoenix.Display.ModClasses.Mod.JEnseignantMod;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;

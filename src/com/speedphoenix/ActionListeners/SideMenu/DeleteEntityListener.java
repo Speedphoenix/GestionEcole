@@ -2,6 +2,7 @@ package com.speedphoenix.ActionListeners.SideMenu;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.Affclasses.*;
 import com.speedphoenix.Modele.*;
 
 
@@ -22,6 +23,8 @@ public class DeleteEntityListener implements ActionListener {
         discipline(JDisciplineAff.class.getCanonicalName()),
         eleve(JElevesAff.class.getCanonicalName()),
         enseignant(JEnseignantsAff.class.getCanonicalName()),
+        evaluation(JEvaluationAff.class.getCanonicalName()),
+        anneescol(JAnneeScolAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
 
 
@@ -102,7 +105,8 @@ public class DeleteEntityListener implements ActionListener {
                eco.findTrimestre((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
-               mot = new JTrimestresAff();
+               System.out.println("hihi"+eco.findAnneeScolaire(elem.getMotherElem().getId()));
+               mot = new JTrimestresAff(eco.findAnneeScolaire(elem.getMotherElem().getId()));
 
            }
            else if(classType.equals(classesType.classe.name))
@@ -154,6 +158,20 @@ public class DeleteEntityListener implements ActionListener {
                conn.executeAllupdate();
                eco.refresh();
                mot = new JElevesAff();
+           }
+           else if(classType.equals(classesType.evaluation.name))
+           {
+               eco.findEvaluation((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JEvaluationAff(eco.findDetailBulletin(elem.getMotherElem().getId()));
+           }
+           else if(classType.equals(classesType.anneescol.name))
+           {
+               eco.findAnneeScolaire((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JAnneeScolAff();
            }
            //on réaffiche correctement la liste
            GraphicContainer.getInstance().setContentPan(mot);

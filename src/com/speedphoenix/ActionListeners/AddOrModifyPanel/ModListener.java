@@ -2,10 +2,13 @@ package com.speedphoenix.ActionListeners.AddOrModifyPanel;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.GraphicContainer;
-import com.speedphoenix.Display.JClasseAff;
-import com.speedphoenix.Display.JRightNavPanel;
-import com.speedphoenix.Display.JUpNavBar;
+import com.speedphoenix.Display.Affclasses.JClasseAff;
+import com.speedphoenix.Display.Affclasses.JRightNavPanel;
+import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.ModClasses.*;
+import com.speedphoenix.Display.ModClasses.Mod.JBulletinMod;
+import com.speedphoenix.Display.ModClasses.Mod.JEleveMod;
+import com.speedphoenix.Display.ModClasses.Mod.JEnseignantMod;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;

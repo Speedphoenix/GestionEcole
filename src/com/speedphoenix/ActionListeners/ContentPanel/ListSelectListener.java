@@ -1,7 +1,7 @@
 package com.speedphoenix.ActionListeners.ContentPanel;
 
 import com.speedphoenix.Display.GraphicContainer;
-import com.speedphoenix.Display.JClasseAff;
+import com.speedphoenix.Display.Affclasses.JClasseAff;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;

@@ -2,10 +2,11 @@ package com.speedphoenix.ActionListeners.SideMenu;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.Affclasses.*;
 import com.speedphoenix.Display.ModClasses.*;
+import com.speedphoenix.Display.ModClasses.Add.*;
 import com.speedphoenix.Modele.*;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,6 +24,8 @@ public class RedirectAddListener implements ActionListener {
         discipline(JDisciplineAff.class.getCanonicalName()),
         eleve(JElevesAff.class.getCanonicalName()),
         enseignant(JEnseignantsAff.class.getCanonicalName()),
+        evaluation(JEvaluationAff.class.getCanonicalName()),
+        anneeScol(JAnneeScolAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
 
 
@@ -58,8 +61,8 @@ public class RedirectAddListener implements ActionListener {
         //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
         if(classType.equals(classesType.Inscription.name))
         {
-
-
+            Classe baseElem = eco.findClasse((int)elem.getMotherElem().getId());
+            mot = new JInscriptionAdd(baseElem);
         }
         else if(classType.equals(classesType.bulletin.name))
         {
@@ -91,7 +94,8 @@ public class RedirectAddListener implements ActionListener {
         }
         else if(classType.equals(classesType.trimestre.name))
         {
-
+            AnneeScolaire baseElem = eco.findAnneeScolaire((int)elem.getMotherElem().getId());
+            mot = new JTrimestreAdd(baseElem);
 
         }
         else if(classType.equals(classesType.classe.name))
@@ -125,10 +129,14 @@ public class RedirectAddListener implements ActionListener {
         {
 
 
+        }else if(classType.equals(classesType.anneeScol.name))
+        {
+
+
         }
         else if(classType.equals(classesType.discipline.name))
         {
-
+            mot = new JDisciplineAdd();
 
         } else if(classType.equals(classesType.enseignant.name))
         {
@@ -138,8 +146,14 @@ public class RedirectAddListener implements ActionListener {
         {
             mot = new JEleveAdd();
         }
+        else if(classType.equals(classesType.evaluation.name))
+        {
+            DetailBulletin baseElem = eco.findDetailBulletin((int)elem.getMotherElem().getId());
+            mot = new JEvaluationAdd(baseElem);
+        }
         //on réaffiche correctement la liste
-        GraphicContainer.createInstance(mot);
+        if( mot != null)
+            GraphicContainer.createInstance(mot);
 
     }
 }

@@ -1,6 +1,9 @@
 package com.speedphoenix.Display;
 
 import com.speedphoenix.ActionListeners.ContentPanel.ChangeObjectListener;
+import com.speedphoenix.Display.Affclasses.JMother;
+import com.speedphoenix.Display.Affclasses.JRightNavPanel;
+import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.ModClasses.JMotherMod;
 
 import javax.swing.*;
