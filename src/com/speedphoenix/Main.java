@@ -1,13 +1,25 @@
 package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
-import com.speedphoenix.Display.AddClasses.*;
-import com.speedphoenix.Modele.*;
+
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.Affclasses.JClasseAff;
+import com.speedphoenix.Display.Affclasses.JRightNavPanel;
+import com.speedphoenix.Display.Affclasses.JUpNavBar;
+import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
+import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
+
+/*
+*
+* SOURCES :
+*   - DatePicker : https://stackoverflow.com/questions/26794698/how-do-i-implement-jdatepicker
+*
+* */
 public class Main {
 
     public static void main(String[] args) throws SQLException {
@@ -31,19 +43,18 @@ public class Main {
 
 
 
-
+        //on crée l'école dont les données sont automatiquement téléchargés depuis la BDD
         Ecole eco = new Ecole();
         GraphicContainer mainFrame = GraphicContainer.getInstance();
         //logo
         ImageIcon image = new ImageIcon("logo.png");
-
-
+        //menu De navigation gauche
         JRightNavPanel panel2 = new JRightNavPanel();
+        //menu De navigation au dessus
         JUpNavBar panel3 = new JUpNavBar();
-        //JProfessorsChosen panel4 = new JProfessorsChosen(1,eco.getEnseignements());
-        JTrimestresAff trimestresAff = new JTrimestresAff();
-        JNiveauAff niveauAff = new JNiveauAff();
+        //on crée le premier Jpanel qui sera afficher
         JClasseAff classeAff = new JClasseAff(eco);
+        /*
         JInscriptionAff inscriptionAff = new JInscriptionAff(eco.getClasses().get(1));
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getTrimestres().get(2));
@@ -51,24 +62,26 @@ public class Main {
         JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
         JElevesAff jElevesAff = new JElevesAff();
         JEnseignantsAff jEnseignantsAff = new JEnseignantsAff();
+        JTrimestresAff trimestresAff = new JTrimestresAff();
+        JNiveauAff niveauAff = new JNiveauAff();
+         */
 
 
         mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
-
-        mainFrame.createInstance(panel2,panel3,classeAff);
-        //mainFrame.createInstance(new JBulDetAdd(eco.getBulletins().get(1)));
-        //mainFrame.createInstance(new JBulDetAdd(eco.getEnseignements().get(1)));
-        //mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
-        //mainFrame.createInstance(new JClasseAdd(eco.getNiveaux().get(1)));
-        //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
-        //mainFrame.createInstance(new JInscriptionAdd(eco.getClasses().get(1)));
-        //mainFrame.createInstance(new JDisciplineAdd());
-        mainFrame.createInstance(new JEvaluationAdd(eco.getDetailBulletins().get(1)));
-
+        //Le premier panel à etre afficher sera les classes
+        //mainFrame.createInstance(panel2,panel3,classeAff);
+        //l'icone du programme est inséré
         mainFrame.setIconImage(image.getImage());
 
-       // mainFrame.setVisible(true);
+
+        
+
+
+        mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
+
+        //on affiche la Jframe
+        mainFrame.setVisible(true);
     }
 
     public static void updateAndRefresh() {

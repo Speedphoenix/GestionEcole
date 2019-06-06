@@ -2,6 +2,8 @@ package com.speedphoenix.ActionListeners.ContentPanel;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.Affclasses.JEnseigmnementsAff;
+import com.speedphoenix.Display.Affclasses.JMother;
 import com.speedphoenix.Modele.Ecole;
 
 import java.awt.event.ActionEvent;
