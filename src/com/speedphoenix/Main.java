@@ -68,7 +68,7 @@ public class Main {
 
         mainFrame.setIconImage(image.getImage());
 
-        mainFrame.setVisible(true);
+       // mainFrame.setVisible(true);
     }
 
     public static void updateAndRefresh() {
