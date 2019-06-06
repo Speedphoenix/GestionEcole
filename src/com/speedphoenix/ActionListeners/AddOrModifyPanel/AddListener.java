@@ -1,4 +1,4 @@
-package com.speedphoenix.ActionListeners.SideMenu;
+package com.speedphoenix.ActionListeners.AddOrModifyPanel;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
@@ -47,7 +47,7 @@ public class AddListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Connexion conn = Connexion.conn;
-
+        Ecole eco = Ecole.getInstance();
 
         if(elem.getType().equals(typePannel.eleve.type))
         {
@@ -55,20 +55,31 @@ public class AddListener implements ActionListener {
             Eleve.createInsertRequest(trueObject.getTextSurname().getText(),trueObject.getTextName().getText(),conn);
         }else if(elem.getType().equals(typePannel.enseignant.type))
         {
-            System.out.println("ba ui qyoi");
             JEnseignantAdd trueObject = (JEnseignantAdd) elem;
             Enseignant.createInsertRequest(trueObject.getTextSurname().getText(),trueObject.getTextName().getText(),conn);
         }
         else if(elem.getType().equals(typePannel.bulletin.type))
         {
-            System.out.println("ba ui qyoi");
             JBulletinAdd trueObject = (JBulletinAdd) elem;
-           // Bulletin.createInsertRequest(trueObject.getTextSurname().getText(),trueObject.getTextName().getText(),conn);
+            int index = trueObject.getChoiceBox().getSelectedIndex();
+            if(trueObject.getMotherElem().getClass() == Inscription.class)
+            {
+                int idTrimestre =  trueObject.getListId(index);
+                int idInscription = trueObject.getMotherElem().getId();
+                Bulletin.createInsertRequest(trueObject.getAppreciation().getText(),idInscription,idTrimestre,conn);
+
+            }else if(trueObject.getMotherElem().getClass() == Trimestre.class)
+            {
+                int idTrimestre =  trueObject.getMotherElem().getId();
+                int idInscription = trueObject.getListId(index);
+                Bulletin.createInsertRequest(trueObject.getAppreciation().getText(),idInscription,idTrimestre,conn);
+
+            }
         }
 
         conn.executeAllupdate();
         Ecole.getInstance().refresh();
-        GraphicContainer.createInstance(new JRightNavPanel(),new JUpNavBar(),new JTrimestresAff());
+        GraphicContainer.createInstance(new JRightNavPanel(),new JUpNavBar(),new JClasseAff(eco));
 
     }
 }

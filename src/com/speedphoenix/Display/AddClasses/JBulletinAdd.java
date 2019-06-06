@@ -1,14 +1,12 @@
 package com.speedphoenix.Display.AddClasses;
 
-import com.speedphoenix.ActionListeners.SideMenu.AddListener;
-
 import javax.swing.*;
-import java.awt.*;
-import com.speedphoenix.ActionListeners.*;
 
+import com.speedphoenix.ActionListeners.AddOrModifyPanel.AddListener;
 import com.speedphoenix.Modele.*;
 
-import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 public class JBulletinAdd extends JMotherMod {
 
@@ -21,16 +19,23 @@ public class JBulletinAdd extends JMotherMod {
     private String boxName;
     private String bufferTextAr;
     private String [] boxContent;
-
+    private BaseElem motherElem;
+    protected ArrayList<Integer> listId = new ArrayList<Integer>();
     private Class buffClass;
+    private JButton accept;
 
-    //private Font defaultF = new Font("Verdana", 1,14);
+    private Font defaultF = new Font("Verdana", 1,14);
 
     public JBulletinAdd(BaseElem what){
         /**/
         mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1000,1000);
         mainPanel.setLayout(null);
+
+        accept = new JButton("Ajouter");
+        accept.setFont(defaultF);
+        accept.setBounds(800, 800, 120,50);
+        accept.addActionListener(new AddListener(this));
 
         appreciation = new JTextPane();
         appreciation.setName("Appreciation");
@@ -42,8 +47,8 @@ public class JBulletinAdd extends JMotherMod {
 
         staticAncestorElement = new JTextPane();
         staticAncestorElement.setBounds(300, 300, 400, 70);
-        /**/
 
+        motherElem = what;
         bufferTextAr = new String("");
 
         buffClass=what.getClass();
@@ -64,12 +69,11 @@ public class JBulletinAdd extends JMotherMod {
 
             for (Integer i : Ecole.getInstance().getInscriptions().keySet())
             {
-                boxContent [counter] = "Nom : " + Ecole.getInstance().getInscriptions().get(i).getEleve().getNom()+ "  Prenom: "+
-                        Ecole.getInstance().getInscriptions().get(i).getEleve().getPrenom() + "  ID : " +
-                        Ecole.getInstance().getInscriptions().get(i).getId() + "  Classe : " +
-                        Ecole.getInstance().getInscriptions().get(i).getClasse().getNom() + "  Niveau : " +
+                boxContent [counter] =  Ecole.getInstance().getInscriptions().get(i).getEleve().getPrenom()+" "+
+                        Ecole.getInstance().getInscriptions().get(i).getEleve().getNom() + "  Classe : " +
+                        Ecole.getInstance().getInscriptions().get(i).getClasse().getNom() + "  Nv : " +
                         Ecole.getInstance().getInscriptions().get(i).getClasse().getNiveau().getNom();
-
+                        listId.add(Ecole.getInstance().getInscriptions().get(i).getId());
                 counter++;
             }
 
@@ -77,11 +81,11 @@ public class JBulletinAdd extends JMotherMod {
         else if (buffClass==Inscription.class){
             staticElName = new String("Inscription");
             boxName = new String("Trimestre");
-            bufferTextAr += "Nom : " + Ecole.getInstance().getInscriptions().get(id).getEleve().getNom()+ "  Prenom: "+
-                    Ecole.getInstance().getInscriptions().get(id).getEleve().getPrenom() + "  ID : " +
-                    Ecole.getInstance().getInscriptions().get(id).getId() + "  Classe : " +
-                    Ecole.getInstance().getInscriptions().get(id).getClasse().getNom() + "  Niveau : " +
+            bufferTextAr += Ecole.getInstance().getInscriptions().get(id).getEleve().getPrenom()+" "+
+                    Ecole.getInstance().getInscriptions().get(id).getEleve().getNom() + "  Classe : " +
+                    Ecole.getInstance().getInscriptions().get(id).getClasse().getNom() + "  Nv : " +
                     Ecole.getInstance().getInscriptions().get(id).getClasse().getNiveau().getNom();
+
 
             boxContent= new String [Ecole.getInstance().getTrimestres().size()];
             int counter=0;
@@ -91,6 +95,8 @@ public class JBulletinAdd extends JMotherMod {
                 boxContent [counter] = "  Debut: "+
                         Ecole.getInstance().getTrimestres().get(i).getDebut() + "  Fin : " +
                         Ecole.getInstance().getTrimestres().get(i).getFin();
+                        listId.add(Ecole.getInstance().getTrimestres().get(i).getId());
+
 
                 counter++;
             }
@@ -109,110 +115,32 @@ public class JBulletinAdd extends JMotherMod {
         mainPanel.add(staticAncestorElement);
         mainPanel.add(choiceBox);
         mainPanel.add(appreciation);
-
-
-    }
-
-
-    public String getType() {
-        return "eleve";
-    }
-    public JPanel getMainPanel() {
-        return mainPanel;
-    }
-    /* private JComboBox textTrimestre;
-    private JComboBox textInscription;
-    private JComboBox textAppreciation;
-    private JButton accept;
-    private boolean bulOrInscr;//0 for bulletins,1 for inscriptions
-    private int sentId;
-
-
-
-    private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
-
-    public JBulletinAdd(int Id,boolean bulOrInscr) {
-
-        //creation des titre au dessus des objets d'interractions
-        JLabel labelTrimestre;
-        JLabel labelInscription;
-        JLabel labelAppreciation;
-
-        this.sentId = Id;
-        this.bulOrInscr=bulOrInscr;
-        if(bulOrInscr)
-        {
-
-        }
-
-
-
-        mainPanel = new JPanel();
-        mainPanel.setBounds(0,0,1000,1000);
-        mainPanel.setBackground(Color.lightGray);
-        mainPanel.setLayout(null);
-        //composants
-        JLabel nomFenetre = new JLabel("CREATION BULLETIN");
-        nomFenetre.setBounds(300, 10, 400,200);
-        nomFenetre.setFont(new Font("Verdana",3,40));
-        accept = new JButton("Ajouter");
-        accept.setFont(defaultF);
-        accept.setBounds(800, 800, 120,50);
-        accept.addActionListener(new AddListener(this));
-
-        textTrimestre = new JComboBox();
-
-        textTrimestre.setFont(defaultF);
-        textTrimestre.setBounds(400, 300, 200,40);
-        textInscription = new JComboBox();
-        textInscription.setFont(defaultF);
-        textInscription.setBounds(400, 500, 200,40);
-        labelTrimestre = new JLabel("Choissisez le trimestre");
-        labelTrimestre.setFont(defaultF);
-        labelTrimestre.setBounds(400, 140, 200,100);
-        labelInscription = new JLabel("Choissisez l'élève");
-        labelInscription.setFont(defaultF);
-        labelInscription.setBounds(400, 340, 200,100);
-        labelInscription = new JLabel("Entrez une appréciation");
-        labelInscription.setFont(defaultF);
-        labelInscription.setBounds(400, 540, 200,100);
-       //ajouts des composants
         mainPanel.add(accept);
-        mainPanel.add(textTrimestre);
-        mainPanel.add(textInscription);
-        mainPanel.add(labelTrimestre);
-        mainPanel.add(labelInscription);
-        mainPanel.add(nomFenetre);
+
 
     }
 
+    public BaseElem getMotherElem() {
+        return motherElem;
+    }
 
+    public JTextPane getAppreciation() {
+        return appreciation;
+    }
 
-    
+    public JComboBox<BaseElem> getChoiceBox() {
+        return choiceBox;
+    }
+
+    public int getListId(int index) {
+        return listId.get(index);
+    }
+
+    public String getType() {
+        return "bulletin";
+    }
     public JPanel getMainPanel() {
         return mainPanel;
     }
 
-    @Override
-    public String getType() {
-        return "eleve";
-    }
-
-    public JComboBox gettextTrimestre() {
-        return textTrimestre;
-    }
-
-    public JComboBox gettextInscription() {
-        return textInscription;
-    }
-
-
-
-    public JButton getAccept() {
-        return accept;
-    }
-
-    public Font getDefaultF() {
-        return defaultF;
-    }*/
 }
