@@ -45,6 +45,7 @@ public class JTrimestresAff extends JMother {
         }
 
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
@@ -53,6 +54,8 @@ public class JTrimestresAff extends JMother {
     //on rempli notre data array
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{String.valueOf(mapCopy.get(i).getNumero()), String.valueOf(mapCopy.get(i).getDebut()),String.valueOf(mapCopy.get(i).getFin()) };
+        listId.add(mapCopy.get(i).getId());
+
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

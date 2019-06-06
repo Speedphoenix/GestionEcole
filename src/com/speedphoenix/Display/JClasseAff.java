@@ -93,6 +93,7 @@ public class JClasseAff extends JMother {
         }
 
         mainTable = new JPanTable(data, title, 0,100, mainPanel.getWidth(), mainPanel.getHeight()-100);
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
 
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.add(buttonPanel);
@@ -102,6 +103,8 @@ public class JClasseAff extends JMother {
 
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getNom(), mapCopy.get(i).getNiveau().getNom(), "debut: "+ mapCopy.get(i).getAnneeScolaire().getStartYear()+" fin: "+ mapCopy.get(i).getAnneeScolaire().getEndYear() };
+        listId.add(mapCopy.get(i).getId());
+
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

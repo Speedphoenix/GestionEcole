@@ -42,34 +42,22 @@ public class Main {
         JNiveauAff niveauAff = new JNiveauAff();
         JClasseAff classeAff = new JClasseAff(eco.getNiveaux().get(1));
         JElevesAff elevesAff = new JElevesAff(eco.getClasses().get(1));
-        System.out.println(eco.getEleves().get(2).getId());
         JEnseigmnementsAff enseigmnementsAff = new JEnseigmnementsAff(eco.getClasses().get(1));
         JBulletinsAff bulletinsAff = new JBulletinsAff(eco.getInscriptions().get(1));
         JBulDetAff jBulDetAff = new JBulDetAff(eco.findBulletin(1));
+        JEvaluationAff jEvaluationAff = new JEvaluationAff(eco.findDetailBulletin(1));
 
 
 
-
-        mainFrame.setSize(1000,1000);
+        mainFrame.setSize(1050,1000);
         mainFrame.getContentPane().setLayout(null);
-        //mainFrame.add(panel.getMainPanel());
-        //mainFrame.add(panel2.getMainPanel());
-        //mainFrame.add(panel3.getMainPanel());
-        //mainFrame.add(panel4.getMainPanel());
-        //mainFrame.add(trimestresAff.getMainPanel());
-        //mainFrame.add(niveauAff.getMainPanel());
-        //mainFrame.add(classeAff.getMainPanel());
-        //mainFrame.add(elevesAff.getMainPanel());
 
-        mainFrame.createInstance(panel2,panel3,niveauAff);
+
+        mainFrame.createInstance(panel2,panel3,elevesAff);
 
         mainFrame.setVisible(true);
 
-        //eco.findEleve(8).createDeleteRequest(Connexion.conn);
-        //updateAndRefresh();
-        //eco.refresh();
 
-        //eco.showTest();
     }
 
     public static void updateAndRefresh() {

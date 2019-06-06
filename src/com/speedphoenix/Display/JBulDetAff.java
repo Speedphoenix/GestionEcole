@@ -79,7 +79,7 @@ public class JBulDetAff  extends  JMother{
         }
 
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
-
+        mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
 
@@ -87,6 +87,8 @@ public class JBulDetAff  extends  JMother{
 
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getBulletin().getInscription().getEleve().getNom(), mapCopy.get(i).getBulletin().getInscription().getEleve().getPrenom(), mapCopy.get(i).getEnseignement().getDiscipline().getNom(), mapCopy.get(i).getAppreciation()};
+        listId.add(mapCopy.get(i).getId());
+
     }
 
     //pour avoir access au tableau ajoute .getTable() apres

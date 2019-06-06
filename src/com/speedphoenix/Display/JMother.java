@@ -12,7 +12,6 @@ public abstract class JMother {
     public JMother() {
     }
     public abstract JPanel getMainPanel();
-    public abstract JList<String> getMainList();
 
     public BaseElem getMotherElem() {
         return motherElem;
