@@ -24,7 +24,8 @@ public class AddListener implements ActionListener {
         classe("classe"),
         discipline("discipline"),
         niveau("niveau"),
-        bulletin("bulletin");
+        bulletin("bulletin"),
+        enseignement("enseignement");
 
         private String type = "";
 
@@ -89,7 +90,6 @@ public class AddListener implements ActionListener {
         }
         else if(elem.getType().equals(typePannel.classe.type))
         {
-            System.out.println("passée par la");
             JClasseAdd trueObject = (JClasseAdd) elem;
             int indexAnnee = trueObject.getFirstChoiceBox().getSelectedIndex();
             int indexNiveau = trueObject.getSecondChoiceBox().getSelectedIndex();
@@ -111,6 +111,28 @@ public class AddListener implements ActionListener {
             }
 
 
+
+        }else if(elem.getType().equals(typePannel.detBulletin.type))
+        {
+            JBulDetAdd trueObject = (JBulDetAdd) elem;
+            int index = trueObject.getChoiceBox().getSelectedIndex();
+            String appreciation = trueObject.getAppreciation().getText();
+            if(!appreciation.equals(""))
+            {
+                if(trueObject.getMotherElem().getClass() == Enseignement.class)
+                {
+                    int idNBulletin =  trueObject.getListId(index);
+                    int idEnseignement = trueObject.getMotherElem().getId();
+                    DetailBulletin.createInsertRequest(appreciation,idNBulletin,idEnseignement,conn);
+                }
+                else if(trueObject.getMotherElem().getClass() == Bulletin.class)
+                {
+                    int idNBulletin =  trueObject.getMotherElem().getId();
+                    int idEnseignement = trueObject.getListId(index);
+                    DetailBulletin.createInsertRequest(appreciation,idNBulletin,idEnseignement,conn);
+
+                }
+            }
 
         }
 

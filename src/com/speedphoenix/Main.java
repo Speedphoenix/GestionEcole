@@ -2,7 +2,7 @@ package com.speedphoenix;
 import com.speedphoenix.Connexion.*;
 
 import com.speedphoenix.Display.*;
-import com.speedphoenix.Display.ModClasses.JClasseAdd;
+import com.speedphoenix.Display.ModClasses.*;
 import com.speedphoenix.Modele.*;
 import com.speedphoenix.Display.*;
 
@@ -64,11 +64,8 @@ public class Main {
         //l'icone du programme est inséré
         mainFrame.setIconImage(image.getImage());
 
-        //mainFrame.createInstance(new JBulDetAdd(eco.getBulletins().get(1)));
-       // mainFrame.createInstance(new JBulDetAdd(eco.getEnseignements().get(1)));
-        //mainFrame.createInstance(new JBulletinAdd(eco.getTrimestres().get(2)));
-        //mainFrame.createInstance(new JClasseAdd(eco));
-        //mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
+
+        mainFrame.createInstance(new JEnseignementAdd(eco.getClasses().get(1)));
 
         //on affiche la Jframe
         mainFrame.setVisible(true);
