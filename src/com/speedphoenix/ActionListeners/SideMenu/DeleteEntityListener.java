@@ -20,6 +20,8 @@ public class DeleteEntityListener implements ActionListener {
         niveau(JNiveauAff.class.getCanonicalName()),
         trimestre(JTrimestresAff.class.getCanonicalName()),
         discipline(JDisciplineAff.class.getCanonicalName()),
+        eleve(JElevesAff.class.getCanonicalName()),
+        enseignant(JEnseignantsAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
 
 
@@ -47,8 +49,8 @@ public class DeleteEntityListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       int index = elem.getMainTable().getTable().getSelectedRow();
-       Ecole eco = Ecole.getInstance();
+        int index = elem.getMainTable().getTable().getSelectedRow();
+        Ecole eco = Ecole.getInstance();
 
 
         if (index > elem.getMainTable().getTable().getMaximumSize().getHeight())
@@ -138,6 +140,20 @@ public class DeleteEntityListener implements ActionListener {
                eco.refresh();
                mot = new JDisciplineAff();
 
+           }
+           else if(classType.equals(classesType.enseignant.name))
+           {
+               eco.findEnseignant((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JEnseignantsAff();
+           }
+           else if(classType.equals(classesType.eleve.name))
+           {
+               eco.findEleve((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JElevesAff();
            }
            //on réaffiche correctement la liste
            GraphicContainer.getInstance().setContentPan(mot);

@@ -58,10 +58,10 @@ public class Main {
 
         mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
-
-        //mainFrame.createInstance(panel2,panel3,classeAff);
+        //Le premier panel à etre afficher sera les classes
+        mainFrame.createInstance(panel2,panel3,classeAff);
         //mainFrame.createInstance(new JEnseignantAdd());
-        mainFrame.createInstance(new JEnseignantMod(eco.getEnseignants().get(1)));
+        //mainFrame.createInstance(new JEnseignantMod(eco.getEnseignants().get(1)));
         //mainFrame.createInstance(new JBulletinAdd(eco.getInscriptions().get(89)));
         mainFrame.setIconImage(image.getImage());
 

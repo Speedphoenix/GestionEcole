@@ -1,6 +1,8 @@
 package com.speedphoenix.Display;
 
 import com.speedphoenix.ActionListeners.SideMenu.DeleteEntityListener;
+import com.speedphoenix.ActionListeners.SideMenu.RedirectAddListener;
+import com.speedphoenix.ActionListeners.SideMenu.RedirectModListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,8 +12,9 @@ public class JRightNavPanel {
     private JPanel mainPanel;
     private ArrayList<JButton> buttons = new ArrayList<>();
     private DeleteEntityListener actionDel;
-    //private AddEntity actionAdd;
-    //private ModifEntity actionMod;
+    private RedirectAddListener actionAdd;
+    private RedirectModListener actionMod;
+
 
 
     private Font defaultF = new Font("Verdana", 1,20);
@@ -61,16 +64,29 @@ public class JRightNavPanel {
      */
     public void setActionsListeners(){
         actionDel = new DeleteEntityListener(GraphicContainer.getInstance().getContentPan());
+        actionAdd = new RedirectAddListener(GraphicContainer.getInstance().getContentPan());
+        actionMod = new RedirectModListener(GraphicContainer.getInstance().getContentPan());
+        buttons.get(0).addActionListener(actionAdd);
         buttons.get(1).addActionListener(actionDel);
+        buttons.get(2).addActionListener(actionMod);
+
         buttons.forEach((value)->value.setEnabled(false));
         buttons.get(0).setEnabled(true);
 
     }
     public void resetActionsListeners(){
         //on enleve l'action listeners de supprimer et on en met un nouveau
+        buttons.get(0).removeActionListener(actionAdd);
         buttons.get(1).removeActionListener(actionDel);
+        buttons.get(2).removeActionListener(actionMod);
+
+        actionAdd = new RedirectAddListener(GraphicContainer.getInstance().getContentPan());
+        buttons.get(0).addActionListener(actionAdd);
         actionDel = new DeleteEntityListener(GraphicContainer.getInstance().getContentPan());
         buttons.get(1).addActionListener(actionDel);
+        actionMod = new RedirectModListener(GraphicContainer.getInstance().getContentPan());
+        buttons.get(2).addActionListener(actionMod);
+
 
         buttons.forEach((value)->value.setEnabled(false));
         buttons.get(0).setEnabled(true);
