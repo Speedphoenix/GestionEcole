@@ -63,7 +63,7 @@ public class AddListener implements ActionListener {
         {
             System.out.println("ba ui qyoi");
             JBulletinAdd trueObject = (JBulletinAdd) elem;
-            Bulletin.createInsertRequest(trueObject.getTextSurname().getText(),trueObject.getTextName().getText(),conn);
+           // Bulletin.createInsertRequest(trueObject.getTextSurname().getText(),trueObject.getTextName().getText(),conn);
         }
 
         conn.executeAllupdate();

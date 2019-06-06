@@ -55,8 +55,8 @@ public class Main {
         mainFrame.setSize(1050,1000);
         mainFrame.getContentPane().setLayout(null);
 
-        //mainFrame.createInstance(panel2,panel3,niveauAff);
-        mainFrame.createInstance(new JEnseignantAdd());
+        mainFrame.createInstance(panel2,panel3,elevesAff);
+        //mainFrame.createInstance(new JEnseignantAdd());
         mainFrame.setIconImage(image.getImage());
 
         mainFrame.setVisible(true);

@@ -80,30 +80,6 @@ public class JBulletinAdd extends JMotherMod {
     }
 
 
-    private void creation(JComboBox comboBox, TreeMap<Integer, BaseElem> copy, int id, Boolean allOrNot){ // if allOrNot true, just take from a specific Id, else take all
-
-        if(allOrNot)
-        {
-            for(Integer i: copy.keySet())
-            {
-                if(copy.get(i).getId()==id)
-                    addStringToListModel(i);
-            }
-        }
-        else if (buffClass == Inscription.class) {
-            for (Integer i : copy.keySet()) {
-                if (copy.get(i).getInscription().getId() == id)
-                    addStringToListModel(i);
-            }
-        }
-
-        mainList = new JList<>(buffList);// on ajoute le liste des strings dans notre Jlist
-        mainList.setFont(defaultF);
-        mainList.setBounds(0,0,800,900);
-
-        mainPanel.add(mainList);// On ajoute notre Jlist avec scroll sur notre Jpanel
-        mainPanel.setBackground(Color.darkGray);
-    }
 
     
     public JPanel getMainPanel() {
