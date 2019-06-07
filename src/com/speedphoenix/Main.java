@@ -83,7 +83,7 @@ public class Main {
         //mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
         //mainFrame.createInstance(panel2,panel3,classeAff);
         //mainFrame.createInstance(new JBulDetMod(eco.getDetailBulletins().get(1)));
-        mainFrame.createInstance(new JEvaluationMod(eco.getEvaluations().get(7)));
+        //mainFrame.createInstance(new JEvaluationMod(eco.getEvaluations().get(7)));
 
 
         //on affiche la Jframe

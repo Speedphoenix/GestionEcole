@@ -27,7 +27,7 @@ public class JEleveAdd extends JMotherMod {
         mainPanel.setBackground(Color.lightGray);
         mainPanel.setLayout(null);
         //composants
-        JLabel nomFenetre = new JLabel("CREATION ELEVE");
+        JLabel nomFenetre = new JLabel("Ajout Eleve");
         nomFenetre.setBounds(300, 10, 400,200);
         nomFenetre.setFont(new Font("Verdana",3,40));
         accept = new JButton("Ajouter");
