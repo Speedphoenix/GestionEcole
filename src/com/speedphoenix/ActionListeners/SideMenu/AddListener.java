@@ -47,6 +47,7 @@ public class AddListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         Connexion conn = Connexion.conn;
+        System.out.println("trere");
 
 
         if(elem.getType().equals(typePannel.eleve.type))
