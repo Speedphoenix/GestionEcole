@@ -2,7 +2,7 @@ package com.speedphoenix.Modele;
 
 import com.speedphoenix.Connexion.Connexion;
 
-public class Personne extends BaseElem {
+public abstract class Personne extends BaseElem {
     public static final int ELEVE = 0;
     public static final int ENSEIGNANT = 1;
     protected String nom;
