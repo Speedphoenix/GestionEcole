@@ -13,6 +13,7 @@ import java.util.ArrayList;
 public class JInscriptionAdd extends JMotherMod {
     private JPanel mainPanel;
     private JComboBox <BaseElem> choiceBox;
+    private JLabel nomFenetre;
 
     private JTextPane staticAncestorElement;
 
@@ -85,9 +86,12 @@ public class JInscriptionAdd extends JMotherMod {
         accept.setBounds(800, 800, 120,50);
         accept.addActionListener(new AddListener(this));
 
+        nomFenetre = new JLabel("");
+        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setFont(new Font("Verdana",3,30));
 
+        mainPanel.add(nomFenetre);
         mainPanel.add(choiceBox);
-
         mainPanel.add(accept);
     }
 

@@ -15,6 +15,7 @@ public class JBulletinAdd extends JMotherMod {
     private JTextPane appreciation;
     private JComboBox <BaseElem> choiceBox;
     private JTextPane staticAncestorElement;
+    private JLabel nomFenetre;
 
     private String staticElName;
     private String boxName;
@@ -112,7 +113,11 @@ public class JBulletinAdd extends JMotherMod {
         choiceBox.setBounds(300, 450, 400, 40);
         choiceBox.setBorder(BorderFactory.createTitledBorder(boxName));
 
+        nomFenetre = new JLabel("Ajout Bulletin");
+        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setFont(new Font("Verdana",3,30));
 
+        mainPanel.add(nomFenetre);
         mainPanel.add(staticAncestorElement);
         mainPanel.add(choiceBox);
         mainPanel.add(appreciation);

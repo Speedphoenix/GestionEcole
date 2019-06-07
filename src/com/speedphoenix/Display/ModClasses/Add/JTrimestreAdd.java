@@ -22,6 +22,7 @@ public class JTrimestreAdd extends JMotherMod {
 
     private JTextPane staticAncestorElement;
     private JTextPane numeroTextArea;
+    private JLabel nomFenetre;
 
     private JButton accept;
 
@@ -86,6 +87,11 @@ public class JTrimestreAdd extends JMotherMod {
         numeroTextArea.setEditable(true);
         numeroTextArea.setBorder(BorderFactory.createTitledBorder("Numéro du trimestre"));
 
+        nomFenetre = new JLabel("Ajout Trimestre");
+        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setFont(new Font("Verdana",3,30));
+
+        mainPanel.add(nomFenetre);
         mainPanel.add(startYearPanel);
         mainPanel.add(endYearPanel);
         mainPanel.add(staticAncestorElement);

@@ -5,11 +5,8 @@ import com.speedphoenix.Display.*;
 import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
-import com.speedphoenix.Display.ModClasses.Add.JNiveauAdd;
 import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
-import com.speedphoenix.Display.ModClasses.Mod.JTrimestreMod;
-import com.speedphoenix.Modele.*;
-
+import com.speedphoenix.Display.ModClasses.Mod.JBulDetMod;
 import javax.swing.*;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -77,8 +74,11 @@ public class Main {
         mainFrame.setIconImage(image.getImage());
 
 
-        
 
+        //mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
+        //mainFrame.createInstance(panel2,panel3,classeAff);
+        //mainFrame.createInstance(new JBulDetMod(eco.getDetailBulletins().get(1)));
+        //mainFrame.createInstance(new JEvaluationMod(eco.getEvaluations().get(7)));
 
         mainFrame.createInstance(new JTrimestreMod(eco.findTrimestre(2)));
 
