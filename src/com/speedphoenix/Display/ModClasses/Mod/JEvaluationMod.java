@@ -42,7 +42,7 @@ public class JEvaluationMod extends JMotherMod {
 
         note = new JTextField();
         note.setName("note");
-        note.setText("");
+        note.setText(String.valueOf(((Evaluation)what).getNote()));
         note.setBounds(400, 300, 200, 40);
         note.setBorder(BorderFactory.createTitledBorder("Entrez la note"));
         motherElem = what;
