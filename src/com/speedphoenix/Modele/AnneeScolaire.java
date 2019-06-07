@@ -6,11 +6,17 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+/**
+ * A mirror of the anneescolaire table in the SQL Database
+ */
 public class AnneeScolaire extends BaseElem{
     protected ArrayList<Trimestre> trimestres;
     protected ArrayList<Classe> classes;
 
-    // maybe add stuff to init the rest too?
+    /**
+     *
+     * @param id the id of the entry in the SQL table
+     */
     public AnneeScolaire(int id) {
         super(id);
         trimestres = new ArrayList<>();
@@ -20,14 +26,26 @@ public class AnneeScolaire extends BaseElem{
         this.addTableChildren(classes);
     }
 
+    /**
+     * Adds a reference to a Trimestre to the list of child Trimestres
+     * @param what the {@link Trimestre} to add
+     */
     public void addTrimestre(Trimestre what) {
         trimestres.add(what);
     }
 
+    /**
+     * Adds a reference to a {@link Classe} to the list of child Classes
+     * @param what the {@link Classe} to add
+     */
     public void addClasse(Classe what) {
         classes.add(what);
     }
 
+    /**
+     * Returns the starting year of this school year
+     * @return The starting year of this school year
+     */
     public int getStartYear() {
         if (trimestres.isEmpty())
             return 0;
@@ -41,7 +59,12 @@ public class AnneeScolaire extends BaseElem{
         return earliest.getYear();
     }
 
-    //not that this could normally be replaced by getStartYear() + 1;
+
+    /**
+     * Returns the ending year of this school year
+     * note this behaves in essence as getStartYear() + 1;
+     * @return The ending year of this school year
+     */
     public int getEndYear() {
         if (trimestres.isEmpty())
             return 0;
@@ -54,11 +77,18 @@ public class AnneeScolaire extends BaseElem{
         }
         return latest.getYear();
     }
+
+    /**
+     * Creates the query to add a new AnneeScolaire to the database
+     * @param conn The connection to the database used
+     */
     public static void createInsertRequest(Connexion conn) {
 
         String sql = "INSERT INTO anneescolaire VALUES ();";
         conn.ajouterRequeteMaj(sql);
     }
+
+    @Override
     public String getTableName(){
         return "anneescolaire";
     }

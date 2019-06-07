@@ -7,6 +7,10 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+/**
+ * The container of every mirror of the entries in the SQL table
+ * Is also a mirror of the ecole table in the SQL Database
+ */
 public class Ecole extends BaseElem {
     protected static Ecole instance;
     protected String nom;
@@ -24,6 +28,11 @@ public class Ecole extends BaseElem {
     protected TreeMap<Integer, Eleve> eleves = new TreeMap();
     protected TreeMap<Integer, Enseignant> enseignants = new TreeMap();
 
+    /**
+     * This constructor is usually not used as the id and name are retrieved after it is constructed
+     * @param id the id of the entry in the SQL table
+     * @param nom The text of the field with the same name in the SQL table
+     */
     public Ecole(int id, String nom) {
         super(id);
         instance = this;
@@ -37,6 +46,10 @@ public class Ecole extends BaseElem {
         refresh();
     }
 
+    /**
+     * Refreshes the whole mirror of the Database.
+     * Effectively empties the containers and takes it all again from the database
+     */
     public void refresh()
     {
          this.reinitTreeMaps();
@@ -54,6 +67,10 @@ public class Ecole extends BaseElem {
          this.fillEvaluations();
     }
 
+    /**
+     * Gets the ecole's information from the database.
+     * Every method fill...() will fetch every element of that table and add it.
+     */
     public void retriveEcole()
     {
         ArrayList<ArrayList<String>> result = null;
@@ -484,7 +501,7 @@ public class Ecole extends BaseElem {
         }
     }
 
-    public void reinitTreeMaps()
+    private void reinitTreeMaps()
     {
         Ecole cont = Ecole.getInstance();
         cont.classes.clear();
@@ -531,6 +548,10 @@ public class Ecole extends BaseElem {
         System.err.println("----------------------------------------------------\n\n\n\n\n");
     }
 
+    /**
+     * Returns the static instance of this class. There can only be one Ecole at any given time
+     * @return The static instance of this class.
+     */
     public static Ecole getInstance() {
         return instance;
     }
@@ -704,6 +725,8 @@ public class Ecole extends BaseElem {
     public TreeMap<Integer, Enseignant> getEnseignants() {
         return enseignants;
     }
+
+    @Override
     public String getTableName(){
         return "ecole";
     }
