@@ -6,6 +6,9 @@ import com.speedphoenix.Display.ModClasses.JMotherMod;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe ayant pour role d'afficher une interface graphique permettant d'ajouter des élèves
+ */
 public class JEleveAdd extends JMotherMod {
 
     private JTextField textName;

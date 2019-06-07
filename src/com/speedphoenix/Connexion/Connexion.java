@@ -252,7 +252,9 @@ public class Connexion {
             System.err.println(requeteMaj);
         }
     }
-    public void executeAllupdate(){
+
+
+    public void executeAllupdate(String string){
         for(int i = 0; i < requetesMaj.size(); i++)
         {
             try {
@@ -264,6 +266,12 @@ public class Connexion {
            requetesMaj.clear();
     }
 
+    /**
+     * Methode qui fait tatatititatata
+     * @param id de type int
+     * @param table de type string
+     * @return retourne un booléen
+     */
     public boolean testExistanceId(int id,String table)
     {
         ArrayList<ArrayList<String>> result = null;
@@ -290,6 +298,13 @@ public class Connexion {
         return true;
 
     }
+
+    /**
+     *
+     * @param result
+     * @param colomn
+     * @return
+     */
     public int findColomnIndex(ArrayList<ArrayList<String>> result, String colomn)
     {
         for(int i = 0; i < result.get(0).size(); i++)

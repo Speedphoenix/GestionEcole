@@ -57,7 +57,6 @@ public class RedirectModListener implements ActionListener {
         Connexion conn = Connexion.conn;
         String classType =  elem.getClass().getCanonicalName();
         JMotherMod mot = null;
-        System.out.println(classType);
         //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
         if(classType.equals(classesType.bulletin.name))
         {
