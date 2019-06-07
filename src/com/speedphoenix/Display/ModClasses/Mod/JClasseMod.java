@@ -42,11 +42,11 @@ public class JClasseMod extends JMotherMod {
         textName = new JTextField();
         textName.setText(((Classe)what).getNom());
         textName.setFont(defaultF);
-        textName.setBounds(400, 300, 200,40);
+        textName.setBounds(400, 400, 200,40);
 
         labelName = new JLabel("Entrez le nom");
         labelName.setFont(defaultF);
-        labelName.setBounds(400, 240, 200,100);
+        labelName.setBounds(400, 340, 200,100);
 
         //ajouts des composants
         mainPanel.add(accept);

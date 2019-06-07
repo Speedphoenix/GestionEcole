@@ -12,7 +12,6 @@ import java.awt.*;
 public class JBulDetMod extends JMotherMod {
     private JPanel mainPanel;
     private JTextPane appreciation;
-
     private BaseElem motherElem;
     private JButton accept;
 
@@ -59,7 +58,7 @@ public class JBulDetMod extends JMotherMod {
 
 
     public String getType() {
-        return "detailbulletin";
+        return "detBulletin";
     }
     public JPanel getMainPanel() {
         return mainPanel;

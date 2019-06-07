@@ -63,7 +63,9 @@ public class JEvaluationMod extends JMotherMod {
         return appreciation;
     }
 
-
+    public JTextField getNote() {
+        return note;
+    }
 
     public String getType() {
         return "evaluation";

@@ -28,6 +28,12 @@ public class JClasseAff extends JMother {
     public JClasseAff(BaseElem what) {
 
     /**/ //Ca ne concerne que les buttons
+        JLabel nomFenetre = new JLabel("Menu Principal");
+        nomFenetre.setBounds(316, -50, 400,200);
+        nomFenetre.setFont(new Font("Verdana",3,20));
+        nomFenetre.setForeground(Color.white);
+        ;
+
         buttonPanel = new JPanel();
         buttonPanel.setBounds(0,0, 800, 100 );
         buttonPanel.setBackground(Color.darkGray);
@@ -48,6 +54,7 @@ public class JClasseAff extends JMother {
         mainPanel = new JPanel();
         mainPanel.setBounds(200,100,800,900);
         mainPanel.setLayout(null);
+        mainPanel.add(nomFenetre);
 
         this.mapCopy=Ecole.getInstance().getClasses();
         buffClass = what.getClass();
