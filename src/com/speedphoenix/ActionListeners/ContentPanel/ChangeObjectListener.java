@@ -1,8 +1,8 @@
 package com.speedphoenix.ActionListeners.ContentPanel;
 
-import com.mysql.jdbc.jdbc2.optional.SuspendableXAConnection;
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.Affclasses.*;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.MouseEvent;
@@ -20,6 +20,7 @@ public class ChangeObjectListener implements MouseListener {
         niveau(JNiveauAff.class.getCanonicalName()),
         trimestre(JTrimestresAff.class.getCanonicalName()),
         discipline(JDisciplineAff.class.getCanonicalName()),
+        anneeScol(JAnneeScolAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
 
         private String name = "";
@@ -64,7 +65,6 @@ public class ChangeObjectListener implements MouseListener {
             }
             else if(classType.equals(classesType.trimestre.name)) {
                  mot = new JBulletinsAff(eco.findTrimestre((int) elem.getListId().get(index)));
-
              }
             else if(classType.equals(classesType.niveau.name))
             {
@@ -77,6 +77,10 @@ public class ChangeObjectListener implements MouseListener {
             else if(classType.equals(classesType.inscription.name))
              {
                  mot = new JBulletinsAff(eco.findInscription((int)elem.getListId().get(index)));
+             }
+             else if(classType.equals(classesType.anneeScol.name))
+             {
+                 mot = new JTrimestresAff(eco.findAnneeScolaire((int)elem.getListId().get(index)));
              }
             //on réaffiche correctement la liste
             if (mot != null)

@@ -2,6 +2,7 @@ package com.speedphoenix.ActionListeners.SideMenu;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
+import com.speedphoenix.Display.Affclasses.*;
 import com.speedphoenix.Modele.*;
 
 
@@ -20,6 +21,10 @@ public class DeleteEntityListener implements ActionListener {
         niveau(JNiveauAff.class.getCanonicalName()),
         trimestre(JTrimestresAff.class.getCanonicalName()),
         discipline(JDisciplineAff.class.getCanonicalName()),
+        eleve(JElevesAff.class.getCanonicalName()),
+        enseignant(JEnseignantsAff.class.getCanonicalName()),
+        evaluation(JEvaluationAff.class.getCanonicalName()),
+        anneescol(JAnneeScolAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
 
 
@@ -47,8 +52,8 @@ public class DeleteEntityListener implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       int index = elem.getMainTable().getTable().getSelectedRow();
-       Ecole eco = Ecole.getInstance();
+        int index = elem.getMainTable().getTable().getSelectedRow();
+        Ecole eco = Ecole.getInstance();
 
 
         if (index > elem.getMainTable().getTable().getMaximumSize().getHeight())
@@ -100,7 +105,8 @@ public class DeleteEntityListener implements ActionListener {
                eco.findTrimestre((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
-               mot = new JTrimestresAff();
+               System.out.println("hihi"+eco.findAnneeScolaire(elem.getMotherElem().getId()));
+               mot = new JTrimestresAff(eco.findAnneeScolaire(elem.getMotherElem().getId()));
 
            }
            else if(classType.equals(classesType.classe.name))
@@ -108,7 +114,7 @@ public class DeleteEntityListener implements ActionListener {
                eco.findClasse((int)elem.getListId().get(index)).createDeleteRequest(conn);
                conn.executeAllupdate();
                eco.refresh();
-               mot = new JClasseAff(eco.findNiveau(elem.getMotherElem().getId()));
+               mot = new JClasseAff(eco);
 
            }
            else if(classType.equals(classesType.enseignement.name))
@@ -138,6 +144,34 @@ public class DeleteEntityListener implements ActionListener {
                eco.refresh();
                mot = new JDisciplineAff();
 
+           }
+           else if(classType.equals(classesType.enseignant.name))
+           {
+               eco.findEnseignant((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JEnseignantsAff();
+           }
+           else if(classType.equals(classesType.eleve.name))
+           {
+               eco.findEleve((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JElevesAff();
+           }
+           else if(classType.equals(classesType.evaluation.name))
+           {
+               eco.findEvaluation((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JEvaluationAff(eco.findDetailBulletin(elem.getMotherElem().getId()));
+           }
+           else if(classType.equals(classesType.anneescol.name))
+           {
+               eco.findAnneeScolaire((int)elem.getListId().get(index)).createDeleteRequest(conn);
+               conn.executeAllupdate();
+               eco.refresh();
+               mot = new JAnneeScolAff();
            }
            //on réaffiche correctement la liste
            GraphicContainer.getInstance().setContentPan(mot);

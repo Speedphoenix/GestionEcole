@@ -2,9 +2,8 @@ package com.speedphoenix.ActionListeners.ContentPanel;
 
 import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.GraphicContainer;
-import com.speedphoenix.Display.JClasseAff;
-import com.speedphoenix.Display.JInscriptionAff;
-import com.speedphoenix.Display.JMother;
+import com.speedphoenix.Display.Affclasses.JInscriptionAff;
+import com.speedphoenix.Display.Affclasses.JMother;
 import com.speedphoenix.Modele.Ecole;
 
 import java.awt.event.ActionEvent;

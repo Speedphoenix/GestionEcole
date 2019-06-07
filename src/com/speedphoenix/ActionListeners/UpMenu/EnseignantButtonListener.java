@@ -1,8 +1,8 @@
 package com.speedphoenix.ActionListeners.UpMenu;
 
 import com.speedphoenix.Display.GraphicContainer;
-import com.speedphoenix.Display.JEnseignantsAff;
-import com.speedphoenix.Display.JMother;
+import com.speedphoenix.Display.Affclasses.JEnseignantsAff;
+import com.speedphoenix.Display.Affclasses.JMother;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
