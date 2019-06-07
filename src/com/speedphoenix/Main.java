@@ -5,8 +5,11 @@ import com.speedphoenix.Display.*;
 import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
-import com.speedphoenix.Display.ModClasses.Add.JNiveauAdd;
 import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
+import com.speedphoenix.Display.ModClasses.Mod.JBulDetMod;
+import com.speedphoenix.Display.ModClasses.Mod.JClasseMod;
+import com.speedphoenix.Display.ModClasses.Mod.JEvaluationMod;
+import com.speedphoenix.Display.ModClasses.Mod.JNiveauMod;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
@@ -76,10 +79,12 @@ public class Main {
         mainFrame.setIconImage(image.getImage());
 
 
-        
 
+        //mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
+        //mainFrame.createInstance(panel2,panel3,classeAff);
+        //mainFrame.createInstance(new JBulDetMod(eco.getDetailBulletins().get(1)));
+        mainFrame.createInstance(new JEvaluationMod(eco.getEvaluations().get(7)));
 
-        //mainFrame.createInstance(new JNiveauAdd());
 
         //on affiche la Jframe
         mainFrame.setVisible(true);
