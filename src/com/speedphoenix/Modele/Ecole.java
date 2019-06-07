@@ -519,6 +519,9 @@ public class Ecole extends BaseElem {
         cont.enseignants.clear();
     }
 
+    /**
+     * A display of all ecole's data instance in the console
+     */
     public void showTest()
     {
         System.err.println("\n----------------------------------------------------");

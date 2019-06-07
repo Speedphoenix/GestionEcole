@@ -155,16 +155,16 @@ public class ModListener implements ActionListener {
             LocalDate endYear;
             try{
                 int numero = Integer.parseInt( trueObject.getNumeroTextArea().getText()) ;
-                if (!dateEndYear.equals("") && !dateStartYear.equals(""))
-                {
-                     startYear = Trimestre.changeInLocaldate(dateStartYear);
+                if (!dateEndYear.equals(""))
                      endYear = Trimestre.changeInLocaldate(dateEndYear);
-                }
                 else
-                {
-                     startYear = motElem.getDebut();
-                     endYear = motElem.getFin();
-                }
+                    endYear = motElem.getFin();
+
+                if (!dateStartYear.equals("")) {
+                    startYear = Trimestre.changeInLocaldate(dateStartYear);
+                }else
+                    startYear = motElem.getDebut();
+
                 motElem.createUpdateRequest(numero,startYear,endYear,conn);
 
 

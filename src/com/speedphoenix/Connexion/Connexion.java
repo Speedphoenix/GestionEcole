@@ -254,7 +254,7 @@ public class Connexion {
     }
 
 
-    public void executeAllupdate(String string){
+    public void executeAllupdate(){
         for(int i = 0; i < requetesMaj.size(); i++)
         {
             try {
