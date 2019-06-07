@@ -1,28 +1,20 @@
-package com.speedphoenix.Display.ModClasses.Add;
+package com.speedphoenix.Display.ModClasses.Mod;
 
 import com.speedphoenix.ActionListeners.AddOrModifyPanel.AddListener;
+import com.speedphoenix.ActionListeners.AddOrModifyPanel.ModListener;
+import com.speedphoenix.Display.ModClasses.Add.DateLabelFormatter;
 import com.speedphoenix.Display.ModClasses.JMotherMod;
-import com.speedphoenix.Modele.AnneeScolaire;
-import com.speedphoenix.Modele.BaseElem;
-import com.speedphoenix.Modele.Ecole;
-import java.util.Calendar;
-import java.util.Date;
+import com.speedphoenix.Modele.*;
 import org.jdatepicker.impl.*;
-import org.jdatepicker.util.*;
-import org.jdatepicker.*;
-
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Properties;
 
-public class JTrimestreAdd extends JMotherMod {
+public class JTrimestreMod extends JMotherMod {
     private JPanel mainPanel;
     private JComboBox <BaseElem> choiceBox;
 
-    private JTextPane staticAncestorElement;
     private JTextPane numeroTextArea;
-    private JLabel nomFenetre;
 
     private JButton accept;
 
@@ -33,7 +25,7 @@ public class JTrimestreAdd extends JMotherMod {
 
     private Font defaultF = new Font("Verdana", 1,14);
 
-    public JTrimestreAdd(BaseElem what){
+    public JTrimestreMod(BaseElem what){
 
         motherElem = what;
         AnneeScolaire mot = Ecole.getInstance().findAnneeScolaire(motherElem.getId());
@@ -47,6 +39,9 @@ public class JTrimestreAdd extends JMotherMod {
         mainPanel.setBounds(0,0,1000,1000);
         mainPanel.setLayout(null);
 
+        JLabel nomFenetre = new JLabel("MODIFICATION TRIMESTRE "+((Trimestre)what).getNumero());
+        nomFenetre.setBounds(240, 10, 800,200);
+        nomFenetre.setFont(new Font("Verdana",3,30));
 
         //initialisation des panels de date
         UtilDateModel model = new UtilDateModel();
@@ -62,81 +57,34 @@ public class JTrimestreAdd extends JMotherMod {
          startYearPanel = new JDatePickerImpl(datePanel, new DateLabelFormatter());
          endYearPanel = new JDatePickerImpl(datePanel2, new DateLabelFormatter());
 
-        startYearPanel.setBounds(400,450,200,50);
+        startYearPanel.setBounds(400,400,200,50);
         startYearPanel.setBorder(BorderFactory.createTitledBorder("Date de début"));
         startYearPanel.setBackground(Color.lightGray);
-        endYearPanel.setBounds(400,550,200,50);
+        endYearPanel.setBounds(400,500,200,50);
         endYearPanel.setBorder(BorderFactory.createTitledBorder("Date de fin"));
         endYearPanel.setBackground(Color.lightGray);
 
-        accept = new JButton("Ajouter");
+        accept = new JButton("Modifier");
         accept.setFont(defaultF);
         accept.setBounds(800, 800, 120,50);
-        accept.addActionListener(new AddListener(this));
+        accept.addActionListener(new ModListener(this));
 
-        staticAncestorElement = new JTextPane();
-        staticAncestorElement.setBounds(400, 350, 200, 40);
-        staticAncestorElement.setName("Période");
-        staticAncestorElement.setText(periode+"     Id : "+motherElem.getId());
-        staticAncestorElement.setEditable(false);
-        staticAncestorElement.setBorder(BorderFactory.createTitledBorder("Période"));
 
         numeroTextArea = new JTextPane();
-        numeroTextArea.setBounds(400, 650, 200, 40);
+        numeroTextArea.setBounds(400, 600, 200, 40);
         numeroTextArea.setName("Numéro du trimestre");
         numeroTextArea.setEditable(true);
+        numeroTextArea.setText(""+((Trimestre) what).getNumero()+"");
         numeroTextArea.setBorder(BorderFactory.createTitledBorder("Numéro du trimestre"));
 
-        nomFenetre = new JLabel("Ajout Trimestre");
-        nomFenetre.setBounds(200, 10, 800,200);
-        nomFenetre.setFont(new Font("Verdana",3,30));
-
-        mainPanel.add(nomFenetre);
         mainPanel.add(startYearPanel);
         mainPanel.add(endYearPanel);
-        mainPanel.add(staticAncestorElement);
         mainPanel.add(accept);
+        mainPanel.add(nomFenetre);
         mainPanel.add(numeroTextArea);
 
-        //creation(what.getId());
     }
-/*
-    public void creation(int id){
-        int counter =0;
 
-        buffName = new String("Class");
-        //choice box de niveau ou text area de niveau choisi
-
-        bufferTextAr = Ecole.getInstance().getClasses().get(id).getNom();
-        staticAncestorElement = new JTextPane();
-        staticAncestorElement.setBounds(400, 400, 200, 40);
-        staticAncestorElement.setName(buffName);
-        staticAncestorElement.setText(bufferTextAr);
-        staticAncestorElement.setEditable(false);
-        staticAncestorElement.setBorder(BorderFactory.createTitledBorder(buffName));
-
-        mainPanel.add(staticAncestorElement);
-
-
-
-        //choice box de l'annee scolaire
-        boxContent= new String [Ecole.getInstance().getEleves().size()];
-        counter=0;
-        for (Integer i : Ecole.getInstance().getEleves().keySet())
-        {
-            boxContent [counter] = Ecole.getInstance().getEleves().get(i).getPrenom()+ " " +
-                    Ecole.getInstance().getEleves().get(i).getNom();
-            listId.add( Ecole.getInstance().findEleve(i).getId());
-            counter++;
-        }
-        boxName = new String("Eleve");
-        choiceBox = new JComboBox(boxContent);
-        choiceBox.setBounds(400, 500, 200, 40);
-        choiceBox.setBorder(BorderFactory.createTitledBorder(boxName));
-
-
-    }
-*/
     public JComboBox<BaseElem> getChoiceBox() {
         return choiceBox;
     }
@@ -144,8 +92,6 @@ public class JTrimestreAdd extends JMotherMod {
     public BaseElem getMotherElem() {
         return motherElem;
     }
-
-
 
     @Override
     public JPanel getMainPanel() {
@@ -163,6 +109,7 @@ public class JTrimestreAdd extends JMotherMod {
     public JDatePickerImpl getEndYearPanel() {
         return endYearPanel;
     }
+
 
     @Override
     public String getType() {

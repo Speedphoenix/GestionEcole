@@ -208,14 +208,8 @@ public class AddListener implements ActionListener {
                 int numero = Integer.parseInt(trueObject.getNumeroTextArea().getText());
                 if (!dateEndYear.equals("") && !dateStartYear.equals(""))
                 {
-                    int annee = Integer.parseInt(dateStartYear.substring(0,4));
-                    int mois = Integer.parseInt(dateStartYear.substring(5,7));
-                    int jour = Integer.parseInt(dateStartYear.substring(8,10));
-                    LocalDate startYear = LocalDate.of(annee,mois,jour);
-                    annee = Integer.parseInt(dateEndYear.substring(0,4));
-                    mois = Integer.parseInt(dateEndYear.substring(5,7));
-                    jour = Integer.parseInt(dateEndYear.substring(8,10));
-                    LocalDate endYear = LocalDate.of(annee,mois,jour);
+                    LocalDate startYear = Trimestre.changeInLocaldate(dateStartYear);
+                    LocalDate endYear = Trimestre.changeInLocaldate(dateEndYear);
 
                     Trimestre.createInsertRequest(numero,startYear,endYear,idAnnee,conn);
                 }

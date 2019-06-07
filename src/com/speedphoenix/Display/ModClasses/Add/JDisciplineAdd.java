@@ -9,6 +9,7 @@ import java.awt.*;
 
 public class JDisciplineAdd extends JMotherMod {
     private JTextField textName;
+    private JLabel nomFenetre;
 
     private JButton accept;
 
@@ -40,7 +41,11 @@ public class JDisciplineAdd extends JMotherMod {
         labelName.setFont(defaultF);
         labelName.setBounds(420, 380, 200,100);
 
-        //ajouts des composants
+        nomFenetre = new JLabel("Ajout Discipline");
+        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setFont(new Font("Verdana",3,30));
+
+        mainPanel.add(nomFenetre);
         mainPanel.add(accept);
         mainPanel.add(textName);
 

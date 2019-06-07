@@ -6,13 +6,14 @@ import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.ModClasses.*;
-import com.speedphoenix.Display.ModClasses.Mod.JBulletinMod;
-import com.speedphoenix.Display.ModClasses.Mod.JEleveMod;
-import com.speedphoenix.Display.ModClasses.Mod.JEnseignantMod;
+import com.speedphoenix.Display.ModClasses.Add.JNiveauAdd;
+import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
+import com.speedphoenix.Display.ModClasses.Mod.*;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 public class ModListener implements ActionListener {
 
@@ -27,10 +28,13 @@ public class ModListener implements ActionListener {
         enseignant("enseignant"),
         detBulletin("detBulletin"),
         evaluation("evaluation"),
-        classe("classse"),
+        classe("classe"),
         discipline("discipline"),
         niveau("niveau"),
-        bulletin("bulletin");
+        bulletin("bulletin"),
+        inscription("inscription"),
+        trimestre("trimestre"),
+        enseignement("enseignement");
 
         private String type = "";
 
@@ -66,7 +70,8 @@ public class ModListener implements ActionListener {
             motElem.createUpdateRequest(surName,name,conn);
 
 
-        }else if(elem.getType().equals(typePannel.enseignant.type))
+        }
+        else if(elem.getType().equals(typePannel.enseignant.type))
         {
 
             JEnseignantMod trueObject = (JEnseignantMod) elem;
@@ -81,6 +86,55 @@ public class ModListener implements ActionListener {
             motElem.createUpdateRequest(surName,name,conn);
 
         }
+        else if(elem.getType().equals(typePannel.evaluation.type))
+        {
+
+            JEvaluationMod trueObject = (JEvaluationMod) elem;
+            Evaluation motElem = (Evaluation) trueObject.getMotherElem();
+            Double note;
+            String appreciation = trueObject.getAppreciation().getText() ;
+            try{
+                 note = Double.parseDouble(trueObject.getNote().getText());
+
+            }catch(NumberFormatException error ){
+                 note = motElem.getNote();
+            }
+
+            if(appreciation.equals(""))
+                appreciation = motElem.getAppreciation();
+            motElem.createUpdateRequest(appreciation,note,conn);
+        }
+        else if(elem.getType().equals(typePannel.detBulletin.type))
+        {
+            JBulDetMod trueObject = (JBulDetMod) elem;
+            DetailBulletin motElem = (DetailBulletin) trueObject.getMotherElem();
+            String appreciation = trueObject.getAppreciation().getText() ;
+
+            if(appreciation.equals(""))
+                appreciation = motElem.getAppreciation();
+            motElem.createUpdateRequest(appreciation,conn);
+        }
+        else if(elem.getType().equals(typePannel.classe.type))
+        {
+            JClasseMod trueObject = (JClasseMod) elem;
+            Classe motElem = (Classe) trueObject.getMotherElem();
+            String name = trueObject.getTextName().getText() ;
+
+            if(name.equals(""))
+                name = motElem.getNom();
+            motElem.createUpdateRequest(name,conn);
+        }
+        else if(elem.getType().equals(typePannel.niveau.type))
+        {
+
+            JNiveauMod trueObject = (JNiveauMod) elem;
+            Niveau motElem = (Niveau) trueObject.getMotherElem();
+            String name = trueObject.getTextName().getText() ;
+
+            if(name.equals(""))
+                name = motElem.getNom();
+            motElem.createUpdateRequest(name,conn);
+        }
         else if(elem.getType().equals(typePannel.bulletin.type))
         {
             JBulletinMod trueObject = (JBulletinMod) elem;
@@ -90,13 +144,51 @@ public class ModListener implements ActionListener {
                 appreciation = motElem.getAppreciation();
 
             motElem.createUpdateRequest(appreciation,conn);
-
-
         }
+        else if(elem.getType().equals(typePannel.trimestre.type))
+        {
+            JTrimestreMod trueObject = (JTrimestreMod) elem;
+            Trimestre motElem = (Trimestre) trueObject.getMotherElem();
+            String dateStartYear = trueObject.getStartYearPanel().getJFormattedTextField().getText();
+            String dateEndYear = trueObject.getEndYearPanel().getJFormattedTextField().getText();
+            LocalDate startYear;
+            LocalDate endYear;
+            try{
+                int numero = Integer.parseInt( trueObject.getNumeroTextArea().getText()) ;
+                if (!dateEndYear.equals("") && !dateStartYear.equals(""))
+                {
+                     startYear = Trimestre.changeInLocaldate(dateStartYear);
+                     endYear = Trimestre.changeInLocaldate(dateEndYear);
+                }
+                else
+                {
+                     startYear = motElem.getDebut();
+                     endYear = motElem.getFin();
+                }
+                motElem.createUpdateRequest(numero,startYear,endYear,conn);
+
+
+            }catch(NumberFormatException error){}
 
         conn.executeAllupdate();
         Ecole.getInstance().refresh();
         GraphicContainer.createInstance(new JRightNavPanel(),new JUpNavBar(),new JClasseAff(eco));
 
     }
+        else if(elem.getType().equals(typePannel.discipline.type))
+        {
+            JDisciplineMod trueObject = (JDisciplineMod) elem;
+            Discipline motElem = (Discipline) trueObject.getMotherElem();
+            String name = trueObject.getTextName().getText() ;
+
+            if(name.equals(""))
+                name = motElem.getNom();
+            motElem.createUpdateRequest(name,conn);
+
+        }
+
+        conn.executeAllupdate();
+        Ecole.getInstance().refresh();
+        GraphicContainer.createInstance(new JRightNavPanel(),new JUpNavBar(),new JClasseAff(eco));
+}
 }

@@ -1,27 +1,24 @@
 package com.speedphoenix.Display.ModClasses.Mod;
 
-import com.speedphoenix.ActionListeners.AddOrModifyPanel.AddListener;
 import com.speedphoenix.ActionListeners.AddOrModifyPanel.ModListener;
 import com.speedphoenix.Display.ModClasses.JMotherMod;
 import com.speedphoenix.Modele.BaseElem;
-import com.speedphoenix.Modele.Classe;
+import com.speedphoenix.Modele.Discipline;
 import com.speedphoenix.Modele.Niveau;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class JNiveauMod extends JMotherMod {
+public class JDisciplineMod extends JMotherMod {
     private JTextField textName;
 
     private BaseElem motherElem;
 
     private JButton accept;
 
-
-
     private Font defaultF = new Font("Verdana", 1,17);//font par defaut qu'on utilise
 
-    public JNiveauMod(BaseElem what) {
+    public JDisciplineMod(BaseElem what) {
 
         JLabel labelName;
 
@@ -30,7 +27,7 @@ public class JNiveauMod extends JMotherMod {
         mainPanel.setBackground(Color.lightGray);
         mainPanel.setLayout(null);
         //composants
-        JLabel nomFenetre = new JLabel("MODIFICATION NIVEAU "+((Niveau)what).getNom());
+        JLabel nomFenetre = new JLabel("MODIFICATION DISCIPLINE "+((Discipline)what).getNom());
         nomFenetre.setBounds(200, 10, 800,200);
         nomFenetre.setFont(new Font("Verdana",3,30));
         motherElem = what;
@@ -41,7 +38,7 @@ public class JNiveauMod extends JMotherMod {
         accept.addActionListener(new ModListener(this));
 
         textName = new JTextField();
-        textName.setText(((Niveau)what).getNom());
+        textName.setText(((Discipline)what).getNom());
         textName.setFont(defaultF);
         textName.setBounds(400, 300, 200,40);
 
@@ -64,7 +61,7 @@ public class JNiveauMod extends JMotherMod {
 
     @Override
     public String getType() {
-        return "niveau";
+        return "discipline";
     }
 
     public JTextField getTextName() {

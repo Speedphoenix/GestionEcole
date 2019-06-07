@@ -71,7 +71,7 @@ public class AnneeScolaire extends BaseElem{
         Iterator<Trimestre> i = trimestres.iterator();
         LocalDate latest = i.next().getFin();
         while (i.hasNext()) {
-            LocalDate curr = i.next().getDebut();
+            LocalDate curr = i.next().getFin();
             if (curr.compareTo(latest)  > 0)
                 latest = curr;
         }

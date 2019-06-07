@@ -14,6 +14,7 @@ public class JBulDetAdd extends JMotherMod {
     private JTextPane appreciation;
     private JComboBox <BaseElem> choiceBox;
     private JTextPane staticAncestorElement;
+    private JLabel nomFenetre;
 
     private JButton accept;
 
@@ -122,6 +123,11 @@ public class JBulDetAdd extends JMotherMod {
         accept.setBounds(800, 800, 120,50);
         accept.addActionListener(new AddListener(this));
 
+        nomFenetre = new JLabel("Ajout Bulletin Detail");
+        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setFont(new Font("Verdana",3,30));
+
+        mainPanel.add(nomFenetre);
         mainPanel.add(staticAncestorElement);
         mainPanel.add(choiceBox);
         mainPanel.add(appreciation);

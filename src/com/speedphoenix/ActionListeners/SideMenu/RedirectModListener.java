@@ -4,9 +4,7 @@ import com.speedphoenix.Connexion.Connexion;
 import com.speedphoenix.Display.*;
 import com.speedphoenix.Display.Affclasses.*;
 import com.speedphoenix.Display.ModClasses.*;
-import com.speedphoenix.Display.ModClasses.Mod.JBulletinMod;
-import com.speedphoenix.Display.ModClasses.Mod.JEleveMod;
-import com.speedphoenix.Display.ModClasses.Mod.JEnseignantMod;
+import com.speedphoenix.Display.ModClasses.Mod.*;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;
@@ -26,6 +24,7 @@ public class RedirectModListener implements ActionListener {
         discipline(JDisciplineAff.class.getCanonicalName()),
         eleve(JElevesAff.class.getCanonicalName()),
         enseignant(JEnseignantsAff.class.getCanonicalName()),
+        evaluation(JEvaluationAff.class.getCanonicalName()),
         detBulletin(JBulDetAff.class.getCanonicalName());
 
 
@@ -58,58 +57,41 @@ public class RedirectModListener implements ActionListener {
         Connexion conn = Connexion.conn;
         String classType =  elem.getClass().getCanonicalName();
         JMotherMod mot = null;
-
         //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
-        if(classType.equals(classesType.Inscription.name))
-        {
-
-
-        }
-        else if(classType.equals(classesType.bulletin.name))
+        if(classType.equals(classesType.bulletin.name))
         {
                 Bulletin baseElem = eco.findBulletin((int)elem.getListId().get(index));
                 mot = new JBulletinMod(baseElem);
-
         }
         else if(classType.equals(classesType.detBulletin.name))
         {
-            if(elem.getMotherElem().getClass() == Enseignement.class)
-            {
-            }
-            else
-            {
-            }
+            DetailBulletin baseElem = eco.findDetailBulletin((int)elem.getListId().get(index));
+            mot = new JBulDetMod(baseElem);
 
         }
         else if(classType.equals(classesType.trimestre.name))
         {
-
-
+            Trimestre baseElem = eco.findTrimestre((int)elem.getListId().get(index));
+            mot = new JTrimestreMod(baseElem);
         }
         else if(classType.equals(classesType.classe.name))
         {
-
-        }
-        else if(classType.equals(classesType.enseignement.name))
-        {
-
-            if(elem.getMotherElem().getClass() == Classe.class)
-            {
-                //mot = new JEnseigmnementsAff(eco.findClasse(elem.getMotherElem().getId()));
-            }
-            //else
-                //mot = new JBulletinsAff(eco.findDiscipline(elem.getMotherElem().getId()));
+            Classe baseElem = eco.findClasse((int)elem.getListId().get(index));
+            mot = new JClasseMod(baseElem);
         }
         else if(classType.equals(classesType.niveau.name))
         {
-
+            Niveau baseElem = eco.findNiveau((int)elem.getListId().get(index));
+            mot = new JNiveauMod(baseElem);
 
         }
         else if(classType.equals(classesType.discipline.name))
         {
+            Discipline baseElem = eco.findDiscipline((int)elem.getListId().get(index));
+            mot = new JDisciplineMod(baseElem);
 
-
-        } else if(classType.equals(classesType.enseignant.name))
+        }
+        else if(classType.equals(classesType.enseignant.name))
         {
             Enseignant baseElem = eco.findEnseignant((int)elem.getListId().get(index));
             mot = new JEnseignantMod(baseElem);
@@ -119,8 +101,16 @@ public class RedirectModListener implements ActionListener {
             Eleve baseElem = eco.findEleve((int)elem.getListId().get(index));
             mot = new JEleveMod(baseElem);
         }
+        else if(classType.equals(classesType.evaluation.name))
+        {
+
+            Evaluation baseElem = eco.findEvaluation((int)elem.getListId().get(index));
+            mot = new JEvaluationMod(baseElem);
+        }
+
         //on réaffiche correctement la liste
-        GraphicContainer.createInstance(mot);
+        if(mot != null)
+            GraphicContainer.createInstance(mot);
 
     }
 }

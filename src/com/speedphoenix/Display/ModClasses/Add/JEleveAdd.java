@@ -6,6 +6,9 @@ import com.speedphoenix.Display.ModClasses.JMotherMod;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Classe ayant pour role d'afficher une interface graphique permettant d'ajouter des élèves
+ */
 public class JEleveAdd extends JMotherMod {
 
     private JTextField textName;
@@ -27,7 +30,7 @@ public class JEleveAdd extends JMotherMod {
         mainPanel.setBackground(Color.lightGray);
         mainPanel.setLayout(null);
         //composants
-        JLabel nomFenetre = new JLabel("CREATION ELEVE");
+        JLabel nomFenetre = new JLabel("Ajout Eleve");
         nomFenetre.setBounds(300, 10, 400,200);
         nomFenetre.setFont(new Font("Verdana",3,40));
         accept = new JButton("Ajouter");
