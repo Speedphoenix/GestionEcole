@@ -6,13 +6,16 @@ import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.ModClasses.*;
+import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
 import com.speedphoenix.Display.ModClasses.Mod.JBulletinMod;
 import com.speedphoenix.Display.ModClasses.Mod.JEleveMod;
 import com.speedphoenix.Display.ModClasses.Mod.JEnseignantMod;
+import com.speedphoenix.Display.ModClasses.Mod.JTrimestreMod;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDate;
 
 public class ModListener implements ActionListener {
 
@@ -27,10 +30,13 @@ public class ModListener implements ActionListener {
         enseignant("enseignant"),
         detBulletin("detBulletin"),
         evaluation("evaluation"),
-        classe("classse"),
+        classe("classe"),
         discipline("discipline"),
         niveau("niveau"),
-        bulletin("bulletin");
+        bulletin("bulletin"),
+        inscription("inscription"),
+        trimestre("trimestre"),
+        enseignement("enseignement");
 
         private String type = "";
 
@@ -66,7 +72,8 @@ public class ModListener implements ActionListener {
             motElem.createUpdateRequest(surName,name,conn);
 
 
-        }else if(elem.getType().equals(typePannel.enseignant.type))
+        }
+        else if(elem.getType().equals(typePannel.enseignant.type))
         {
 
             JEnseignantMod trueObject = (JEnseignantMod) elem;
@@ -93,10 +100,35 @@ public class ModListener implements ActionListener {
 
 
         }
+        else if(elem.getType().equals(typePannel.trimestre.type))
+        {
+            JTrimestreMod trueObject = (JTrimestreMod) elem;
+            Trimestre motElem = (Trimestre) trueObject.getMotherElem();
+            String dateStartYear = trueObject.getStartYearPanel().getJFormattedTextField().getText();
+            String dateEndYear = trueObject.getEndYearPanel().getJFormattedTextField().getText();
+            LocalDate startYear;
+            LocalDate endYear;
+            try{
+                int numero = Integer.parseInt( trueObject.getNumeroTextArea().getText()) ;
+                if (!dateEndYear.equals("") && !dateStartYear.equals(""))
+                {
+                     startYear = Trimestre.changeInLocaldate(dateStartYear);
+                     endYear = Trimestre.changeInLocaldate(dateEndYear);
+                }
+                else
+                {
+                     startYear = motElem.getDebut();
+                     endYear = motElem.getFin();
+                }
+                motElem.createUpdateRequest(numero,startYear,endYear,conn);
+
+
+            }catch(NumberFormatException error){}
 
         conn.executeAllupdate();
         Ecole.getInstance().refresh();
         GraphicContainer.createInstance(new JRightNavPanel(),new JUpNavBar(),new JClasseAff(eco));
 
     }
+}
 }

@@ -7,6 +7,7 @@ import com.speedphoenix.Display.ModClasses.*;
 import com.speedphoenix.Display.ModClasses.Mod.JBulletinMod;
 import com.speedphoenix.Display.ModClasses.Mod.JEleveMod;
 import com.speedphoenix.Display.ModClasses.Mod.JEnseignantMod;
+import com.speedphoenix.Display.ModClasses.Mod.JTrimestreMod;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;
@@ -58,6 +59,7 @@ public class RedirectModListener implements ActionListener {
         Connexion conn = Connexion.conn;
         String classType =  elem.getClass().getCanonicalName();
         JMotherMod mot = null;
+        System.out.println(classType);
 
         //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
         if(classType.equals(classesType.Inscription.name))
@@ -80,10 +82,11 @@ public class RedirectModListener implements ActionListener {
             {
             }
 
-        }
-        else if(classType.equals(classesType.trimestre.name))
-        {
 
+        }else if(classType.equals(classesType.trimestre.name))
+        {
+            Trimestre baseElem = eco.findTrimestre((int)elem.getListId().get(index));
+            mot = new JTrimestreMod(baseElem);
 
         }
         else if(classType.equals(classesType.classe.name))
@@ -105,11 +108,10 @@ public class RedirectModListener implements ActionListener {
 
 
         }
-        else if(classType.equals(classesType.discipline.name))
-        {
+        else if(classType.equals(classesType.discipline.name)) {
 
 
-        } else if(classType.equals(classesType.enseignant.name))
+        }else if(classType.equals(classesType.enseignant.name))
         {
             Enseignant baseElem = eco.findEnseignant((int)elem.getListId().get(index));
             mot = new JEnseignantMod(baseElem);
@@ -120,7 +122,9 @@ public class RedirectModListener implements ActionListener {
             mot = new JEleveMod(baseElem);
         }
         //on réaffiche correctement la liste
-        GraphicContainer.createInstance(mot);
+
+        if(mot != null)
+            GraphicContainer.createInstance(mot);
 
     }
 }

@@ -7,6 +7,7 @@ import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.ModClasses.Add.JNiveauAdd;
 import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
+import com.speedphoenix.Display.ModClasses.Mod.JTrimestreMod;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
@@ -79,7 +80,7 @@ public class Main {
         
 
 
-        //mainFrame.createInstance(new JNiveauAdd());
+        mainFrame.createInstance(new JTrimestreMod(eco.findTrimestre(2)));
 
         //on affiche la Jframe
         mainFrame.setVisible(true);

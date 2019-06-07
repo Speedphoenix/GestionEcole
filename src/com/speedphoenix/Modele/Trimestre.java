@@ -49,10 +49,20 @@ public class Trimestre extends BaseElem {
         String sql = "INSERT INTO trimestre (numero,debut,fin,anneeScolId) VALUES("+numero+",'"+debut.toString()+"','"+fin.toString()+"',"+anneeScolId+");";
         conn.ajouterRequeteMaj(sql);
     }
-    public void createUpdateRequest(LocalDate debut,LocalDate fin, Connexion conn)
+    public void createUpdateRequest(int numero,LocalDate debut,LocalDate fin, Connexion conn)
     {
-        String sql = "UPDATE trimestre SET debut = '"+debut.toString()+"', fin = '"+fin.toString()+"'WHERE id="+this.id+";";
+        String sql = "UPDATE trimestre SET debut = '"+debut.toString()+"', fin = '"+fin.toString()+"', numero = "+numero+" WHERE id = "+this.id+";";
+        System.out.println(sql);
         conn.ajouterRequeteMaj(sql);
+    }
+    public static LocalDate changeInLocaldate(String date)
+    {
+        int annee = Integer.parseInt(date.substring(0,4));
+        int mois = Integer.parseInt(date.substring(5,7));
+        int jour = Integer.parseInt(date.substring(8,10));
+
+        LocalDate localdate = LocalDate.of(annee,mois,jour);
+        return localdate;
     }
     public String getTableName(){
         return "trimestre";
