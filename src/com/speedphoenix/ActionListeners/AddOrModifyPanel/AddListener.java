@@ -223,6 +223,14 @@ public class AddListener implements ActionListener {
 
 
         }
+        else if(elem.getType().equals(typePannel.niveau.type))
+        {
+            JNiveauAdd trueObject = (JNiveauAdd) elem;
+            String name = trueObject.getTextName().getText() ;
+
+            if( !name.equals(""))
+                Niveau.createInsertRequest(name,conn);
+        }
 
         conn.executeAllupdate();
         Ecole.getInstance().refresh();

@@ -5,6 +5,7 @@ import com.speedphoenix.Display.*;
 import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
+import com.speedphoenix.Display.ModClasses.Add.JNiveauAdd;
 import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
 import com.speedphoenix.Modele.*;
 
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 *
 * SOURCES :
 *   - DatePicker : https://stackoverflow.com/questions/26794698/how-do-i-implement-jdatepicker
-*
+*   - Center a text Area : https://stackoverflow.com/questions/17161587/how-to-center-align-text-in-jtextarea/49081289
 * */
 public class Main {
 
@@ -70,7 +71,7 @@ public class Main {
         mainFrame.setSize(1016,1000);
         mainFrame.getContentPane().setLayout(null);
         //Le premier panel à etre afficher sera les classes
-        //mainFrame.createInstance(panel2,panel3,classeAff);
+        mainFrame.createInstance(panel2,panel3,classeAff);
         //l'icone du programme est inséré
         mainFrame.setIconImage(image.getImage());
 
@@ -78,7 +79,7 @@ public class Main {
         
 
 
-        mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
+        //mainFrame.createInstance(new JNiveauAdd());
 
         //on affiche la Jframe
         mainFrame.setVisible(true);

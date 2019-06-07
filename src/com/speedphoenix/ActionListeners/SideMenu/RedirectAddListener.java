@@ -127,12 +127,14 @@ public class RedirectAddListener implements ActionListener {
         }
         else if(classType.equals(classesType.niveau.name))
         {
-
+            mot = new JNiveauAdd();
 
         }else if(classType.equals(classesType.anneeScol.name))
         {
-
-
+           AnneeScolaire.createInsertRequest(conn);
+           conn.executeAllupdate();
+           eco.refresh();
+           GraphicContainer.getInstance().setContentPan(new JAnneeScolAff());
         }
         else if(classType.equals(classesType.discipline.name))
         {

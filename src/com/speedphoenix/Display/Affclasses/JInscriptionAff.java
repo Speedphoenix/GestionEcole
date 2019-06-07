@@ -4,6 +4,7 @@ import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.util.TreeMap;
 
@@ -40,7 +41,7 @@ public class JInscriptionAff extends JMother {
         //initialiser le tableau de donnees
         data = new Object[sizeCounter][5];
         //creer le titre de tableau
-        title = new String[]{"Nom", "Prenom", "ID", "Classe", "Niveau"};
+        title = new String[]{"Prenom", "Nom", "ID", "Classe", "Niveau"};
 
         sizeCounter=0;//on annule le counteur
 
@@ -54,6 +55,9 @@ public class JInscriptionAff extends JMother {
         }
 
         mainTable = new JPanTable(data, title, 0,0, mainPanel.getWidth(), mainPanel.getHeight());
+        DefaultTableCellRenderer centerRenderer = new DefaultTableCellRenderer();
+        centerRenderer.setHorizontalAlignment( JLabel.CENTER );
+        mainTable.getTable().setDefaultRenderer(String.class, centerRenderer);
         mainTable.getTable().getSelectionModel().addListSelectionListener(new ListSelectListener(mainTable.getTable()));
         mainPanel.add(mainTable);// On ajoute notre table sur main Jpanel
         mainPanel.setBackground(Color.darkGray);
@@ -61,7 +65,7 @@ public class JInscriptionAff extends JMother {
     }
 
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{mapCopy.get(i).getEleve().getNom(),mapCopy.get(i).getEleve().getPrenom(), String.valueOf(mapCopy.get(i).getEleve().getId()), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getEleve().getPrenom(),mapCopy.get(i).getEleve().getNom(), String.valueOf(mapCopy.get(i).getEleve().getId()), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
         listId.add(mapCopy.get(i).getId());
     }
 
