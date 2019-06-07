@@ -15,6 +15,7 @@ public class JEvaluationAdd extends JMotherMod {
     private JTextPane staticAncestorElement;
     private JTextField note;
     private JTextPane appreciation;
+    private JLabel nomFenetre;
 
     private JButton accept;
 
@@ -84,6 +85,12 @@ public class JEvaluationAdd extends JMotherMod {
 
 
         mainPanel.add(accept);
+
+        nomFenetre = new JLabel("Ajout Evaluation");
+        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setFont(new Font("Verdana",3,30));
+
+        mainPanel.add(nomFenetre);
     }
 
     public JTextField getNote() {
