@@ -6,6 +6,7 @@ import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
+import com.speedphoenix.Display.ModClasses.Mod.JNiveauMod;
 import com.speedphoenix.Modele.*;
 
 import javax.swing.*;
@@ -78,7 +79,9 @@ public class Main {
         
 
 
-        mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
+        //mainFrame.createInstance(new JTrimestreAdd(eco.findAnneeScolaire(1)));
+        //mainFrame.createInstance(panel2,panel3,classeAff);
+        mainFrame.createInstance(new JNiveauMod());
 
         //on affiche la Jframe
         mainFrame.setVisible(true);
