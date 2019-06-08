@@ -28,12 +28,8 @@ public class JTrimestreMod extends JMotherMod {
     public JTrimestreMod(BaseElem what){
 
         motherElem = what;
-        AnneeScolaire mot = Ecole.getInstance().findAnneeScolaire(motherElem.getId());
-        int AnneeStart = mot.getStartYear();
-        int AnneeEnd = mot .getEndYear();
-        String periode = " Année "+AnneeStart+"/"+AnneeEnd;
-        if(AnneeStart == 0 || AnneeEnd == 0)
-            periode = "periode indeterminée";
+        Trimestre mot = Ecole.getInstance().findTrimestre(motherElem.getId());
+
 
         mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1000,1000);
