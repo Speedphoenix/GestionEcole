@@ -21,7 +21,7 @@ public class Eleve extends Personne {
      * Adds a reference to a {@link Inscription} to the list of child Inscriptions
      * @param what the {@link Inscription} to add
      */
-    public void addInscription(Inscription what) {
+    protected void addInscription(Inscription what) {
         inscriptions.add(what);
     }
 

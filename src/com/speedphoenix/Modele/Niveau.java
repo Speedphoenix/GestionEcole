@@ -27,7 +27,7 @@ public class Niveau extends BaseElem {
      * Adds a reference to a {@link Classe} to the list of child Classes
      * @param what the {@link Classe} to add
      */
-    public void addClasse(Classe what) {
+    protected void addClasse(Classe what) {
         classes.add(what);
     }
 

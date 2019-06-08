@@ -53,7 +53,7 @@ public class Classe extends BaseElem {
      * Adds a reference to a {@link Inscription} to the list of child Inscriptions
      * @param what the {@link Inscription} to add
      */
-    public void addInscription(Inscription what) {
+    protected void addInscription(Inscription what) {
         inscriptions.add(what);
     }
 
@@ -61,7 +61,7 @@ public class Classe extends BaseElem {
      * Adds a reference to a {@link Enseignement} to the list of child Enseignements
      * @param what the {@link Enseignement} to add
      */
-    public void addEnseignement(Enseignement what) {
+    protected void addEnseignement(Enseignement what) {
         enseignements.add(what);
     }
 

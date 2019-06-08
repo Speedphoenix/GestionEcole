@@ -36,7 +36,7 @@ public class DetailBulletin extends BaseElem {
      * Adds a reference to a {@link Evaluation} to the list of child Evaluations
      * @param what the {@link Evaluation} to add
      */
-    public void addEvaluation(Evaluation what) {
+    protected void addEvaluation(Evaluation what) {
         evaluations.add(what);
     }
 

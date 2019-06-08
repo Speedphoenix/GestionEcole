@@ -37,7 +37,7 @@ public class Enseignement extends BaseElem {
      * Adds a reference to a {@link DetailBulletin} to the list of child DetailBulletins
      * @param what the {@link DetailBulletin} to add
      */
-    public void addDetailBulletin(DetailBulletin what) {
+    protected void addDetailBulletin(DetailBulletin what) {
         detailBulletins.add(what);
     }
 

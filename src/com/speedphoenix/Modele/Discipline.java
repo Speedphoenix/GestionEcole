@@ -28,7 +28,7 @@ public class Discipline extends BaseElem {
      * Adds a reference to a {@link Enseignement} to the list of child Enseignements
      * @param what the {@link Enseignement} to add
      */
-    public void addEnseignement(Enseignement what) {
+    protected void addEnseignement(Enseignement what) {
         enseignements.add(what);
     }
 

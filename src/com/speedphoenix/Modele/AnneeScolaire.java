@@ -30,7 +30,7 @@ public class AnneeScolaire extends BaseElem{
      * Adds a reference to a Trimestre to the list of child Trimestres
      * @param what the {@link Trimestre} to add
      */
-    public void addTrimestre(Trimestre what) {
+    protected void addTrimestre(Trimestre what) {
         trimestres.add(what);
     }
 
@@ -38,7 +38,7 @@ public class AnneeScolaire extends BaseElem{
      * Adds a reference to a {@link Classe} to the list of child Classes
      * @param what the {@link Classe} to add
      */
-    public void addClasse(Classe what) {
+    protected void addClasse(Classe what) {
         classes.add(what);
     }
 

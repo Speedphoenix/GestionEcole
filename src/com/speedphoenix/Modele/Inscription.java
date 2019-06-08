@@ -32,7 +32,7 @@ public class Inscription extends BaseElem {
      * Adds a reference to a {@link Bulletin} to the list of child Bulletins
      * @param what the {@link Bulletin} to add
      */
-    public void addBulletin(Bulletin what) {
+    protected void addBulletin(Bulletin what) {
         bulletins.add(what);
     }
 
