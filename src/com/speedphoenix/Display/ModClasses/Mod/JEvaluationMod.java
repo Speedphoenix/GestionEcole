@@ -8,7 +8,10 @@ import com.speedphoenix.Modele.Evaluation;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui propose de modifier Evaluation
+ * On demande d'endtrer: la note et l'appreciation
+ */
 public class JEvaluationMod extends JMotherMod {
     private JPanel mainPanel;
     private JTextPane appreciation;

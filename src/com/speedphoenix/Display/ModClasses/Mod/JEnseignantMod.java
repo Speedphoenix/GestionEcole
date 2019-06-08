@@ -9,7 +9,10 @@ import com.speedphoenix.Modele.Enseignant;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui propose de modifier un Enseignant
+ * On demande d'endtrer: le nom et le prenom
+ */
 public class JEnseignantMod extends JMotherMod {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JTextField textName;

@@ -7,7 +7,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
-
+/**
+ * JPanel qui afficheles trimestres en fonction de l'annee dans un Jtable
+ */
 public class JTrimestresAff extends JMother {
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
@@ -30,7 +32,11 @@ public class JTrimestresAff extends JMother {
         this.creation(what.getId());
 
     }
-
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos de trimestres qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * @param id de BaseElement (Annee Scolaire) en fct de qui on va chercher les trimestres a afficher
+     */
     private void creation(int id){
 
         //initialiser le tableau de donnees
@@ -63,7 +69,10 @@ public class JTrimestresAff extends JMother {
         mainPanel.setBackground(Color.darkGray);
     }
 
-    //on rempli notre data array
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{String.valueOf(mapCopy.get(i).getNumero()), String.valueOf(mapCopy.get(i).getDebut()),String.valueOf(mapCopy.get(i).getFin()) };
         listId.add(mapCopy.get(i).getId());

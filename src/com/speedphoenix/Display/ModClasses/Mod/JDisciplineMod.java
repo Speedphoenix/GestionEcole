@@ -8,7 +8,10 @@ import com.speedphoenix.Modele.Niveau;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui propose de modifier le Discipline
+ * On demande d'endtrer: le nom
+ */
 public class JDisciplineMod extends JMotherMod {
     private JTextField textName;
 

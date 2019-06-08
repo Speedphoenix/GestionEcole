@@ -9,7 +9,10 @@ import org.jdatepicker.impl.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.Properties;
-
+/**
+ * JPanel qui propose de modifier
+ * On propose a choisir: les dates
+ */
 public class JTrimestreMod extends JMotherMod {
     private JPanel mainPanel;
     private JComboBox <BaseElem> choiceBox;

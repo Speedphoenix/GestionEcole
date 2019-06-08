@@ -4,7 +4,9 @@ import com.speedphoenix.Modele.BaseElem;
 
 import javax.swing.*;
 import java.util.ArrayList;
-
+/**
+ * une classe abstraite dont toutes les classes JAff heritent
+ */
 public abstract class JMother {
 
     protected BaseElem motherElem;

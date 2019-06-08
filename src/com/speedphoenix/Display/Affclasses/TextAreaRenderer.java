@@ -7,7 +7,9 @@ import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
+/**
+ * Tbale cell renderer qui nous permet d'afficher les informations de la case dans un JTextAres
+ */
 class TextAreaRenderer extends JScrollPane implements TableCellRenderer
 {
     JTextArea textarea;
@@ -42,6 +44,11 @@ class TextAreaRenderer extends JScrollPane implements TableCellRenderer
         TextAreaRenderer.centerText(textarea);
         return this;
     }
+
+    /**
+     * Permet de centrer le text dans un JTextArea choisie
+     * @param ta JTextArea dont on veux centrer le texte
+     */
     public static void centerText (JTextArea ta)
     {
         BufferedImage fake1 = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);

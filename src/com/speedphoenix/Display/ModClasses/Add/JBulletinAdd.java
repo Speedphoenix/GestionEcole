@@ -8,7 +8,9 @@ import com.speedphoenix.Modele.*;
 
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui prpoose de rentrer les informations pour ajouter un Bulletin
+ */
 public class JBulletinAdd extends JMotherMod {
 
     private JPanel mainPanel;
@@ -56,8 +58,14 @@ public class JBulletinAdd extends JMotherMod {
         buffClass=what.getClass();
         creation(what.getId());
     }
-
-    public void creation(int id){
+    /**
+     * va initialiser les champs de recuperation des donnees necessaires pour creation de Bulletin
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * On demande d'entrer: l'appreciation
+     * On offre a choisir: trimestre ou inscription
+     * @param id de BaseElement (Trimestre ou Inscription), on ne peut pas le changer, dans le JCombobox on aura respectivement le choix des trimestres ou inscriptions "meres"
+     */
+    private void creation(int id){
 
         if(buffClass==Trimestre.class){
             staticElName = new String("Trimestre");

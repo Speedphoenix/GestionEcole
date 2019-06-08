@@ -9,7 +9,10 @@ import com.speedphoenix.Modele.Eleve;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui propose de modifier un Eleve
+ * On demande d'endtrer: le nom et le Prenom
+ */
 public class JEleveMod extends JMotherMod {
 
     private JTextField textName;

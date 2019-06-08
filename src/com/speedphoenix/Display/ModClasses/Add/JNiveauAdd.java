@@ -5,7 +5,10 @@ import com.speedphoenix.Display.ModClasses.JMotherMod;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui prppose de rentrer les informations pour ajouter un Niveau
+ * on va demander le nom de niveau
+ */
 public class JNiveauAdd extends JMotherMod {
 
     private JTextField textName;

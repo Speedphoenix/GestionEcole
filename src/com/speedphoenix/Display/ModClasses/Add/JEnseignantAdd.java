@@ -5,7 +5,11 @@ import com.speedphoenix.Display.ModClasses.JMotherMod;
 
 import javax.swing.*;
 import java.awt.*;
+/**
+ * JPanel qui propose de rentrer les informations pour ajouter un Enseignant
+ * On demande d'entrer: le nom et prenom de l'enseignant
 
+ */
 public class JEnseignantAdd extends JMotherMod {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JTextField textName;

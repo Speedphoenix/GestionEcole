@@ -7,7 +7,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui propose de rentrer les informations pour ajouter un Classe
+ */
 public class JClasseAdd extends JMotherMod {
 
     private JPanel mainPanel;
@@ -57,8 +59,14 @@ public class JClasseAdd extends JMotherMod {
         buffClass=what.getClass();
         creation(what.getId());
     }
-
-    public void creation(int id){
+    /**
+     * va initialiser les champs de recuperation des donnees necessaires pour creation de Detail Bulletin
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * On demande d'entrer: le nom de la classe
+     * On offre a choisir: un niveau
+     * @param id de BaseElement (Niveau), on ne peut pas le changer, si on cree la classe en ayant choisi le niveau avant; si non on a un JCombobox avec le choix des niveaux
+     */
+    private void creation(int id){
         int counter =0;
 
         buffName = new String("Niveau");

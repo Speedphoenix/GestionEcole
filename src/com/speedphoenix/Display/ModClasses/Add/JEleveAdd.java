@@ -8,6 +8,7 @@ import java.awt.*;
 
 /**
  * Classe ayant pour role d'afficher une interface graphique permettant d'ajouter des élèves
+ * On demande d'entrer:le nom et prenom de l'eleve
  */
 public class JEleveAdd extends JMotherMod {
 

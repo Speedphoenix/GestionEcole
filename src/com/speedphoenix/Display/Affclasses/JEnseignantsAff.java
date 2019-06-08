@@ -7,7 +7,9 @@ import com.speedphoenix.Modele.Enseignant;
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
-
+/**
+ * JPanel qui affiche toutes les enseignants dans un Jtable
+ */
 public class JEnseignantsAff extends JMother {
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
     private JPanTable mainTable; //Panel contenant le tableau d'affichage des donnees
@@ -29,7 +31,10 @@ public class JEnseignantsAff extends JMother {
         this.creation();
 
     }
-
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos des enseignants qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     */
     private void creation(){
 
         //initialiser le tableau de donnees
@@ -51,7 +56,10 @@ public class JEnseignantsAff extends JMother {
         mainPanel.setBackground(Color.darkGray);
     }
 
-    //on rempli notre data array
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getPrenom(), mapCopy.get(i).getNom()};
         listId.add(mapCopy.get(i).getId());

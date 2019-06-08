@@ -6,7 +6,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
-
+/**
+ * JPanel qui affiche les enseignements en fonction de la classe ou du discipline dans un Jtable
+ */
 public class JEnseigmnementsAff extends JMother {
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
@@ -30,8 +32,12 @@ public class JEnseigmnementsAff extends JMother {
         this.creation(what.getId());
         super.motherElem = what;
     }
-
-    public void creation(int id){
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos des enseignements qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * @param id de BaseElement (Classe ou Discipline) en fct de qui on va chercher les enseignements a afficher
+     */
+    private void creation(int id){
 
         //creer le titre de tableau
         title = new String[]{"Enseignement", "Professeur", "Classe"};
@@ -83,7 +89,10 @@ public class JEnseigmnementsAff extends JMother {
         mainPanel.setBackground(Color.darkGray);
 
     }
-
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getDiscipline().getNom(),mapCopy.get(i).getEnseignant().getPrenom()+" "+mapCopy.get(i).getEnseignant().getNom(), mapCopy.get(i).getClasse().getNom()   };
         listId.add(mapCopy.get(i).getId());

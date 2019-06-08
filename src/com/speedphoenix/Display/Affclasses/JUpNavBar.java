@@ -5,7 +5,9 @@ import com.speedphoenix.ActionListeners.UpMenu.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui les buttons de navigation initiale: Classes, Niveaux, Disciplines, Annees, Eleves, Enseignants
+ */
 public class JUpNavBar {
     private JPanel mainPanel;
     private Font defaultF = new Font("Verdana", 1,12);
