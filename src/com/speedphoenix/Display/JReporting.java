@@ -1,7 +1,8 @@
 package com.speedphoenix.Display;
 
 import com.speedphoenix.ActionListeners.ContentPanel.ListSelectListener;
-import com.speedphoenix.Display.AddClasses.JMotherMod;
+import com.speedphoenix.Display.Affclasses.JPanTable;
+import com.speedphoenix.Display.ModClasses.JMotherMod;
 import com.speedphoenix.Modele.Ecole;
 import com.speedphoenix.Modele.Enseignant;
 

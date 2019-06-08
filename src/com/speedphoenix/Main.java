@@ -46,6 +46,7 @@ public class Main {
 
         //on crée l'école dont les données sont automatiquement téléchargés depuis la BDD
         Ecole eco = new Ecole();
+
         GraphicContainer mainFrame = GraphicContainer.getInstance();
         //logo
         ImageIcon image = new ImageIcon("logo.png");
@@ -74,12 +75,8 @@ public class Main {
         mainFrame.createInstance(panel2,panel3,classeAff);
         //l'icone du programme est inséré
         mainFrame.setIconImage(image.getImage());
-
-
         
-
-
-        //mainFrame.createInstance(new JNiveauAdd());
+        //mainFrame.createInstance(new JReporting());
 
         //on affiche la Jframe
         mainFrame.setVisible(true);

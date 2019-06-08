@@ -32,6 +32,8 @@ public class Inscription extends BaseElem {
         return classe;
     }
 
+    public ArrayList<Bulletin> getBulletins() { return bulletins; }
+
     public static void createInsertRequest( int classeId, int personneId, Connexion conn)
     {
         String sql = "INSERT INTO inscription  (classeId,personneId)VALUES("+classeId+","+personneId+");";
