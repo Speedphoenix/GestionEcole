@@ -15,7 +15,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Properties;
-
+/**
+ * JPanel qui prppose de rentrer les informations pour ajouter un Trimestre
+ */
 public class JTrimestreAdd extends JMotherMod {
     private JPanel mainPanel;
     private JComboBox <BaseElem> choiceBox;

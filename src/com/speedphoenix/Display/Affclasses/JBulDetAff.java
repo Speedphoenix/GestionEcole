@@ -7,6 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
 
+/**
+ * JPanel qui affiche les details bulletins en fonction de l'enseignement ou de la classe dans un Jtable
+ */
 public class JBulDetAff  extends JMother {
 
 
@@ -32,7 +35,12 @@ public class JBulDetAff  extends JMother {
         super.motherElem = what;
     }
 
-    public void creation(int id){
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos de details bulletins qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * @param id de BaseElement (Classe ou Bulletin) en fct de qui on va chercher les details bulletins a afficher
+     */
+    private void creation(int id){
 
         //creer le titre de tableau
         title = new String[]{"Nom", "Prenom", "Discipline", "Appreciation"};
@@ -84,7 +92,10 @@ public class JBulDetAff  extends JMother {
         mainPanel.setBackground(Color.darkGray);
 
     }
-
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getBulletin().getInscription().getEleve().getNom(), mapCopy.get(i).getBulletin().getInscription().getEleve().getPrenom(), mapCopy.get(i).getEnseignement().getDiscipline().getNom(), mapCopy.get(i).getAppreciation()};
         listId.add(mapCopy.get(i).getId());

@@ -4,6 +4,9 @@ package com.speedphoenix.Display.Affclasses;
 import javax.swing.table.*;
 import javax.swing.*;
 import java.awt.*;
+/**
+ * JPanel contenant le JTable modifié pour afficher les informations choisies
+ */
 
 public class JPanTable extends JPanel {
 

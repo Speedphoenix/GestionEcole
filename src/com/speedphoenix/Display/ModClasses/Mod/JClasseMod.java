@@ -8,7 +8,10 @@ import com.speedphoenix.Modele.Eleve;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui propose de modifier la Classe
+ * On demande d'endtrer: le nom
+ */
 public class JClasseMod extends JMotherMod {
     private JTextField textName;
 

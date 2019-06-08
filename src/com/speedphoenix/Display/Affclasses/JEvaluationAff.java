@@ -6,7 +6,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
-
+/**
+ * JPanel qui affiche les evaluations de detail bulletin choisie dans un Jtable
+ */
 public class JEvaluationAff extends JMother{
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
@@ -30,8 +32,12 @@ public class JEvaluationAff extends JMother{
         this.creation(what.getId());
         super.motherElem = what;
     }
-
-    public void creation(int id){
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos des evaluations qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * @param id de BaseElement (DetailBulletin) en fct de qui on va chercher les evaluations a afficher
+     */
+    private void creation(int id){
 
         //creer le titre de tableau
         title = new String[]{"Discipline", "Note", "Appreciation"};
@@ -62,7 +68,10 @@ public class JEvaluationAff extends JMother{
         mainPanel.setBackground(Color.darkGray);
 
     }
-
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getDetailBulletin().getEnseignement().getDiscipline().getNom(),String.valueOf(mapCopy.get(i).getNote()), mapCopy.get(i).getAppreciation()};
         listId.add(mapCopy.get(i).getId());

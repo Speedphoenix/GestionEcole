@@ -8,7 +8,10 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui propose de modifier le Bulletin
+ * On demande d'endtrer: l'appreciation
+ */
 public class JBulletinMod extends JMotherMod {
 
     private JPanel mainPanel;

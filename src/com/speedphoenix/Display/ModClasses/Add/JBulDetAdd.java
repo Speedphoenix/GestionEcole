@@ -7,7 +7,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui prpoose de rentrer les informations pour ajouter un Detail Bulletin
+ */
 public class JBulDetAdd extends JMotherMod {
 
     private JPanel mainPanel;
@@ -57,8 +59,14 @@ public class JBulDetAdd extends JMotherMod {
         buffClass=what.getClass();
         creation(what.getId());
     }
-
-    public void creation(int id){
+    /**
+     * va initialiser les champs de recuperation des donnees necessaires pour creation de Detail Bulletin
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * On demande d'entrer: l'appreciation
+     * On offre a choisir: l'enseignement ou le bulletin
+     * @param id de BaseElement (Enseignement ou Bulletin), on ne peut pas le changer, dans le JCombobox on aura respectivement le choix des enseignements ou bulletins "meres"
+     */
+    private void creation(int id){
 
         if(buffClass== Bulletin.class){
             staticElName = new String("Bulletin");

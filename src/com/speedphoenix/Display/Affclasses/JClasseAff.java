@@ -8,7 +8,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
-
+/**
+ * JPanel qui affiche soit toutes les classes soit les classes en fonction de niveau dans un Jtable + deux buttons de navigation vers enseignements et eleves de la classe choisie
+ */
 public class JClasseAff extends JMother {
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
@@ -61,8 +63,12 @@ public class JClasseAff extends JMother {
         this.creation(what.getId());
         super.motherElem = what;
     }
-
-    public void creation(int id){
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos de classes qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * @param id de BaseElement (Niveau) en fct de qui on va chercher les details bulletins a afficher
+     */
+    private void creation(int id){
 
         //creer le titre de tableau
         title = new String[]{"Classe", "Niveau", "Année Scolaire"};
@@ -111,7 +117,10 @@ public class JClasseAff extends JMother {
         mainPanel.setBackground(Color.darkGray);
 
     }
-
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getNom(), mapCopy.get(i).getNiveau().getNom(), "debut: "+ mapCopy.get(i).getAnneeScolaire().getStartYear()+" fin: "+ mapCopy.get(i).getAnneeScolaire().getEndYear() };
         listId.add(mapCopy.get(i).getId());

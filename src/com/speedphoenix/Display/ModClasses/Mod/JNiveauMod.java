@@ -9,7 +9,10 @@ import com.speedphoenix.Modele.Niveau;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui propose de modifier Niveau
+ * On demande d'endtrer: le nom
+ */
 public class JNiveauMod extends JMotherMod {
     private JTextField textName;
 

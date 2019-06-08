@@ -6,7 +6,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.TreeMap;
-
+/**
+ * JPanel qui affiche  les bulletins en fonction de trimestre ou de inscription dans un Jtable
+ */
 public class JBulletinsAff extends JMother {
 
     private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
@@ -33,8 +35,12 @@ public class JBulletinsAff extends JMother {
 
         super.motherElem = what;
     }
-
-    public void creation(int id){
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos de bulletins qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * @param id de BaseElement (Trimestre ou Inscription) en fct de qui on va chercher les bulletins a afficher
+     */
+    private void creation(int id){
 
         //creer le titre de tableau
         title = new String[]{"Nom  ", "Prenom", "Appreciation"};
@@ -88,7 +94,10 @@ public class JBulletinsAff extends JMother {
         mainPanel.setBackground(Color.darkGray);
 
     }
-
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getInscription().getEleve().getNom(), mapCopy.get(i).getInscription().getEleve().getPrenom(), mapCopy.get(i).getAppreciation() };
         listId.add(mapCopy.get(i).getId());

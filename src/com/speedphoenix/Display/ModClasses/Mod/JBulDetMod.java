@@ -9,6 +9,10 @@ import com.speedphoenix.Modele.DetailBulletin;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * JPanel qui propose de modifier Detail Bulletin
+ * On demande d'endtrer: l'appreciation
+ */
 public class JBulDetMod extends JMotherMod {
     private JPanel mainPanel;
     private JTextPane appreciation;

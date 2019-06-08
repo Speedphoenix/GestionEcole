@@ -6,7 +6,10 @@ import com.speedphoenix.Display.ModClasses.JMotherMod;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui prpoose de rentrer les informations pour ajouter un Discipline
+ * On demande d'entrer: le nom de discipline
+ */
 public class JDisciplineAdd extends JMotherMod {
     private JTextField textName;
     private JLabel nomFenetre;

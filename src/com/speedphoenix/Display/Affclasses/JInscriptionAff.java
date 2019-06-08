@@ -7,7 +7,9 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import java.awt.*;
 import java.util.TreeMap;
-
+/**
+ * JPanel qui affiche les inscriptions de la classe choisie dans un Jtable
+ */
 public class JInscriptionAff extends JMother {
 
  private JPanel mainPanel;//JPanel qu'on va envoyer sur mainframe
@@ -28,8 +30,12 @@ public class JInscriptionAff extends JMother {
         super.motherElem = what;
 
     }
-
-    public void creation(int id){
+    /**
+     * va remplir le tableau d'objets [][] data contenant les infos des inscriptions qu'on va afficher dans JTabel
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * @param id de BaseElement (Classe) en fct de qui on va chercher les inscriptions a afficher
+     */
+    private void creation(int id){
 
         //on a besoin de savoir cmb d'eleves on va ajouter dans notre data array
         for(Integer i: mapCopy.keySet())
@@ -63,7 +69,10 @@ public class JInscriptionAff extends JMother {
         mainPanel.setBackground(Color.darkGray);
 
     }
-
+    /**
+     * Compose un objet qu'on met dans un tableau [] [] data qui sera affiche par le JTable
+     * @param i itterateur sur un element de treemap contenant les annees scolaires
+     */
     public void addStringToDataContainer(Integer i){
         data [sizeCounter] = new Object[]{mapCopy.get(i).getEleve().getPrenom(),mapCopy.get(i).getEleve().getNom(), String.valueOf(mapCopy.get(i).getEleve().getId()), mapCopy.get(i).getClasse().getNom(), mapCopy.get(i).getClasse().getNiveau().getNom() };
         listId.add(mapCopy.get(i).getId());

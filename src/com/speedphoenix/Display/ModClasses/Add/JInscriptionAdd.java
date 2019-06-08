@@ -9,7 +9,9 @@ import com.speedphoenix.Modele.Niveau;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui propose de rentrer les informations pour ajouter un Detail Bulletin
+ */
 public class JInscriptionAdd extends JMotherMod {
     private JPanel mainPanel;
     private JComboBox <BaseElem> choiceBox;
@@ -47,7 +49,12 @@ public class JInscriptionAdd extends JMotherMod {
 
         creation(what.getId());
     }
-
+    /**
+     * va initialiser les champs de recuperation des donnees necessaires pour creation de Inscription
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * On offre de choisir: un evele
+     * @param id de BaseElement (Classe), on ne peut pas le changer
+     */
     public void creation(int id){
         int counter =0;
 

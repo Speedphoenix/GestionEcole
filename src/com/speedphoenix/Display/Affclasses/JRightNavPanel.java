@@ -8,7 +8,9 @@ import com.speedphoenix.Display.GraphicContainer;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui contient les buttons d'action principales: ajout, modification et suppression
+ */
 public class JRightNavPanel {
     private JPanel mainPanel;
     private ArrayList<JButton> buttons = new ArrayList<>();

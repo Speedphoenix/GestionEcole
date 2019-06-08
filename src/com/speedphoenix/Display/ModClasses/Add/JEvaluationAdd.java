@@ -7,7 +7,9 @@ import com.speedphoenix.Modele.Ecole;
 
 import javax.swing.*;
 import java.awt.*;
-
+/**
+ * JPanel qui propose de rentrer les informations pour ajouter un Detail Bulletin
+ */
 public class JEvaluationAdd extends JMotherMod {
     private JPanel mainPanel;
 
@@ -41,7 +43,12 @@ public class JEvaluationAdd extends JMotherMod {
 
         creation(what.getId());
     }
-
+    /**
+     * va initialiser les champs de recuperation des donnees necessaires pour creation de Evaluation
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * On demande d'entrer: la note et l'appreciation
+     * @param id de BaseElement (DetailBulletin), on ne peut pas le changer
+     */
     public void creation(int id){
         int counter =0;
 

@@ -7,7 +7,9 @@ import com.speedphoenix.Modele.*;
 import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
-
+/**
+ * JPanel qui prpoose de rentrer les informations pour ajouter un Enseignement
+ */
 public class JEnseignementAdd extends JMotherMod {
     private JPanel mainPanel;
     private JComboBox <BaseElem> firstChoiceBox;
@@ -49,7 +51,12 @@ public class JEnseignementAdd extends JMotherMod {
         buffClass=what.getClass();
         creation(what.getId());
     }
-
+    /**
+     * va initialiser les champs de recuperation des donnees necessaires pour creation de Enseignement
+     * et ensuite va ajoutes les elements necesaires sur le JPanel
+     * On offre a choisir: un enseigant, une classe, un discipline
+     * @param id de BaseElement (Classe ou Discipline), on ne peut pas le changer, dans le JCombobox on aura respectivement le choix des classes ou disciplines "meres"
+     */
     public void creation(int id){
         int counter =0;
 
