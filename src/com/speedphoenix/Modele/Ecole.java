@@ -12,6 +12,10 @@ import java.util.TreeMap;
  * Is also a mirror of the ecole table in the SQL Database
  */
 public class Ecole extends BaseElem {
+    /**
+     * The static instance of Ecole.
+     * Allows for anyone anywhere to get access to the instance of this class with getInstance
+     */
     protected static Ecole instance;
     protected String nom;
     protected TreeMap<Integer, Classe> classes = new TreeMap();
@@ -52,7 +56,7 @@ public class Ecole extends BaseElem {
      */
     public void refresh()
     {
-         this.reinitTreeMaps();
+         reinitTreeMaps();
          retriveEcole();
          this.fillNiveaux();
          this.fillDisciplines();
@@ -501,7 +505,10 @@ public class Ecole extends BaseElem {
         }
     }
 
-    private void reinitTreeMaps()
+    /**
+     * Fully resets every TreeMap of the instance of Ecole.
+     */
+    private static void reinitTreeMaps()
     {
         Ecole cont = Ecole.getInstance();
         cont.classes.clear();
@@ -519,6 +526,9 @@ public class Ecole extends BaseElem {
         cont.enseignants.clear();
     }
 
+    /**
+     * Prints every object mirrored from the database to the standard error stream
+     */
     public void showTest()
     {
         System.err.println("\n----------------------------------------------------");
@@ -556,7 +566,7 @@ public class Ecole extends BaseElem {
         return instance;
     }
 
-    public void addClasse(Classe what) {
+    protected void addClasse(Classe what) {
         classes.put(what.getId(), what);
     }
 
@@ -564,7 +574,7 @@ public class Ecole extends BaseElem {
         return classes.get(id);
     }
 
-    public void addAnneeScolaire(AnneeScolaire what) {
+    protected void addAnneeScolaire(AnneeScolaire what) {
         anneeScolaires.put(what.getId(), what);
     }
 
@@ -572,7 +582,7 @@ public class Ecole extends BaseElem {
         return anneeScolaires.get(id);
     }
 
-    public void addBulletin(Bulletin what) {
+    protected void addBulletin(Bulletin what) {
         bulletins.put(what.getId(), what);
     }
 
@@ -664,12 +674,23 @@ public class Ecole extends BaseElem {
         return nom;
     }
 
+    /**
+     * Creates the query to add a new Ecole to the database
+     * This is rarely used as there should only be one Ecole at any time
+     * @param nom The text of the field with the same name in the SQL table
+     * @param conn The connection to the database used
+     */
     public static void createInsertRequest(String nom, Connexion conn)
     {
         String sql = "INSERT INTO ecole (nom) VALUES('"+nom+"');";
         conn.ajouterRequeteMaj(sql);
     }
 
+    /**
+     * Creates the query to update this entry in the database
+     * @param nom The new nom of this Ecole
+     * @param conn The connection to the database used
+     */
     public void createUpdateRequest(String nom, Connexion conn)
     {
         String sql = "UPDATE ecole SET nom = '"+nom+"' WHERE id="+this.id+";";

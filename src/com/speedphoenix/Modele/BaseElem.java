@@ -16,11 +16,15 @@ public abstract class BaseElem {
      *
      * @param id the id of the entry in the SQL table
      */
-    public BaseElem(int id) {
+    protected BaseElem(int id) {
         this.id = id;
     }
 
-    public BaseElem() {
+    /**
+     * Default constructor. To be used when the id is retrieved after initializing the object.
+     * This will initialize id to zero, but is expected to be rewritten shortly after
+     */
+    protected BaseElem() {
         this.id = 0;
     }
 
@@ -49,8 +53,13 @@ public abstract class BaseElem {
      */
     public abstract String getTableName();
 
+    /**
+     * Creates and adds the SQL query to remove this entry from the database.
+     * Note that this only removes this particular entry and not its children
+     * @param conn The connection to the SQL database that will do the query
+     */
     private void deleteRow(Connexion conn) {
-        String sql = "DELETE FROM "+getTableName()+"  WHERE id = "+getId()+";";
+        String sql = "DELETE FROM "+ getTableName() + "  WHERE id = " + getId() + ";";
         conn.ajouterRequeteMaj(sql);
     }
 

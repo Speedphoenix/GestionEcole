@@ -43,7 +43,7 @@ public class AnneeScolaire extends BaseElem{
     }
 
     /**
-     * Returns the starting year of this school year
+     * Returns the starting year of this school year. This looks through the trimestres of this year to find it
      * @return The starting year of this school year
      */
     public int getStartYear() {
