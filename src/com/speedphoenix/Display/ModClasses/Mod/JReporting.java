@@ -117,40 +117,39 @@ public class JReporting extends JMotherMod {
         return donnee;
     }
 
-
     public void choix()
     {
         Reporting r = new Reporting();
 
         if(menu.getSelectedItem().toString().equals("Moyennes par TD"))
         {
-            histogramme(r.moyenne_par_td(),1);
             setCategorie("TD");
             setDonnee("Moyennes");
+            histogramme(r.moyenne_par_td(),1);
         }
         else if(menu.getSelectedItem().toString().equals("Moyennes par matières"))
         {
-            histogramme(r.moyenne_par_matiere(),2);
             setCategorie("Matières");
             setDonnee("Moyennes");
+            histogramme(r.moyenne_par_matiere(),2);
         }
         else if(menu.getSelectedItem().toString().equals("Moyennes par promo"))
         {
-            histogramme(r.moyenne_par_promo(),3);
             setCategorie("Promo");
             setDonnee("Moyennes");
+            histogramme(r.moyenne_par_promo(),3);
         }
         else if(menu.getSelectedItem().toString().equals("Nombre d'élèves par promo"))
         {
-            camembert(r.repartition_eleve_par_promo(),1);
             setCategorie("Promo");
             setDonnee("Nombre d'élèves");
+            camembert(r.repartition_eleve_par_promo(),1);
         }
         else if(menu.getSelectedItem().toString().equals("Nombre de profs par discipline"))
         {
-            camembert(r.repartition_prof_par_discipline(),2);
             setCategorie("Matières");
             setDonnee("Nombre de profs");
+            camembert(r.repartition_prof_par_discipline(),2);
         }
     }
 
@@ -274,9 +273,7 @@ public class JReporting extends JMotherMod {
         plot.setSectionPaint(1, Color.GRAY);
         plot.setSectionPaint(2, Color.BLACK);
 
-        //{0} représente les labels de la série.
-        //{1} représente les valeurs de la série.
-        //{2} représente les pourcentages.
+        //label des parties de la pie chart
         plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}={1} ({2})"));
 
         /**

@@ -184,7 +184,9 @@ public class Reporting extends BaseElem {
                 total += sc.findNiveau(key).classes.get(i).getInscriptions().size();
             }
 
-            rep_el.put(key,total);
+            if(total > 0) {
+                rep_el.put(key, total);
+            }
             //System.out.println(sc.findNiveau(key).getNom() + " " + total);
         }
 
