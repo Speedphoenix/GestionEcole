@@ -6,7 +6,9 @@ import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JRightNavPanel;
 import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.ModClasses.Add.JTrimestreAdd;
-
+import com.speedphoenix.Display.ModClasses.Mod.JBulDetMod;
+import com.speedphoenix.Display.ModClasses.Mod.JTrimestreMod;
+import com.speedphoenix.Modele.Ecole;
 
 import javax.swing.*;
 import java.sql.SQLException;
@@ -47,9 +49,6 @@ public class Main {
 
         //on crée l'école dont les données sont automatiquement téléchargés depuis la BDD
         Ecole eco = new Ecole();
-
-
-
         //logo
         ImageIcon image = new ImageIcon("logo.png");
         //menu De navigation gauche
@@ -61,18 +60,10 @@ public class Main {
 
         mainFrame.setSize(1016,1060);
         mainFrame.getContentPane().setLayout(null);
-
-
         //Le premier panel à etre afficher sera les classes
         mainFrame.createInstance(panel2,panel3,classeAff);
         //l'icone du programme est inséré
-
         mainFrame.setIconImage(image.getImage());
-
-        mainFrame.setIconImage(image.getImage()); **/
-
-        mainFrame.createInstance(new JReporting(eco));
-
 
         //on affiche la Jframe
         mainFrame.setVisible(true);

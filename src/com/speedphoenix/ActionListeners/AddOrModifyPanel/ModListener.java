@@ -64,6 +64,7 @@ public class ModListener implements ActionListener {
 
         if(elem.getType().equals(typePannel.eleve.type))
         {
+
             JEleveMod trueObject = (JEleveMod) elem;
             Eleve motElem = (Eleve) trueObject.getMotherElem();
             String surName = trueObject.getTextSurname().getText() ;
