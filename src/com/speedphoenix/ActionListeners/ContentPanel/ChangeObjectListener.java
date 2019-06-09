@@ -57,7 +57,6 @@ public class ChangeObjectListener implements MouseListener {
             JMother mot = null;
             int index = elem.getMainTable().getTable().getSelectedRow();
 
-
             //on détecte le type d'objet a effacer, on l'efface puis on met a jour la bdd et la DAO
              if(classType.equals(classesType.bulletin.name))
             {
