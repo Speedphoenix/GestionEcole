@@ -5,6 +5,7 @@ import com.speedphoenix.Display.Affclasses.*;
 import com.speedphoenix.Display.GraphicContainer;
 import com.speedphoenix.Display.ModClasses.Add.*;
 import com.speedphoenix.Display.ModClasses.JMotherMod;
+import com.speedphoenix.Display.ModClasses.Mod.JReporting;
 import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;
@@ -28,13 +29,13 @@ public class RedirectReportingListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-       /*
-            mot = new JReporting();
+
+            JMotherMod mot = new JReporting();
 
         if( mot != null)
             GraphicContainer.createInstance(mot);
 
-        */
+
 
     }
 }

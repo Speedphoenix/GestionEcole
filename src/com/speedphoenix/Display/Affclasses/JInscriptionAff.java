@@ -78,6 +78,7 @@ public class JInscriptionAff extends JMother {
         listId.add(mapCopy.get(i).getId());
     }
 
+
     //pour avoir access au tableau ajoute .getTable() apres
     @Override
     public JPanTable getMainTable() {

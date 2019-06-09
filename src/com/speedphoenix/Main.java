@@ -65,6 +65,7 @@ public class Main {
         //l'icone du programme est inséré
         mainFrame.setIconImage(image.getImage());
 
+
         //on affiche la Jframe
         mainFrame.setVisible(true);
     }
