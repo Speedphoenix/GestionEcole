@@ -56,6 +56,10 @@ public class Inscription extends BaseElem {
         conn.ajouterRequeteMaj(sql);
     }
 
+    public ArrayList<Bulletin> getBulletins() {
+        return bulletins;
+    }
+
     @Override
     public String getTableName(){
         return "inscription";
