@@ -1,6 +1,9 @@
 package com.speedphoenix.ActionListeners.AddOrModifyPanel;
 
 import com.speedphoenix.Display.ModClasses.JMotherMod;
+import com.speedphoenix.Display.ModClasses.Mod.JReporting;
+import com.speedphoenix.Modele.Ecole;
+import com.speedphoenix.Modele.Reporting;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,30 +16,22 @@ public class ReportingListener implements ActionListener {
         this.elem = elem;
     }
 
-    private enum typePannel{
-        reporting("reporting");
-
-
-        private String type = "";
-
-        //Constructeur
-        typePannel(String name){
-            this.type = name;
-        }
-        //Constructeur
-        typePannel(){
-            this.type = "classesType";
-        }
-
-        public String toString(){
-            return type;
-        }
-    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
 
+        Ecole sc = Ecole.getInstance();
 
+        JReporting trueObject = (JReporting) elem;
+
+        ((JReporting) elem).getGraphicPanel().removeAll();
+
+        ((JReporting) elem).choix();
+
+        ((JReporting) elem).getGraphicPanel().revalidate();
+        ((JReporting) elem).getGraphicPanel().repaint();
+
+        }
 
     }
-}
+

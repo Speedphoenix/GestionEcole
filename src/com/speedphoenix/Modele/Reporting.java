@@ -157,8 +157,6 @@ public class Reporting extends BaseElem {
             {
                 double moyenne = total / nb;
                 avrg_matieres.put(key,moyenne);
-
-                System.out.println(sc.findDiscipline(key).getNom() + " a pour moy " + moyenne);
             }
 
         }
