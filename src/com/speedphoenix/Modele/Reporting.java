@@ -20,14 +20,16 @@ public class Reporting extends BaseElem {
         for (Iterator it = keys.iterator(); it.hasNext();) {
             Integer key = (Integer) it.next();
 
+            double total = 0 ;
+            int nb_eval = 0 ;
+
             //System.out.println("dans la classe" + sc.findClasse(key).getNom());
 
             //parcours chaque élève du TD
             for (int i = 0 ; i < sc.findClasse(key).getInscriptions().size() ; i++)
             {
                 //System.out.println("l'élève " + sc.findClasse(key).getInscriptions().get(i).getEleve().getPrenom());
-                double total = 0 ;
-                int nb_eval = 0 ;
+
 
                 //parcours chaque bulletin
                 for(int j = 0; j < sc.findClasse(key).getInscriptions().get(i).getBulletins().size() ; j++)
@@ -53,13 +55,16 @@ public class Reporting extends BaseElem {
                     }
                 }
 
-                if(nb_eval != 0)
-                {
-                    double moyenne = total / nb_eval;
 
-                    all_avrg.put(key,moyenne);
-                }
 
+            }
+
+            if(nb_eval != 0)
+            {
+                double moyenne = total / nb_eval;
+
+                all_avrg.put(key,moyenne);
+                System.out.println(key + " a pour moye" + moyenne);
             }
         }
 
@@ -156,6 +161,7 @@ public class Reporting extends BaseElem {
             {
                 double moyenne = total / nb;
                 avrg_matieres.put(key,moyenne);
+                System.out.println("matiere" + sc.findDiscipline(key).getNom() + "a moyenne " + moyenne);
             }
         }
 

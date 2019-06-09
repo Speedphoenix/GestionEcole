@@ -170,23 +170,25 @@ public class JReporting extends JMotherMod {
 
             if(c == 1)
             {
-                dataset.addValue((Number)a.get(key),1, sc.findClasse(key).getNom() );
+                dataset.addValue((Number)a.get(key),"moyenne", sc.findClasse(key).getNom() );
+                //System.out.println(a.get(key));
             }
             else if(c == 2)
             {
-                dataset.addValue((Number)a.get(key),1, sc.findDiscipline(key).getNom() );
+                dataset.addValue((Number)a.get(key),"moyenne", sc.findDiscipline(key).getNom() );
             }
             else if(c == 3)
             {
-                dataset.addValue((Number)a.get(key),1, sc.findNiveau(key).getNom() );
+                dataset.addValue((Number)a.get(key),"mçyenne", sc.findNiveau(key).getNom() );
             }
+
         }
 
-         //créa de la chart
+        //créa de la chart
         chart = ChartFactory.createBarChart(
                 getDonnee() + " par " + getCategorie(), // chart title
-                getDonnee(), // domain axis label
-                getCategorie(), // range axis label
+                getCategorie(), // domain axis label
+                getDonnee(), // range axis label
                 dataset, // data
                 PlotOrientation.VERTICAL, // orientation
                 true, // include legend
@@ -215,9 +217,6 @@ public class JReporting extends JMotherMod {
         ChartFrame frame = new ChartFrame("First", chart);
         frame.pack();
         frame.setVisible(true);
-        //graphicPanel.add(frame);
-
-
 
     }
 
