@@ -7,6 +7,9 @@ import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+/**
+ * Détecte la sélection d'au moins un des éléments de la liste pour autoriser la pression des boutons du menu de gauche
+ */
 public class ListSelectListener implements ListSelectionListener {
 
     JTable table;

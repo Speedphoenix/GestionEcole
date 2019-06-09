@@ -7,6 +7,9 @@ import com.speedphoenix.Display.Affclasses.JMother;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *  ActionListenener utilisé pour un des boutons du menu du haut et redirigeant vers les Disciplines
+ */
 public class DisciplineButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {

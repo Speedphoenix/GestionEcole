@@ -14,7 +14,9 @@ import com.speedphoenix.Modele.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
-
+/**
+ * Actionlistener pour un bouton de modification d'une classe JMotherMod
+ */
 public class ModListener implements ActionListener {
 
     protected JMotherMod elem ;
@@ -51,6 +53,10 @@ public class ModListener implements ActionListener {
             return type;
         }
     }
+    /**
+     * A la detection d'un évènement, on cherche le panneau de modfication dont il provient et on effectue la requete sql adéquate
+     * @param e non utilisé (ActionEvent)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Connexion conn = Connexion.conn;

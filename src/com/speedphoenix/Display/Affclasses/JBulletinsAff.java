@@ -43,7 +43,7 @@ public class JBulletinsAff extends JMother {
     private void creation(int id){
 
         //creer le titre de tableau
-        title = new String[]{"Nom  ", "Prenom", "Appreciation"};
+        title = new String[]{"Prenom", "Nom", "Appreciation"};
 
         if(buffClass== Trimestre.class) {
             for(Integer i: mapCopy.keySet())
@@ -99,7 +99,7 @@ public class JBulletinsAff extends JMother {
      * @param i itterateur sur un element de treemap contenant les annees scolaires
      */
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{mapCopy.get(i).getInscription().getEleve().getNom(), mapCopy.get(i).getInscription().getEleve().getPrenom(), mapCopy.get(i).getAppreciation() };
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getInscription().getEleve().getPrenom(), mapCopy.get(i).getInscription().getEleve().getNom(), mapCopy.get(i).getAppreciation() };
         listId.add(mapCopy.get(i).getId());
     }
 

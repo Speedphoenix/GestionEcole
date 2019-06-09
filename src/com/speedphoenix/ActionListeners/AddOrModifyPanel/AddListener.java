@@ -13,9 +13,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
+/**
+ * Actionlistener pour un bouton d'ajout d'une classe JMotherMod
+ */
 public class AddListener implements ActionListener {
 
     protected JMotherMod elem ;
+
 
     public AddListener(JMotherMod elem) {
         this.elem = elem;
@@ -49,6 +53,11 @@ public class AddListener implements ActionListener {
             return type;
         }
     }
+
+    /**
+     * A la detection d'un évènement, on cherche le panneau d'ajout dont il provient et on effectue la requete sql adéquate
+     * @param e non utilisé (ActionEvent)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         Connexion conn = Connexion.conn;
@@ -62,6 +71,7 @@ public class AddListener implements ActionListener {
 
             if(!surName.equals("") && !name.equals(""))
                 Eleve.createInsertRequest(surName,name,conn);
+            
 
         }else if(elem.getType().equals(typePannel.enseignant.type))
         {

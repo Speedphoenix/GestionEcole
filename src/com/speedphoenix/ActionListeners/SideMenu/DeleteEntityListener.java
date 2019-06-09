@@ -9,6 +9,9 @@ import com.speedphoenix.Modele.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Actionlistener pour le bouton de suppression du menu de gauche
+ */
 public class DeleteEntityListener implements ActionListener {
 
     protected JMother elem ;
@@ -50,6 +53,10 @@ public class DeleteEntityListener implements ActionListener {
         this.elem = elem;
     }
 
+    /**
+     * A la detection d'un évènement, on cherche le panneau d'ajout dont il provient et on effectue la requete sql adéquate
+     * @param e non utilisé (ActionEvent)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         int index = elem.getMainTable().getTable().getSelectedRow();

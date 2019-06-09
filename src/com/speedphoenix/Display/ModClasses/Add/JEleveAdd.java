@@ -32,7 +32,7 @@ public class JEleveAdd extends JMotherMod {
         mainPanel.setLayout(null);
         //composants
         JLabel nomFenetre = new JLabel("Ajout Eleve");
-        nomFenetre.setBounds(300, 10, 400,200);
+        nomFenetre.setBounds(370, 10, 400,200);
         nomFenetre.setFont(new Font("Verdana",3,40));
         accept = new JButton("Ajouter");
         accept.setFont(defaultF);

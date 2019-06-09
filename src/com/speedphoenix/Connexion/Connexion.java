@@ -135,53 +135,9 @@ public class Connexion {
      * @return
      * @throws java.sql.SQLException
      */
-    @SuppressWarnings("Duplicates")
     public ArrayList remplirChampsTable(String table) throws SQLException {
-        // récupération de l'ordre de la requete
 
-        rset = stmt.executeQuery("select * from " + table);
-        // récupération du résultat de l'ordre
-        rsetMeta = rset.getMetaData();
-
-        // calcul du nombre de colonnes du resultat
-        int nbColonne = rsetMeta.getColumnCount();
-        rset.last();
-        int size = rset.getRow();
-        rset.beforeFirst();
-        rset.next();
-
-        // creation d'une ArrayList dans lequel on placera les lignes une par une
-        ArrayList liste;
-        // creation d'une ArrayList de String
-        ArrayList<String> ligne;
-        liste = new ArrayList<ArrayList<String>>();
-        ligne = new ArrayList<String>();
-
-            // Ajouter tous les noms des colonnes du resultat dans l'ArrayList
-            for (int i = 0; i < nbColonne; i++) {
-                ligne.add(rsetMeta.getColumnLabel(i + 1));
-            }
-
-            // ajouter les champs de la ligne dans l'ArrayList
-            liste.add(ligne);
-
-            //tant qu'on peut aller à la ligne suivante
-        if (size > 0)
-        {
-            do {
-                ligne = new ArrayList<String>();
-
-                for (int i = 0; i < nbColonne; i++) {
-                    ligne.add(rset.getString(i + 1));
-                }
-                liste.add(ligne);
-
-            }while(rset.next());
-        }
-
-
-        // Retourner l'ArrayList
-        return liste;
+        return remplirChampsRequete("select * from " + table);
     }
 
     /**
@@ -190,7 +146,6 @@ public class Connexion {
      * @return 
      * @throws java.sql.SQLException
      */
-    @SuppressWarnings("Duplicates")
     public ArrayList remplirChampsRequete(String requete) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery(requete);
@@ -253,7 +208,9 @@ public class Connexion {
         }
     }
 
-
+    /**
+     *  Méthode qui execute toutes les requetes de MAJ stocké dans l'attribut RequeteMaj puis qui vide ce dernier
+     */
     public void executeAllupdate(){
         for(int i = 0; i < requetesMaj.size(); i++)
         {
@@ -266,44 +223,13 @@ public class Connexion {
            requetesMaj.clear();
     }
 
-    /**
-     * Methode qui fait tatatititatata
-     * @param id de type int
-     * @param table de type string
-     * @return retourne un booléen
-     */
-    public boolean testExistanceId(int id,String table)
-    {
-        ArrayList<ArrayList<String>> result = null;
-        int occurence = 0;
-        try {
-            result = this.remplirChampsRequete("Select id from "+table);
-            if(result.size() > 0)
-            {
-                for(int i = 1;i < result.size() ; i++)
-                {
-                    if (Integer.parseInt(result.get(i).get(0))  == id )
-                    {
-                        return true;
-                    }
 
-                }
-            }
-            return false;
-        } catch (SQLException e) {
-            e.getErrorCode();
-            e.printStackTrace();
-
-        }
-        return true;
-
-    }
 
     /**
-     *
-     * @param result
-     * @param colomn
-     * @return
+     *  Methode qui cherche l'index de la colonne "colomn" d'un tableau passé en paramêtre
+     * @param result tableau de résultat (ArrayList<ArrayList<String>>)
+     * @param colomn  nom de la colonne (String)
+     * @return l'indice de la colonne (int)
      */
     public int findColomnIndex(ArrayList<ArrayList<String>> result, String colomn)
     {
@@ -316,7 +242,10 @@ public class Connexion {
         }
         return -1;
     }
-    //affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
+
+    /**
+     *     affiche dans la console le résultat d'une requete SQL demandant d'afficher toute les tables
+     */
     public void displayRemplirChampsTables(String Table) {
         ArrayList<ArrayList<String>> result = null;
 
@@ -328,6 +257,11 @@ public class Connexion {
         displayResult(result);
 
     }
+
+    /**
+     *  affiche dans la console le résultat d'une requete SQL
+     * @param requete la requete a executer
+     */
     public void displayRemplirChampsRequete(String requete) {
         ArrayList<ArrayList<String>> result = null;
 

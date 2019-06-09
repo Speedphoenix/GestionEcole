@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * The super class of all classes that mirror an SQL table
- * Contains genereic things like the ID
+ * Contains generic things like the ID
  */
 public abstract class BaseElem {
     protected int id;

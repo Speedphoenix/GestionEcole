@@ -10,6 +10,9 @@ import com.speedphoenix.Modele.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Actionlistener pour le bouton d'ajout du menu de gauche
+ */
 public class RedirectAddListener implements ActionListener {
 
     protected JMother elem ;
@@ -50,6 +53,10 @@ public class RedirectAddListener implements ActionListener {
         this.elem = elem;
     }
 
+    /**
+     * A la detection d'un évènement, on cherche le type objet sélectionner et on redirige vers la page d'ajout adéquate
+     * @param e non utilisé (ActionEvent)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 

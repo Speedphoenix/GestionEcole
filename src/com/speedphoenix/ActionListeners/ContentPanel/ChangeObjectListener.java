@@ -8,6 +8,9 @@ import com.speedphoenix.Modele.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+/**
+ * Classe détectant le double click sur un élément du tableau et redirigeant vers l'objet cliqué
+ */
 public class ChangeObjectListener implements MouseListener {
 
     protected JMother elem ;

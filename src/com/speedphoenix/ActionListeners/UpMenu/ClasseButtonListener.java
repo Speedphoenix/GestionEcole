@@ -7,6 +7,9 @@ import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JMother;
 import com.speedphoenix.Modele.Ecole;
 
+/**
+ *  ActionListenener utilisé pour un des boutons du menu du haut et redirigeant vers les classes
+ */
 public class ClasseButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {

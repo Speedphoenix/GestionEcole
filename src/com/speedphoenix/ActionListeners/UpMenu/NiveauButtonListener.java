@@ -7,6 +7,9 @@ import com.speedphoenix.Display.Affclasses.JNiveauAff;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ *  ActionListenener utilisé pour un des boutons du menu du haut et redirigeant vers les niveaux
+ */
 public class NiveauButtonListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {

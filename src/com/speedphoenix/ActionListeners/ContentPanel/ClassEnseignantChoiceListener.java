@@ -9,6 +9,9 @@ import com.speedphoenix.Modele.Ecole;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * ActionListenener utilisé pour un des boutons du panneau d'affichage des classes et redirigeant vers les élèves de cette classe
+ */
 public class ClassEnseignantChoiceListener implements ActionListener {
 
     protected JMother elem ;

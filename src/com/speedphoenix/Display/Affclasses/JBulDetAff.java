@@ -43,7 +43,7 @@ public class JBulDetAff  extends JMother {
     private void creation(int id){
 
         //creer le titre de tableau
-        title = new String[]{"Nom", "Prenom", "Discipline", "Appreciation"};
+        title = new String[]{"Prenom", "nom", "Discipline", "Appreciation"};
 
         if(buffClass== Enseignement.class) {
             for(Integer i: mapCopy.keySet())
@@ -97,7 +97,7 @@ public class JBulDetAff  extends JMother {
      * @param i itterateur sur un element de treemap contenant les annees scolaires
      */
     public void addStringToDataContainer(Integer i){
-        data [sizeCounter] = new Object[]{mapCopy.get(i).getBulletin().getInscription().getEleve().getNom(), mapCopy.get(i).getBulletin().getInscription().getEleve().getPrenom(), mapCopy.get(i).getEnseignement().getDiscipline().getNom(), mapCopy.get(i).getAppreciation()};
+        data [sizeCounter] = new Object[]{mapCopy.get(i).getBulletin().getInscription().getEleve().getPrenom(), mapCopy.get(i).getBulletin().getInscription().getEleve().getNom(), mapCopy.get(i).getEnseignement().getDiscipline().getNom(), mapCopy.get(i).getAppreciation()};
         listId.add(mapCopy.get(i).getId());
     }
 

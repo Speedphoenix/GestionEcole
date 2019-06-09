@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-
+/**
+ * Classe qui crée un format personnalisé d'affichage pour les objet JDatePicker
+ */
 public class DateLabelFormatter extends JFormattedTextField.AbstractFormatter {
 
     private String datePattern = "yyyy-MM-dd";

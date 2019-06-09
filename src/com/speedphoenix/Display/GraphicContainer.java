@@ -8,6 +8,13 @@ import com.speedphoenix.Display.ModClasses.JMotherMod;
 
 import javax.swing.*;
 
+/**
+ * Classe qui contient tout l'affichage du programme
+ * elle peut afficher 2 types de contenus :
+ * - soit une table contenant toutes les données de la BDD avec un menu à gauche et un menu au dessus
+ * (contentPan,sidePanel,upPanel)
+ * - soit une page proposant à l'utisateur la modification ou l'ajout d'un objet (contentPanAdd)
+ */
 public class GraphicContainer extends JFrame {
 
     private JRightNavPanel sidePanel;
@@ -20,7 +27,13 @@ public class GraphicContainer extends JFrame {
         super.setTitle(name);
     }
 
-
+    /**
+     * Crée une instance de Graphic container et affiche une table contenant les données d'un objet de la BDD avec un menu
+     * à gauche et un menu au dessus (contentPan,sidePanel,upPanel)
+     * @param sidePanel menu à gauche
+     * @param upPanel un menu du dessus
+     * @param contentPan  table contenant les données d'un objet de la BDD
+     */
     public static void createInstance(JRightNavPanel sidePanel, JUpNavBar upPanel, JMother contentPan) {
         //on réanitialise
 
@@ -43,6 +56,11 @@ public class GraphicContainer extends JFrame {
         instance.getSidePanel().setActionsListeners();
         instance.getUpPanel().setActionsListeners();
     }
+
+    /**
+     * Crée une instance de Graphic container et affiche une page proposant à l'utisateur la modification ou l'ajout d'un objet
+     * @param motAdd page de modification ou d'ajout
+     */
     public static void createInstance(JMotherMod motAdd) {
         instance.sidePanel = null;
         instance.upPanel = null;
@@ -69,6 +87,10 @@ public class GraphicContainer extends JFrame {
         return upPanel;
     }
 
+    /**
+     * Change la table contenant les données d'un objet de la BDD pour une nouvelle passée en paramêtre
+     * @param contPan nouvelle table
+     */
     public void setContentPan(JMother contPan) {
         instance.contentPan.getMainPanel().setVisible(false);
         instance.remove(instance.contentPan.getMainPanel());

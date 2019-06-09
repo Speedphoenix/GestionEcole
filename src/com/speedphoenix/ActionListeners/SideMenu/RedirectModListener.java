@@ -9,7 +9,9 @@ import com.speedphoenix.Modele.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+/**
+ * Actionlistener pour le bouton de modification du menu de gauche
+ */
 public class RedirectModListener implements ActionListener {
 
     protected JMother elem ;
@@ -49,6 +51,10 @@ public class RedirectModListener implements ActionListener {
         this.elem = elem;
     }
 
+    /**
+     * A la detection d'un évènement, on cherche le type objet sélectionner et on redirige vers la page de modification adéquate
+     * @param e non utilisé (ActionEvent)
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
 
