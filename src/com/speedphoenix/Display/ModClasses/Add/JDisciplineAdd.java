@@ -44,9 +44,7 @@ public class JDisciplineAdd extends JMotherMod {
         labelName.setFont(defaultF);
         labelName.setBounds(420, 380, 200,100);
 
-        nomFenetre = new JLabel("Ajout Discipline");
-        nomFenetre.setBounds(200, 10, 800,200);
-        nomFenetre.setFont(new Font("Verdana",3,30));
+
 
         mainPanel.add(nomFenetre);
         mainPanel.add(accept);

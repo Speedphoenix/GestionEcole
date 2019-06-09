@@ -29,7 +29,7 @@ public class JNiveauAdd extends JMotherMod {
         mainPanel.setLayout(null);
         //composants
         JLabel nomFenetre = new JLabel("Ajout Niveau");
-        nomFenetre.setBounds(300, 10, 500,200);
+        nomFenetre.setBounds(350, 10, 500,200);
         nomFenetre.setFont(new Font("Verdana",3,40));
         accept = new JButton("Ajouter");
         accept.setFont(defaultF);

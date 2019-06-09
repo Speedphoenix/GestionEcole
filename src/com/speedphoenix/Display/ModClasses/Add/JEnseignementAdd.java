@@ -128,7 +128,7 @@ public class JEnseignementAdd extends JMotherMod {
         accept.addActionListener(new AddListener(this));
 
         nomFenetre = new JLabel("Ajout Enseignement");
-        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setBounds(400, 10, 800,200);
         nomFenetre.setFont(new Font("Verdana",3,30));
 
         mainPanel.add(nomFenetre);

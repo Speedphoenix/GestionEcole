@@ -31,7 +31,7 @@ public class JEnseignantAdd extends JMotherMod {
         mainPanel.setLayout(null);
         //composants
         JLabel nomFenetre = new JLabel("Ajout Enseignant");
-        nomFenetre.setBounds(240, 10, 600,200);
+        nomFenetre.setBounds(300, 10, 600,200);
         nomFenetre.setFont(new Font("Verdana",3,40));
         accept = new JButton("Ajouter");
         accept.setFont(defaultF);

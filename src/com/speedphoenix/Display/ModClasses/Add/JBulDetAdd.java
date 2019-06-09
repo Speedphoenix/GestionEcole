@@ -132,7 +132,7 @@ public class JBulDetAdd extends JMotherMod {
         accept.addActionListener(new AddListener(this));
 
         nomFenetre = new JLabel("Ajout Bulletin Detail");
-        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setBounds(350, 10, 800,200);
         nomFenetre.setFont(new Font("Verdana",3,30));
 
         mainPanel.add(nomFenetre);

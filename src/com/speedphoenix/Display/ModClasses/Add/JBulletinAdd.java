@@ -122,7 +122,7 @@ public class JBulletinAdd extends JMotherMod {
         choiceBox.setBorder(BorderFactory.createTitledBorder(boxName));
 
         nomFenetre = new JLabel("Ajout Bulletin");
-        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setBounds(400, 10, 800,200);
         nomFenetre.setFont(new Font("Verdana",3,30));
 
         mainPanel.add(nomFenetre);

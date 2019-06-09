@@ -93,8 +93,8 @@ public class JInscriptionAdd extends JMotherMod {
         accept.setBounds(800, 800, 120,50);
         accept.addActionListener(new AddListener(this));
 
-        nomFenetre = new JLabel("");
-        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre = new JLabel("Inscription dans une classe");
+        nomFenetre.setBounds(250, 10, 800,200);
         nomFenetre.setFont(new Font("Verdana",3,30));
 
         mainPanel.add(nomFenetre);

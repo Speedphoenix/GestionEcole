@@ -90,7 +90,7 @@ public class JTrimestreAdd extends JMotherMod {
         numeroTextArea.setBorder(BorderFactory.createTitledBorder("Numéro du trimestre"));
 
         nomFenetre = new JLabel("Ajout Trimestre");
-        nomFenetre.setBounds(200, 10, 800,200);
+        nomFenetre.setBounds(380, 10, 800,200);
         nomFenetre.setFont(new Font("Verdana",3,30));
 
         mainPanel.add(nomFenetre);
