@@ -32,7 +32,6 @@ public class JReporting extends JMotherMod {
     private JPanel upPanel;
     private JPanel graphicPanel;
 
-    private BaseElem motherElem;
     private JButton retour_menu;
     public JComboBox menu;
     private JButton accepter;
@@ -46,7 +45,7 @@ public class JReporting extends JMotherMod {
 
 
     /** Constructeur */
-    public JReporting(BaseElem what)
+    public JReporting()
     {
         mainPanel = new JPanel();
         mainPanel.setBounds(0,0,1000,1000);
@@ -67,7 +66,6 @@ public class JReporting extends JMotherMod {
         JLabel nomFenetre = new JLabel(" STATISTIQUES " );
         nomFenetre.setBounds(360, 10, 360,80);
         nomFenetre.setFont(new Font("Verdana",3,30));
-        motherElem = what;
 
         String[] liste_reporting = {"Moyennes par TD","Moyennes par matières","Moyennes par promo","Nombre d'élèves par promo","Nombre de profs par discipline"};
         menu = new JComboBox(liste_reporting);
@@ -157,7 +155,6 @@ public class JReporting extends JMotherMod {
     {
         Ecole sc = Ecole.getInstance();
 
-        System.out.println("histo");
 
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -285,9 +282,7 @@ public class JReporting extends JMotherMod {
 
     }
 
-    public BaseElem getMotherElem() {
-        return motherElem;
-    }
+
 
 
     @Override

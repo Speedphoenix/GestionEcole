@@ -58,7 +58,6 @@ public class Reporting extends BaseElem {
                     double moyenne = total / nb_eval;
 
                     all_avrg.put(key,moyenne);
-                    System.out.println(key + " a pour moye" + moyenne);
                 }
 
             }
@@ -103,7 +102,6 @@ public class Reporting extends BaseElem {
             {
                 double moyenne = total / nb_moy ;
                 avrg_promo.put(key_1,moyenne);
-                System.out.println(key_1 + " " + moyenne);
             }
 
         }
@@ -158,7 +156,6 @@ public class Reporting extends BaseElem {
             {
                 double moyenne = total / nb;
                 avrg_matieres.put(key,moyenne);
-                System.out.println("matiere" + key + "a moyenne " + moyenne);
             }
         }
 

@@ -2,6 +2,8 @@ package com.speedphoenix.ActionListeners.UpMenu;
 
 import com.speedphoenix.Display.Affclasses.JClasseAff;
 import com.speedphoenix.Display.Affclasses.JMother;
+import com.speedphoenix.Display.Affclasses.JRightNavPanel;
+import com.speedphoenix.Display.Affclasses.JUpNavBar;
 import com.speedphoenix.Display.GraphicContainer;
 import com.speedphoenix.Display.ModClasses.JMotherMod;
 import com.speedphoenix.Display.ModClasses.Mod.JReporting;
@@ -22,9 +24,7 @@ public class RetourListener implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        JMother mot = new JClasseAff(Ecole.getInstance());
-        //on réaffiche correctement la liste
-        GraphicContainer.getInstance().setContentPan(mot);
+        GraphicContainer.createInstance(new JRightNavPanel(),new JUpNavBar(),new JClasseAff(Ecole.getInstance()));
 
     }
 
