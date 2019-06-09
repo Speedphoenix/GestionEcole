@@ -4,6 +4,7 @@ import com.speedphoenix.ActionListeners.AddOrModifyPanel.ModListener;
 import com.speedphoenix.Display.ModClasses.JMotherMod;
 import com.speedphoenix.Modele.BaseElem;
 import com.speedphoenix.ActionListeners.AddOrModifyPanel.ReportingListener;
+import com.speedphoenix.ActionListeners.UpMenu.RetourListener;
 import com.speedphoenix.Modele.Ecole;
 import com.speedphoenix.Modele.Reporting;
 
@@ -75,8 +76,7 @@ public class JReporting extends JMotherMod {
         retour_menu = new JButton("Retour menu");
         retour_menu.setFont(defaultF);
         retour_menu.setBounds(5, 80, 180,40);
-        // A CHANGER
-        //retour_menu.addActionListener(new ReportingListener(this));
+        retour_menu.addActionListener(new RetourListener(this));
 
         accepter = new JButton("accepter");
         accepter.setFont(defaultF);
@@ -99,49 +99,67 @@ public class JReporting extends JMotherMod {
         return graphicPanel;
     }
 
+    public void setCategorie(String a)
+    {
+        this.categorie = a;
+    }
+
+    public void setDonnee(String a)
+    {
+        this.donnee = a;
+    }
+
+    public String getCategorie(){
+        return categorie;
+    }
+
+    public String getDonnee(){
+        return donnee;
+    }
+
+
     public void choix()
     {
         Reporting r = new Reporting();
 
         if(menu.getSelectedItem().toString().equals("Moyennes par TD"))
         {
-            histogramme(r.moyenne_par_td());
-            categorie = "TD";
-            donnee = "Moyennes";
+            histogramme(r.moyenne_par_td(),1);
+            setCategorie("TD");
+            setDonnee("Moyennes");
         }
         else if(menu.getSelectedItem().toString().equals("Moyennes par matières"))
         {
-            histogramme(r.moyenne_par_matiere());
-            categorie = "Matières";
-            donnee = "Moyennes";
+            histogramme(r.moyenne_par_matiere(),2);
+            setCategorie("Matières");
+            setDonnee("Moyennes");
         }
         else if(menu.getSelectedItem().toString().equals("Moyennes par promo"))
         {
-            histogramme(r.moyenne_par_promo());
-            categorie = "Promo";
-            donnee = "Moyennes";
+            histogramme(r.moyenne_par_promo(),3);
+            setCategorie("Promo");
+            setDonnee("Moyennes");
         }
         else if(menu.getSelectedItem().toString().equals("Nombre d'élèves par promo"))
         {
-            camembert(r.repartition_eleve_par_promo());
-            categorie = "Promo";
-            donnee = "Nombre d'élèves";
+            camembert(r.repartition_eleve_par_promo(),1);
+            setCategorie("Promo");
+            setDonnee("Nombre d'élèves");
         }
         else if(menu.getSelectedItem().toString().equals("Nombre de profs par discipline"))
         {
-            camembert(r.repartition_prof_par_discipline());
-            categorie = "Matières";
-            donnee = "Nombre de profs";
+            camembert(r.repartition_prof_par_discipline(),2);
+            setCategorie("Matières");
+            setDonnee("Nombre de profs");
         }
     }
 
-    public void histogramme(Hashtable<Integer,Double> a)
+    public void histogramme(Hashtable<Integer,Double> a, int c)
     {
+        Ecole sc = Ecole.getInstance();
+
         System.out.println("histo");
 
-        /**
-         * **créa du dataset***
-         */
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
         Set keys = a.keySet();
@@ -149,29 +167,30 @@ public class JReporting extends JMotherMod {
 
         int key = 0;
 
-        //on ajoute la hashtable dans une liste de string
+        //ajout dans la dataset
         while (it.hasNext())
         {
             key = (int)it.next();
 
-            System.out.println(a.get(key).toString());
-
-            liste.add(a.get(key).toString());
-        }
-
-        /// LA LA DATASET EST PAS CORRECT, JE RECUPERE PAS LE BON TRUC ET CA FAIT UNE ERREUR
-
-        for (int i = 0; i < liste.size(); i++) {
-            String[] tab;
-            tab = liste.get(i).split(",");
-            dataset.addValue(Float.parseFloat(tab[0]), tab[1], tab[1]);
+            if(c == 1)
+            {
+                dataset.addValue((Number)a.get(key),1, sc.findClasse(key).getNom() );
+            }
+            else if(c == 2)
+            {
+                dataset.addValue((Number)a.get(key),1, sc.findDiscipline(key).getNom() );
+            }
+            else if(c == 3)
+            {
+                dataset.addValue((Number)a.get(key),1, sc.findNiveau(key).getNom() );
+            }
         }
 
          //créa de la chart
         chart = ChartFactory.createBarChart(
-                "Nombre de " + donnee + " par " + categorie, // chart title
-                donnee, // domain axis label
-                categorie, // range axis label
+                getDonnee() + " par " + getCategorie(), // chart title
+                getDonnee(), // domain axis label
+                getCategorie(), // range axis label
                 dataset, // data
                 PlotOrientation.VERTICAL, // orientation
                 true, // include legend
@@ -181,17 +200,16 @@ public class JReporting extends JMotherMod {
 
         //  Couleur bordure
         CategoryPlot plot = (CategoryPlot) chart.getPlot();
-        plot.setBackgroundPaint(Color.pink);
+        plot.setBackgroundPaint(Color.yellow);
         //lignes
         plot.setRangeGridlinePaint(Color.black);
 
         //Couleur des barres
         BarRenderer renderer = (BarRenderer) plot.getRenderer();
-        renderer.setSeriesPaint(0, Color.pink);
-        renderer.setSeriesPaint(1, Color.pink);
-        renderer.setSeriesPaint(2, Color.pink);
+        renderer.setSeriesPaint(0, Color.yellow);
+        renderer.setSeriesPaint(1, Color.yellow);
+        renderer.setSeriesPaint(2, Color.yellow);
         renderer.setDrawBarOutline(false);
-        renderer.setItemLabelsVisible(true);
         //couleur de fond
         plot.setBackgroundPaint(Color.gray);
 
@@ -201,15 +219,73 @@ public class JReporting extends JMotherMod {
         ChartFrame frame = new ChartFrame("First", chart);
         frame.pack();
         frame.setVisible(true);
-        graphicPanel.add(frame);
+        //graphicPanel.add(frame);
 
 
 
     }
 
-    public void camembert(Hashtable<Integer,Integer> a)
+    public void camembert(Hashtable<Integer,Integer> a, int c)
     {
-        System.out.println("cam");
+
+        Ecole sc = Ecole.getInstance();
+
+        DefaultPieDataset dataset_2 = new DefaultPieDataset();
+
+        Set keys = a.keySet();
+        Iterator it = keys.iterator();
+
+        int key = 0;
+
+        //ajout dans la dataset
+        while (it.hasNext())
+        {
+            key = (int)it.next();
+
+            if(c == 1)
+            {
+                dataset_2.setValue(sc.findNiveau(key).getNom(),a.get(key));
+            }
+            else if(c == 2)
+            {
+                dataset_2.setValue(sc.findDiscipline(key).getNom(),a.get(key));
+            }
+
+        }
+
+        /**
+         * **création d'un char***
+         */
+        chart = ChartFactory.createPieChart(
+                getDonnee() + " par " + getCategorie(), // chart title
+                dataset_2, // data
+                false, // include legend
+                true, // tooltips
+                false // URLs
+        );
+
+        //Couleur bordure
+        chart.setBackgroundPaint(Color.white);
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setBackgroundPaint(Color.WHITE);
+        plot.setSectionOutlinesVisible(false);
+
+        plot.setSectionPaint(0, Color.YELLOW);
+        plot.setSectionPaint(1, Color.GRAY);
+        plot.setSectionPaint(2, Color.BLACK);
+
+        //{0} représente les labels de la série.
+        //{1} représente les valeurs de la série.
+        //{2} représente les pourcentages.
+        plot.setLabelGenerator(new StandardPieSectionLabelGenerator("{0}={1} ({2})"));
+
+        /**
+         * **création et affichage d'un frame***
+         */
+        ChartFrame frame = new ChartFrame("First", chart);
+        frame.pack();
+        frame.setVisible(true);
+
     }
 
     public BaseElem getMotherElem() {
