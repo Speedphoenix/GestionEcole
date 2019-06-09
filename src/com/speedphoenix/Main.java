@@ -81,6 +81,7 @@ public class Main {
 
         mainFrame.createInstance(new JReporting(eco));
 
+
         //on affiche la Jframe
         mainFrame.setVisible(true);
     }

@@ -27,7 +27,7 @@ public class ModListener implements ActionListener {
         enseignant("enseignant"),
         detBulletin("detBulletin"),
         evaluation("evaluation"),
-        classe("classse"),
+        classe("classe"),
         discipline("discipline"),
         niveau("niveau"),
         bulletin("bulletin");
@@ -54,7 +54,6 @@ public class ModListener implements ActionListener {
 
         if(elem.getType().equals(typePannel.eleve.type))
         {
-
             JEleveMod trueObject = (JEleveMod) elem;
             Eleve motElem = (Eleve) trueObject.getMotherElem();
             String surName = trueObject.getTextSurname().getText() ;
